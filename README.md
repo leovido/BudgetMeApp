@@ -1,6 +1,28 @@
 # BudgetMeApp
 Personal finances app using Starling bank's API with RxSwift + MVVM architecture
 
+This app currently shows all accounts and will eventually show the balance, overdraft, pending transactions.
+Atm, it shows one demo account and transitions into a UITabViewController where you can switch between transactions and savings goals.
+
+All network requests and errors are handled by the ViewModel through bindings.
+
+You can create a new savings goal in the savings section.
+
+Changes in the UI and UX will be made along with writing unit tests.
+
+# Upcoming / Tasks
+- [ ] Authentication
+- [ ] ViewModel testing with RxTest
+- [ ] Accounts
+- [ ] Transaction Feed
+- [ ] Savings goals
+- [ ] Login screen
+- [ ] Budget View
+- [ ] Spending Insights
+- [ ] Card settings
+- [ ] Analytics View
+- [ ] SwiftUI version (other repo)
+
 ## Starling Bank's API
 https://developer.starlingbank.com/docs
 
