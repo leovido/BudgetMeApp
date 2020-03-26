@@ -10,6 +10,18 @@ You can create a new savings goal in the savings section.
 
 Changes in the UI and UX will be made along with writing unit tests.
 
+## Starling Bank's API
+https://developer.starlingbank.com/docs
+
+# Features
+
+Swift Package Manager for managing dependencies
+- RxSwift, RxCocoa - 
+Using Reactive Programming for asynchronous network requests and bindings.
+- Moya, RxMoya - 
+Using Moya to encapsulate specific requests by category. e.g. AccountsService, TransactionFeedService..
+- RxTest - Testing value changes over time
+
 # Upcoming / Tasks
 - [ ] Authentication
 - [ ] ViewModel testing with RxTest
@@ -22,18 +34,6 @@ Changes in the UI and UX will be made along with writing unit tests.
 - [ ] Card settings
 - [ ] Analytics View
 - [ ] SwiftUI version (other repo)
-
-## Starling Bank's API
-https://developer.starlingbank.com/docs
-
-# Features
-
-Swift Package Manager for managing dependencies
-- RxSwift, RxCocoa - 
-Using Reactive Programming for asynchronous network requests and bindings.
-- Moya, RxMoya - 
-Using Moya to encapsulate specific requests by category. e.g. AccountsService, TransactionFeedService..
-- RxTest - Testing value changes over time
 
 # Screenshots 
 
