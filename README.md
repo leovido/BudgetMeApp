@@ -1,6 +1,11 @@
 # BudgetMeApp
 Personal finances app using Starling bank's API with RxSwift + MVVM architecture
 
+# Highlights and benefits
+- Reactive programming - Declarative programming paradigm concerned with data streams and the propagation of change.
+- MVVM architecture - Better application of SOLID principles and encapsulation of components. Offering better testability and flexibility.
+
+## Summary
 This app currently shows all accounts and will eventually show the balance, overdraft, pending transactions.
 Atm, it shows one demo account and transitions into a UITabViewController where you can switch between transactions and savings goals.
 
