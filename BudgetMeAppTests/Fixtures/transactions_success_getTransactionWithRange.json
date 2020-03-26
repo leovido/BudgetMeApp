@@ -1,0 +1,432 @@
+{
+    "feedItems": [
+        {
+            "feedItemUid": "13a7a15b-4cb9-4a1a-9ba0-ef1757ef313e",
+            "categoryUid": "c4ed84e4-8cc9-4a3b-8df5-85996f67f2db",
+            "amount": {
+                "currency": "GBP",
+                "minorUnits": 3133
+            },
+            "sourceAmount": {
+                "currency": "GBP",
+                "minorUnits": 3133
+            },
+            "direction": "OUT",
+            "updatedAt": "2020-03-23T11:19:25.788Z",
+            "transactionTime": "2020-03-23T11:19:25.499Z",
+            "settlementTime": "2020-03-23T11:19:25.750Z",
+            "source": "FASTER_PAYMENTS_OUT",
+            "status": "SETTLED",
+            "counterPartyType": "PAYEE",
+            "counterPartyUid": "f4958372-4b46-473d-995f-76ce4d4a8852",
+            "counterPartyName": "Mickey Mouse",
+            "counterPartySubEntityUid": "2b496160-7d51-4d8b-ae8a-a67e0c1199bd",
+            "counterPartySubEntityName": "UK account",
+            "counterPartySubEntityIdentifier": "204514",
+            "counterPartySubEntitySubIdentifier": "00000825",
+            "reference": "External Payment",
+            "country": "GB",
+            "spendingCategory": "OTHER"
+        },
+        {
+            "feedItemUid": "13a711d2-8763-42f9-a245-0d67612ed5e6",
+            "categoryUid": "c4ed84e4-8cc9-4a3b-8df5-85996f67f2db",
+            "amount": {
+                "currency": "GBP",
+                "minorUnits": 2304
+            },
+            "sourceAmount": {
+                "currency": "GBP",
+                "minorUnits": 2304
+            },
+            "direction": "OUT",
+            "updatedAt": "2020-03-23T11:19:25.748Z",
+            "transactionTime": "2020-03-23T11:19:25.487Z",
+            "settlementTime": "2020-03-23T11:19:25.683Z",
+            "source": "FASTER_PAYMENTS_OUT",
+            "status": "SETTLED",
+            "counterPartyType": "PAYEE",
+            "counterPartyUid": "2b1b10ec-2ca6-4269-aaff-cb354d49c782",
+            "counterPartyName": "Mickey Mouse",
+            "counterPartySubEntityUid": "3b4d4491-932a-4d8d-9d09-0b5ebc628b90",
+            "counterPartySubEntityName": "UK account",
+            "counterPartySubEntityIdentifier": "204514",
+            "counterPartySubEntitySubIdentifier": "00000825",
+            "reference": "External Payment",
+            "country": "GB",
+            "spendingCategory": "OTHER"
+        },
+        {
+            "feedItemUid": "13a7cdf0-6071-4dc0-b644-de407e9b705d",
+            "categoryUid": "c4ed84e4-8cc9-4a3b-8df5-85996f67f2db",
+            "amount": {
+                "currency": "GBP",
+                "minorUnits": 1084
+            },
+            "sourceAmount": {
+                "currency": "GBP",
+                "minorUnits": 1084
+            },
+            "direction": "OUT",
+            "updatedAt": "2020-03-23T11:19:25.755Z",
+            "transactionTime": "2020-03-23T11:19:25.431Z",
+            "settlementTime": "2020-03-23T11:19:25.716Z",
+            "source": "FASTER_PAYMENTS_OUT",
+            "status": "SETTLED",
+            "counterPartyType": "PAYEE",
+            "counterPartyUid": "227efb2f-6162-4f64-9b1a-f3778e81a5d0",
+            "counterPartyName": "Mickey Mouse",
+            "counterPartySubEntityUid": "2884fd58-a15a-4546-a59d-0d8ec99f771b",
+            "counterPartySubEntityName": "UK account",
+            "counterPartySubEntityIdentifier": "204514",
+            "counterPartySubEntitySubIdentifier": "00000825",
+            "reference": "External Payment",
+            "country": "GB",
+            "spendingCategory": "OTHER"
+        },
+        {
+            "feedItemUid": "13a783ef-eadd-4c22-905b-abded17b5bef",
+            "categoryUid": "c4ed84e4-8cc9-4a3b-8df5-85996f67f2db",
+            "amount": {
+                "currency": "GBP",
+                "minorUnits": 1042
+            },
+            "sourceAmount": {
+                "currency": "GBP",
+                "minorUnits": 1042
+            },
+            "direction": "OUT",
+            "updatedAt": "2020-03-23T11:19:25.641Z",
+            "transactionTime": "2020-03-23T11:19:25.383Z",
+            "settlementTime": "2020-03-23T11:19:25.606Z",
+            "source": "FASTER_PAYMENTS_OUT",
+            "status": "SETTLED",
+            "counterPartyType": "PAYEE",
+            "counterPartyUid": "65ad606e-3c7e-4363-8ce9-c1969d082897",
+            "counterPartyName": "Mickey Mouse",
+            "counterPartySubEntityUid": "588c474c-e6e5-4038-aaf5-a5c49d32b4bb",
+            "counterPartySubEntityName": "UK account",
+            "counterPartySubEntityIdentifier": "204514",
+            "counterPartySubEntitySubIdentifier": "00000825",
+            "reference": "External Payment",
+            "country": "GB",
+            "spendingCategory": "OTHER"
+        },
+        {
+            "feedItemUid": "13a776b4-ed94-4b72-aab2-557167e5219f",
+            "categoryUid": "c4ed84e4-8cc9-4a3b-8df5-85996f67f2db",
+            "amount": {
+                "currency": "GBP",
+                "minorUnits": 3301
+            },
+            "sourceAmount": {
+                "currency": "GBP",
+                "minorUnits": 3301
+            },
+            "direction": "OUT",
+            "updatedAt": "2020-03-23T11:19:25.624Z",
+            "transactionTime": "2020-03-23T11:19:25.311Z",
+            "settlementTime": "2020-03-23T11:19:25.544Z",
+            "source": "FASTER_PAYMENTS_OUT",
+            "status": "SETTLED",
+            "counterPartyType": "PAYEE",
+            "counterPartyUid": "bdc550b1-a919-4fe1-8700-37f7c57c8024",
+            "counterPartyName": "Mickey Mouse",
+            "counterPartySubEntityUid": "b24dc641-a15f-479d-b984-6658ae921bad",
+            "counterPartySubEntityName": "UK account",
+            "counterPartySubEntityIdentifier": "204514",
+            "counterPartySubEntitySubIdentifier": "00000825",
+            "reference": "External Payment",
+            "country": "GB",
+            "spendingCategory": "OTHER"
+        },
+        {
+            "feedItemUid": "13a7a828-f9ce-44c6-a121-bcc67daaadb2",
+            "categoryUid": "c4ed84e4-8cc9-4a3b-8df5-85996f67f2db",
+            "amount": {
+                "currency": "GBP",
+                "minorUnits": 2202
+            },
+            "sourceAmount": {
+                "currency": "GBP",
+                "minorUnits": 2202
+            },
+            "direction": "OUT",
+            "updatedAt": "2020-03-23T11:19:25.516Z",
+            "transactionTime": "2020-03-23T11:19:25.209Z",
+            "settlementTime": "2020-03-23T11:19:25.424Z",
+            "source": "FASTER_PAYMENTS_OUT",
+            "status": "SETTLED",
+            "counterPartyType": "PAYEE",
+            "counterPartyUid": "905a88dd-356f-48b1-9c8a-3b4714293e7c",
+            "counterPartyName": "Mickey Mouse",
+            "counterPartySubEntityUid": "b5096126-a034-4314-ae48-7b0a0c0c0a47",
+            "counterPartySubEntityName": "UK account",
+            "counterPartySubEntityIdentifier": "204514",
+            "counterPartySubEntitySubIdentifier": "00000825",
+            "reference": "External Payment",
+            "country": "GB",
+            "spendingCategory": "OTHER"
+        },
+        {
+            "feedItemUid": "13a725d3-ae4d-43c7-b0e4-1c72a77a32b2",
+            "categoryUid": "c4ed84e4-8cc9-4a3b-8df5-85996f67f2db",
+            "amount": {
+                "currency": "GBP",
+                "minorUnits": 3183
+            },
+            "sourceAmount": {
+                "currency": "GBP",
+                "minorUnits": 3183
+            },
+            "direction": "IN",
+            "updatedAt": "2020-03-23T11:19:25.495Z",
+            "transactionTime": "2020-03-23T11:19:25.000Z",
+            "settlementTime": "2020-03-23T11:19:25.000Z",
+            "source": "FASTER_PAYMENTS_IN",
+            "status": "SETTLED",
+            "counterPartyType": "SENDER",
+            "counterPartyName": "MR CUSTOMER",
+            "counterPartySubEntityName": "",
+            "counterPartySubEntityIdentifier": "166051",
+            "counterPartySubEntitySubIdentifier": "56899975",
+            "reference": "someRef",
+            "country": "GB",
+            "spendingCategory": "REVENUE"
+        },
+        {
+            "feedItemUid": "13a7d8a5-ac0f-4adc-b7d2-13fd970161ea",
+            "categoryUid": "c4ed84e4-8cc9-4a3b-8df5-85996f67f2db",
+            "amount": {
+                "currency": "GBP",
+                "minorUnits": 1292
+            },
+            "sourceAmount": {
+                "currency": "GBP",
+                "minorUnits": 1292
+            },
+            "direction": "IN",
+            "updatedAt": "2020-03-23T11:19:25.418Z",
+            "transactionTime": "2020-03-23T11:19:25.000Z",
+            "settlementTime": "2020-03-23T11:19:25.000Z",
+            "source": "FASTER_PAYMENTS_IN",
+            "status": "SETTLED",
+            "counterPartyType": "SENDER",
+            "counterPartyName": "MR CUSTOMER",
+            "counterPartySubEntityName": "",
+            "counterPartySubEntityIdentifier": "203002",
+            "counterPartySubEntitySubIdentifier": "22069288",
+            "reference": "someRef",
+            "country": "GB",
+            "spendingCategory": "REVENUE"
+        },
+        {
+            "feedItemUid": "13a7d4cd-a517-4d33-9048-7c40ceb8a90b",
+            "categoryUid": "c4ed84e4-8cc9-4a3b-8df5-85996f67f2db",
+            "amount": {
+                "currency": "GBP",
+                "minorUnits": 2618
+            },
+            "sourceAmount": {
+                "currency": "GBP",
+                "minorUnits": 2618
+            },
+            "direction": "IN",
+            "updatedAt": "2020-03-23T11:19:25.326Z",
+            "transactionTime": "2020-03-23T11:19:25.000Z",
+            "settlementTime": "2020-03-23T11:19:25.000Z",
+            "source": "FASTER_PAYMENTS_IN",
+            "status": "SETTLED",
+            "counterPartyType": "SENDER",
+            "counterPartyName": "MR CUSTOMER",
+            "counterPartySubEntityName": "",
+            "counterPartySubEntityIdentifier": "203002",
+            "counterPartySubEntitySubIdentifier": "84704422",
+            "reference": "someRef",
+            "country": "GB",
+            "spendingCategory": "REVENUE"
+        },
+        {
+            "feedItemUid": "13a700b3-5c11-4e63-835f-881a5469ec65",
+            "categoryUid": "c4ed84e4-8cc9-4a3b-8df5-85996f67f2db",
+            "amount": {
+                "currency": "GBP",
+                "minorUnits": 112
+            },
+            "sourceAmount": {
+                "currency": "GBP",
+                "minorUnits": 112
+            },
+            "direction": "IN",
+            "updatedAt": "2020-03-23T11:19:25.335Z",
+            "transactionTime": "2020-03-23T11:19:25.000Z",
+            "settlementTime": "2020-03-23T11:19:25.000Z",
+            "source": "FASTER_PAYMENTS_IN",
+            "status": "SETTLED",
+            "counterPartyType": "SENDER",
+            "counterPartyName": "MR CUSTOMER",
+            "counterPartySubEntityName": "",
+            "counterPartySubEntityIdentifier": "166051",
+            "counterPartySubEntitySubIdentifier": "52499964",
+            "reference": "someRef",
+            "country": "GB",
+            "spendingCategory": "REVENUE"
+        },
+        {
+            "feedItemUid": "13a78793-0b65-49e4-b716-6df8e6d2b73f",
+            "categoryUid": "c4ed84e4-8cc9-4a3b-8df5-85996f67f2db",
+            "amount": {
+                "currency": "GBP",
+                "minorUnits": 2653
+            },
+            "sourceAmount": {
+                "currency": "GBP",
+                "minorUnits": 2653
+            },
+            "direction": "IN",
+            "updatedAt": "2020-03-23T11:19:25.288Z",
+            "transactionTime": "2020-03-23T11:19:25.000Z",
+            "settlementTime": "2020-03-23T11:19:25.000Z",
+            "source": "FASTER_PAYMENTS_IN",
+            "status": "SETTLED",
+            "counterPartyType": "SENDER",
+            "counterPartyName": "MR CUSTOMER",
+            "counterPartySubEntityName": "",
+            "counterPartySubEntityIdentifier": "204514",
+            "counterPartySubEntitySubIdentifier": "69330555",
+            "reference": "someRef",
+            "country": "GB",
+            "spendingCategory": "REVENUE"
+        },
+        {
+            "feedItemUid": "13a7dc84-19d9-48cb-bf07-541a648bfcf7",
+            "categoryUid": "c4ed84e4-8cc9-4a3b-8df5-85996f67f2db",
+            "amount": {
+                "currency": "GBP",
+                "minorUnits": 1183
+            },
+            "sourceAmount": {
+                "currency": "GBP",
+                "minorUnits": 1183
+            },
+            "direction": "IN",
+            "updatedAt": "2020-03-23T11:19:25.214Z",
+            "transactionTime": "2020-03-23T11:19:25.000Z",
+            "settlementTime": "2020-03-23T11:19:25.000Z",
+            "source": "FASTER_PAYMENTS_IN",
+            "status": "SETTLED",
+            "counterPartyType": "SENDER",
+            "counterPartyName": "MR CUSTOMER",
+            "counterPartySubEntityName": "",
+            "counterPartySubEntityIdentifier": "166051",
+            "counterPartySubEntitySubIdentifier": "65699989",
+            "reference": "someRef",
+            "country": "GB",
+            "spendingCategory": "REVENUE"
+        },
+        {
+            "feedItemUid": "13a717fc-6161-44c2-9628-7365b29294d6",
+            "categoryUid": "c4ed84e4-8cc9-4a3b-8df5-85996f67f2db",
+            "amount": {
+                "currency": "GBP",
+                "minorUnits": 200000
+            },
+            "sourceAmount": {
+                "currency": "GBP",
+                "minorUnits": 200000
+            },
+            "direction": "IN",
+            "updatedAt": "2020-03-23T11:19:25.062Z",
+            "transactionTime": "2020-03-23T11:19:24.000Z",
+            "settlementTime": "2020-03-23T11:19:24.000Z",
+            "source": "FASTER_PAYMENTS_IN",
+            "status": "SETTLED",
+            "counterPartyType": "SENDER",
+            "counterPartyName": "MR CUSTOMER",
+            "counterPartySubEntityName": "",
+            "counterPartySubEntityIdentifier": "204514",
+            "counterPartySubEntitySubIdentifier": "74875088",
+            "reference": "someRef",
+            "country": "GB",
+            "spendingCategory": "REVENUE"
+        },
+        {
+            "feedItemUid": "13a7a34e-72c9-4d18-b54e-b878a5ab5ccd",
+            "categoryUid": "c4ed84e4-8cc9-4a3b-8df5-85996f67f2db",
+            "amount": {
+                "currency": "GBP",
+                "minorUnits": 50000
+            },
+            "sourceAmount": {
+                "currency": "GBP",
+                "minorUnits": 50000
+            },
+            "direction": "IN",
+            "updatedAt": "2020-03-23T11:19:24.964Z",
+            "transactionTime": "2020-03-23T11:19:24.000Z",
+            "settlementTime": "2020-03-23T11:19:24.000Z",
+            "source": "FASTER_PAYMENTS_IN",
+            "status": "SETTLED",
+            "counterPartyType": "SENDER",
+            "counterPartyName": "MR CUSTOMER",
+            "counterPartySubEntityName": "",
+            "counterPartySubEntityIdentifier": "204514",
+            "counterPartySubEntitySubIdentifier": "83190166",
+            "reference": "someRef",
+            "country": "GB",
+            "spendingCategory": "REVENUE"
+        },
+        {
+            "feedItemUid": "13a7aea1-9b5f-4606-98dc-970268d47e28",
+            "categoryUid": "c4ed84e4-8cc9-4a3b-8df5-85996f67f2db",
+            "amount": {
+                "currency": "GBP",
+                "minorUnits": 10000042
+            },
+            "sourceAmount": {
+                "currency": "GBP",
+                "minorUnits": 10000042
+            },
+            "direction": "IN",
+            "updatedAt": "2020-03-23T11:19:09.490Z",
+            "transactionTime": "2020-03-23T11:19:09.000Z",
+            "settlementTime": "2020-03-23T11:19:09.000Z",
+            "source": "FASTER_PAYMENTS_IN",
+            "status": "SETTLED",
+            "counterPartyType": "SENDER",
+            "counterPartyName": "MR CUSTOMER",
+            "counterPartySubEntityName": "",
+            "counterPartySubEntityIdentifier": "166051",
+            "counterPartySubEntitySubIdentifier": "55799969",
+            "reference": "Royalties",
+            "country": "GB",
+            "spendingCategory": "REVENUE"
+        },
+        {
+            "feedItemUid": "13a6db06-332e-4b0f-adb2-a0a26d1abf08",
+            "categoryUid": "c4ed84e4-8cc9-4a3b-8df5-85996f67f2db",
+            "amount": {
+                "currency": "GBP",
+                "minorUnits": 3430
+            },
+            "sourceAmount": {
+                "currency": "GBP",
+                "minorUnits": 3430
+            },
+            "direction": "IN",
+            "updatedAt": "2020-03-23T11:18:35.067Z",
+            "transactionTime": "2020-03-23T11:18:34.000Z",
+            "settlementTime": "2020-03-23T11:18:34.000Z",
+            "source": "FASTER_PAYMENTS_IN",
+            "status": "SETTLED",
+            "counterPartyType": "SENDER",
+            "counterPartyName": "MR CUSTOMER",
+            "counterPartySubEntityName": "",
+            "counterPartySubEntityIdentifier": "166051",
+            "counterPartySubEntitySubIdentifier": "46999963",
+            "reference": "Music software",
+            "country": "GB",
+            "spendingCategory": "REVENUE"
+        }
+    ]
+}
