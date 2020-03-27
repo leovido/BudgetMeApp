@@ -11,7 +11,7 @@ import Foundation
 public typealias MinorUnits = Int
 public typealias Currency = String
 
-public struct CurrencyAndAmount: Decodable {
+public struct CurrencyAndAmount: Decodable, Equatable {
     var currency: CurrencySymbol
     var minorUnits: MinorUnits
 }
