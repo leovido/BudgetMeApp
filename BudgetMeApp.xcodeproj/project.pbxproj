@@ -32,6 +32,9 @@
 		2D00556924291EA100A82E14 /* TransactionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D00556824291EA100A82E14 /* TransactionsViewModel.swift */; };
 		2D00556B24291EEB00A82E14 /* Roundable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D00556A24291EEB00A82E14 /* Roundable.swift */; };
 		2D00556E2429211700A82E14 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D00556D2429211700A82E14 /* TransactionCell.swift */; };
+		2D528756242E64FB00FF26F6 /* AccountViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D528755242E64FB00FF26F6 /* AccountViewModelTests.swift */; };
+		2D528758242E651C00FF26F6 /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = 2D528757242E651C00FF26F6 /* RxTest */; };
+		2D52875B242E6C4D00FF26F6 /* TransactionFeedViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52875A242E6C4D00FF26F6 /* TransactionFeedViewModelTests.swift */; };
 		2D6315F224297702009BC74D /* SavingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6315F124297702009BC74D /* SavingsViewController.swift */; };
 		2D8DECE3242D2EB300073D1B /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 2D8DECE2242D2EB300073D1B /* RxMoya */; };
 		2D8DECFE242D65E100073D1B /* BudgetMeAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8DECFD242D65E100073D1B /* BudgetMeAppTests.swift */; };
@@ -97,6 +100,8 @@
 		2D00556824291EA100A82E14 /* TransactionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewModel.swift; sourceTree = "<group>"; };
 		2D00556A24291EEB00A82E14 /* Roundable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roundable.swift; sourceTree = "<group>"; };
 		2D00556D2429211700A82E14 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
+		2D528755242E64FB00FF26F6 /* AccountViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModelTests.swift; sourceTree = "<group>"; };
+		2D52875A242E6C4D00FF26F6 /* TransactionFeedViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionFeedViewModelTests.swift; sourceTree = "<group>"; };
 		2D6315F124297702009BC74D /* SavingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsViewController.swift; sourceTree = "<group>"; };
 		2D8DECFB242D65E100073D1B /* BudgetMeAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BudgetMeAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D8DECFD242D65E100073D1B /* BudgetMeAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetMeAppTests.swift; sourceTree = "<group>"; };
@@ -125,6 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D528758242E651C00FF26F6 /* RxTest in Frameworks */,
 				2D00553E2428D7A000A82E14 /* RxCocoa in Frameworks */,
 				2D00553C2428D7A000A82E14 /* RxSwift in Frameworks */,
 				2D8DECE3242D2EB300073D1B /* RxMoya in Frameworks */,
@@ -242,6 +248,22 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		2D528754242E64DF00FF26F6 /* AccountViewModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				2D528755242E64FB00FF26F6 /* AccountViewModelTests.swift */,
+			);
+			path = AccountViewModelTests;
+			sourceTree = "<group>";
+		};
+		2D528759242E6C2000FF26F6 /* TransactionFeedViewModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				2D52875A242E6C4D00FF26F6 /* TransactionFeedViewModelTests.swift */,
+			);
+			path = TransactionFeedViewModelTests;
+			sourceTree = "<group>";
+		};
 		2D8DECE1242D2EB300073D1B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -265,6 +287,8 @@
 		2D8DED0C242D676A00073D1B /* ViewModelTests */ = {
 			isa = PBXGroup;
 			children = (
+				2D528759242E6C2000FF26F6 /* TransactionFeedViewModelTests */,
+				2D528754242E64DF00FF26F6 /* AccountViewModelTests */,
 			);
 			path = ViewModelTests;
 			sourceTree = "<group>";
@@ -386,6 +410,7 @@
 				2D00553B2428D7A000A82E14 /* RxSwift */,
 				2D00553D2428D7A000A82E14 /* RxCocoa */,
 				2D8DECE2242D2EB300073D1B /* RxMoya */,
+				2D528757242E651C00FF26F6 /* RxTest */,
 			);
 			productName = "STT-round-up";
 			productReference = 2D0055122428D6A300A82E14 /* BudgetMeApp.app */;
@@ -523,7 +548,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D8DECFE242D65E100073D1B /* BudgetMeAppTests.swift in Sources */,
+				2D52875B242E6C4D00FF26F6 /* TransactionFeedViewModelTests.swift in Sources */,
 				2D8DED05242D661800073D1B /* STAccountTests.swift in Sources */,
+				2D528756242E64FB00FF26F6 /* AccountViewModelTests.swift in Sources */,
 				2D8DED06242D661B00073D1B /* STTransactionFeedManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -818,6 +845,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2D00553A2428D7A000A82E14 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxCocoa;
+		};
+		2D528757242E651C00FF26F6 /* RxTest */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2D00553A2428D7A000A82E14 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxTest;
 		};
 		2D8DECE2242D2EB300073D1B /* RxMoya */ = {
 			isa = XCSwiftPackageProductDependency;
