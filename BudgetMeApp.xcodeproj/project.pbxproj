@@ -1,0 +1,830 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2D0055162428D6A300A82E14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0055152428D6A300A82E14 /* AppDelegate.swift */; };
+		2D0055182428D6A300A82E14 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0055172428D6A300A82E14 /* SceneDelegate.swift */; };
+		2D00551A2428D6A300A82E14 /* TransactionFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0055192428D6A300A82E14 /* TransactionFeedViewController.swift */; };
+		2D00551D2428D6A300A82E14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D00551B2428D6A300A82E14 /* Main.storyboard */; };
+		2D00551F2428D6A500A82E14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D00551E2428D6A500A82E14 /* Assets.xcassets */; };
+		2D0055222428D6A500A82E14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D0055202428D6A500A82E14 /* LaunchScreen.storyboard */; };
+		2D0055392428D72300A82E14 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 2D0055382428D72300A82E14 /* Moya */; };
+		2D00553C2428D7A000A82E14 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2D00553B2428D7A000A82E14 /* RxSwift */; };
+		2D00553E2428D7A000A82E14 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 2D00553D2428D7A000A82E14 /* RxCocoa */; };
+		2D0055412428D7C000A82E14 /* STAccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0055402428D7C000A82E14 /* STAccountService.swift */; };
+		2D0055442428D89B00A82E14 /* STEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0055432428D89B00A82E14 /* STEnvironment.swift */; };
+		2D0055462428DC3200A82E14 /* STAuthPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0055452428DC3200A82E14 /* STAuthPlugin.swift */; };
+		2D00554A2428DD2300A82E14 /* STAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0055492428DD2300A82E14 /* STAccountManager.swift */; };
+		2D00554C2428DD6800A82E14 /* STAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D00554B2428DD6800A82E14 /* STAccount.swift */; };
+		2D0055532428E9D000A82E14 /* STTransactionFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0055522428E9D000A82E14 /* STTransactionFeed.swift */; };
+		2D0055572428EA1300A82E14 /* STTransactionFeedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0055562428EA1300A82E14 /* STTransactionFeedManager.swift */; };
+		2D0055592428EA6000A82E14 /* STTransactionFeedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0055582428EA6000A82E14 /* STTransactionFeedService.swift */; };
+		2D00555E24291CAC00A82E14 /* CurrencyAndAmount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D00555D24291CAC00A82E14 /* CurrencyAndAmount.swift */; };
+		2D00556024291CD300A82E14 /* CurrencySymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D00555F24291CD300A82E14 /* CurrencySymbol.swift */; };
+		2D00556224291D6A00A82E14 /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D00556124291D6A00A82E14 /* Source.swift */; };
+		2D00556424291D7E00A82E14 /* CountryPartyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D00556324291D7E00A82E14 /* CountryPartyType.swift */; };
+		2D00556624291D8A00A82E14 /* RoundUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D00556524291D8A00A82E14 /* RoundUp.swift */; };
+		2D00556924291EA100A82E14 /* TransactionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D00556824291EA100A82E14 /* TransactionsViewModel.swift */; };
+		2D00556B24291EEB00A82E14 /* Roundable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D00556A24291EEB00A82E14 /* Roundable.swift */; };
+		2D00556E2429211700A82E14 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D00556D2429211700A82E14 /* TransactionCell.swift */; };
+		2D6315F224297702009BC74D /* SavingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6315F124297702009BC74D /* SavingsViewController.swift */; };
+		2D8DECE3242D2EB300073D1B /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 2D8DECE2242D2EB300073D1B /* RxMoya */; };
+		2D8DECFE242D65E100073D1B /* BudgetMeAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8DECFD242D65E100073D1B /* BudgetMeAppTests.swift */; };
+		2D8DED05242D661800073D1B /* STAccountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0055472428DCC500A82E14 /* STAccountTests.swift */; };
+		2D8DED06242D661B00073D1B /* STTransactionFeedManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0055542428E9EE00A82E14 /* STTransactionFeedManagerTests.swift */; };
+		2D8DED09242D674200073D1B /* account_success_browse.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D00554F2428E0C900A82E14 /* account_success_browse.json */; };
+		2D8DED0A242D674200073D1B /* transactions_success_browseTransactions.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D00555A2428ECCD00A82E14 /* transactions_success_browseTransactions.json */; };
+		2D8DED0B242D674200073D1B /* transactions_success_getTransactionWithRange.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DAB22DF242A5781001C0F6E /* transactions_success_getTransactionWithRange.json */; };
+		2DAB22C7242A134F001C0F6E /* SavingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB22C6242A134F001C0F6E /* SavingsCell.swift */; };
+		2DAB22CA242A1380001C0F6E /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB22C9242A1380001C0F6E /* Transaction.swift */; };
+		2DAB22D1242A35EE001C0F6E /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB22D0242A35EE001C0F6E /* AccountsViewController.swift */; };
+		2DAB22D3242A365C001C0F6E /* AccountsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB22D2242A365C001C0F6E /* AccountsCell.swift */; };
+		2DAB22D5242A38B4001C0F6E /* AccountsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB22D4242A38B4001C0F6E /* AccountsViewModel.swift */; };
+		2DAB22D7242A4238001C0F6E /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB22D6242A4238001C0F6E /* Session.swift */; };
+		2DAB22D9242A42A2001C0F6E /* STCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB22D8242A42A2001C0F6E /* STCurrency.swift */; };
+		2DAB22DC242A4A7A001C0F6E /* MoyaNetworkManagerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB22DB242A4A7A001C0F6E /* MoyaNetworkManagerFactory.swift */; };
+		2DAB22DE242A4AAF001C0F6E /* EntityComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB22DD242A4AAF001C0F6E /* EntityComponent.swift */; };
+		2DAB22E4242A5A03001C0F6E /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB22E3242A5A03001C0F6E /* Date+Extension.swift */; };
+		2DAB22E6242A5A39001C0F6E /* CurrencyFormattable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB22E5242A5A39001C0F6E /* CurrencyFormattable.swift */; };
+		2DAB22E8242A5AA1001C0F6E /* ViewModelBlueprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB22E7242A5AA1001C0F6E /* ViewModelBlueprint.swift */; };
+		2DD43636242A058700DE751A /* STSavingsGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD43635242A058700DE751A /* STSavingsGoal.swift */; };
+		2DD43638242A0D0600DE751A /* SavingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD43637242A0D0600DE751A /* SavingsViewModel.swift */; };
+		2DD4363A242A0D4E00DE751A /* STSavingsGoalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD43639242A0D4E00DE751A /* STSavingsGoalManager.swift */; };
+		2DD4363F242A0D7C00DE751A /* STSavingsGoalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD4363E242A0D7C00DE751A /* STSavingsGoalService.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2D8DED00242D65E100073D1B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D00550A2428D6A300A82E14 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2D0055112428D6A300A82E14;
+			remoteInfo = BudgetMeApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2D0055122428D6A300A82E14 /* BudgetMeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BudgetMeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D0055152428D6A300A82E14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2D0055172428D6A300A82E14 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		2D0055192428D6A300A82E14 /* TransactionFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionFeedViewController.swift; sourceTree = "<group>"; };
+		2D00551C2428D6A300A82E14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2D00551E2428D6A500A82E14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2D0055212428D6A500A82E14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2D0055232428D6A500A82E14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D0055402428D7C000A82E14 /* STAccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STAccountService.swift; sourceTree = "<group>"; };
+		2D0055432428D89B00A82E14 /* STEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STEnvironment.swift; sourceTree = "<group>"; };
+		2D0055452428DC3200A82E14 /* STAuthPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STAuthPlugin.swift; sourceTree = "<group>"; };
+		2D0055472428DCC500A82E14 /* STAccountTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STAccountTests.swift; sourceTree = "<group>"; };
+		2D0055492428DD2300A82E14 /* STAccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STAccountManager.swift; sourceTree = "<group>"; };
+		2D00554B2428DD6800A82E14 /* STAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STAccount.swift; sourceTree = "<group>"; };
+		2D00554F2428E0C900A82E14 /* account_success_browse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = account_success_browse.json; sourceTree = "<group>"; };
+		2D0055522428E9D000A82E14 /* STTransactionFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STTransactionFeed.swift; sourceTree = "<group>"; };
+		2D0055542428E9EE00A82E14 /* STTransactionFeedManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STTransactionFeedManagerTests.swift; sourceTree = "<group>"; };
+		2D0055562428EA1300A82E14 /* STTransactionFeedManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STTransactionFeedManager.swift; sourceTree = "<group>"; };
+		2D0055582428EA6000A82E14 /* STTransactionFeedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STTransactionFeedService.swift; sourceTree = "<group>"; };
+		2D00555A2428ECCD00A82E14 /* transactions_success_browseTransactions.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = transactions_success_browseTransactions.json; sourceTree = "<group>"; };
+		2D00555D24291CAC00A82E14 /* CurrencyAndAmount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyAndAmount.swift; sourceTree = "<group>"; };
+		2D00555F24291CD300A82E14 /* CurrencySymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySymbol.swift; sourceTree = "<group>"; };
+		2D00556124291D6A00A82E14 /* Source.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
+		2D00556324291D7E00A82E14 /* CountryPartyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryPartyType.swift; sourceTree = "<group>"; };
+		2D00556524291D8A00A82E14 /* RoundUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundUp.swift; sourceTree = "<group>"; };
+		2D00556824291EA100A82E14 /* TransactionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewModel.swift; sourceTree = "<group>"; };
+		2D00556A24291EEB00A82E14 /* Roundable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roundable.swift; sourceTree = "<group>"; };
+		2D00556D2429211700A82E14 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
+		2D6315F124297702009BC74D /* SavingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsViewController.swift; sourceTree = "<group>"; };
+		2D8DECFB242D65E100073D1B /* BudgetMeAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BudgetMeAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D8DECFD242D65E100073D1B /* BudgetMeAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetMeAppTests.swift; sourceTree = "<group>"; };
+		2D8DED07242D666D00073D1B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2DAB22C6242A134F001C0F6E /* SavingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsCell.swift; sourceTree = "<group>"; };
+		2DAB22C9242A1380001C0F6E /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		2DAB22D0242A35EE001C0F6E /* AccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
+		2DAB22D2242A365C001C0F6E /* AccountsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsCell.swift; sourceTree = "<group>"; };
+		2DAB22D4242A38B4001C0F6E /* AccountsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewModel.swift; sourceTree = "<group>"; };
+		2DAB22D6242A4238001C0F6E /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		2DAB22D8242A42A2001C0F6E /* STCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STCurrency.swift; sourceTree = "<group>"; };
+		2DAB22DB242A4A7A001C0F6E /* MoyaNetworkManagerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaNetworkManagerFactory.swift; sourceTree = "<group>"; };
+		2DAB22DD242A4AAF001C0F6E /* EntityComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityComponent.swift; sourceTree = "<group>"; };
+		2DAB22DF242A5781001C0F6E /* transactions_success_getTransactionWithRange.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = transactions_success_getTransactionWithRange.json; sourceTree = "<group>"; };
+		2DAB22E3242A5A03001C0F6E /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		2DAB22E5242A5A39001C0F6E /* CurrencyFormattable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormattable.swift; sourceTree = "<group>"; };
+		2DAB22E7242A5AA1001C0F6E /* ViewModelBlueprint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBlueprint.swift; sourceTree = "<group>"; };
+		2DD43635242A058700DE751A /* STSavingsGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STSavingsGoal.swift; sourceTree = "<group>"; };
+		2DD43637242A0D0600DE751A /* SavingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsViewModel.swift; sourceTree = "<group>"; };
+		2DD43639242A0D4E00DE751A /* STSavingsGoalManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STSavingsGoalManager.swift; sourceTree = "<group>"; };
+		2DD4363E242A0D7C00DE751A /* STSavingsGoalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STSavingsGoalService.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2D00550F2428D6A300A82E14 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D00553E2428D7A000A82E14 /* RxCocoa in Frameworks */,
+				2D00553C2428D7A000A82E14 /* RxSwift in Frameworks */,
+				2D8DECE3242D2EB300073D1B /* RxMoya in Frameworks */,
+				2D0055392428D72300A82E14 /* Moya in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D8DECF8242D65E100073D1B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2D0055092428D6A300A82E14 = {
+			isa = PBXGroup;
+			children = (
+				2D0055142428D6A300A82E14 /* BudgetMeApp */,
+				2D8DECFC242D65E100073D1B /* BudgetMeAppTests */,
+				2D0055132428D6A300A82E14 /* Products */,
+				2D8DECE1242D2EB300073D1B /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		2D0055132428D6A300A82E14 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2D0055122428D6A300A82E14 /* BudgetMeApp.app */,
+				2D8DECFB242D65E100073D1B /* BudgetMeAppTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2D0055142428D6A300A82E14 /* BudgetMeApp */ = {
+			isa = PBXGroup;
+			children = (
+				2D0055422428D88A00A82E14 /* Constants */,
+				2D00553F2428D7AB00A82E14 /* Networking */,
+				2DAB22DA242A4A6E001C0F6E /* Protocols */,
+				2D00554D2428DD7000A82E14 /* Model */,
+				2DAB22C5242A1329001C0F6E /* View */,
+				2D00556724291E8E00A82E14 /* ViewModel */,
+				2D00556C2429210000A82E14 /* Controller */,
+				2DAB22E2242A59F6001C0F6E /* Util */,
+				2D0055152428D6A300A82E14 /* AppDelegate.swift */,
+				2D0055172428D6A300A82E14 /* SceneDelegate.swift */,
+				2D00551B2428D6A300A82E14 /* Main.storyboard */,
+				2D00551E2428D6A500A82E14 /* Assets.xcassets */,
+				2D0055202428D6A500A82E14 /* LaunchScreen.storyboard */,
+				2D0055232428D6A500A82E14 /* Info.plist */,
+				2DAB22D6242A4238001C0F6E /* Session.swift */,
+			);
+			path = BudgetMeApp;
+			sourceTree = "<group>";
+		};
+		2D00553F2428D7AB00A82E14 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				2DD4363C242A0D5C00DE751A /* Accounts */,
+				2DD4363D242A0D6300DE751A /* Transactions */,
+				2DD4363B242A0D5400DE751A /* Savings */,
+				2D0055452428DC3200A82E14 /* STAuthPlugin.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		2D0055422428D88A00A82E14 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				2D0055432428D89B00A82E14 /* STEnvironment.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		2D00554D2428DD7000A82E14 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2DAB22CC242A138F001C0F6E /* Accounts */,
+				2DAB22C8242A1374001C0F6E /* Transaction */,
+				2DAB22CB242A1388001C0F6E /* Savings */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2D00554E2428E0B800A82E14 /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				2D00554F2428E0C900A82E14 /* account_success_browse.json */,
+				2D00555A2428ECCD00A82E14 /* transactions_success_browseTransactions.json */,
+				2DAB22DF242A5781001C0F6E /* transactions_success_getTransactionWithRange.json */,
+			);
+			path = Fixtures;
+			sourceTree = "<group>";
+		};
+		2D00556724291E8E00A82E14 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2DAB22D4242A38B4001C0F6E /* AccountsViewModel.swift */,
+				2D00556824291EA100A82E14 /* TransactionsViewModel.swift */,
+				2DD43637242A0D0600DE751A /* SavingsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2D00556C2429210000A82E14 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2DAB22D0242A35EE001C0F6E /* AccountsViewController.swift */,
+				2D0055192428D6A300A82E14 /* TransactionFeedViewController.swift */,
+				2D6315F124297702009BC74D /* SavingsViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2D8DECE1242D2EB300073D1B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2D8DECFC242D65E100073D1B /* BudgetMeAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				2D8DED0C242D676A00073D1B /* ViewModelTests */,
+				2D00554E2428E0B800A82E14 /* Fixtures */,
+				2D8DECFD242D65E100073D1B /* BudgetMeAppTests.swift */,
+				2D0055472428DCC500A82E14 /* STAccountTests.swift */,
+				2D0055542428E9EE00A82E14 /* STTransactionFeedManagerTests.swift */,
+				2D8DED07242D666D00073D1B /* Info.plist */,
+			);
+			path = BudgetMeAppTests;
+			sourceTree = "<group>";
+		};
+		2D8DED0C242D676A00073D1B /* ViewModelTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModelTests;
+			sourceTree = "<group>";
+		};
+		2DAB22C5242A1329001C0F6E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2DAB22D2242A365C001C0F6E /* AccountsCell.swift */,
+				2D00556D2429211700A82E14 /* TransactionCell.swift */,
+				2DAB22C6242A134F001C0F6E /* SavingsCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2DAB22C8242A1374001C0F6E /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				2DAB22C9242A1380001C0F6E /* Transaction.swift */,
+				2DAB22CF242A13BA001C0F6E /* TransactionFeed */,
+			);
+			path = Transaction;
+			sourceTree = "<group>";
+		};
+		2DAB22CB242A1388001C0F6E /* Savings */ = {
+			isa = PBXGroup;
+			children = (
+				2DD43635242A058700DE751A /* STSavingsGoal.swift */,
+			);
+			path = Savings;
+			sourceTree = "<group>";
+		};
+		2DAB22CC242A138F001C0F6E /* Accounts */ = {
+			isa = PBXGroup;
+			children = (
+				2D00554B2428DD6800A82E14 /* STAccount.swift */,
+			);
+			path = Accounts;
+			sourceTree = "<group>";
+		};
+		2DAB22CF242A13BA001C0F6E /* TransactionFeed */ = {
+			isa = PBXGroup;
+			children = (
+				2D00556324291D7E00A82E14 /* CountryPartyType.swift */,
+				2D00555D24291CAC00A82E14 /* CurrencyAndAmount.swift */,
+				2D00555F24291CD300A82E14 /* CurrencySymbol.swift */,
+				2D00556524291D8A00A82E14 /* RoundUp.swift */,
+				2D00556124291D6A00A82E14 /* Source.swift */,
+				2D0055522428E9D000A82E14 /* STTransactionFeed.swift */,
+				2DAB22D8242A42A2001C0F6E /* STCurrency.swift */,
+			);
+			path = TransactionFeed;
+			sourceTree = "<group>";
+		};
+		2DAB22DA242A4A6E001C0F6E /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				2D00556A24291EEB00A82E14 /* Roundable.swift */,
+				2DAB22E5242A5A39001C0F6E /* CurrencyFormattable.swift */,
+				2DAB22DB242A4A7A001C0F6E /* MoyaNetworkManagerFactory.swift */,
+				2DAB22DD242A4AAF001C0F6E /* EntityComponent.swift */,
+				2DAB22E7242A5AA1001C0F6E /* ViewModelBlueprint.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		2DAB22E2242A59F6001C0F6E /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				2DAB22E3242A5A03001C0F6E /* Date+Extension.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		2DD4363B242A0D5400DE751A /* Savings */ = {
+			isa = PBXGroup;
+			children = (
+				2DD43639242A0D4E00DE751A /* STSavingsGoalManager.swift */,
+				2DD4363E242A0D7C00DE751A /* STSavingsGoalService.swift */,
+			);
+			path = Savings;
+			sourceTree = "<group>";
+		};
+		2DD4363C242A0D5C00DE751A /* Accounts */ = {
+			isa = PBXGroup;
+			children = (
+				2D0055492428DD2300A82E14 /* STAccountManager.swift */,
+				2D0055402428D7C000A82E14 /* STAccountService.swift */,
+			);
+			path = Accounts;
+			sourceTree = "<group>";
+		};
+		2DD4363D242A0D6300DE751A /* Transactions */ = {
+			isa = PBXGroup;
+			children = (
+				2D0055562428EA1300A82E14 /* STTransactionFeedManager.swift */,
+				2D0055582428EA6000A82E14 /* STTransactionFeedService.swift */,
+			);
+			path = Transactions;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2D0055112428D6A300A82E14 /* BudgetMeApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2D0055312428D6A600A82E14 /* Build configuration list for PBXNativeTarget "BudgetMeApp" */;
+			buildPhases = (
+				2D00550E2428D6A300A82E14 /* Sources */,
+				2D00550F2428D6A300A82E14 /* Frameworks */,
+				2D0055102428D6A300A82E14 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BudgetMeApp;
+			packageProductDependencies = (
+				2D0055382428D72300A82E14 /* Moya */,
+				2D00553B2428D7A000A82E14 /* RxSwift */,
+				2D00553D2428D7A000A82E14 /* RxCocoa */,
+				2D8DECE2242D2EB300073D1B /* RxMoya */,
+			);
+			productName = "STT-round-up";
+			productReference = 2D0055122428D6A300A82E14 /* BudgetMeApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2D8DECFA242D65E100073D1B /* BudgetMeAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2D8DED02242D65E100073D1B /* Build configuration list for PBXNativeTarget "BudgetMeAppTests" */;
+			buildPhases = (
+				2D8DECF7242D65E100073D1B /* Sources */,
+				2D8DECF8242D65E100073D1B /* Frameworks */,
+				2D8DECF9242D65E100073D1B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2D8DED01242D65E100073D1B /* PBXTargetDependency */,
+			);
+			name = BudgetMeAppTests;
+			productName = BudgetMeAppTests;
+			productReference = 2D8DECFB242D65E100073D1B /* BudgetMeAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2D00550A2428D6A300A82E14 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "Christian Leovido";
+				TargetAttributes = {
+					2D0055112428D6A300A82E14 = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+					2D8DECFA242D65E100073D1B = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = 2D0055112428D6A300A82E14;
+					};
+				};
+			};
+			buildConfigurationList = 2D00550D2428D6A300A82E14 /* Build configuration list for PBXProject "BudgetMeApp" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2D0055092428D6A300A82E14;
+			packageReferences = (
+				2D0055372428D72300A82E14 /* XCRemoteSwiftPackageReference "Moya" */,
+				2D00553A2428D7A000A82E14 /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
+			productRefGroup = 2D0055132428D6A300A82E14 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2D0055112428D6A300A82E14 /* BudgetMeApp */,
+				2D8DECFA242D65E100073D1B /* BudgetMeAppTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2D0055102428D6A300A82E14 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D0055222428D6A500A82E14 /* LaunchScreen.storyboard in Resources */,
+				2D00551F2428D6A500A82E14 /* Assets.xcassets in Resources */,
+				2D00551D2428D6A300A82E14 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D8DECF9242D65E100073D1B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D8DED09242D674200073D1B /* account_success_browse.json in Resources */,
+				2D8DED0A242D674200073D1B /* transactions_success_browseTransactions.json in Resources */,
+				2D8DED0B242D674200073D1B /* transactions_success_getTransactionWithRange.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2D00550E2428D6A300A82E14 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DAB22C7242A134F001C0F6E /* SavingsCell.swift in Sources */,
+				2DD4363A242A0D4E00DE751A /* STSavingsGoalManager.swift in Sources */,
+				2D00551A2428D6A300A82E14 /* TransactionFeedViewController.swift in Sources */,
+				2D0055462428DC3200A82E14 /* STAuthPlugin.swift in Sources */,
+				2D0055592428EA6000A82E14 /* STTransactionFeedService.swift in Sources */,
+				2D0055162428D6A300A82E14 /* AppDelegate.swift in Sources */,
+				2DD43636242A058700DE751A /* STSavingsGoal.swift in Sources */,
+				2D0055412428D7C000A82E14 /* STAccountService.swift in Sources */,
+				2DAB22D5242A38B4001C0F6E /* AccountsViewModel.swift in Sources */,
+				2DAB22E4242A5A03001C0F6E /* Date+Extension.swift in Sources */,
+				2DAB22E6242A5A39001C0F6E /* CurrencyFormattable.swift in Sources */,
+				2D00556624291D8A00A82E14 /* RoundUp.swift in Sources */,
+				2D6315F224297702009BC74D /* SavingsViewController.swift in Sources */,
+				2DD43638242A0D0600DE751A /* SavingsViewModel.swift in Sources */,
+				2D0055532428E9D000A82E14 /* STTransactionFeed.swift in Sources */,
+				2D00556924291EA100A82E14 /* TransactionsViewModel.swift in Sources */,
+				2DAB22DE242A4AAF001C0F6E /* EntityComponent.swift in Sources */,
+				2DD4363F242A0D7C00DE751A /* STSavingsGoalService.swift in Sources */,
+				2D00555E24291CAC00A82E14 /* CurrencyAndAmount.swift in Sources */,
+				2D0055572428EA1300A82E14 /* STTransactionFeedManager.swift in Sources */,
+				2D00556E2429211700A82E14 /* TransactionCell.swift in Sources */,
+				2D00554A2428DD2300A82E14 /* STAccountManager.swift in Sources */,
+				2DAB22CA242A1380001C0F6E /* Transaction.swift in Sources */,
+				2DAB22D7242A4238001C0F6E /* Session.swift in Sources */,
+				2D0055442428D89B00A82E14 /* STEnvironment.swift in Sources */,
+				2D00556B24291EEB00A82E14 /* Roundable.swift in Sources */,
+				2D00556424291D7E00A82E14 /* CountryPartyType.swift in Sources */,
+				2DAB22D9242A42A2001C0F6E /* STCurrency.swift in Sources */,
+				2DAB22E8242A5AA1001C0F6E /* ViewModelBlueprint.swift in Sources */,
+				2D00556224291D6A00A82E14 /* Source.swift in Sources */,
+				2DAB22DC242A4A7A001C0F6E /* MoyaNetworkManagerFactory.swift in Sources */,
+				2D00556024291CD300A82E14 /* CurrencySymbol.swift in Sources */,
+				2D00554C2428DD6800A82E14 /* STAccount.swift in Sources */,
+				2DAB22D3242A365C001C0F6E /* AccountsCell.swift in Sources */,
+				2DAB22D1242A35EE001C0F6E /* AccountsViewController.swift in Sources */,
+				2D0055182428D6A300A82E14 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D8DECF7242D65E100073D1B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D8DECFE242D65E100073D1B /* BudgetMeAppTests.swift in Sources */,
+				2D8DED05242D661800073D1B /* STAccountTests.swift in Sources */,
+				2D8DED06242D661B00073D1B /* STTransactionFeedManagerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2D8DED01242D65E100073D1B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2D0055112428D6A300A82E14 /* BudgetMeApp */;
+			targetProxy = 2D8DED00242D65E100073D1B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2D00551B2428D6A300A82E14 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2D00551C2428D6A300A82E14 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2D0055202428D6A500A82E14 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2D0055212428D6A500A82E14 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2D00552F2428D6A600A82E14 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2D0055302428D6A600A82E14 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2D0055322428D6A600A82E14 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7FFBU6H3CE;
+				INFOPLIST_FILE = "$(SRCROOT)/BudgetMeApp/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "christianleovido.STT-round-up";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2D0055332428D6A600A82E14 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7FFBU6H3CE;
+				INFOPLIST_FILE = "$(SRCROOT)/BudgetMeApp/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "christianleovido.STT-round-up";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2D8DED03242D65E100073D1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7FFBU6H3CE;
+				INFOPLIST_FILE = BudgetMeAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = christianleovido.BudgetMeAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BudgetMeApp.app/BudgetMeApp";
+			};
+			name = Debug;
+		};
+		2D8DED04242D65E100073D1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7FFBU6H3CE;
+				INFOPLIST_FILE = BudgetMeAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = christianleovido.BudgetMeAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BudgetMeApp.app/BudgetMeApp";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D00550D2428D6A300A82E14 /* Build configuration list for PBXProject "BudgetMeApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D00552F2428D6A600A82E14 /* Debug */,
+				2D0055302428D6A600A82E14 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D0055312428D6A600A82E14 /* Build configuration list for PBXNativeTarget "BudgetMeApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D0055322428D6A600A82E14 /* Debug */,
+				2D0055332428D6A600A82E14 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8DED02242D65E100073D1B /* Build configuration list for PBXNativeTarget "BudgetMeAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D8DED03242D65E100073D1B /* Debug */,
+				2D8DED04242D65E100073D1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2D0055372428D72300A82E14 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 14.0.0;
+			};
+		};
+		2D00553A2428D7A000A82E14 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2D0055382428D72300A82E14 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2D0055372428D72300A82E14 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		2D00553B2428D7A000A82E14 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2D00553A2428D7A000A82E14 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		2D00553D2428D7A000A82E14 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2D00553A2428D7A000A82E14 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		2D8DECE2242D2EB300073D1B /* RxMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2D0055372428D72300A82E14 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = RxMoya;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 2D00550A2428D6A300A82E14 /* Project object */;
+}
