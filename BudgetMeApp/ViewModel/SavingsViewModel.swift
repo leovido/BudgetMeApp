@@ -31,6 +31,10 @@ struct SavingsViewModel: ViewModelBlueprint {
         self.disposeBag = DisposeBag()
     }
 
+    func refreshData() {
+
+    }
+
     func refreshData(completion: @escaping () -> Void) {
         self.isLoading.onNext(true)
         provider.rx.request(.browseSavings)
@@ -41,6 +45,7 @@ struct SavingsViewModel: ViewModelBlueprint {
             .subscribe { event in
                 switch event {
                 case .success(let savings):
+                    completion()
                     self.dataSource.accept(savings)
                 case .error(let error):
                     self.errorPublisher.onNext(error)
