@@ -15,7 +15,7 @@ protocol TransactionBlueprint {
     var sourceAmount: CurrencyAndAmount { get }
 }
 
-struct Transaction: Decodable, TransactionBlueprint {
+struct Transaction: Decodable, TransactionBlueprint, Equatable {
     var reference: String
     var transactionDate: String
     var direction: Direction

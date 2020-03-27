@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct STTransactionFeed: Decodable {
+struct STTransactionFeed: Decodable, Equatable {
     let feedItemUid: String?
     let categoryUid: String?
     let amount: CurrencyAndAmount?

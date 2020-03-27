@@ -20,15 +20,15 @@ final class TransactionCell: UITableViewCell {
         return "TransactionCell"
     }
 
-    func configure(value: Transaction) {
+    func configure(value: STTransactionFeed) {
         referenceLabel.text = value.reference
-        dateLabel.text = dateFormatter(dateString: value.transactionDate)
+        dateLabel.text = value.transactionTime
 
         if value.direction == .IN {
-            priceLabel.text = "+\(currencyFormatter(value: value.sourceAmount))"
+            priceLabel.text = "+\(currencyFormatter(value: value.sourceAmount!))"
             priceLabel.textColor = UIColor.green
         } else {
-            priceLabel.text = "-\(currencyFormatter(value: value.sourceAmount))"
+            priceLabel.text = "-\(currencyFormatter(value: value.sourceAmount!))"
             priceLabel.textColor = UIColor.red
         }
 

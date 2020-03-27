@@ -22,9 +22,11 @@ protocol ViewModelBlueprint {
 	var provider: Provider { get }
 	var isLoading: PublishSubject<Bool> { get }
 	var dataSource: BehaviorRelay<[T]> { get }
-	var errorPublisher: PublishSubject<Error> { get }
+    var errorPublisher: PublishSubject<Error> { get }
 
-	func refreshData(completion: @escaping () -> Void)
+    var disposeBag: DisposeBag { get }
+
+	func refreshData()
 
 }
 

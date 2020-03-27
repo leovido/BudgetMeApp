@@ -10,7 +10,7 @@ import Foundation
 
 typealias DateTime = String
 
-struct STAccount: Decodable {
+struct STAccount: Decodable, Equatable {
     let accountUid: String
     let defaultCategory: String
     let currency: STCurrency
@@ -20,7 +20,7 @@ struct STAccount: Decodable {
 
 // MARK: - STBalance
 
-struct STBalance: Decodable {
+struct STBalance: Decodable, Equatable {
     let clearedBalance: CurrencyAndAmount
     let effectiveBalance: CurrencyAndAmount
     let pendingTransactions: CurrencyAndAmount

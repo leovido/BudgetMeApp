@@ -25,9 +25,7 @@ class SavingsViewController: UIViewController {
         if Session.shared.accountId.isEmpty {
             presentAlert()
         } else {
-            viewModel.refreshData {
-
-            }
+            viewModel.refreshData {}
         }
 
     }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct RoundUp: Decodable {
+struct RoundUp: Decodable, Equatable {
     public let goalCategoryUid: String
     public let amount: CurrencyAndAmount
 
