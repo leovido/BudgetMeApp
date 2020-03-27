@@ -33,7 +33,7 @@ struct AccountsViewModel: ViewModelBlueprint {
     }
 
 
-    func refreshData(completion: @escaping () -> Void) {
+    func refreshData() {
         self.isLoading.onNext(true)
         provider.rx.request(.browseAccounts)
             .debug("refreshData @ AccountsViewModel")
