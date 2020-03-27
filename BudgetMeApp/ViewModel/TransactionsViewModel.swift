@@ -9,24 +9,30 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import RxMoya
+import Moya
 
 extension TransactionsViewModel: Roundable {
     typealias NewElement = MinorUnits
 }
 
-final class TransactionsViewModel: ViewModelBlueprint {
+struct TransactionsViewModel: ViewModelBlueprint {
 
-    typealias T = Transaction
+    typealias T = STTransactionFeed
 
     var isLoading: PublishSubject<Bool> = PublishSubject()
-    var dataSource: BehaviorRelay<[Transaction]> = BehaviorRelay(value: [])
+    var dataSource: BehaviorRelay<[STTransactionFeed]> = BehaviorRelay(value: [])
 
-    let provider: STTransactionFeedManager
-    var errorPublisher: PublishSubject<Error>
+    let provider: MoyaProvider<STTransactionFeedService>
+    let errorPublisher: PublishSubject<Error>
 
-    init(accountId: String) {
-        self.provider = STTransactionFeedManager(accountId: accountId)
+    let disposeBag: DisposeBag
+
+    init(provider: MoyaProvider<STTransactionFeedService> = MoyaNetworkManagerFactory.makeManager(),
+         accountId: String) {
+        self.provider = provider
         self.errorPublisher = PublishSubject()
+        self.disposeBag = DisposeBag()
     }
 
     var savingsDisplayString: Currency {
@@ -35,49 +41,71 @@ final class TransactionsViewModel: ViewModelBlueprint {
 
     var savings: Int {
         dataSource.value
-            .compactMap({ $0.sourceAmount.minorUnits })
+            .compactMap({ $0.sourceAmount?.minorUnits })
             .compactMap(roundUp)
             .reduce(0, +)
     }
 
-    func refreshData(with dateTime: DateTime, completion: @escaping () -> Void) {
-        self.isLoading.onNext(true)
-        provider.getWeeklyTransactions(startDate: dateTime) { result in
-            switch result {
-            case .success(let transactions):
-                let txs = transactions
-                    .compactMap({ Transaction(tx: $0)
-                    })
+    private func calculateNextWeek(startDate: String) -> String? {
 
-                self.dataSource.accept(txs)
-                self.isLoading.onNext(false)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
 
-                completion()
+        guard let newDate = dateFormatter.date(from: startDate) else { return nil }
+        guard let endDate = Calendar.current.date(byAdding: .day, value: 7, to: newDate) else { return nil }
 
-            case .failure(let error):
-                self.isLoading.onNext(false)
-            }
-        }
+        let endDateString = dateFormatter.string(from: endDate)
+
+        return endDateString
+
     }
 
-    func refreshData(completion: @escaping () -> Void) {
+    func refreshData(with dateTime: DateTime) {
+
+        let endDate = calculateNextWeek(startDate: dateTime)!
+
         self.isLoading.onNext(true)
-        provider.browse { result in
-            switch result {
-            case .success(let transactions):
-                let txs = transactions
-                    .compactMap({ Transaction(tx: $0)
-                    })
+        provider.rx.request(.getWeeklyTransactions(accountId: Session.shared.accountId,
+                                                   categoryId: "c4ed84e4-8cc9-4a3b-8df5-85996f67f2db",
+                                                   startDate: dateTime,
+                                                   endDate: endDate))
+        .filterSuccessfulStatusCodes()
+            .map([STTransactionFeed].self, atKeyPath: "feedItems")
+            .subscribe { event in
+                switch event {
+                    case .success(let transactions):
 
-                self.dataSource.accept(txs)
-                self.isLoading.onNext(false)
+                        self.dataSource.accept(transactions)
+                        self.isLoading.onNext(false)
 
-                completion()
-
-            case .failure(let error):
-                self.isLoading.onNext(false)
+                    case .error(let error):
+                        self.errorPublisher.onNext(error)
+                        self.isLoading.onNext(false)
+                }
             }
-        }
+        .disposed(by: disposeBag)
+
+
+    }
+
+    func refreshData() {
+        self.isLoading.onNext(true)
+        provider.rx.request(.browseTransactions(accountId: Session.shared.accountId, categoryId: "c4ed84e4-8cc9-4a3b-8df5-85996f67f2db", changesSince: Date().description))
+            .filterSuccessfulStatusCodes()
+            .map([STTransactionFeed].self, atKeyPath: "feedItems")
+            .subscribe { event in
+                switch event {
+                    case .success(let transactions):
+
+                        self.dataSource.accept(transactions)
+                        self.isLoading.onNext(false)
+
+                    case .error(let error):
+                        self.errorPublisher.onNext(error)
+                        self.isLoading.onNext(false)
+                }
+            }
+        .disposed(by: disposeBag)
     }
 
 }
