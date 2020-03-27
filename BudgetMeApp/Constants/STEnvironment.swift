@@ -19,3 +19,7 @@ enum STEnvironment {
     static let sandbox = URL(string: "https://api-sandbox.starlingbank.com/api/v2")!
     static let production = URL(string: "https://api.starlingbank.com/api/v2")!
 }
+
+enum Constants {
+    static let auth = "https://api-sandbox.starlingbank.com/oauth/access-token"
+}
