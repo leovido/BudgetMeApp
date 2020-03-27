@@ -29,7 +29,7 @@ class TransactionFeedViewController: UIViewController {
         if Session.shared.accountId.isEmpty {
             presentAlert()
         } else {
-            viewModel.refreshData {}
+            viewModel.refreshData()
         }
 
     }
@@ -125,7 +125,7 @@ extension TransactionFeedViewController {
         fetchButton.rx.tap
             .asObservable()
             .subscribe { event in
-                self.viewModel.refreshData {}
+                self.viewModel.refreshData()
             }
             .disposed(by: disposeBag)
 
@@ -151,7 +151,7 @@ extension TransactionFeedViewController {
 
                 let minorUnitsAggregated = self.viewModel.dataSource.value
                     .filter({ $0.direction == .OUT })
-                    .compactMap({ $0.sourceAmount.minorUnits })
+                    .compactMap({ $0.sourceAmount?.minorUnits })
                     .reduce(0, +)
 
                 let formattedAmount = self.currencyFormatter(value: minorUnitsAggregated)
@@ -172,9 +172,7 @@ extension TransactionFeedViewController {
             .asObservable()
             .subscribe({ value in
 
-                self.viewModel.refreshData(with: value.element!.toStringDateFormat()) {
-
-                }
+                self.viewModel.refreshData(with: value.element!.toStringDateFormat())
 
             })
         .disposed(by: disposeBag)
