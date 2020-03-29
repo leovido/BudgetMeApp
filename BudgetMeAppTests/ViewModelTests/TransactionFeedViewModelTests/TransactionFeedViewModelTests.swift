@@ -33,31 +33,22 @@ class TransactionFeedViewModelTests: XCTestCase {
 
         txsViewModel = TransactionsViewModel(accountId: "")
 
-        let dataSourceMock = scheduler.createObserver([STTransactionFeed].self)
+        let dataSourceMock = scheduler.createObserver([TransactionSectionData].self)
         txsViewModel.dataSource
             .bind(to: dataSourceMock)
             .disposed(by: disposeBag)
 
-        let tx = STTransactionFeed(feedItemUid: "", categoryUid: "", amount: nil, sourceAmount: nil, direction: nil, updatedAt: nil, transactionTime: nil, settlementTime: nil, retryAllocationUntilTime: nil, source: nil, sourceSubType: nil, status: nil, counterPartyType: nil, counterPartyUid: nil, counterPartyName: nil, counterPartySubEntityUid: nil, counterPartySubEntityName: nil, counterPartySubEntityIdentifier: nil, counterPartySubEntitySubIdentifier: nil, exchangeRate: nil, totalFees: nil, reference: nil, country: nil, spendingCategory: nil, userNote: nil, roundUp: nil)
+        let txs = [TransactionSectionData(header: "Income", items: [])]
 
-        let randomTransactions = [tx]
-
-        scheduler.createColdObservable([.next(15, randomTransactions)])
+        scheduler.createColdObservable([.next(15, txs)])
             .bind(to: txsViewModel.dataSource)
             .disposed(by: disposeBag)
 
         scheduler.start()
 
         XCTAssertEqual(dataSourceMock.events, [.next(0, []),
-                                               .next(15, randomTransactions)])
+                                               .next(15, txs)])
 
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
     }
 
 }
