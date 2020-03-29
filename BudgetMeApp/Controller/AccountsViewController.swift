@@ -40,6 +40,7 @@ class AccountsViewController: UIViewController {
         setupBinding()
         setupErrorBindings()
 
+        navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.title = "Welcome to BudgetMe"
 
     }

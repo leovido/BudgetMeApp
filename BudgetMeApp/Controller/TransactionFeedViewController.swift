@@ -44,6 +44,7 @@ class TransactionFeedViewController: UIViewController {
         setupButton()
         setupDatePicker()
 
+        navigationController?.navigationBar.prefersLargeTitles = true
         self.parent?.title = "Transaction Feed"
     }
 
