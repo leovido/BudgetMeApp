@@ -9,7 +9,7 @@
 import Foundation
 import RxDataSources
 
-struct TransactionSectionData: Decodable {
+struct TransactionSectionData: Decodable, Equatable {
     var header: String
     var items: [Item]
 }

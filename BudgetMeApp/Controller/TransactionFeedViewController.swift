@@ -59,8 +59,6 @@ class TransactionFeedViewController: UIViewController {
             viewModel.refreshData()
         }
 
-        self.present(TransactionDetailsViewController(), animated: true, completion: nil)
-
         navigationController?.navigationBar.prefersLargeTitles = true
         self.parent?.title = "Transaction Feed"
     }
@@ -208,6 +206,27 @@ extension TransactionFeedViewController {
             .asDriver(onErrorJustReturn: [])
             .drive(transactionsTableView
                 .rx.items(dataSource: self.dataSource))
+        .disposed(by: disposeBag)
+
+        transactionsTableView.rx
+            .setDelegate(self)
+            .disposed(by: disposeBag)
+
+        transactionsTableView.rx.modelSelected(STTransactionFeed.self)
+            .subscribe { event in
+                switch event {
+                case .next(let transaction):
+
+                    self.present(TransactionDetailsViewController.makeTransactionDetailsViewController(transaction: transaction),
+                                 animated: true,
+                                 completion: nil)
+
+                case .error(let e):
+                    break
+                case .completed:
+                    break
+                }
+            }
         .disposed(by: disposeBag)
 
     }

@@ -15,3 +15,11 @@ public struct CurrencyAndAmount: Decodable, Equatable {
     var currency: CurrencySymbol
     var minorUnits: MinorUnits
 }
+
+extension CurrencyAndAmount: CustomStringConvertible {
+    public var description: String {
+        return currencyFormatter(value: self)
+    }
+}
+
+extension CurrencyAndAmount: CurrencyFormattable {}

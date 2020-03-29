@@ -11,7 +11,7 @@
         <!--Transaction Feed-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="TransactionFeedViewController" customModule="BudgetMeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TransactionFeedViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="TransactionFeedViewController" customModule="BudgetMeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,14 +21,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TransactionCell" id="J4r-qx-CNZ" customClass="TransactionCell" customModule="BudgetMeApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="52.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="J4r-qx-CNZ" id="M6L-aY-cSe">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="52.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reference" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Gi-Xl-3hQ">
-                                                    <rect key="frame" x="20" y="11" width="140" height="24.5"/>
+                                                    <rect key="frame" x="20" y="11" width="140" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="140" id="cca-eL-zNm"/>
                                                     </constraints>
@@ -37,7 +37,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24/01/2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="srf-vS-C1N">
-                                                    <rect key="frame" x="168" y="11" width="104" height="24.5"/>
+                                                    <rect key="frame" x="168" y="11" width="104" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="104" id="c9w-Jd-bj1"/>
                                                     </constraints>
@@ -46,7 +46,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="£30.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rhF-x2-qFw">
-                                                    <rect key="frame" x="280" y="11" width="114" height="24.5"/>
+                                                    <rect key="frame" x="280" y="11" width="114" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="114" id="bsq-f9-xvl"/>
                                                     </constraints>
@@ -176,7 +176,7 @@
         <!--Accounts-->
         <scene sceneID="IZH-G4-zOh">
             <objects>
-                <viewController id="cjz-CH-i70" customClass="AccountsViewController" customModule="BudgetMeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AccountsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cjz-CH-i70" customClass="AccountsViewController" customModule="BudgetMeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6V4-Nr-dl8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -187,14 +187,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AccountsCell" id="oNE-D5-ybz" customClass="AccountsCell" customModule="BudgetMeApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="46"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="46.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oNE-D5-ybz" id="BlZ-MN-R2E">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="46"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="46.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBB-lY-I5R">
-                                                    <rect key="frame" x="20" y="11" width="374" height="24"/>
+                                                    <rect key="frame" x="20" y="11" width="374" height="24.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="374" id="mWf-up-5H1"/>
                                                     </constraints>
@@ -233,17 +233,178 @@
         <!--Transaction Details View Controller-->
         <scene sceneID="et8-zv-lqV">
             <objects>
-                <viewController id="fYx-Y7-MD5" customClass="TransactionDetailsViewController" customModule="BudgetMeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TransactionDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fYx-Y7-MD5" customClass="TransactionDetailsViewController" customModule="BudgetMeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZDb-qw-pOM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reference" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBx-Nv-sm4">
+                                <rect key="frame" x="20" y="96" width="143.5" height="35.5"/>
+                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="27"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transaction time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ipe-Kh-9Rr">
+                                <rect key="frame" x="20" y="175" width="176" height="27.5"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CP Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dvh-n8-1Z6">
+                                <rect key="frame" x="20" y="266.5" width="176" height="27.5"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transaction source" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KSB-TV-eyw">
+                                <rect key="frame" x="20" y="597.5" width="176" height="27.5"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transaction subsource" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEz-S7-6B9">
+                                <rect key="frame" x="22" y="633" width="224" height="27.5"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spending Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a16-ZB-aa2">
+                                <rect key="frame" x="20" y="302" width="219" height="28"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:40" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xxc-Fc-Zng">
+                                <rect key="frame" x="256.5" y="175" width="137.5" height="27.5"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transaction date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9zy-lO-aEQ">
+                                <rect key="frame" x="21" y="211" width="185.5" height="28"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="02/02/2020" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BBJ-oQ-vmb">
+                                <rect key="frame" x="268.5" y="210.5" width="125.5" height="28.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="125.5" id="ocb-Ow-pOs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tesco" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lnf-KS-lvh">
+                                <rect key="frame" x="256.5" y="266.5" width="137.5" height="27.5"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-£30.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DJL-NX-Wl4">
+                                <rect key="frame" x="20" y="421" width="374" height="115"/>
+                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="35"/>
+                                <color key="textColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contactless" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ve-mb-ILz">
+                                <rect key="frame" x="274" y="597.5" width="120" height="27.5"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contactless" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDe-hG-PB7">
+                                <rect key="frame" x="274" y="633" width="120" height="27.5"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Groceries" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QFK-6q-IDQ">
+                                <rect key="frame" x="274" y="302" width="120" height="27.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="XsW-Mv-C6e"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mgl-zS-slX">
+                                <rect key="frame" x="114" y="371" width="186" height="27.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27.5" id="7jm-Iv-LJw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.45490196078431372" green="0.20000000000000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Ipe-Kh-9Rr" firstAttribute="baseline" secondItem="Xxc-Fc-Zng" secondAttribute="baseline" id="0uF-Nt-tf9"/>
+                            <constraint firstItem="9zy-lO-aEQ" firstAttribute="baseline" secondItem="BBJ-oQ-vmb" secondAttribute="baseline" id="355-hj-gbl"/>
+                            <constraint firstItem="cEz-S7-6B9" firstAttribute="top" secondItem="KSB-TV-eyw" secondAttribute="bottom" constant="8" id="3i4-Wp-FK9"/>
+                            <constraint firstItem="bGF-c7-Qws" firstAttribute="bottom" secondItem="mDe-hG-PB7" secondAttribute="bottom" constant="201.5" id="40H-N1-RmX"/>
+                            <constraint firstItem="bBx-Nv-sm4" firstAttribute="leading" secondItem="ZDb-qw-pOM" secondAttribute="leadingMargin" id="4tc-qc-BL4"/>
+                            <constraint firstItem="mgl-zS-slX" firstAttribute="leading" secondItem="bGF-c7-Qws" secondAttribute="leading" constant="114" id="60Z-y2-abK"/>
+                            <constraint firstItem="QFK-6q-IDQ" firstAttribute="leading" secondItem="7ve-mb-ILz" secondAttribute="leading" id="ABx-bd-L2E"/>
+                            <constraint firstItem="QFK-6q-IDQ" firstAttribute="baseline" secondItem="a16-ZB-aa2" secondAttribute="firstBaseline" id="AMQ-Ku-tur"/>
+                            <constraint firstItem="DJL-NX-Wl4" firstAttribute="leading" secondItem="KSB-TV-eyw" secondAttribute="leading" id="E10-EC-Mpd"/>
+                            <constraint firstItem="Ipe-Kh-9Rr" firstAttribute="trailing" secondItem="Dvh-n8-1Z6" secondAttribute="trailing" id="IIW-bQ-5Gb"/>
+                            <constraint firstItem="cEz-S7-6B9" firstAttribute="leading" secondItem="bGF-c7-Qws" secondAttribute="leading" constant="22" id="JW1-iU-F4J"/>
+                            <constraint firstItem="Lnf-KS-lvh" firstAttribute="trailing" secondItem="QFK-6q-IDQ" secondAttribute="trailing" id="JtR-2D-bEn"/>
+                            <constraint firstItem="DJL-NX-Wl4" firstAttribute="trailing" secondItem="7ve-mb-ILz" secondAttribute="trailing" id="KTq-yO-NhA"/>
+                            <constraint firstItem="Dvh-n8-1Z6" firstAttribute="top" secondItem="9zy-lO-aEQ" secondAttribute="bottom" constant="27.5" id="KaU-Vs-clV"/>
+                            <constraint firstItem="Dvh-n8-1Z6" firstAttribute="baseline" secondItem="Lnf-KS-lvh" secondAttribute="baseline" id="LEz-zy-0id"/>
+                            <constraint firstItem="QFK-6q-IDQ" firstAttribute="trailing" secondItem="DJL-NX-Wl4" secondAttribute="trailing" id="LuM-OU-VR2"/>
+                            <constraint firstItem="QFK-6q-IDQ" firstAttribute="leading" secondItem="a16-ZB-aa2" secondAttribute="trailing" constant="35" id="M1s-EI-et0"/>
+                            <constraint firstItem="a16-ZB-aa2" firstAttribute="leading" secondItem="DJL-NX-Wl4" secondAttribute="leading" id="MXL-xj-sUL"/>
+                            <constraint firstItem="mgl-zS-slX" firstAttribute="top" secondItem="QFK-6q-IDQ" secondAttribute="bottom" constant="41.5" id="So9-b6-DOA"/>
+                            <constraint firstItem="DJL-NX-Wl4" firstAttribute="top" secondItem="mgl-zS-slX" secondAttribute="bottom" constant="22.5" id="Udt-tN-Ukw"/>
+                            <constraint firstItem="mDe-hG-PB7" firstAttribute="leading" secondItem="cEz-S7-6B9" secondAttribute="trailing" constant="28" id="WYF-dw-xJA"/>
+                            <constraint firstItem="Xxc-Fc-Zng" firstAttribute="leading" secondItem="Lnf-KS-lvh" secondAttribute="leading" id="X9C-CA-wQS"/>
+                            <constraint firstItem="bBx-Nv-sm4" firstAttribute="leading" secondItem="Ipe-Kh-9Rr" secondAttribute="leading" id="Y82-4V-41S"/>
+                            <constraint firstItem="BBJ-oQ-vmb" firstAttribute="trailing" secondItem="Lnf-KS-lvh" secondAttribute="trailing" id="Ydw-zg-6wN"/>
+                            <constraint firstItem="Ipe-Kh-9Rr" firstAttribute="leading" secondItem="Dvh-n8-1Z6" secondAttribute="leading" id="aVf-zf-FG0"/>
+                            <constraint firstItem="Xxc-Fc-Zng" firstAttribute="leading" secondItem="Ipe-Kh-9Rr" secondAttribute="trailing" constant="60.5" id="bLB-zy-0ij"/>
+                            <constraint firstItem="KSB-TV-eyw" firstAttribute="baseline" secondItem="7ve-mb-ILz" secondAttribute="baseline" id="dja-4d-8uh"/>
+                            <constraint firstItem="7ve-mb-ILz" firstAttribute="baseline" secondItem="KSB-TV-eyw" secondAttribute="firstBaseline" id="gkz-bN-Cey"/>
+                            <constraint firstItem="BBJ-oQ-vmb" firstAttribute="top" secondItem="Xxc-Fc-Zng" secondAttribute="bottom" constant="8" id="i7F-K8-GzY"/>
+                            <constraint firstItem="7ve-mb-ILz" firstAttribute="trailing" secondItem="mDe-hG-PB7" secondAttribute="trailing" id="ilY-Gj-RyN"/>
+                            <constraint firstItem="9zy-lO-aEQ" firstAttribute="leading" secondItem="bGF-c7-Qws" secondAttribute="leading" constant="21" id="jKA-wm-WxQ"/>
+                            <constraint firstItem="Xxc-Fc-Zng" firstAttribute="top" secondItem="bGF-c7-Qws" secondAttribute="top" constant="131" id="lj2-EX-jn4"/>
+                            <constraint firstItem="Ipe-Kh-9Rr" firstAttribute="baseline" secondItem="Xxc-Fc-Zng" secondAttribute="firstBaseline" id="mSw-nK-Oap"/>
+                            <constraint firstItem="cEz-S7-6B9" firstAttribute="firstBaseline" secondItem="mDe-hG-PB7" secondAttribute="firstBaseline" id="oZd-dv-tDt"/>
+                            <constraint firstItem="Dvh-n8-1Z6" firstAttribute="leading" secondItem="a16-ZB-aa2" secondAttribute="leading" id="ogl-hU-Nvj"/>
+                            <constraint firstItem="mDe-hG-PB7" firstAttribute="baseline" secondItem="cEz-S7-6B9" secondAttribute="firstBaseline" id="pbj-LT-YSC"/>
+                            <constraint firstItem="Xxc-Fc-Zng" firstAttribute="trailing" secondItem="ZDb-qw-pOM" secondAttribute="trailingMargin" id="pif-7h-Tnd"/>
+                            <constraint firstItem="9zy-lO-aEQ" firstAttribute="top" secondItem="Ipe-Kh-9Rr" secondAttribute="bottom" constant="8.5" id="qFj-Ig-6nl"/>
+                            <constraint firstItem="7ve-mb-ILz" firstAttribute="leading" secondItem="mDe-hG-PB7" secondAttribute="leading" id="s7Y-fA-eKy"/>
+                            <constraint firstItem="cEz-S7-6B9" firstAttribute="centerY" secondItem="mDe-hG-PB7" secondAttribute="centerY" id="tuO-rd-FcT"/>
+                            <constraint firstItem="mgl-zS-slX" firstAttribute="centerX" secondItem="DJL-NX-Wl4" secondAttribute="centerX" id="vqV-eN-4to"/>
+                            <constraint firstItem="bBx-Nv-sm4" firstAttribute="top" secondItem="bGF-c7-Qws" secondAttribute="top" constant="52" id="xOk-go-IEh"/>
+                            <constraint firstItem="KSB-TV-eyw" firstAttribute="top" secondItem="DJL-NX-Wl4" secondAttribute="bottom" constant="61.5" id="xTf-cS-ZOl"/>
+                            <constraint firstItem="Dvh-n8-1Z6" firstAttribute="trailing" secondItem="KSB-TV-eyw" secondAttribute="trailing" id="xhD-OZ-amb"/>
+                            <constraint firstItem="Xxc-Fc-Zng" firstAttribute="trailing" secondItem="BBJ-oQ-vmb" secondAttribute="trailing" id="xhw-pr-ztk"/>
+                            <constraint firstItem="Lnf-KS-lvh" firstAttribute="baseline" secondItem="Dvh-n8-1Z6" secondAttribute="firstBaseline" id="zZo-Zw-A6X"/>
+                            <constraint firstItem="a16-ZB-aa2" firstAttribute="top" secondItem="Dvh-n8-1Z6" secondAttribute="bottom" constant="8" id="zmO-G7-Z9M"/>
+                            <constraint firstItem="BBJ-oQ-vmb" firstAttribute="leading" secondItem="9zy-lO-aEQ" secondAttribute="trailing" constant="62" id="zqz-RK-Dlz"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="bGF-c7-Qws"/>
                     </view>
+                    <connections>
+                        <outlet property="amountLabel" destination="DJL-NX-Wl4" id="j2e-iT-sNK"/>
+                        <outlet property="counterPartyName" destination="Lnf-KS-lvh" id="xmm-z4-Nf8"/>
+                        <outlet property="referenceLabel" destination="bBx-Nv-sm4" id="WE4-kw-qhw"/>
+                        <outlet property="spendingCategoryLabel" destination="QFK-6q-IDQ" id="fg2-0a-GTe"/>
+                        <outlet property="transactionDateLabel" destination="BBJ-oQ-vmb" id="Ts0-TG-8Vz"/>
+                        <outlet property="transactionSourceLabel" destination="7ve-mb-ILz" id="bz9-1b-ufd"/>
+                        <outlet property="transactionSubSourceLabel" destination="mDe-hG-PB7" id="eI3-hF-WCe"/>
+                        <outlet property="transactionTimeLabel" destination="Xxc-Fc-Zng" id="Dkk-Kw-dZ7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="plM-El-Rr4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1042" y="834"/>
+            <point key="canvasLocation" x="1039.1304347826087" y="833.70535714285711"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6hE-SZ-8n9">
@@ -286,7 +447,7 @@
         <!--Savings-->
         <scene sceneID="qCp-0b-uN2">
             <objects>
-                <viewController id="PAc-Fj-U88" customClass="SavingsViewController" customModule="BudgetMeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SavingsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PAc-Fj-U88" customClass="SavingsViewController" customModule="BudgetMeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nWd-9r-ODE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
