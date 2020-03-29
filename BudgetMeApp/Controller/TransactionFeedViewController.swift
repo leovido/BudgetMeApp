@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxDataSources
 
 class TransactionFeedViewController: UIViewController {
 
@@ -17,21 +18,28 @@ class TransactionFeedViewController: UIViewController {
     @IBOutlet weak var datePickerFilter: UIDatePicker!
 
     @IBOutlet weak var totalExpensesLabel: UILabel!
+    @IBOutlet weak var totalIncomeLabel: UILabel!
     @IBOutlet weak var fetchButton: UIButton!
     @IBOutlet weak var tranferButton: UIButton!
+
+    let dataSource = RxTableViewSectionedReloadDataSource<TransactionSectionData>(configureCell: TransactionFeedViewController.tableViewDataSourceUI())
 
     let disposeBag: DisposeBag = DisposeBag()
     var viewModel: TransactionsViewModel!
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    static func tableViewDataSourceUI() -> (
+        TableViewSectionedDataSource<TransactionSectionData>.ConfigureCell
+        ) {
+        return { (_, tv, ip, i) in
 
-        if Session.shared.accountId.isEmpty {
-            presentAlert()
-        } else {
-            viewModel.refreshData()
-        }
+                guard let cell = tv.dequeueReusableCell(withIdentifier: TransactionCell.identifier) as? TransactionCell else {
+                    fatalError("Transaction cell not implemented")
+                }
 
+                cell.configure(value: i)
+                return cell
+
+            }
     }
 
     override func viewDidLoad() {
@@ -43,7 +51,17 @@ class TransactionFeedViewController: UIViewController {
         setupBinding()
         setupButton()
         setupDatePicker()
+        setupLabels()
 
+        if Session.shared.accountId.isEmpty {
+            presentAlert()
+        } else {
+            viewModel.refreshData()
+        }
+
+        self.present(TransactionDetailsViewController(), animated: true, completion: nil)
+
+        navigationController?.navigationBar.prefersLargeTitles = true
         self.parent?.title = "Transaction Feed"
     }
 
@@ -103,11 +121,56 @@ extension TransactionFeedViewController {
 
     }
 
+    func setupLabels() {
+
+        viewModel.dataSource
+            .map({ transactions -> String in
+
+                let income = transactions
+                    .filter({ $0.header == TransactionType.income.rawValue.capitalized })
+                    .flatMap({ $0.items })
+                    .filter({ $0.direction == .IN })
+
+                let minorUnitsAggregated = income
+                    .compactMap({ $0.amount?.minorUnits })
+                    .reduce(0, +)
+
+                let formattedAmount = self.currencyFormatter(value: minorUnitsAggregated)
+
+                return "Total income: \(formattedAmount)"
+
+            })
+            .asDriver(onErrorJustReturn: "£0.00")
+            .drive(self.totalIncomeLabel.rx.text)
+            .disposed(by: disposeBag)
+
+        viewModel.dataSource
+            .map({ transactions -> String in
+
+                let expenses = transactions
+                    .filter({ $0.header == TransactionType.expense.rawValue.capitalized })
+                    .flatMap({ $0.items })
+                    .filter({ $0.direction == .OUT })
+
+                let minorUnitsAggregated = expenses
+                    .compactMap({ $0.amount?.minorUnits })
+                    .reduce(0, +)
+
+                let formattedAmount = self.currencyFormatter(value: minorUnitsAggregated)
+
+                return "Total expenses: \(formattedAmount)"
+
+            })
+            .asDriver(onErrorJustReturn: "£0.00")
+            .drive(self.totalExpensesLabel.rx.text)
+            .disposed(by: disposeBag)
+
+    }
+
     func setupTransferButton() {
         tranferButton.rx.tap
         .asObservable()
         .subscribe { event in
-
             self.presentAlert(roundUpAmount: self.viewModel.savings)
         }
         .disposed(by: disposeBag)
@@ -133,32 +196,18 @@ extension TransactionFeedViewController {
 
     func setupBinding() {
 
-        viewModel.dataSource
-            .debug()
-            .bind(to: transactionsTableView
-                .rx
-                .items(cellIdentifier: TransactionCell.identifier,
-                       cellType: TransactionCell.self)) { row, element, cell in
+        dataSource.titleForHeaderInSection = { dataSource, index in
+          return dataSource.sectionModels[index].header
+        }
 
-                        cell.configure(value: element)
-
-            }
-            .disposed(by: disposeBag)
+        dataSource.canMoveRowAtIndexPath = { _, _ in
+            return true
+        }
 
         viewModel.dataSource
-        .debug()
-            .subscribe(onNext: { tx in
-
-                let minorUnitsAggregated = self.viewModel.dataSource.value
-                    .filter({ $0.direction == .OUT })
-                    .compactMap({ $0.sourceAmount?.minorUnits })
-                    .reduce(0, +)
-
-                let formattedAmount = self.currencyFormatter(value: minorUnitsAggregated)
-
-                self.totalExpensesLabel.text = "Total Expenses: \(formattedAmount)"
-
-            })
+            .asDriver(onErrorJustReturn: [])
+            .drive(transactionsTableView
+                .rx.items(dataSource: self.dataSource))
         .disposed(by: disposeBag)
 
     }
