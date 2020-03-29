@@ -47,6 +47,7 @@ class TransactionFeedViewController: UIViewController {
         setupBinding()
         setupButton()
         setupDatePicker()
+        setupLabels()
 
         if Session.shared.accountId.isEmpty {
             presentAlert()
@@ -113,6 +114,52 @@ extension TransactionFeedViewController {
 
         }
 
+
+    }
+
+    func setupLabels() {
+
+        viewModel.dataSource
+            .map({ transactions -> String in
+
+                let income = transactions
+                    .filter({ $0.header == TransactionType.income.rawValue.capitalized })
+                    .flatMap({ $0.items })
+                    .filter({ $0.direction == .IN })
+
+                let minorUnitsAggregated = income
+                    .compactMap({ $0.amount?.minorUnits })
+                    .reduce(0, +)
+
+                let formattedAmount = self.currencyFormatter(value: minorUnitsAggregated)
+
+                return "Total income: \(formattedAmount)"
+
+            })
+            .asDriver(onErrorJustReturn: "£0.00")
+            .drive(self.totalIncomeLabel.rx.text)
+            .disposed(by: disposeBag)
+
+        viewModel.dataSource
+            .map({ transactions -> String in
+
+                let expenses = transactions
+                    .filter({ $0.header == TransactionType.expense.rawValue.capitalized })
+                    .flatMap({ $0.items })
+                    .filter({ $0.direction == .OUT })
+
+                let minorUnitsAggregated = expenses
+                    .compactMap({ $0.amount?.minorUnits })
+                    .reduce(0, +)
+
+                let formattedAmount = self.currencyFormatter(value: minorUnitsAggregated)
+
+                return "Total expenses: \(formattedAmount)"
+
+            })
+            .asDriver(onErrorJustReturn: "£0.00")
+            .drive(self.totalExpensesLabel.rx.text)
+            .disposed(by: disposeBag)
 
     }
 
