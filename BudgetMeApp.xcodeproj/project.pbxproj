@@ -32,8 +32,11 @@
 		2D00556924291EA100A82E14 /* TransactionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D00556824291EA100A82E14 /* TransactionsViewModel.swift */; };
 		2D00556B24291EEB00A82E14 /* Roundable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D00556A24291EEB00A82E14 /* Roundable.swift */; };
 		2D00556E2429211700A82E14 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D00556D2429211700A82E14 /* TransactionCell.swift */; };
+		2D0DBB782430E69E00A5C069 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = 2D0DBB772430E69E00A5C069 /* Differentiator */; };
+		2D0DBB7A2430E69E00A5C069 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 2D0DBB792430E69E00A5C069 /* RxDataSources */; };
+		2D0DBB7D243115CA00A5C069 /* TransactionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0DBB7C243115CA00A5C069 /* TransactionDetailsViewController.swift */; };
+		2D0DBB7F243116C500A5C069 /* TransactionSectionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0DBB7E243116C500A5C069 /* TransactionSectionData.swift */; };
 		2D528756242E64FB00FF26F6 /* AccountViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D528755242E64FB00FF26F6 /* AccountViewModelTests.swift */; };
-		2D528758242E651C00FF26F6 /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = 2D528757242E651C00FF26F6 /* RxTest */; };
 		2D52875B242E6C4D00FF26F6 /* TransactionFeedViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52875A242E6C4D00FF26F6 /* TransactionFeedViewModelTests.swift */; };
 		2D6315F224297702009BC74D /* SavingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6315F124297702009BC74D /* SavingsViewController.swift */; };
 		2D8DECE3242D2EB300073D1B /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 2D8DECE2242D2EB300073D1B /* RxMoya */; };
@@ -44,7 +47,6 @@
 		2D8DED0A242D674200073D1B /* transactions_success_browseTransactions.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D00555A2428ECCD00A82E14 /* transactions_success_browseTransactions.json */; };
 		2D8DED0B242D674200073D1B /* transactions_success_getTransactionWithRange.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DAB22DF242A5781001C0F6E /* transactions_success_getTransactionWithRange.json */; };
 		2DAB22C7242A134F001C0F6E /* SavingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB22C6242A134F001C0F6E /* SavingsCell.swift */; };
-		2DAB22CA242A1380001C0F6E /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB22C9242A1380001C0F6E /* Transaction.swift */; };
 		2DAB22D1242A35EE001C0F6E /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB22D0242A35EE001C0F6E /* AccountsViewController.swift */; };
 		2DAB22D3242A365C001C0F6E /* AccountsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB22D2242A365C001C0F6E /* AccountsCell.swift */; };
 		2DAB22D5242A38B4001C0F6E /* AccountsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB22D4242A38B4001C0F6E /* AccountsViewModel.swift */; };
@@ -100,6 +102,8 @@
 		2D00556824291EA100A82E14 /* TransactionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewModel.swift; sourceTree = "<group>"; };
 		2D00556A24291EEB00A82E14 /* Roundable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roundable.swift; sourceTree = "<group>"; };
 		2D00556D2429211700A82E14 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
+		2D0DBB7C243115CA00A5C069 /* TransactionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailsViewController.swift; sourceTree = "<group>"; };
+		2D0DBB7E243116C500A5C069 /* TransactionSectionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionSectionData.swift; sourceTree = "<group>"; };
 		2D528755242E64FB00FF26F6 /* AccountViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModelTests.swift; sourceTree = "<group>"; };
 		2D52875A242E6C4D00FF26F6 /* TransactionFeedViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionFeedViewModelTests.swift; sourceTree = "<group>"; };
 		2D6315F124297702009BC74D /* SavingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsViewController.swift; sourceTree = "<group>"; };
@@ -107,7 +111,6 @@
 		2D8DECFD242D65E100073D1B /* BudgetMeAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetMeAppTests.swift; sourceTree = "<group>"; };
 		2D8DED07242D666D00073D1B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DAB22C6242A134F001C0F6E /* SavingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsCell.swift; sourceTree = "<group>"; };
-		2DAB22C9242A1380001C0F6E /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		2DAB22D0242A35EE001C0F6E /* AccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
 		2DAB22D2242A365C001C0F6E /* AccountsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsCell.swift; sourceTree = "<group>"; };
 		2DAB22D4242A38B4001C0F6E /* AccountsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewModel.swift; sourceTree = "<group>"; };
@@ -130,10 +133,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D528758242E651C00FF26F6 /* RxTest in Frameworks */,
 				2D00553E2428D7A000A82E14 /* RxCocoa in Frameworks */,
 				2D00553C2428D7A000A82E14 /* RxSwift in Frameworks */,
 				2D8DECE3242D2EB300073D1B /* RxMoya in Frameworks */,
+				2D0DBB7A2430E69E00A5C069 /* RxDataSources in Frameworks */,
+				2D0DBB782430E69E00A5C069 /* Differentiator in Frameworks */,
 				2D0055392428D72300A82E14 /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -244,6 +248,7 @@
 				2DAB22D0242A35EE001C0F6E /* AccountsViewController.swift */,
 				2D0055192428D6A300A82E14 /* TransactionFeedViewController.swift */,
 				2D6315F124297702009BC74D /* SavingsViewController.swift */,
+				2D0DBB7C243115CA00A5C069 /* TransactionDetailsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -306,7 +311,7 @@
 		2DAB22C8242A1374001C0F6E /* Transaction */ = {
 			isa = PBXGroup;
 			children = (
-				2DAB22C9242A1380001C0F6E /* Transaction.swift */,
+				2D0DBB7E243116C500A5C069 /* TransactionSectionData.swift */,
 				2DAB22CF242A13BA001C0F6E /* TransactionFeed */,
 			);
 			path = Transaction;
@@ -410,7 +415,8 @@
 				2D00553B2428D7A000A82E14 /* RxSwift */,
 				2D00553D2428D7A000A82E14 /* RxCocoa */,
 				2D8DECE2242D2EB300073D1B /* RxMoya */,
-				2D528757242E651C00FF26F6 /* RxTest */,
+				2D0DBB772430E69E00A5C069 /* Differentiator */,
+				2D0DBB792430E69E00A5C069 /* RxDataSources */,
 			);
 			productName = "STT-round-up";
 			productReference = 2D0055122428D6A300A82E14 /* BudgetMeApp.app */;
@@ -465,6 +471,7 @@
 			packageReferences = (
 				2D0055372428D72300A82E14 /* XCRemoteSwiftPackageReference "Moya" */,
 				2D00553A2428D7A000A82E14 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				2D0DBB762430E69E00A5C069 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 			);
 			productRefGroup = 2D0055132428D6A300A82E14 /* Products */;
 			projectDirPath = "";
@@ -510,6 +517,7 @@
 				2D0055462428DC3200A82E14 /* STAuthPlugin.swift in Sources */,
 				2D0055592428EA6000A82E14 /* STTransactionFeedService.swift in Sources */,
 				2D0055162428D6A300A82E14 /* AppDelegate.swift in Sources */,
+				2D0DBB7F243116C500A5C069 /* TransactionSectionData.swift in Sources */,
 				2DD43636242A058700DE751A /* STSavingsGoal.swift in Sources */,
 				2D0055412428D7C000A82E14 /* STAccountService.swift in Sources */,
 				2DAB22D5242A38B4001C0F6E /* AccountsViewModel.swift in Sources */,
@@ -526,7 +534,6 @@
 				2D0055572428EA1300A82E14 /* STTransactionFeedManager.swift in Sources */,
 				2D00556E2429211700A82E14 /* TransactionCell.swift in Sources */,
 				2D00554A2428DD2300A82E14 /* STAccountManager.swift in Sources */,
-				2DAB22CA242A1380001C0F6E /* Transaction.swift in Sources */,
 				2DAB22D7242A4238001C0F6E /* Session.swift in Sources */,
 				2D0055442428D89B00A82E14 /* STEnvironment.swift in Sources */,
 				2D00556B24291EEB00A82E14 /* Roundable.swift in Sources */,
@@ -539,6 +546,7 @@
 				2D00554C2428DD6800A82E14 /* STAccount.swift in Sources */,
 				2DAB22D3242A365C001C0F6E /* AccountsCell.swift in Sources */,
 				2DAB22D1242A35EE001C0F6E /* AccountsViewController.swift in Sources */,
+				2D0DBB7D243115CA00A5C069 /* TransactionDetailsViewController.swift in Sources */,
 				2D0055182428D6A300A82E14 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -828,6 +836,14 @@
 				minimumVersion = 5.1.0;
 			};
 		};
+		2D0DBB762430E69E00A5C069 /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -846,10 +862,15 @@
 			package = 2D00553A2428D7A000A82E14 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxCocoa;
 		};
-		2D528757242E651C00FF26F6 /* RxTest */ = {
+		2D0DBB772430E69E00A5C069 /* Differentiator */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2D00553A2428D7A000A82E14 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxTest;
+			package = 2D0DBB762430E69E00A5C069 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = Differentiator;
+		};
+		2D0DBB792430E69E00A5C069 /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2D0DBB762430E69E00A5C069 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
 		};
 		2D8DECE2242D2EB300073D1B /* RxMoya */ = {
 			isa = XCSwiftPackageProductDependency;
