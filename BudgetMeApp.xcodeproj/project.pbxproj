@@ -61,6 +61,8 @@
 		2DB6EFFD24312119005FE32A /* TransactionFeedViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB6EFFC24312119005FE32A /* TransactionFeedViewControllerTests.swift */; };
 		2DB6EFFF2431225B005FE32A /* SavingsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB6EFFE2431225B005FE32A /* SavingsViewControllerTests.swift */; };
 		2DB6F001243122D8005FE32A /* AccountsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB6F000243122D8005FE32A /* AccountsViewControllerTests.swift */; };
+		2DB6F0072431248B005FE32A /* TransactionFeedDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB6F0062431248B005FE32A /* TransactionFeedDelegate.swift */; };
+		2DB6F00A24313B11005FE32A /* TransactionDetailsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB6F00924313B11005FE32A /* TransactionDetailsTests.swift */; };
 		2DD43636242A058700DE751A /* STSavingsGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD43635242A058700DE751A /* STSavingsGoal.swift */; };
 		2DD43638242A0D0600DE751A /* SavingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD43637242A0D0600DE751A /* SavingsViewModel.swift */; };
 		2DD4363A242A0D4E00DE751A /* STSavingsGoalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD43639242A0D4E00DE751A /* STSavingsGoalManager.swift */; };
@@ -129,6 +131,8 @@
 		2DB6EFFC24312119005FE32A /* TransactionFeedViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionFeedViewControllerTests.swift; sourceTree = "<group>"; };
 		2DB6EFFE2431225B005FE32A /* SavingsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsViewControllerTests.swift; sourceTree = "<group>"; };
 		2DB6F000243122D8005FE32A /* AccountsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewControllerTests.swift; sourceTree = "<group>"; };
+		2DB6F0062431248B005FE32A /* TransactionFeedDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionFeedDelegate.swift; sourceTree = "<group>"; };
+		2DB6F00924313B11005FE32A /* TransactionDetailsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailsTests.swift; sourceTree = "<group>"; };
 		2DD43635242A058700DE751A /* STSavingsGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STSavingsGoal.swift; sourceTree = "<group>"; };
 		2DD43637242A0D0600DE751A /* SavingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsViewModel.swift; sourceTree = "<group>"; };
 		2DD43639242A0D4E00DE751A /* STSavingsGoalManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STSavingsGoalManager.swift; sourceTree = "<group>"; };
@@ -253,6 +257,7 @@
 		2D00556C2429210000A82E14 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2DB6F0052431247B005FE32A /* Delegates */,
 				2DAB22D0242A35EE001C0F6E /* AccountsViewController.swift */,
 				2D0055192428D6A300A82E14 /* TransactionFeedViewController.swift */,
 				2D6315F124297702009BC74D /* SavingsViewController.swift */,
@@ -310,9 +315,9 @@
 		2DAB22C5242A1329001C0F6E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2DAB22D2242A365C001C0F6E /* AccountsCell.swift */,
-				2D00556D2429211700A82E14 /* TransactionCell.swift */,
-				2DAB22C6242A134F001C0F6E /* SavingsCell.swift */,
+				2DB6F00324312450005FE32A /* Accounts */,
+				2DB6F00224312446005FE32A /* Transactions */,
+				2DB6F00424312457005FE32A /* Savings */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -382,8 +387,41 @@
 				2DB6EFFC24312119005FE32A /* TransactionFeedViewControllerTests.swift */,
 				2DB6EFFE2431225B005FE32A /* SavingsViewControllerTests.swift */,
 				2DB6F000243122D8005FE32A /* AccountsViewControllerTests.swift */,
+				2DB6F00924313B11005FE32A /* TransactionDetailsTests.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		2DB6F00224312446005FE32A /* Transactions */ = {
+			isa = PBXGroup;
+			children = (
+				2D00556D2429211700A82E14 /* TransactionCell.swift */,
+			);
+			path = Transactions;
+			sourceTree = "<group>";
+		};
+		2DB6F00324312450005FE32A /* Accounts */ = {
+			isa = PBXGroup;
+			children = (
+				2DAB22D2242A365C001C0F6E /* AccountsCell.swift */,
+			);
+			path = Accounts;
+			sourceTree = "<group>";
+		};
+		2DB6F00424312457005FE32A /* Savings */ = {
+			isa = PBXGroup;
+			children = (
+				2DAB22C6242A134F001C0F6E /* SavingsCell.swift */,
+			);
+			path = Savings;
+			sourceTree = "<group>";
+		};
+		2DB6F0052431247B005FE32A /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				2DB6F0062431248B005FE32A /* TransactionFeedDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 		2DD4363B242A0D5400DE751A /* Savings */ = {
@@ -548,6 +586,7 @@
 				2DD43638242A0D0600DE751A /* SavingsViewModel.swift in Sources */,
 				2D0055532428E9D000A82E14 /* STTransactionFeed.swift in Sources */,
 				2D00556924291EA100A82E14 /* TransactionsViewModel.swift in Sources */,
+				2DB6F0072431248B005FE32A /* TransactionFeedDelegate.swift in Sources */,
 				2DAB22DE242A4AAF001C0F6E /* EntityComponent.swift in Sources */,
 				2DD4363F242A0D7C00DE751A /* STSavingsGoalService.swift in Sources */,
 				2D00555E24291CAC00A82E14 /* CurrencyAndAmount.swift in Sources */,
@@ -583,6 +622,7 @@
 				2D528756242E64FB00FF26F6 /* AccountViewModelTests.swift in Sources */,
 				2DB6EFFF2431225B005FE32A /* SavingsViewControllerTests.swift in Sources */,
 				2D8DED06242D661B00073D1B /* STTransactionFeedManagerTests.swift in Sources */,
+				2DB6F00A24313B11005FE32A /* TransactionDetailsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
