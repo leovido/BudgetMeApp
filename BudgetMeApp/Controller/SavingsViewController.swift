@@ -58,8 +58,8 @@ class SavingsViewController: UIViewController {
     func setupBinding() {
 
         viewModel.dataSource
-            .debug()
-            .bind(to: savingsTableView
+            .asDriver()
+            .drive(savingsTableView
                 .rx
                 .items(cellIdentifier: SavingsCell.identifier,
                        cellType: SavingsCell.self)) { row, element, cell in

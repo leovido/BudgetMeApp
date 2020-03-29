@@ -147,19 +147,9 @@ extension TransactionFeedViewController {
             .disposed(by: disposeBag)
 
         viewModel.dataSource
-        .debug()
-            .subscribe(onNext: { tx in
-
-                let minorUnitsAggregated = self.viewModel.dataSource.value
-                    .filter({ $0.direction == .OUT })
-                    .compactMap({ $0.sourceAmount?.minorUnits })
-                    .reduce(0, +)
-
-                let formattedAmount = self.currencyFormatter(value: minorUnitsAggregated)
-
-                self.totalExpensesLabel.text = "Total Expenses: \(formattedAmount)"
-
-            })
+            .asDriver(onErrorJustReturn: [])
+            .drive(transactionsTableView
+                .rx.items(dataSource: self.dataSource))
         .disposed(by: disposeBag)
 
     }
