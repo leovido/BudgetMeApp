@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxDataSources
 
 class TransactionFeedViewController: UIViewController {
 
@@ -17,8 +18,11 @@ class TransactionFeedViewController: UIViewController {
     @IBOutlet weak var datePickerFilter: UIDatePicker!
 
     @IBOutlet weak var totalExpensesLabel: UILabel!
+    @IBOutlet weak var totalIncomeLabel: UILabel!
     @IBOutlet weak var fetchButton: UIButton!
     @IBOutlet weak var tranferButton: UIButton!
+
+    let dataSource = RxTableViewSectionedReloadDataSource<TransactionSectionData>(configureCell: TransactionFeedViewController.tableViewDataSourceUI())
 
     let disposeBag: DisposeBag = DisposeBag()
     var viewModel: TransactionsViewModel!
@@ -167,7 +171,6 @@ extension TransactionFeedViewController {
         tranferButton.rx.tap
         .asObservable()
         .subscribe { event in
-
             self.presentAlert(roundUpAmount: self.viewModel.savings)
         }
         .disposed(by: disposeBag)
@@ -193,17 +196,13 @@ extension TransactionFeedViewController {
 
     func setupBinding() {
 
-        viewModel.dataSource
-            .debug()
-            .bind(to: transactionsTableView
-                .rx
-                .items(cellIdentifier: TransactionCell.identifier,
-                       cellType: TransactionCell.self)) { row, element, cell in
+        dataSource.titleForHeaderInSection = { dataSource, index in
+          return dataSource.sectionModels[index].header
+        }
 
-                        cell.configure(value: element)
-
-            }
-            .disposed(by: disposeBag)
+        dataSource.canMoveRowAtIndexPath = { _, _ in
+            return true
+        }
 
         viewModel.dataSource
             .asDriver(onErrorJustReturn: [])
