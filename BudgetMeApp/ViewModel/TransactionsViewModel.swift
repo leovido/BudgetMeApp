@@ -18,10 +18,10 @@ extension TransactionsViewModel: Roundable {
 
 struct TransactionsViewModel: ViewModelBlueprint {
 
-    typealias T = STTransactionFeed
+    typealias T = TransactionSectionData
 
     var isLoading: PublishSubject<Bool> = PublishSubject()
-    var dataSource: BehaviorRelay<[STTransactionFeed]> = BehaviorRelay(value: [])
+    var dataSource: BehaviorRelay<[TransactionSectionData]> = BehaviorRelay(value: [])
 
     let provider: MoyaProvider<STTransactionFeedService>
     let errorPublisher: PublishSubject<Error>
