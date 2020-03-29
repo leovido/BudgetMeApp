@@ -210,6 +210,10 @@ extension TransactionFeedViewController {
                 .rx.items(dataSource: self.dataSource))
         .disposed(by: disposeBag)
 
+        transactionsTableView.rx
+            .setDelegate(self)
+            .disposed(by: disposeBag)
+
     }
 
     func setupDatePicker() {
