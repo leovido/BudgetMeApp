@@ -23,15 +23,19 @@ class TransactionFeedViewController: UIViewController {
     let disposeBag: DisposeBag = DisposeBag()
     var viewModel: TransactionsViewModel!
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    static func tableViewDataSourceUI() -> (
+        TableViewSectionedDataSource<TransactionSectionData>.ConfigureCell
+        ) {
+        return { (_, tv, ip, i) in
 
-        if Session.shared.accountId.isEmpty {
-            presentAlert()
-        } else {
-            viewModel.refreshData()
-        }
+                guard let cell = tv.dequeueReusableCell(withIdentifier: TransactionCell.identifier) as? TransactionCell else {
+                    fatalError("Transaction cell not implemented")
+                }
 
+                cell.configure(value: i)
+                return cell
+
+            }
     }
 
     override func viewDidLoad() {
