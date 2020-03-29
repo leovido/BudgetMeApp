@@ -33,7 +33,7 @@ Using Moya to encapsulate specific requests by category. e.g. AccountsService, T
 - [ ] Authentication
 - [ ] ViewModel testing with RxTest
 - [ ] Accounts
-- [ ] Transaction Feed
+- [x] Transaction Feed Details
 - [ ] Savings goals
 - [ ] Login screen
 - [ ] Budget View
@@ -44,6 +44,7 @@ Using Moya to encapsulate specific requests by category. e.g. AccountsService, T
 
 # Screenshots 
 
+<img alt="Transaction Feed" src="https://user-images.githubusercontent.com/18484997/77860702-723b1180-7208-11ea-907e-f0e8704bed20.png" width=270 align=left>
+<img alt="Transaction Details" src="https://user-images.githubusercontent.com/18484997/77860695-6d765d80-7208-11ea-919d-56459150ce16.png" width=270 align=left>
+<img alt="Savings" src="https://user-images.githubusercontent.com/18484997/77860828-3d7b8a00-7209-11ea-813a-18e7114bc892.png" width=270 align=left>
 
-![Transaction Feed](https://user-images.githubusercontent.com/18484997/77705139-cea6f280-6fb6-11ea-80ae-16f1d583aa5d.png)
-![Savings](https://user-images.githubusercontent.com/18484997/77705137-ce0e5c00-6fb6-11ea-8bab-b690122c8318.png)
