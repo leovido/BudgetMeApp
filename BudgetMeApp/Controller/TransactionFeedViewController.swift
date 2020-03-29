@@ -48,6 +48,14 @@ class TransactionFeedViewController: UIViewController {
         setupButton()
         setupDatePicker()
 
+        if Session.shared.accountId.isEmpty {
+            presentAlert()
+        } else {
+            viewModel.refreshData()
+        }
+
+        self.present(TransactionDetailsViewController(), animated: true, completion: nil)
+
         navigationController?.navigationBar.prefersLargeTitles = true
         self.parent?.title = "Transaction Feed"
     }
