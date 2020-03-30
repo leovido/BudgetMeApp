@@ -31,6 +31,13 @@ struct STAccountIdentifiers: Decodable, Equatable {
     let bic: String
     let accountIdentifiers: [STAccountIdentifier]
 }
+
+enum STIdentifierType: String, Codable {
+    case SORT_CODE
+    case IBAN_BIC
+    case ABA_ACH
+}
+
 struct STAccountIdentifier: Decodable, Equatable {
     let identifierType: STIdentifierType
     let bankIdentifier: String
