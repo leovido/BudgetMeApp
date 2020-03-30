@@ -43,3 +43,8 @@ struct STAccountIdentifier: Decodable, Equatable {
     let bankIdentifier: String
     let accountIdentifier: String
 }
+struct AccountStatementPeriods: Decodable, Equatable {
+    var period: String
+    var partial: Bool
+    var endsAt: DateTime
+}
