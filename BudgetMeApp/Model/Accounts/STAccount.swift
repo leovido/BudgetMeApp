@@ -24,3 +24,15 @@ struct STBalance: Decodable, Equatable {
     let acceptedOverdraft: CurrencyAndAmount
     let amount: CurrencyAndAmount
 }
+struct STAccountIdentifiers: Decodable, Equatable {
+    let accountIdentifier: String
+    let bankIdentifier: String
+    let iban: String
+    let bic: String
+    let accountIdentifiers: [STAccountIdentifier]
+}
+struct STAccountIdentifier: Decodable, Equatable {
+    let identifierType: STIdentifierType
+    let bankIdentifier: String
+    let accountIdentifier: String
+}
