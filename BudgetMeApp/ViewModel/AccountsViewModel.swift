@@ -60,6 +60,15 @@ struct AccountsViewModel: ViewModelBlueprint {
 
         return observable
     }
+    func getStatementPeriods(accountId: String) -> Observable<AccountStatementPeriods> {
+        let observable = provider.rx.request(.getAvailableStatementPeriods(accountId: accountId))
+            .filterSuccessfulStatusAndRedirectCodes()
+            .map(AccountStatementPeriods.self, atKeyPath: "periods")
+            .asObservable()
+            .share(replay: 1, scope: .whileConnected)
+
+        return observable
+    }
             .subscribe { event in
                 switch event {
                 case .success(let accounts):
