@@ -39,6 +39,18 @@ struct AccountsViewModel: ViewModelBlueprint {
             .debug("refreshData @ AccountsViewModel")
             .filterSuccessfulStatusAndRedirectCodes()
             .map([STAccount].self, atKeyPath: "accounts")
+    func getBalances(accountIds: [String]) -> Observable<[STBalance]> {
+
+
+        let obs = Observable.from(accountIds)
+            .flatMap({
+                self.provider.rx.request(.getBalance(accountId: $0))
+                           .filterSuccessfulStatusAndRedirectCodes()
+                           .map(STBalance.self)
+            })
+
+        return obs
+    }
             .subscribe { event in
                 switch event {
                 case .success(let accounts):
