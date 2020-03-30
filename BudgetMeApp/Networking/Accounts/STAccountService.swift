@@ -9,11 +9,14 @@
 import Foundation
 import Moya
 
-
-public enum STAccountService {
+enum STAccountService {
     case browseAccounts
     case getIdentifiers(accountId: String)
     case getBalance(accountId: String)
+    case getConfirmationOfFunds(accountId: String)
+    case getAvailableStatementPeriods(accountId: String)
+    case downloadStatement(accountId: String)
+    case downloadStatementForDateRange(accountId: String, start: DateTime, end: DateTime)
 }
 
 extension STAccountService: AuthorizedTargetType {
@@ -36,6 +39,14 @@ extension STAccountService: TargetType {
             return "/accounts/\(accountId)/identifiers"
         case .getBalance(let accountId):
             return "/accounts/\(accountId)/balance"
+        case .getConfirmationOfFunds(let accountId):
+            return "/accounts/\(accountId)/confirmation-of-funds"
+        case .getAvailableStatementPeriods(let accountId):
+            return "/accounts/\(accountId)/available-periods"
+        case .downloadStatement(let accountId):
+            return "/accounts/\(accountId)/statement/download"
+        case .downloadStatementForDateRange(let accountId):
+            return "/accounts/\(accountId)/statement/downloadForDateRange"
         }
     }
 
@@ -52,8 +63,15 @@ extension STAccountService: TargetType {
     }
 
     public var headers: [String: String]? {
-        return ["Accept": "application/json",
-                "User-agent": "Christian Ray Leovido"]
+        switch self {
+        case .downloadStatement, .downloadStatementForDateRange:
+            return ["Accept": "application/pdf",
+                    "User-agent": "Christian Ray Leovido"]
+        default:
+            return ["Accept": "application/json",
+                    "User-agent": "Christian Ray Leovido"]
+        }
+
     }
 
     public var validationType: ValidationType {
