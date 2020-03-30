@@ -49,10 +49,10 @@ extension STAccountTests {
 
         let serverEndpointSuccess = { (target: T) -> Endpoint in
             return Endpoint(url: URL(target: target).absoluteString,
-                                            sampleResponseClosure: { .networkResponse(200, data) },
-                                            method: target.method,
-                                            task: target.task,
-                                            httpHeaderFields: target.headers)
+                            sampleResponseClosure: { .networkResponse(200, data) },
+                            method: target.method,
+                            task: target.task,
+                            httpHeaderFields: target.headers)
         }
 
         let serverStubSuccess = MoyaProvider<T>(
@@ -73,28 +73,25 @@ extension STAccountTests {
 
     private func makeMoyaFailureStub<T: TargetType>(type: BookingFailureTestCases) -> MoyaProvider<T> {
 
-    //        let url = bundle.url(forResource: "booking_failure_" + type.rawValue, withExtension: "json")!
-    //        let data = try! Data(contentsOf: url)
+        let serverEndpointFailure = { (target: T) -> Endpoint in
+            return Endpoint(url: URL(target: target).absoluteString,
+                            sampleResponseClosure: { .networkResponse(400, target.sampleData) },
+                            method: target.method,
+                            task: target.task,
+                            httpHeaderFields: target.headers)
+        }
 
-            let serverEndpointFailure = { (target: T) -> Endpoint in
-                return Endpoint(url: URL(target: target).absoluteString,
-                                                sampleResponseClosure: { .networkResponse(400, target.sampleData) },
-                                                method: target.method,
-                                                task: target.task,
-                                                httpHeaderFields: target.headers)
-            }
-
-            let serverStubFailure = MoyaProvider<T>(
-                endpointClosure: serverEndpointFailure,
-                stubClosure: MoyaProvider.immediatelyStub,
+        let serverStubFailure = MoyaProvider<T>(
+            endpointClosure: serverEndpointFailure,
+            stubClosure: MoyaProvider.immediatelyStub,
             plugins: [
                 AuthPlugin(tokenClosure: { return "Some token" })
             ]
-            )
+        )
 
-            return serverStubFailure
+        return serverStubFailure
 
-        }
+    }
 
     private var bundle: Bundle {
         return Bundle(for: type(of: self) as! AnyClass)
@@ -102,6 +99,12 @@ extension STAccountTests {
 
     private enum STAccountSuccessTestCases: String, TestableCase {
         case browse
+        case downloadStatement
+        case downloadStatementRange
+        case identifiers
+        case balance
+        case availableFunds
+        case statementPeriods
     }
 
     private enum BookingFailureTestCases: String, TestableCase {
