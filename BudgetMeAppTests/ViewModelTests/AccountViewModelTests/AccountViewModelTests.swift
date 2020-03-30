@@ -57,11 +57,10 @@ class AccountViewModelTests: XCTestCase {
             .bind(to: dataSourceMock)
             .disposed(by: disposeBag)
 
-        let randomAccounts = [STAccount(accountUid: "some",
-                                        defaultCategory: "cat",
+        let randomAccounts = [STAccount(accountUid: "",
+                                        defaultCategory: "",
                                         currency: .GBP,
-                                        createdAt: Date().description,
-                                        balance: nil)]
+                                        createdAt: Date().description)]
 
         scheduler.createColdObservable([.next(15, randomAccounts)])
             .bind(to: accountViewModel.dataSource)
