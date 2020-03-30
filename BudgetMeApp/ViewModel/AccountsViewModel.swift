@@ -51,6 +51,15 @@ struct AccountsViewModel: ViewModelBlueprint {
 
         return obs
     }
+    func getIdentifiers(accountId: String) -> Observable<STAccountIdentifiers> {
+        let observable = provider.rx.request(.getIdentifiers(accountId: accountId))
+            .filterSuccessfulStatusAndRedirectCodes()
+            .map(STAccountIdentifiers.self)
+            .asObservable()
+            .share(replay: 1, scope: .whileConnected)
+
+        return observable
+    }
             .subscribe { event in
                 switch event {
                 case .success(let accounts):
