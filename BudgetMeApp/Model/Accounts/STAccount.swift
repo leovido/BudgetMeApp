@@ -24,6 +24,7 @@ struct STBalance: Decodable, Equatable {
     let acceptedOverdraft: CurrencyAndAmount
     let amount: CurrencyAndAmount
 }
+
 struct STAccountIdentifiers: Decodable, Equatable {
     let accountIdentifier: String
     let bankIdentifier: String
@@ -43,6 +44,12 @@ struct STAccountIdentifier: Decodable, Equatable {
     let bankIdentifier: String
     let accountIdentifier: String
 }
+
+struct ConfirmationOfFundsResponse: Decodable, Equatable {
+    var requestedAmountAvailableToSpend: Bool
+    var accountWouldBeInOverdraftIfRequestedAmountSpent: Bool
+}
+
 struct AccountStatementPeriods: Decodable, Equatable {
     var period: String
     var partial: Bool
