@@ -15,10 +15,7 @@ struct STAccount: Decodable, Equatable {
     let defaultCategory: String
     let currency: STCurrency
     let createdAt: DateTime
-    var balance: STBalance?
 }
-
-// MARK: - STBalance
 
 struct STBalance: Decodable, Equatable {
     let clearedBalance: CurrencyAndAmount
