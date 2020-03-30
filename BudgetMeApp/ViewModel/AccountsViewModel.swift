@@ -69,6 +69,15 @@ struct AccountsViewModel: ViewModelBlueprint {
 
         return observable
     }
+    func getConfirmationOfFunds(accountId: String) -> Observable<ConfirmationOfFundsResponse> {
+        let observable = provider.rx.request(.getConfirmationOfFunds(accountId: accountId))
+            .filterSuccessfulStatusAndRedirectCodes()
+            .map(ConfirmationOfFundsResponse.self)
+            .asObservable()
+            .share(replay: 1, scope: .whileConnected)
+
+        return observable
+    }
             .subscribe { event in
                 switch event {
                 case .success(let accounts):
