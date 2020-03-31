@@ -108,3 +108,15 @@ extension STTransactionFeed: Arbitrary {
         }
     }
 }
+
+extension STBalance: Arbitrary {
+    public static var arbitrary: Gen<STBalance> {
+        return Gen<STBalance>.compose { gc -> STBalance in
+            return STBalance(clearedBalance: gc.generate(),
+                             effectiveBalance: gc.generate(),
+                             pendingTransactions: gc.generate(),
+                             acceptedOverdraft: gc.generate(),
+                             amount: gc.generate())
+        }
+    }
+}
