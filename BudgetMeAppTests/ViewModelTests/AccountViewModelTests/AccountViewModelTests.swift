@@ -44,6 +44,21 @@ class AccountViewModelTests: XCTestCase {
         XCTAssertTrue(!identifiersObserver.events.isEmpty)
 
     }
+    func testGetAccountStatementPeriods() {
+
+        accountViewModel = AccountsViewModel(provider: makeMoyaSuccessStub(type: .statementPeriods))
+
+        let accountStatementObserver = scheduler.createObserver(AccountStatementPeriods.self)
+
+        accountViewModel.getStatementPeriods(accountId: UUID().uuidString)
+            .bind(to: accountStatementObserver)
+            .disposed(by: disposeBag)
+
+        scheduler.start()
+
+        XCTAssertTrue(!accountStatementObserver.events.isEmpty)
+
+    }
     func testDataSourceError() {
 
         accountViewModel = AccountsViewModel()
