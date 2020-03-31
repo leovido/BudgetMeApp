@@ -34,6 +34,14 @@ final class TransactionCell: UITableViewCell {
 
     }
 
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        if selected {
+            self.backgroundColor = #colorLiteral(red: 0.4549019608, green: 0.2, blue: 1, alpha: 1)
+        } else {
+            self.backgroundColor = .white
+        }
+    }
+
 }
 
 extension Date {

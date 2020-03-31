@@ -71,7 +71,7 @@ extension STAccountTests {
 
     }
 
-    private func makeMoyaFailureStub<T: TargetType>(type: BookingFailureTestCases) -> MoyaProvider<T> {
+    private func makeMoyaFailureStub<T: TargetType>(type: STAccountFailureTestCases) -> MoyaProvider<T> {
 
         let serverEndpointFailure = { (target: T) -> Endpoint in
             return Endpoint(url: URL(target: target).absoluteString,
@@ -96,20 +96,20 @@ extension STAccountTests {
     private var bundle: Bundle {
         return Bundle(for: type(of: self) as! AnyClass)
     }
-
-    private enum STAccountSuccessTestCases: String, TestableCase {
-        case browse
-        case downloadStatement
-        case downloadStatementRange
-        case identifiers
-        case balance
-        case availableFunds
-        case statementPeriods
-    }
-
-    private enum BookingFailureTestCases: String, TestableCase {
-        case browse
-    }
 }
 
 protocol TestableCase {}
+
+enum STAccountSuccessTestCases: String, TestableCase {
+    case browse
+    case downloadStatement
+    case downloadStatementRange
+    case identifiers
+    case balance
+    case availableFunds
+    case statementPeriods
+}
+
+enum STAccountFailureTestCases: String, TestableCase {
+    case browse
+}

@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import SwiftCheck
 @testable import BudgetMeApp
 
 class TransactionDetailsTests: XCTestCase {
@@ -15,10 +16,10 @@ class TransactionDetailsTests: XCTestCase {
 
     override func setUp() {
 
-        let transaction = STTransactionFeed(feedItemUid: nil, categoryUid: nil, amount: nil, sourceAmount: nil, direction: nil, updatedAt: nil, transactionTime: nil, settlementTime: nil, retryAllocationUntilTime: nil, source: nil, sourceSubType: nil, status: nil, counterPartyType: nil, counterPartyUid: nil, counterPartyName: nil, counterPartySubEntityUid: nil, counterPartySubEntityName: nil, counterPartySubEntityIdentifier: nil, counterPartySubEntitySubIdentifier: nil, exchangeRate: nil, totalFees: nil, reference: "Test", country: nil, spendingCategory: nil, userNote: nil, roundUp: nil)
+        let transaction = STTransactionFeed.arbitrary.generate
 
-        viewController = TransactionDetailsViewController.makeTransactionDetailsViewController(transaction: transaction)
-
+        viewController = TransactionDetailsViewController
+            .makeTransactionDetailsViewController(transaction: transaction)
 
     }
 

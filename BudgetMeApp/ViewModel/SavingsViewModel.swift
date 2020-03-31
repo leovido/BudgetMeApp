@@ -76,12 +76,4 @@ struct SavingsViewModel: ViewModelBlueprint {
         .disposed(by: disposeBag)
     }
 
-    func addAmount(amount: MinorUnits, to savingsGoalId: String) {
-//        provider.addMoney(amount: amount, to: savingsGoalId) { success in
-//            if success {
-//                
-//            }
-//        }
-    }
-
 }

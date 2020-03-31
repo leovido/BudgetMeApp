@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum CurrencySymbol: String, Decodable {
+enum CurrencySymbol: String, Decodable, CaseIterable {
     case EUR
     case GBP
 }

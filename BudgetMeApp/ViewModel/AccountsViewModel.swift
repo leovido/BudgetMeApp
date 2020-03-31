@@ -14,13 +14,13 @@ import Moya
 
 struct AccountsViewModel: ViewModelBlueprint {
 
-    typealias T = STAccount
+    typealias T = AccountComposite
     typealias Provider = MoyaProvider
 
     let provider: MoyaProvider<STAccountService>
 
     let isLoading: PublishSubject<Bool>
-    let dataSource: BehaviorRelay<[STAccount]>
+    let dataSource: BehaviorRelay<[AccountComposite]>
     let errorPublisher: PublishSubject<Error>
     let disposeBag: DisposeBag
 
@@ -32,25 +32,63 @@ struct AccountsViewModel: ViewModelBlueprint {
         self.disposeBag = DisposeBag()
     }
 
-
     func refreshData() {
-        self.isLoading.onNext(true)
-        provider.rx.request(.browseAccounts)
-            .debug("refreshData @ AccountsViewModel")
+        getAllAccounts()
+            .do(onNext: { _ in
+                self.isLoading.onNext(true)
+            })
+            .flatMap({ value in
+                self.setupAccountComposite(account: value.first!)
+            })
+            .subscribe { event in
+                switch event {
+                case .next(let accountComposite):
+                    self.dataSource.accept([accountComposite])
+                case .error(let error):
+                    self.errorPublisher.onNext(error)
+                case .completed:
+                    self.isLoading.onNext(false)
+                }
+        }
+        .disposed(by: disposeBag)
+
+    }
+
+    func setupAccountComposite(account: STAccount) -> Observable<AccountComposite> {
+
+        let obs = Observable.zip(getBalance(accountId: account.accountUid),
+                                 getIdentifiers(accountId: account.accountUid))
+            .map { balance, identifiers in
+                AccountComposite(account: account, balance: balance, identifiers: identifiers)
+        }
+
+        return obs
+
+    }
+}
+
+extension AccountsViewModel {
+
+    func getAllAccounts() -> Observable<[STAccount]> {
+        let obs = provider.rx.request(.browseAccounts)
             .filterSuccessfulStatusAndRedirectCodes()
             .map([STAccount].self, atKeyPath: "accounts")
-    func getBalances(accountIds: [String]) -> Observable<[STBalance]> {
-
-
-        let obs = Observable.from(accountIds)
-            .flatMap({
-                self.provider.rx.request(.getBalance(accountId: $0))
-                           .filterSuccessfulStatusAndRedirectCodes()
-                           .map(STBalance.self)
-            })
+            .asObservable()
+            .share(replay: 1, scope: .whileConnected)
 
         return obs
     }
+
+    func getBalance(accountId: String) -> Observable<STBalance> {
+        let obs = self.provider.rx.request(.getBalance(accountId: accountId))
+            .filterSuccessfulStatusAndRedirectCodes()
+            .map(STBalance.self)
+            .asObservable()
+            .share(replay: 1, scope: .whileConnected)
+
+        return obs
+    }
+
     func getIdentifiers(accountId: String) -> Observable<STAccountIdentifiers> {
         let observable = provider.rx.request(.getIdentifiers(accountId: accountId))
             .filterSuccessfulStatusAndRedirectCodes()
@@ -60,6 +98,7 @@ struct AccountsViewModel: ViewModelBlueprint {
 
         return observable
     }
+
     func getStatementPeriods(accountId: String) -> Observable<AccountStatementPeriods> {
         let observable = provider.rx.request(.getAvailableStatementPeriods(accountId: accountId))
             .filterSuccessfulStatusAndRedirectCodes()
@@ -69,6 +108,7 @@ struct AccountsViewModel: ViewModelBlueprint {
 
         return observable
     }
+
     func getConfirmationOfFunds(accountId: String) -> Observable<ConfirmationOfFundsResponse> {
         let observable = provider.rx.request(.getConfirmationOfFunds(accountId: accountId))
             .filterSuccessfulStatusAndRedirectCodes()
@@ -78,13 +118,47 @@ struct AccountsViewModel: ViewModelBlueprint {
 
         return observable
     }
-            .subscribe { event in
-                switch event {
-                case .success(let accounts):
-                    self.dataSource.accept(accounts)
-                case .error(let error):
-                    self.errorPublisher.onNext(error)
-                }
-            }.disposed(by: disposeBag)
+
+}
+
+extension AccountsViewModel {
+
+    func downloadPDFStatement(accountId: String, yearMonth: String) -> Observable<Response> {
+        let observable = provider.rx.request(.downloadStatementPDF(accountId: accountId,
+                                                                   yearMonth: yearMonth))
+            .filterSuccessfulStatusAndRedirectCodes()
+            .asObservable()
+
+        return observable
     }
+
+    func downloadStatementPDF(accountId: String, start: DateTime, end: DateTime) -> Observable<Response> {
+        let obs = provider.rx.request(.downloadStatementPDFForDateRange(accountId: accountId,
+                                                                        start: start,
+                                                                        end: end))
+            .filterSuccessfulStatusAndRedirectCodes()
+            .asObservable()
+
+        return obs
+    }
+
+    func downloadCSVStatement(accountId: String, yearMonth: String) -> Observable<Response> {
+        let observable = provider.rx.request(.downloadStatementCSV(accountId: accountId,
+                                                                   yearMonth: yearMonth))
+            .filterSuccessfulStatusAndRedirectCodes()
+            .asObservable()
+
+        return observable
+    }
+
+    func downloadStatementCSV(accountId: String, start: DateTime, end: DateTime) -> Observable<Response> {
+        let obs = provider.rx.request(.downloadStatementCSVForDateRange(accountId: accountId,
+                                                                        start: start,
+                                                                        end: end))
+            .filterSuccessfulStatusAndRedirectCodes()
+            .asObservable()
+
+        return obs
+    }
+
 }

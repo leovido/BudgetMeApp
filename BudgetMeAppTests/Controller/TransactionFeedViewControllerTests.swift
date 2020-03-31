@@ -15,27 +15,18 @@ class TransactionFeedViewControllerTests: XCTestCase {
     var viewController: TransactionFeedViewController!
 
     override func setUp() {
-
         viewController = sutNavigationSetup()
-
     }
 
     override func tearDown() {
         viewController = nil
     }
 
-    func testExample() {
+    func testLifecycle() {
         viewController.viewWillAppear(true)
         viewController.viewDidLoad()
         viewController.viewDidAppear(true)
-        viewController.viewWillAppear(true)
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+        viewController.viewWillDisappear(true)
     }
 
     func sutNavigationSetup<T>() -> T {
@@ -44,7 +35,7 @@ class TransactionFeedViewControllerTests: XCTestCase {
 
         let navigationController = UINavigationController()
 
-        UIApplication.shared.keyWindow!.rootViewController = navigationController
+        UIApplication.shared.windows.first!.rootViewController = navigationController
         navigationController.pushViewController(viewController, animated: false)
 
         viewController = navigationController.topViewController as? TransactionFeedViewController
