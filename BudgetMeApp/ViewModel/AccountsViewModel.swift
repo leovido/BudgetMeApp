@@ -78,6 +78,31 @@ struct AccountsViewModel: ViewModelBlueprint {
 
         return observable
     }
+    func downloadStatement(accountId: String, start: DateTime?, end: DateTime?) -> Observable<Data> {
+
+        guard let start = start, let end = end else {
+
+            let observable = provider.rx.request(.downloadStatement(accountId: accountId))
+                .filterSuccessfulStatusAndRedirectCodes()
+                .map { response in
+                    response.data
+            }
+            .asObservable()
+
+            return observable
+        }
+
+        let obs = provider.rx.request(.downloadStatementForDateRange(accountId: accountId,
+                                                                     start: start,
+                                                                     end: end))
+            .filterSuccessfulStatusAndRedirectCodes()
+            .map { response in
+                response.data
+        }
+        .asObservable()
+
+        return obs
+    }
             .subscribe { event in
                 switch event {
                 case .success(let accounts):
