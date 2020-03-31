@@ -12,7 +12,11 @@ import UIKit
 extension TransactionFeedViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
+        if dataSource[section].items.isEmpty {
+            return 0
+        } else {
+            return 40
+        }
     }
 
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
