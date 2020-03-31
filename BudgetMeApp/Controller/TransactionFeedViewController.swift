@@ -67,45 +67,6 @@ class TransactionFeedViewController: UIViewController {
 // - MARK: Rx setup
 extension TransactionFeedViewController {
 
-    private func performTransfer(viewModel: SavingsViewModel, amount: MinorUnits, savingsGoalUid: String) {
-        viewModel.addAmount(amount: amount, to: savingsGoalUid)
-    }
-
-    func presentAlert(roundUpAmount: MinorUnits) {
-
-        let alert = UIAlertController(title: "Transfer \(viewModel.savingsDisplayString)",
-            message: "Please select account to transfer round up savings",
-            preferredStyle: .alert)
-
-        let viewModel = SavingsViewModel()
-
-        viewModel.refreshData {
-
-            let savings = viewModel.dataSource.value
-
-            savings.forEach { saving in
-                let action = UIAlertAction(title: saving.name, style: .default) { action in
-
-                    self.performTransfer(viewModel: viewModel,
-                                         amount: roundUpAmount,
-                                         savingsGoalUid: saving.savingsGoalUid)
-
-                }
-
-                alert.addAction(action)
-
-            }
-
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            alert.addAction(cancelAction)
-
-            self.present(alert, animated: true, completion: nil)
-
-        }
-
-
-    }
-
     func setupLabels() {
 
         viewModel.dataSource
