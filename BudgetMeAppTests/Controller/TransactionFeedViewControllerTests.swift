@@ -22,11 +22,11 @@ class TransactionFeedViewControllerTests: XCTestCase {
         viewController = nil
     }
 
-    func testExample() {
+    func testLifecycle() {
         viewController.viewWillAppear(true)
         viewController.viewDidLoad()
         viewController.viewDidAppear(true)
-        viewController.viewWillAppear(true)
+        viewController.viewWillDisappear(true)
     }
 
     func sutNavigationSetup<T>() -> T {
@@ -35,7 +35,7 @@ class TransactionFeedViewControllerTests: XCTestCase {
 
         let navigationController = UINavigationController()
 
-        UIApplication.shared.keyWindow!.rootViewController = navigationController
+        UIApplication.shared.windows.first!.rootViewController = navigationController
         navigationController.pushViewController(viewController, animated: false)
 
         viewController = navigationController.topViewController as? TransactionFeedViewController
