@@ -90,6 +90,14 @@ class AccountViewModelTests: XCTestCase {
 
         XCTAssertNotNil(observable)
     }
+    func testDownloadCSV() {
+
+        accountViewModel = AccountsViewModel()
+
+        let observable = accountViewModel.downloadCSVStatement(accountId: "", yearMonth: "2020-03")
+
+        XCTAssertNotNil(observable)
+    }
     func testDataSourceError() {
 
         accountViewModel = AccountsViewModel()
