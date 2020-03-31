@@ -59,6 +59,21 @@ class AccountViewModelTests: XCTestCase {
         XCTAssertTrue(!accountStatementObserver.events.isEmpty)
 
     }
+    func testSetupAccountComposite() {
+
+        accountViewModel = AccountsViewModel()
+
+        let compositeObserver = scheduler.createObserver(AccountComposite.self)
+
+        accountViewModel.setupAccountComposite(account: STAccount(accountUid: "", defaultCategory: "", currency: .GBP, createdAt: ""))
+            .bind(to: compositeObserver)
+            .disposed(by: disposeBag)
+
+        scheduler.start()
+
+        XCTAssertTrue(compositeObserver.events.isEmpty)
+
+    }
     func testDataSourceError() {
 
         accountViewModel = AccountsViewModel()
