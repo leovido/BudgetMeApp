@@ -69,6 +69,7 @@
 		2DD4363F242A0D7C00DE751A /* STSavingsGoalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD4363E242A0D7C00DE751A /* STSavingsGoalService.swift */; };
 		2DF3A6772433597700D236A0 /* SwiftCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 2DF3A6762433597700D236A0 /* SwiftCheck */; };
 		2DF3A67A2433637900D236A0 /* ArbitraryGenerators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF3A6792433637900D236A0 /* ArbitraryGenerators.swift */; };
+		2DF3A67C2433782200D236A0 /* AccountComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF3A67B2433782200D236A0 /* AccountComposite.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +141,7 @@
 		2DD43639242A0D4E00DE751A /* STSavingsGoalManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STSavingsGoalManager.swift; sourceTree = "<group>"; };
 		2DD4363E242A0D7C00DE751A /* STSavingsGoalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STSavingsGoalService.swift; sourceTree = "<group>"; };
 		2DF3A6792433637900D236A0 /* ArbitraryGenerators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArbitraryGenerators.swift; sourceTree = "<group>"; };
+		2DF3A67B2433782200D236A0 /* AccountComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountComposite.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -348,6 +350,7 @@
 			isa = PBXGroup;
 			children = (
 				2D00554B2428DD6800A82E14 /* STAccount.swift */,
+				2DF3A67B2433782200D236A0 /* AccountComposite.swift */,
 			);
 			path = Accounts;
 			sourceTree = "<group>";
@@ -586,6 +589,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DF3A67C2433782200D236A0 /* AccountComposite.swift in Sources */,
 				2DAB22C7242A134F001C0F6E /* SavingsCell.swift in Sources */,
 				2DD4363A242A0D4E00DE751A /* STSavingsGoalManager.swift in Sources */,
 				2D00551A2428D6A300A82E14 /* TransactionFeedViewController.swift in Sources */,
