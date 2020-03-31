@@ -38,7 +38,7 @@ class TransactionFeedViewController: UIViewController {
                 cell.configure(value: i)
                 return cell
 
-            }
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -54,7 +54,6 @@ class TransactionFeedViewController: UIViewController {
         viewModel = TransactionsViewModel(accountId: Session.shared.accountId)
 
         setupBinding()
-        setupDownloadButton()
         setupDatePicker()
         setupLabels()
 
@@ -104,10 +103,6 @@ extension TransactionFeedViewController {
 
         }
 
-
-    }
-
-    func setupDownloadButton() {
 
     }
 
@@ -182,7 +177,8 @@ extension TransactionFeedViewController {
                 switch event {
                 case .next(let transaction):
 
-                    self.present(TransactionDetailsViewController.makeTransactionDetailsViewController(transaction: transaction),
+                    self.present(TransactionDetailsViewController
+                        .makeTransactionDetailsViewController(transaction: transaction),
                                  animated: true,
                                  completion: nil)
 
