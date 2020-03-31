@@ -137,10 +137,7 @@ extension AccountsViewModel {
                                                                         start: start,
                                                                         end: end))
             .filterSuccessfulStatusAndRedirectCodes()
-            .map { response in
-                response
-        }
-        .asObservable()
+            .asObservable()
 
         return obs
     }
