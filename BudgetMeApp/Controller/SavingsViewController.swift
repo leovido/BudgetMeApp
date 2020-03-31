@@ -71,14 +71,14 @@ class SavingsViewController: UIViewController {
 }
 
 extension SavingsViewController {
-    private func presentAlert() {
+    func presentAlert() {
 
         let alert = UIAlertController(title: "Saving goal name", message: "", preferredStyle: .alert)
 
         let yesAction = UIAlertAction(title: "Yes", style: .default, handler: { _ in
 
             let sampleName = alert.textFields?[0].text
-            let targetAmount = alert.textFields?[1].text
+//            let targetAmount = alert.textFields?[1].text
 
             self.viewModel.createNewSaving(name: sampleName ?? "Saving sample")
 
