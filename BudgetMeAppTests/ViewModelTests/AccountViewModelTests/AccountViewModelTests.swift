@@ -29,6 +29,21 @@ class AccountViewModelTests: XCTestCase {
         accountViewModel = nil
     }
 
+    func testGetIdentifiers() {
+
+        accountViewModel = AccountsViewModel(provider: makeMoyaSuccessStub(type: .identifiers))
+
+        let identifiersObserver = scheduler.createObserver(STAccountIdentifiers.self)
+
+        accountViewModel.getIdentifiers(accountId: UUID().uuidString)
+            .bind(to: identifiersObserver)
+            .disposed(by: disposeBag)
+
+        scheduler.start()
+
+        XCTAssertTrue(!identifiersObserver.events.isEmpty)
+
+    }
     func testDataSourceError() {
 
         accountViewModel = AccountsViewModel()
