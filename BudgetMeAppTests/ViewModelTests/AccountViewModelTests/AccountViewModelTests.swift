@@ -82,6 +82,14 @@ class AccountViewModelTests: XCTestCase {
 
         XCTAssertNotNil(observable)
     }
+    func testDownloadPDFRange() {
+
+        accountViewModel = AccountsViewModel()
+
+        let observable = accountViewModel.downloadStatementPDF(accountId: "", start: "", end: "")
+
+        XCTAssertNotNil(observable)
+    }
     func testDataSourceError() {
 
         accountViewModel = AccountsViewModel()
