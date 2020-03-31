@@ -19,8 +19,7 @@ class TransactionFeedViewController: UIViewController {
 
     @IBOutlet weak var totalExpensesLabel: UILabel!
     @IBOutlet weak var totalIncomeLabel: UILabel!
-    @IBOutlet weak var fetchButton: UIButton!
-    @IBOutlet weak var tranferButton: UIButton!
+    @IBOutlet weak var downloadStatementButton: UIButton!
 
     let dataSource = RxTableViewSectionedReloadDataSource<TransactionSectionData>(configureCell: TransactionFeedViewController.tableViewDataSourceUI())
 
@@ -42,25 +41,26 @@ class TransactionFeedViewController: UIViewController {
             }
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+
+        self.parent?.title = "Transaction Feed"
+
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         viewModel = TransactionsViewModel(accountId: Session.shared.accountId)
 
-        setupTransferButton()
         setupBinding()
-        setupButton()
+        setupDownloadButton()
         setupDatePicker()
         setupLabels()
 
-        if Session.shared.accountId.isEmpty {
-            presentAlert()
-        } else {
-            viewModel.refreshData()
-        }
+        viewModel.refreshData()
 
         navigationController?.navigationBar.prefersLargeTitles = true
-        self.parent?.title = "Transaction Feed"
     }
 
 }
@@ -70,18 +70,6 @@ extension TransactionFeedViewController {
 
     private func performTransfer(viewModel: SavingsViewModel, amount: MinorUnits, savingsGoalUid: String) {
         viewModel.addAmount(amount: amount, to: savingsGoalUid)
-    }
-
-    func presentAlert() {
-
-        let alert = UIAlertController(title: "Account not selected",
-                                      message: "Please select account to fetch the transactions",
-                                      preferredStyle: .alert)
-
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-
-        self.present(alert, animated: true, completion: nil)
-
     }
 
     func presentAlert(roundUpAmount: MinorUnits) {
@@ -116,6 +104,10 @@ extension TransactionFeedViewController {
 
         }
 
+
+    }
+
+    func setupDownloadButton() {
 
     }
 
@@ -165,33 +157,6 @@ extension TransactionFeedViewController {
 
     }
 
-    func setupTransferButton() {
-        tranferButton.rx.tap
-        .asObservable()
-        .subscribe { event in
-            self.presentAlert(roundUpAmount: self.viewModel.savings)
-        }
-        .disposed(by: disposeBag)
-    }
-
-    func setupButton() {
-
-        viewModel.isLoading
-        .asObserver()
-        .subscribe(onNext: { value in
-            value == true ? self.fetchButton.setTitle("Loading..", for: .normal) : self.fetchButton.setTitle("Fetch", for: .normal)
-        })
-        .disposed(by: disposeBag)
-
-        fetchButton.rx.tap
-            .asObservable()
-            .subscribe { event in
-                self.viewModel.refreshData()
-            }
-            .disposed(by: disposeBag)
-
-    }
-
     func setupBinding() {
 
         dataSource.titleForHeaderInSection = { dataSource, index in
@@ -221,8 +186,8 @@ extension TransactionFeedViewController {
                                  animated: true,
                                  completion: nil)
 
-                case .error(let e):
-                    break
+                case .error(let error):
+                    self.displayErrorAlert(error: error)
                 case .completed:
                     break
                 }
