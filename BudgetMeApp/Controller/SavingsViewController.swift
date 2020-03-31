@@ -20,13 +20,9 @@ class SavingsViewController: UIViewController {
     var viewModel: SavingsViewModel!
 
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        super.viewDidAppear(true)
 
-        if Session.shared.accountId.isEmpty {
-            presentAlert()
-        } else {
-            viewModel.refreshData {}
-        }
+        self.parent?.title = "Savings"
 
     }
 
@@ -38,7 +34,9 @@ class SavingsViewController: UIViewController {
         setupBinding()
         setupButton()
 
-        self.parent?.title = "Savings"
+        self.navigationController?.title = "Savings"
+
+        viewModel.refreshData {}
 
     }
 
