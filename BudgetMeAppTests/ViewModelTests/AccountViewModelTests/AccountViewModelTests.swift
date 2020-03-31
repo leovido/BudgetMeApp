@@ -121,6 +121,22 @@ class AccountViewModelTests: XCTestCase {
         XCTAssertTrue(!confirmationObserver.events.isEmpty)
 
     }
+
+    func testGetBalances() {
+
+        accountViewModel = AccountsViewModel(provider: makeMoyaSuccessStub(type: .balance))
+
+        let balanceObserver = scheduler.createObserver(STBalance.self)
+
+        accountViewModel.getBalance(accountId: UUID().uuidString)
+            .bind(to: balanceObserver)
+            .disposed(by: disposeBag)
+
+        scheduler.start()
+
+        XCTAssertTrue(!balanceObserver.events.isEmpty)
+
+    }
     func testDataSourceError() {
 
         accountViewModel = AccountsViewModel()
