@@ -48,9 +48,16 @@ struct AccountsViewModel: ViewModelBlueprint {
                            .filterSuccessfulStatusAndRedirectCodes()
                            .map(STBalance.self)
             })
+    func getBalance(accountId: String) -> Observable<STBalance> {
+        let obs = self.provider.rx.request(.getBalance(accountId: accountId))
+            .filterSuccessfulStatusAndRedirectCodes()
+            .map(STBalance.self)
+            .asObservable()
+            .share(replay: 1, scope: .whileConnected)
 
         return obs
     }
+
     func getIdentifiers(accountId: String) -> Observable<STAccountIdentifiers> {
         let observable = provider.rx.request(.getIdentifiers(accountId: accountId))
             .filterSuccessfulStatusAndRedirectCodes()
