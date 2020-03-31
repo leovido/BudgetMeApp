@@ -56,8 +56,8 @@ class AccountsViewController: UIViewController {
     func setupBinding() {
 
         viewModel.dataSource
-            .debug()
-            .bind(to: accountsTableView.rx
+        .asDriver()
+            .drive(accountsTableView.rx
                 .items(cellIdentifier: AccountsCell.identifier,
                        cellType: AccountsCell.self)) { row, element, cell in
 

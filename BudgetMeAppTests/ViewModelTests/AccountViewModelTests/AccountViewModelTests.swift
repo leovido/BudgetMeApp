@@ -52,15 +52,26 @@ class AccountViewModelTests: XCTestCase {
 
         accountViewModel = AccountsViewModel()
 
-        let dataSourceMock = scheduler.createObserver([STAccount].self)
+        let dataSourceMock = scheduler.createObserver([AccountComposite].self)
         accountViewModel.dataSource
             .bind(to: dataSourceMock)
             .disposed(by: disposeBag)
 
-        let randomAccounts = [STAccount(accountUid: "",
-                                        defaultCategory: "",
-                                        currency: .GBP,
-                                        createdAt: Date().description)]
+
+        let account = STAccount(accountUid: "",
+        defaultCategory: "",
+        currency: .GBP,
+        createdAt: Date().description)
+
+        let balance = STBalance(clearedBalance: CurrencyAndAmount(currency: .GBP, minorUnits: 10000),
+                                effectiveBalance: CurrencyAndAmount(currency: .GBP, minorUnits: 10000),
+                                pendingTransactions: CurrencyAndAmount(currency: .GBP, minorUnits: 0),
+                                acceptedOverdraft: CurrencyAndAmount(currency: .GBP, minorUnits: 0),
+                                amount: CurrencyAndAmount(currency: .GBP, minorUnits: 10000))
+
+        let identifiers = STAccountIdentifiers(accountIdentifier: "", bankIdentifier: "", iban: "", bic: "", accountIdentifiers: [])
+
+        let randomAccounts = [AccountComposite(account: account, balance: balance, identifiers: identifiers)]
 
         scheduler.createColdObservable([.next(15, randomAccounts)])
             .bind(to: accountViewModel.dataSource)
