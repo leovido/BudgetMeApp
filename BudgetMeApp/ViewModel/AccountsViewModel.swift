@@ -38,22 +38,16 @@ struct AccountsViewModel: ViewModelBlueprint {
         self.disposeBag = DisposeBag()
     }
 
-
-    func refreshData() {
-        self.isLoading.onNext(true)
-        provider.rx.request(.browseAccounts)
-            .debug("refreshData @ AccountsViewModel")
+    func getAllAccounts() -> Observable<[STAccount]> {
+        let obs = provider.rx.request(.browseAccounts)
             .filterSuccessfulStatusAndRedirectCodes()
             .map([STAccount].self, atKeyPath: "accounts")
-    func getBalances(accountIds: [String]) -> Observable<[STBalance]> {
+            .asObservable()
+            .share(replay: 1, scope: .whileConnected)
 
+        return obs
+    }
 
-        let obs = Observable.from(accountIds)
-            .flatMap({
-                self.provider.rx.request(.getBalance(accountId: $0))
-                           .filterSuccessfulStatusAndRedirectCodes()
-                           .map(STBalance.self)
-            })
     func getBalance(accountId: String) -> Observable<STBalance> {
         let obs = self.provider.rx.request(.getBalance(accountId: accountId))
             .filterSuccessfulStatusAndRedirectCodes()
@@ -73,6 +67,7 @@ struct AccountsViewModel: ViewModelBlueprint {
 
         return observable
     }
+
     func getStatementPeriods(accountId: String) -> Observable<AccountStatementPeriods> {
         let observable = provider.rx.request(.getAvailableStatementPeriods(accountId: accountId))
             .filterSuccessfulStatusAndRedirectCodes()
@@ -82,6 +77,7 @@ struct AccountsViewModel: ViewModelBlueprint {
 
         return observable
     }
+
     func getConfirmationOfFunds(accountId: String) -> Observable<ConfirmationOfFundsResponse> {
         let observable = provider.rx.request(.getConfirmationOfFunds(accountId: accountId))
             .filterSuccessfulStatusAndRedirectCodes()
@@ -91,6 +87,7 @@ struct AccountsViewModel: ViewModelBlueprint {
 
         return observable
     }
+
     func downloadStatement(accountId: String, start: DateTime?, end: DateTime?) -> Observable<Data> {
 
         guard let start = start, let end = end else {
@@ -116,14 +113,30 @@ struct AccountsViewModel: ViewModelBlueprint {
 
         return obs
     }
+
+
+    func refreshData() {
+        getAllAccounts()
+            .do(onNext: { _ in
+                self.isLoading.onNext(true)
+            })
+            .flatMap({ value in
+                self.setupAccountComposite(account: value.first!)
+            })
             .subscribe { event in
                 switch event {
-                case .success(let accounts):
-                    self.dataSource.accept(accounts)
+                case .next(let accountComposite):
+                    self.dataSource.accept([accountComposite])
                 case .error(let error):
                     self.errorPublisher.onNext(error)
+                case .completed:
+                    self.isLoading.onNext(false)
                 }
-            }.disposed(by: disposeBag)
+        }
+        .disposed(by: disposeBag)
+
+    }
+
     func setupAccountComposite(account: STAccount) -> Observable<AccountComposite> {
 
         let obs = Observable.zip(getBalance(accountId: account.accountUid),
