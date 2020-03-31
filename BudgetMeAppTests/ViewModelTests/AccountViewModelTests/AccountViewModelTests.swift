@@ -74,6 +74,14 @@ class AccountViewModelTests: XCTestCase {
         XCTAssertTrue(compositeObserver.events.isEmpty)
 
     }
+    func testDownloadPDF() {
+
+        accountViewModel = AccountsViewModel()
+
+        let observable = accountViewModel.downloadPDFStatement(accountId: "", yearMonth: "2020-03")
+
+        XCTAssertNotNil(observable)
+    }
     func testDataSourceError() {
 
         accountViewModel = AccountsViewModel()
