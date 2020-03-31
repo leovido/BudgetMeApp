@@ -86,5 +86,15 @@ struct AccountsViewModel: ViewModelBlueprint {
                     self.errorPublisher.onNext(error)
                 }
             }.disposed(by: disposeBag)
+    func setupAccountComposite(account: STAccount) -> Observable<AccountComposite> {
+
+        let obs = Observable.zip(getBalance(accountId: account.accountUid),
+                       getIdentifiers(accountId: account.accountUid))
+            .map { balance, identifiers in
+                AccountComposite(account: account, balance: balance, identifiers: identifiers)
+        }
+
+        return obs
+
     }
 }
