@@ -12,12 +12,6 @@ import RxCocoa
 import RxMoya
 import Moya
 
-struct AccountComposite: Decodable, Equatable {
-    var account: STAccount
-    var balance: STBalance
-    var identifiers: STAccountIdentifiers
-}
-
 struct AccountsViewModel: ViewModelBlueprint {
 
     typealias T = AccountComposite
@@ -37,6 +31,43 @@ struct AccountsViewModel: ViewModelBlueprint {
         self.errorPublisher = PublishSubject()
         self.disposeBag = DisposeBag()
     }
+
+    func refreshData() {
+        getAllAccounts()
+            .do(onNext: { _ in
+                self.isLoading.onNext(true)
+            })
+            .flatMap({ value in
+                self.setupAccountComposite(account: value.first!)
+            })
+            .subscribe { event in
+                switch event {
+                case .next(let accountComposite):
+                    self.dataSource.accept([accountComposite])
+                case .error(let error):
+                    self.errorPublisher.onNext(error)
+                case .completed:
+                    self.isLoading.onNext(false)
+                }
+        }
+        .disposed(by: disposeBag)
+
+    }
+
+    func setupAccountComposite(account: STAccount) -> Observable<AccountComposite> {
+
+        let obs = Observable.zip(getBalance(accountId: account.accountUid),
+                                 getIdentifiers(accountId: account.accountUid))
+            .map { balance, identifiers in
+                AccountComposite(account: account, balance: balance, identifiers: identifiers)
+        }
+
+        return obs
+
+    }
+}
+
+extension AccountsViewModel {
 
     func getAllAccounts() -> Observable<[STAccount]> {
         let obs = provider.rx.request(.browseAccounts)
@@ -88,64 +119,49 @@ struct AccountsViewModel: ViewModelBlueprint {
         return observable
     }
 
-    func downloadStatement(accountId: String, start: DateTime?, end: DateTime?) -> Observable<Data> {
+}
 
-        guard let start = start, let end = end else {
+extension AccountsViewModel {
 
-            let observable = provider.rx.request(.downloadStatement(accountId: accountId))
-                .filterSuccessfulStatusAndRedirectCodes()
-                .map { response in
-                    response.data
-            }
+    func downloadPDFStatement(accountId: String, yearMonth: String) -> Observable<Response> {
+        let observable = provider.rx.request(.downloadStatementPDF(accountId: accountId,
+                                                                   yearMonth: yearMonth))
+            .filterSuccessfulStatusAndRedirectCodes()
             .asObservable()
 
-            return observable
-        }
+        return observable
+    }
 
-        let obs = provider.rx.request(.downloadStatementForDateRange(accountId: accountId,
-                                                                     start: start,
-                                                                     end: end))
+    func downloadStatementPDF(accountId: String, start: DateTime, end: DateTime) -> Observable<Response> {
+        let obs = provider.rx.request(.downloadStatementPDFForDateRange(accountId: accountId,
+                                                                        start: start,
+                                                                        end: end))
             .filterSuccessfulStatusAndRedirectCodes()
             .map { response in
-                response.data
+                response
         }
         .asObservable()
 
         return obs
     }
 
+    func downloadCSVStatement(accountId: String, yearMonth: String) -> Observable<Response> {
+        let observable = provider.rx.request(.downloadStatementCSV(accountId: accountId,
+                                                                   yearMonth: yearMonth))
+            .filterSuccessfulStatusAndRedirectCodes()
+            .asObservable()
 
-    func refreshData() {
-        getAllAccounts()
-            .do(onNext: { _ in
-                self.isLoading.onNext(true)
-            })
-            .flatMap({ value in
-                self.setupAccountComposite(account: value.first!)
-            })
-            .subscribe { event in
-                switch event {
-                case .next(let accountComposite):
-                    self.dataSource.accept([accountComposite])
-                case .error(let error):
-                    self.errorPublisher.onNext(error)
-                case .completed:
-                    self.isLoading.onNext(false)
-                }
-        }
-        .disposed(by: disposeBag)
-
+        return observable
     }
 
-    func setupAccountComposite(account: STAccount) -> Observable<AccountComposite> {
-
-        let obs = Observable.zip(getBalance(accountId: account.accountUid),
-                       getIdentifiers(accountId: account.accountUid))
-            .map { balance, identifiers in
-                AccountComposite(account: account, balance: balance, identifiers: identifiers)
-        }
+    func downloadStatementCSV(accountId: String, start: DateTime, end: DateTime) -> Observable<Response> {
+        let obs = provider.rx.request(.downloadStatementCSVForDateRange(accountId: accountId,
+                                                                        start: start,
+                                                                        end: end))
+            .filterSuccessfulStatusAndRedirectCodes()
+            .asObservable()
 
         return obs
-
     }
+
 }
