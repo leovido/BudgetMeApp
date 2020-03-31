@@ -70,6 +70,13 @@
 		2DF3A6772433597700D236A0 /* SwiftCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 2DF3A6762433597700D236A0 /* SwiftCheck */; };
 		2DF3A67A2433637900D236A0 /* ArbitraryGenerators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF3A6792433637900D236A0 /* ArbitraryGenerators.swift */; };
 		2DF3A67C2433782200D236A0 /* AccountComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF3A67B2433782200D236A0 /* AccountComposite.swift */; };
+		2DF3A67E243396C900D236A0 /* AccountViewModelTests+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF3A67D243396C900D236A0 /* AccountViewModelTests+Extensions.swift */; };
+		2DF3A68024339A0400D236A0 /* account_success_balance.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DF3A67F24339A0400D236A0 /* account_success_balance.json */; };
+		2DF3A68224339CC500D236A0 /* account_success_identifiers.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DF3A68124339CC500D236A0 /* account_success_identifiers.json */; };
+		2DF3A68424339F7400D236A0 /* account_success_availableFunds.json in Sources */ = {isa = PBXBuildFile; fileRef = 2DF3A68324339F7400D236A0 /* account_success_availableFunds.json */; };
+		2DF3A68624339F8A00D236A0 /* account_success_statementPeriods.json in Sources */ = {isa = PBXBuildFile; fileRef = 2DF3A68524339F8A00D236A0 /* account_success_statementPeriods.json */; };
+		2DF3A6872433A01600D236A0 /* account_success_availableFunds.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DF3A68324339F7400D236A0 /* account_success_availableFunds.json */; };
+		2DF3A6882433A01600D236A0 /* account_success_statementPeriods.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DF3A68524339F8A00D236A0 /* account_success_statementPeriods.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +149,11 @@
 		2DD4363E242A0D7C00DE751A /* STSavingsGoalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STSavingsGoalService.swift; sourceTree = "<group>"; };
 		2DF3A6792433637900D236A0 /* ArbitraryGenerators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArbitraryGenerators.swift; sourceTree = "<group>"; };
 		2DF3A67B2433782200D236A0 /* AccountComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountComposite.swift; sourceTree = "<group>"; };
+		2DF3A67D243396C900D236A0 /* AccountViewModelTests+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountViewModelTests+Extensions.swift"; sourceTree = "<group>"; };
+		2DF3A67F24339A0400D236A0 /* account_success_balance.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = account_success_balance.json; sourceTree = "<group>"; };
+		2DF3A68124339CC500D236A0 /* account_success_identifiers.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = account_success_identifiers.json; sourceTree = "<group>"; };
+		2DF3A68324339F7400D236A0 /* account_success_availableFunds.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = account_success_availableFunds.json; sourceTree = "<group>"; };
+		2DF3A68524339F8A00D236A0 /* account_success_statementPeriods.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = account_success_statementPeriods.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,6 +256,10 @@
 			isa = PBXGroup;
 			children = (
 				2D00554F2428E0C900A82E14 /* account_success_browse.json */,
+				2DF3A68124339CC500D236A0 /* account_success_identifiers.json */,
+				2DF3A68324339F7400D236A0 /* account_success_availableFunds.json */,
+				2DF3A68524339F8A00D236A0 /* account_success_statementPeriods.json */,
+				2DF3A67F24339A0400D236A0 /* account_success_balance.json */,
 				2D00555A2428ECCD00A82E14 /* transactions_success_browseTransactions.json */,
 				2DAB22DF242A5781001C0F6E /* transactions_success_getTransactionWithRange.json */,
 			);
@@ -276,6 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				2D528755242E64FB00FF26F6 /* AccountViewModelTests.swift */,
+				2DF3A67D243396C900D236A0 /* AccountViewModelTests+Extensions.swift */,
 			);
 			path = AccountViewModelTests;
 			sourceTree = "<group>";
@@ -576,8 +593,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DF3A68224339CC500D236A0 /* account_success_identifiers.json in Resources */,
 				2D8DED09242D674200073D1B /* account_success_browse.json in Resources */,
 				2D8DED0A242D674200073D1B /* transactions_success_browseTransactions.json in Resources */,
+				2DF3A6872433A01600D236A0 /* account_success_availableFunds.json in Resources */,
+				2DF3A6882433A01600D236A0 /* account_success_statementPeriods.json in Resources */,
+				2DF3A68024339A0400D236A0 /* account_success_balance.json in Resources */,
 				2D8DED0B242D674200073D1B /* transactions_success_getTransactionWithRange.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -635,12 +656,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DF3A68424339F7400D236A0 /* account_success_availableFunds.json in Sources */,
 				2D8DECFE242D65E100073D1B /* BudgetMeAppTests.swift in Sources */,
 				2DB6EFFD24312119005FE32A /* TransactionFeedViewControllerTests.swift in Sources */,
+				2DF3A68624339F8A00D236A0 /* account_success_statementPeriods.json in Sources */,
 				2DB6F001243122D8005FE32A /* AccountsViewControllerTests.swift in Sources */,
 				2D52875B242E6C4D00FF26F6 /* TransactionFeedViewModelTests.swift in Sources */,
 				2DF3A67A2433637900D236A0 /* ArbitraryGenerators.swift in Sources */,
 				2D8DED05242D661800073D1B /* STAccountTests.swift in Sources */,
+				2DF3A67E243396C900D236A0 /* AccountViewModelTests+Extensions.swift in Sources */,
 				2D528756242E64FB00FF26F6 /* AccountViewModelTests.swift in Sources */,
 				2DB6EFFF2431225B005FE32A /* SavingsViewControllerTests.swift in Sources */,
 				2D8DED06242D661B00073D1B /* STTransactionFeedManagerTests.swift in Sources */,
