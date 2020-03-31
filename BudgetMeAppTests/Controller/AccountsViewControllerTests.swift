@@ -28,6 +28,10 @@ class AccountsViewControllerTests: XCTestCase {
         viewController.viewWillAppear(true)
     }
 
+    func testButtonDownload() {
+        viewController.downloadStatementButton.sendActions(for: .touchUpInside)
+    }
+
     func sutNavigationSetup<T>() -> T {
 
         viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AccountsViewController") as? AccountsViewController
