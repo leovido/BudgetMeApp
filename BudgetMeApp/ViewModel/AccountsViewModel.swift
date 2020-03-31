@@ -12,15 +12,21 @@ import RxCocoa
 import RxMoya
 import Moya
 
+struct AccountComposite: Decodable, Equatable {
+    var account: STAccount
+    var balance: STBalance
+    var identifiers: STAccountIdentifiers
+}
+
 struct AccountsViewModel: ViewModelBlueprint {
 
-    typealias T = STAccount
+    typealias T = AccountComposite
     typealias Provider = MoyaProvider
 
     let provider: MoyaProvider<STAccountService>
 
     let isLoading: PublishSubject<Bool>
-    let dataSource: BehaviorRelay<[STAccount]>
+    let dataSource: BehaviorRelay<[AccountComposite]>
     let errorPublisher: PublishSubject<Error>
     let disposeBag: DisposeBag
 
