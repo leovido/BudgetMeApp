@@ -61,16 +61,16 @@ class AccountsViewController: UIViewController {
                 .items(cellIdentifier: AccountsCell.identifier,
                        cellType: AccountsCell.self)) { row, element, cell in
 
-                        cell.configure(value: element, row: row + 1)
+                        cell.configure(value: element)
 
         }
         .disposed(by: disposeBag)
 
         accountsTableView
             .rx
-            .modelSelected(STAccount.self)
-            .subscribe(onNext: { account in
-                Session.shared.accountId = account.accountUid
+            .modelSelected(AccountComposite.self)
+            .subscribe(onNext: { accountsComposite in
+                Session.shared.accountId = accountsComposite.account.accountUid
 
                 self.performSegue(withIdentifier: "TabSegue", sender: nil)
 
