@@ -44,6 +44,7 @@ class AccountViewModelTests: XCTestCase {
         XCTAssertTrue(!identifiersObserver.events.isEmpty)
 
     }
+
     func testGetAccountStatementPeriods() {
 
         accountViewModel = AccountsViewModel(provider: makeMoyaSuccessStub(type: .statementPeriods))
@@ -59,6 +60,7 @@ class AccountViewModelTests: XCTestCase {
         XCTAssertTrue(!accountStatementObserver.events.isEmpty)
 
     }
+
     func testSetupAccountComposite() {
 
         accountViewModel = AccountsViewModel()
@@ -74,6 +76,7 @@ class AccountViewModelTests: XCTestCase {
         XCTAssertTrue(compositeObserver.events.isEmpty)
 
     }
+
     func testDownloadPDF() {
 
         accountViewModel = AccountsViewModel()
@@ -82,6 +85,7 @@ class AccountViewModelTests: XCTestCase {
 
         XCTAssertNotNil(observable)
     }
+
     func testDownloadPDFRange() {
 
         accountViewModel = AccountsViewModel()
@@ -90,6 +94,7 @@ class AccountViewModelTests: XCTestCase {
 
         XCTAssertNotNil(observable)
     }
+
     func testDownloadCSV() {
 
         accountViewModel = AccountsViewModel()
@@ -98,6 +103,7 @@ class AccountViewModelTests: XCTestCase {
 
         XCTAssertNotNil(observable)
     }
+
     func testDownloadCSVRange() {
 
         accountViewModel = AccountsViewModel()
@@ -106,6 +112,7 @@ class AccountViewModelTests: XCTestCase {
 
         XCTAssertNotNil(observable)
     }
+
     func testGetConfirmationFunds() {
 
         accountViewModel = AccountsViewModel(provider: makeMoyaSuccessStub(type: .availableFunds))
@@ -137,6 +144,7 @@ class AccountViewModelTests: XCTestCase {
         XCTAssertTrue(!balanceObserver.events.isEmpty)
 
     }
+
     func testDataSourceError() {
 
         accountViewModel = AccountsViewModel()
@@ -171,11 +179,7 @@ class AccountViewModelTests: XCTestCase {
         currency: .GBP,
         createdAt: Date().description)
 
-        let balance = STBalance(clearedBalance: CurrencyAndAmount(currency: .GBP, minorUnits: 10000),
-                                effectiveBalance: CurrencyAndAmount(currency: .GBP, minorUnits: 10000),
-                                pendingTransactions: CurrencyAndAmount(currency: .GBP, minorUnits: 0),
-                                acceptedOverdraft: CurrencyAndAmount(currency: .GBP, minorUnits: 0),
-                                amount: CurrencyAndAmount(currency: .GBP, minorUnits: 10000))
+        let balance = STBalance.arbitrary.generate
 
         let identifiers = STAccountIdentifiers(accountIdentifier: "", bankIdentifier: "", iban: "", bic: "", accountIdentifiers: [])
 
