@@ -28,6 +28,34 @@ class AccountsViewControllerTests: XCTestCase {
         viewController.viewWillAppear(true)
     }
 
+    func testPresentDownloadAlert() {
+
+        let expectation = XCTestExpectation(description: "show download alert")
+
+        viewController.presentDownloadAlert()
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+            XCTAssertTrue(UIApplication.shared.windows.first!.rootViewController?.presentedViewController is UIAlertController)
+            expectation.fulfill()
+        })
+        wait(for: [expectation], timeout: 1.5)
+
+    }
+
+    func testShowSuccessAlert() {
+
+        let expectation = XCTestExpectation(description: "show success alert")
+
+        viewController.showSuccessAlert()
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+            XCTAssertTrue(UIApplication.shared.windows.first!.rootViewController?.presentedViewController is UIAlertController)
+            expectation.fulfill()
+        })
+        wait(for: [expectation], timeout: 1.5)
+
+    }
+
     func testButtonDownload() {
         viewController.downloadStatementButton.sendActions(for: .touchUpInside)
     }
@@ -38,7 +66,7 @@ class AccountsViewControllerTests: XCTestCase {
 
         let navigationController = UINavigationController()
 
-        UIApplication.shared.keyWindow!.rootViewController = navigationController
+        UIApplication.shared.windows.first!.rootViewController = navigationController
         navigationController.pushViewController(viewController, animated: false)
 
         viewController = navigationController.topViewController as? AccountsViewController
