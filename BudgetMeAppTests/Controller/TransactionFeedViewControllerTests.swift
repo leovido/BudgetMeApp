@@ -15,9 +15,7 @@ class TransactionFeedViewControllerTests: XCTestCase {
     var viewController: TransactionFeedViewController!
 
     override func setUp() {
-
         viewController = sutNavigationSetup()
-
     }
 
     override func tearDown() {
@@ -29,13 +27,6 @@ class TransactionFeedViewControllerTests: XCTestCase {
         viewController.viewDidLoad()
         viewController.viewDidAppear(true)
         viewController.viewWillAppear(true)
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
     }
 
     func sutNavigationSetup<T>() -> T {
