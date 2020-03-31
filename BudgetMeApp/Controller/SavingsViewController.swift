@@ -34,8 +34,6 @@ class SavingsViewController: UIViewController {
         setupBinding()
         setupButton()
 
-        self.navigationController?.title = "Savings"
-
         viewModel.refreshData {}
 
     }
@@ -66,7 +64,7 @@ class SavingsViewController: UIViewController {
 
 
             }
-            .disposed(by: disposeBag)
+        .disposed(by: disposeBag)
 
     }
 
@@ -80,6 +78,7 @@ extension SavingsViewController {
         let yesAction = UIAlertAction(title: "Yes", style: .default, handler: { _ in
 
             let sampleName = alert.textFields?[0].text
+            let targetAmount = alert.textFields?[1].text
 
             self.viewModel.createNewSaving(name: sampleName ?? "Saving sample")
 
@@ -89,6 +88,10 @@ extension SavingsViewController {
 
         alert.addTextField(configurationHandler: { textField in
             textField.placeholder = "e.g. Summer holiday 2025"
+        })
+
+        alert.addTextField(configurationHandler: { textField in
+            textField.placeholder = "e.g. target amount 2000"
         })
 
         alert.addAction(yesAction)
