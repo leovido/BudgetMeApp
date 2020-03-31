@@ -106,6 +106,21 @@ class AccountViewModelTests: XCTestCase {
 
         XCTAssertNotNil(observable)
     }
+    func testGetConfirmationFunds() {
+
+        accountViewModel = AccountsViewModel(provider: makeMoyaSuccessStub(type: .availableFunds))
+
+        let confirmationObserver = scheduler.createObserver(ConfirmationOfFundsResponse.self)
+
+        accountViewModel.getConfirmationOfFunds(accountId: UUID().uuidString)
+            .bind(to: confirmationObserver)
+            .disposed(by: disposeBag)
+
+        scheduler.start()
+
+        XCTAssertTrue(!confirmationObserver.events.isEmpty)
+
+    }
     func testDataSourceError() {
 
         accountViewModel = AccountsViewModel()
