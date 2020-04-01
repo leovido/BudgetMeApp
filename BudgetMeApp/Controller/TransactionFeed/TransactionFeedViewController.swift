@@ -13,6 +13,8 @@ import RxDataSources
 
 class TransactionFeedViewController: UIViewController {
 
+    var account: STAccount!
+
     @IBOutlet weak var transactionsTableView: UITableView!
 
 	@IBOutlet weak var searchResultsView: UIView!
@@ -21,7 +23,6 @@ class TransactionFeedViewController: UIViewController {
 
     @IBOutlet weak var totalExpensesLabel: UILabel!
     @IBOutlet weak var totalIncomeLabel: UILabel!
-    @IBOutlet weak var downloadStatementButton: UIButton!
 
     let dataSource = RxTableViewSectionedReloadDataSource<TransactionSectionData>(configureCell: TransactionFeedViewController.tableViewDataSourceUI())
 
