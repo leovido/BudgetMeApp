@@ -26,7 +26,7 @@ final class TransactionCell: UITableViewCell {
 
         if value.direction == .IN {
             priceLabel.text = "+\(currencyFormatter(value: value.sourceAmount!))"
-            priceLabel.textColor = UIColor.green
+            priceLabel.textColor = UIColor.systemGreen
         } else {
             priceLabel.text = "-\(currencyFormatter(value: value.sourceAmount!))"
             priceLabel.textColor = UIColor.red
