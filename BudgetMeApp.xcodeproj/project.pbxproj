@@ -57,7 +57,6 @@
 		2DAB22E4242A5A03001C0F6E /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB22E3242A5A03001C0F6E /* Date+Extension.swift */; };
 		2DAB22E6242A5A39001C0F6E /* CurrencyFormattable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB22E5242A5A39001C0F6E /* CurrencyFormattable.swift */; };
 		2DAB22E8242A5AA1001C0F6E /* ViewModelBlueprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB22E7242A5AA1001C0F6E /* ViewModelBlueprint.swift */; };
-		2DB4E84924311FBE00EFE2EB /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = 2DB4E84824311FBE00EFE2EB /* RxTest */; };
 		2DB6EFFD24312119005FE32A /* TransactionFeedViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB6EFFC24312119005FE32A /* TransactionFeedViewControllerTests.swift */; };
 		2DB6EFFF2431225B005FE32A /* SavingsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB6EFFE2431225B005FE32A /* SavingsViewControllerTests.swift */; };
 		2DB6F001243122D8005FE32A /* AccountsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB6F000243122D8005FE32A /* AccountsViewControllerTests.swift */; };
@@ -77,6 +76,7 @@
 		2DF3A68624339F8A00D236A0 /* account_success_statementPeriods.json in Sources */ = {isa = PBXBuildFile; fileRef = 2DF3A68524339F8A00D236A0 /* account_success_statementPeriods.json */; };
 		2DF3A6872433A01600D236A0 /* account_success_availableFunds.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DF3A68324339F7400D236A0 /* account_success_availableFunds.json */; };
 		2DF3A6882433A01600D236A0 /* account_success_statementPeriods.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DF3A68524339F8A00D236A0 /* account_success_statementPeriods.json */; };
+		2DF3A68A2434C80600D236A0 /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = 2DF3A6892434C80600D236A0 /* RxTest */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -161,7 +161,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DB4E84924311FBE00EFE2EB /* RxTest in Frameworks */,
+				2DF3A68A2434C80600D236A0 /* RxTest in Frameworks */,
 				2D00553E2428D7A000A82E14 /* RxCocoa in Frameworks */,
 				2D00553C2428D7A000A82E14 /* RxSwift in Frameworks */,
 				2D8DECE3242D2EB300073D1B /* RxMoya in Frameworks */,
@@ -507,7 +507,7 @@
 				2D8DECE2242D2EB300073D1B /* RxMoya */,
 				2D0DBB772430E69E00A5C069 /* Differentiator */,
 				2D0DBB792430E69E00A5C069 /* RxDataSources */,
-				2DB4E84824311FBE00EFE2EB /* RxTest */,
+				2DF3A6892434C80600D236A0 /* RxTest */,
 			);
 			productName = "STT-round-up";
 			productReference = 2D0055122428D6A300A82E14 /* BudgetMeApp.app */;
@@ -994,15 +994,15 @@
 			package = 2D0055372428D72300A82E14 /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = RxMoya;
 		};
-		2DB4E84824311FBE00EFE2EB /* RxTest */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2D00553A2428D7A000A82E14 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxTest;
-		};
 		2DF3A6762433597700D236A0 /* SwiftCheck */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2DF3A6732433596000D236A0 /* XCRemoteSwiftPackageReference "SwiftCheck" */;
 			productName = SwiftCheck;
+		};
+		2DF3A6892434C80600D236A0 /* RxTest */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2D00553A2428D7A000A82E14 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxTest;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
