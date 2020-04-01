@@ -15,6 +15,8 @@ class TransactionFeedViewController: UIViewController {
 
     @IBOutlet weak var transactionsTableView: UITableView!
 
+	@IBOutlet weak var searchResultsView: UIView!
+
     @IBOutlet weak var datePickerFilter: UIDatePicker!
 
     @IBOutlet weak var totalExpensesLabel: UILabel!
@@ -56,6 +58,7 @@ class TransactionFeedViewController: UIViewController {
         setupBinding()
         setupDatePicker()
         setupLabels()
+        setupHiddenSearchView()
 
         viewModel.refreshData()
 
@@ -66,6 +69,46 @@ class TransactionFeedViewController: UIViewController {
 
 // - MARK: Rx setup
 extension TransactionFeedViewController {
+
+    func setupHiddenSearchView() {
+
+        viewModel.dataSource
+            .map({ transactions in
+
+                let isEmpty = Set(transactions
+                .compactMap({ !$0.items.isEmpty }))
+
+                return isEmpty.count == 1 ? isEmpty.first! : true
+
+            })
+            .asDriver(onErrorJustReturn: true)
+            .do(onNext: { success in
+
+                UIView.animate(withDuration: 0.25) {
+                    if success {
+                        self.searchResultsView.alpha = 0
+                    } else {
+                        self.searchResultsView.alpha = 1
+                    }
+                }
+
+            })
+            .drive(self.searchResultsView.rx.isHidden)
+        .disposed(by: disposeBag)
+
+        viewModel.dataSource
+            .map({ transactions in
+
+                return transactions
+                    .compactMap({ $0.items })
+                    .allSatisfy({ $0.isEmpty })
+
+            })
+            .asDriver(onErrorJustReturn: true)
+            .drive(self.transactionsTableView.rx.isHidden)
+        .disposed(by: disposeBag)
+
+    }
 
     func setupLabels() {
 
