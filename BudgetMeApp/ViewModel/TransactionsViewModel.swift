@@ -157,7 +157,7 @@ extension TransactionsViewModel {
     func updateDateRange(dateTime: DateTime) {
 
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM"
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
 
         guard let startDate = dateFormatter.date(from: dateTime) else { return }
         guard let endDate = Calendar.current.date(byAdding: .day, value: 7, to: startDate) else { return }
