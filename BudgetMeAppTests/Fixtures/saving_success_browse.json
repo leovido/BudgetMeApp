@@ -1,0 +1,28 @@
+{
+    "savingsGoalList": [
+        {
+            "savingsGoalUid": "2c52eadb-8890-4213-9fce-78b41f8d8f61",
+            "name": "MacBook Pro",
+            "totalSaved": {
+                "currency": "GBP",
+                "minorUnits": 2900
+            }
+        },
+        {
+            "savingsGoalUid": "2d8a8ae6-b0c4-4de9-b5a4-ea6ccdfc13ed",
+            "name": "Saving #1",
+            "totalSaved": {
+                "currency": "GBP",
+                "minorUnits": 0
+            }
+        },
+        {
+            "savingsGoalUid": "996d28ab-58c2-4038-b69a-a87e1e4abeed",
+            "name": "Summer holiday",
+            "totalSaved": {
+                "currency": "GBP",
+                "minorUnits": 1900
+            }
+        }
+    ]
+}
