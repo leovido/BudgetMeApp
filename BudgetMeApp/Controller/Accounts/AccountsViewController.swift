@@ -24,6 +24,8 @@ class AccountsViewController: UIViewController {
     @IBOutlet weak var accountsTableView: UITableView!
     @IBOutlet weak var downloadStatementButton: UIButton!
 
+    var selectedAccount: AccountComposite!
+
     let disposeBag: DisposeBag = DisposeBag()
     let viewModel: AccountsViewModel = AccountsViewModel()
 
@@ -76,9 +78,7 @@ class AccountsViewController: UIViewController {
                                         padding: 10,
                                         textColor: .white)
                 } else {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
-                        self.stopAnimating()
-                    }
+                    self.stopAnimating()
                 }
             })
         .disposed(by: disposeBag)
@@ -101,24 +101,21 @@ class AccountsViewController: UIViewController {
             .rx
             .modelSelected(AccountComposite.self)
             .subscribe(onNext: { accountsComposite in
+
+                self.selectedAccount = accountsComposite
                 Session.shared.accountId = accountsComposite.account.accountUid
-
-
+                self.performSegue(withIdentifier: "TransactionSegue", sender: self)
             })
             .disposed(by: disposeBag)
 
     }
 
-    override func performSegue(withIdentifier identifier: String, sender: Any?) {
-
-        if identifier == "TransactionSegue" {
-
-            
-
-
-            self.performSegue(withIdentifier: "TransactionSegue", sender: self)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "TransactionSegue" {
+            if let destinationVieController = segue.destination as? TransactionFeedViewController {
+                destinationVieController.account = self.selectedAccount
+            }
         }
     }
-
 
 }
