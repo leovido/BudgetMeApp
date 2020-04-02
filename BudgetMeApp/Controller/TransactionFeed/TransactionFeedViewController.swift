@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxDataSources
+import JTAppleCalendar
 
 class TransactionFeedViewController: UIViewController {
 
@@ -193,8 +194,7 @@ extension TransactionFeedViewController {
 
         viewModel.dataSource
             .asDriver(onErrorJustReturn: [])
-            .drive(transactionsTableView
-                .rx.items(dataSource: self.dataSource))
+            .drive(transactionsTableView.rx.items(dataSource: self.dataSource))
         .disposed(by: disposeBag)
 
         transactionsTableView.rx
@@ -288,3 +288,4 @@ extension TransactionFeedViewController {
     }
 
 }
+
