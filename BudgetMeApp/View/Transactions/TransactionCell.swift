@@ -16,20 +16,37 @@ final class TransactionCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
 
+    @IBOutlet weak var spendingCategoryImage: UIImageView!
+
     static var identifier: String {
         return "TransactionCell"
     }
 
-    func configure(value: STTransactionFeed) {
-        referenceLabel.text = value.reference
-        dateLabel.text = value.transactionTime
+    func configure(transaction: STTransactionFeed) {
+        referenceLabel.text = transaction.reference
+        dateLabel.text = Date.dateFormatter(dateString: transaction.transactionTime!)
 
-        if value.direction == .IN {
-            priceLabel.text = "+\(currencyFormatter(value: value.sourceAmount!))"
+        if transaction.direction == .IN {
+            priceLabel.text = "+" + transaction.sourceAmount!.description
             priceLabel.textColor = UIColor.systemGreen
         } else {
-            priceLabel.text = "-\(currencyFormatter(value: value.sourceAmount!))"
+            priceLabel.text = "-" + transaction.sourceAmount!.description
             priceLabel.textColor = UIColor.red
+        }
+
+        if #available(iOS 13.0, *) {
+            switch transaction.spendingCategory {
+            case .OTHER:
+                self.spendingCategoryImage.image = UIImage(systemName: "pencil.and.ellipsis.rectangle")!
+            case .REVENUE:
+                self.spendingCategoryImage.image = UIImage(systemName: "sterlingsign.circle.fill")!
+            case .TRAVEL:
+                self.spendingCategoryImage.image = UIImage(systemName: "airplane")!
+            default:
+                self.spendingCategoryImage.image = UIImage(systemName: "bag")!
+            }
+        } else {
+            // Fallback on earlier versions
         }
 
     }
