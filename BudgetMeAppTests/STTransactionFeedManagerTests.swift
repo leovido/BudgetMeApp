@@ -26,7 +26,7 @@ class STTransactionFeedManagerTests: XCTestCase {
         let exp = expectation(description: "Fetch all accounts")
 
         sut = STTransactionFeedManager(accountId: "someAccountId",
-                                       provider: makeMoyaSuccessStub(type: .browseTransactions))
+                                       provider: makeMoyaSuccessStub(type: .browse))
 
         sut.browse { result in
             if case let .success(transactions) = result {
@@ -43,7 +43,7 @@ class STTransactionFeedManagerTests: XCTestCase {
         let exp = expectation(description: "Fetch weekly transactions from a given date")
 
         sut = STTransactionFeedManager(accountId: "someAccountId",
-                                       provider: makeMoyaSuccessStub(type: .getTransactionWithRange))
+                                       provider: makeMoyaSuccessStub(type: .dateRange))
 
         sut.getWeeklyTransactions(startDate: "2020-03-20T11:19:25.581Z") { result in
             if case let .success(transactions) = result {
@@ -62,7 +62,7 @@ class STTransactionFeedManagerTests: XCTestCase {
         let exp = expectation(description: "Fetch weekly transactions from a given date")
 
         sut = STTransactionFeedManager(accountId: "someAccountId",
-                                       provider: makeMoyaSuccessStub(type: .getTransactionWithRange))
+                                       provider: makeMoyaSuccessStub(type: .dateRange))
 
         sut.getWeeklyTransactions(startDate: "2020-03-23T11:19:25.581Z") { result in
             if case let .success(transactions) = result {
@@ -135,12 +135,12 @@ extension STTransactionFeedManagerTests {
     }
 
     private enum STAccountSuccessTestCases: String, TestableCase {
-        case browseTransactions
-        case getTransactionWithRange
+        case browse
+        case dateRange
     }
 
     private enum BookingFailureTestCases: String, TestableCase {
-        case browseTransactions
-        case getTransactionWithRange
+        case browse
+        case dateRange
     }
 }
