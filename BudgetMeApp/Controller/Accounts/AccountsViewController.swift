@@ -27,7 +27,7 @@ class AccountsViewController: UIViewController {
     var selectedAccount: AccountComposite!
 
     let disposeBag: DisposeBag = DisposeBag()
-    let viewModel: AccountsViewModel = AccountsViewModel()
+    var viewModel: AccountsViewModel! = AccountsViewModel()
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
