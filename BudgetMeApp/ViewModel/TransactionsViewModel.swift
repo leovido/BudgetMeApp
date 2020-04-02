@@ -107,7 +107,7 @@ struct TransactionsViewModel: ViewModelBlueprint {
 
         provider.rx.request(.browseTransactions(accountId: Session.shared.accountId,
                                                 categoryId: "c4ed84e4-8cc9-4a3b-8df5-85996f67f2db",
-                                                changesSince: Date().description))
+                                                changesSince: Date().toStringDateFormat()))
             .filterSuccessfulStatusCodes()
             .map([STTransactionFeed].self, atKeyPath: "feedItems")
             .map({ transactions -> [TransactionSectionData] in
