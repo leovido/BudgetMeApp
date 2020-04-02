@@ -13,10 +13,6 @@ import RxMoya
 import Moya
 import RxDataSources
 
-extension TransactionsViewModel: Roundable {
-    typealias NewElement = MinorUnits
-}
-
 extension TransactionsViewModel: CurrencyFormattable {}
 
 struct TransactionsViewModel: ViewModelBlueprint {
@@ -40,18 +36,6 @@ struct TransactionsViewModel: ViewModelBlueprint {
         self.errorPublisher = PublishSubject()
         self.disposeBag = DisposeBag()
         self.dateRange = PublishSubject()
-    }
-
-    var savingsDisplayString: Currency {
-        return convertToCurrency(value: savings)
-    }
-
-    var savings: Int {
-        return 0
-//        dataSource.value
-//            .compactMap({ $0.sourceAmount?.minorUnits })
-//            .compactMap(roundUp)
-//            .reduce(0, +)
     }
 
     func makeTransactionRequest(start: DateTime, end: DateTime) -> Observable<[STTransactionFeed]> {

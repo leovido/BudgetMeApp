@@ -30,7 +30,6 @@
 		2D00556424291D7E00A82E14 /* CountryPartyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D00556324291D7E00A82E14 /* CountryPartyType.swift */; };
 		2D00556624291D8A00A82E14 /* RoundUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D00556524291D8A00A82E14 /* RoundUp.swift */; };
 		2D00556924291EA100A82E14 /* TransactionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D00556824291EA100A82E14 /* TransactionsViewModel.swift */; };
-		2D00556B24291EEB00A82E14 /* Roundable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D00556A24291EEB00A82E14 /* Roundable.swift */; };
 		2D00556E2429211700A82E14 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D00556D2429211700A82E14 /* TransactionCell.swift */; };
 		2D0DBB782430E69E00A5C069 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = 2D0DBB772430E69E00A5C069 /* Differentiator */; };
 		2D0DBB7A2430E69E00A5C069 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 2D0DBB792430E69E00A5C069 /* RxDataSources */; };
@@ -125,7 +124,6 @@
 		2D00556324291D7E00A82E14 /* CountryPartyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryPartyType.swift; sourceTree = "<group>"; };
 		2D00556524291D8A00A82E14 /* RoundUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundUp.swift; sourceTree = "<group>"; };
 		2D00556824291EA100A82E14 /* TransactionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewModel.swift; sourceTree = "<group>"; };
-		2D00556A24291EEB00A82E14 /* Roundable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roundable.swift; sourceTree = "<group>"; };
 		2D00556D2429211700A82E14 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
 		2D0DBB7C243115CA00A5C069 /* TransactionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailsViewController.swift; sourceTree = "<group>"; };
 		2D0DBB7E243116C500A5C069 /* TransactionSectionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionSectionData.swift; sourceTree = "<group>"; };
@@ -463,7 +461,6 @@
 		2DAB22DA242A4A6E001C0F6E /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				2D00556A24291EEB00A82E14 /* Roundable.swift */,
 				2DAB22E5242A5A39001C0F6E /* CurrencyFormattable.swift */,
 				2DAB22DB242A4A7A001C0F6E /* MoyaNetworkManagerFactory.swift */,
 				2DAB22DD242A4AAF001C0F6E /* EntityComponent.swift */,
@@ -718,7 +715,6 @@
 				2D00554A2428DD2300A82E14 /* STAccountManager.swift in Sources */,
 				2DAB22D7242A4238001C0F6E /* Session.swift in Sources */,
 				2D0055442428D89B00A82E14 /* STEnvironment.swift in Sources */,
-				2D00556B24291EEB00A82E14 /* Roundable.swift in Sources */,
 				2D00556424291D7E00A82E14 /* CountryPartyType.swift in Sources */,
 				2DAB22D9242A42A2001C0F6E /* STCurrency.swift in Sources */,
 				2DAB22E8242A5AA1001C0F6E /* ViewModelBlueprint.swift in Sources */,
