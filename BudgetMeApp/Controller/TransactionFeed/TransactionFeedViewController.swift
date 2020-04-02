@@ -54,6 +54,9 @@ class TransactionFeedViewController: UIViewController {
 
         viewModel = TransactionsViewModel(accountId: Session.shared.accountId)
 
+        // setup activity indicator
+        setupActivityIndicator()
+
         setupBinding()
         setupLabels()
         setupHiddenSearchView()
@@ -158,6 +161,24 @@ extension TransactionFeedViewController {
             .drive(self.totalExpensesLabel.rx.text)
             .disposed(by: disposeBag)
 
+    }
+
+    func setupActivityIndicator() {
+        viewModel.isLoading
+            .subscribe(onNext: { isLoading in
+                if isLoading {
+                    self.startAnimating(CGSize(width: 80, height: 80),
+                                        message: "Loading accounts..",
+                                        messageFont: UIFont(name: "Futura-Medium", size: 21),
+                                        type: .ballBeat,
+                                        color: #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1),
+                                        padding: 10,
+                                        textColor: .white)
+                } else {
+                    self.stopAnimating()
+                }
+            })
+        .disposed(by: disposeBag)
     }
 
     func setupBinding() {
