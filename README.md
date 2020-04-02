@@ -2,6 +2,8 @@
 <img alt="Transaction Feed" src="https://user-images.githubusercontent.com/18484997/77860702-723b1180-7208-11ea-907e-f0e8704bed20.png" width=270 align=left>
 <img alt="Transaction Details" src="https://user-images.githubusercontent.com/18484997/77860695-6d765d80-7208-11ea-919d-56459150ce16.png" width=270 align=left>
 <img alt="Savings" src="https://user-images.githubusercontent.com/18484997/77860828-3d7b8a00-7209-11ea-813a-18e7114bc892.png" width=270 align=left>
+<img alt="Transaction Feed" src="https://user-images.githubusercontent.com/18484997/78252616-0a781580-74eb-11ea-905a-439b3421dcde.png" width=270 align=left>
+
 <img alt="Search results" src="https://user-images.githubusercontent.com/18484997/78168715-5756e000-7448-11ea-8a63-5a74bace85a5.png" width=270 align=center>
 
 
