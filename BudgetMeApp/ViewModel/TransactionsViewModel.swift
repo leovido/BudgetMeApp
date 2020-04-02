@@ -167,7 +167,7 @@ extension TransactionsViewModel {
         let startDateString = dateFormatter.string(from: startDate)
         let endDateString = dateFormatter.string(from: endDate)
 
-        self.dateRange.onNext(startDateString + endDateString)
+        self.dateRange.onNext(startDateString + " - " + endDateString)
     }
 
 }
