@@ -81,7 +81,7 @@ extension STTransactionFeed: Arbitrary {
         return Gen<STTransactionFeed>.compose { c in
             return STTransactionFeed(feedItemUid: Gen<String>.pure(UUID().uuidString).generate,
                                      categoryUid: Gen<String>.pure(UUID().uuidString).generate,
-                                     amount: c.generate(),
+                                     amount: CurrencyAndAmount(currency: .GBP, minorUnits: Int.random(in: 0..<1_000_000)),
                                      sourceAmount: c.generate(),
                                      direction: c.generate(),
                                      updatedAt: Date().description,
@@ -90,6 +90,99 @@ extension STTransactionFeed: Arbitrary {
                                      retryAllocationUntilTime: Date().description,
                                      source: c.generate(),
                                      sourceSubType: c.generate(),
+                                     status: c.generate(),
+                                     counterPartyType: c.generate(),
+                                     counterPartyUid: c.generate(),
+                                     counterPartyName: c.generate(),
+                                     counterPartySubEntityUid: c.generate(),
+                                     counterPartySubEntityName: c.generate(),
+                                     counterPartySubEntityIdentifier: c.generate(),
+                                     counterPartySubEntitySubIdentifier: c.generate(),
+                                     exchangeRate: c.generate(),
+                                     totalFees: c.generate(),
+                                     reference: c.generate(),
+                                     country: c.generate(),
+                                     spendingCategory: c.generate(),
+                                     userNote: c.generate(),
+                                     roundUp: c.generate())
+        }
+    }
+
+    public static var arbitraryOUTDirection: Gen<STTransactionFeed> {
+        return Gen<STTransactionFeed>.compose { c in
+            return STTransactionFeed(feedItemUid: Gen<String>.pure(UUID().uuidString).generate,
+                                     categoryUid: Gen<String>.pure(UUID().uuidString).generate,
+                                     amount: CurrencyAndAmount(currency: .GBP, minorUnits: Int.random(in: 0..<1_000_000)),
+                                     sourceAmount: c.generate(),
+                                     direction: .OUT,
+                                     updatedAt: Date().description,
+                                     transactionTime: Date().description,
+                                     settlementTime: Date().description,
+                                     retryAllocationUntilTime: Date().description,
+                                     source: c.generate(),
+                                     sourceSubType: c.generate(),
+                                     status: c.generate(),
+                                     counterPartyType: c.generate(),
+                                     counterPartyUid: c.generate(),
+                                     counterPartyName: c.generate(),
+                                     counterPartySubEntityUid: c.generate(),
+                                     counterPartySubEntityName: c.generate(),
+                                     counterPartySubEntityIdentifier: c.generate(),
+                                     counterPartySubEntitySubIdentifier: c.generate(),
+                                     exchangeRate: c.generate(),
+                                     totalFees: c.generate(),
+                                     reference: c.generate(),
+                                     country: c.generate(),
+                                     spendingCategory: c.generate(),
+                                     userNote: c.generate(),
+                                     roundUp: c.generate())
+        }
+    }
+
+    public static var arbitraryInDirection: Gen<STTransactionFeed> {
+        return Gen<STTransactionFeed>.compose { c in
+            return STTransactionFeed(feedItemUid: Gen<String>.pure(UUID().uuidString).generate,
+                                     categoryUid: Gen<String>.pure(UUID().uuidString).generate,
+                                     amount: CurrencyAndAmount(currency: .GBP, minorUnits: Int.random(in: 0..<1_000_000)),
+                                     sourceAmount: c.generate(),
+                                     direction: .IN,
+                                     updatedAt: Date().description,
+                                     transactionTime: Date().description,
+                                     settlementTime: Date().description,
+                                     retryAllocationUntilTime: Date().description,
+                                     source: c.generate(),
+                                     sourceSubType: c.generate(),
+                                     status: c.generate(),
+                                     counterPartyType: c.generate(),
+                                     counterPartyUid: c.generate(),
+                                     counterPartyName: c.generate(),
+                                     counterPartySubEntityUid: c.generate(),
+                                     counterPartySubEntityName: c.generate(),
+                                     counterPartySubEntityIdentifier: c.generate(),
+                                     counterPartySubEntitySubIdentifier: c.generate(),
+                                     exchangeRate: c.generate(),
+                                     totalFees: c.generate(),
+                                     reference: c.generate(),
+                                     country: c.generate(),
+                                     spendingCategory: c.generate(),
+                                     userNote: c.generate(),
+                                     roundUp: c.generate())
+        }
+    }
+
+    public static var arbitraryWithSources: Gen<STTransactionFeed> {
+        return Gen<STTransactionFeed>.compose { c in
+            return STTransactionFeed(feedItemUid: Gen<String>.pure(UUID().uuidString).generate,
+                                     categoryUid: Gen<String>.pure(UUID().uuidString).generate,
+                                     amount: CurrencyAndAmount(currency: .GBP, minorUnits: Int.random(in: 0..<1_000_000)),
+                                     sourceAmount: c.generate(),
+                                     direction: c.generate(),
+                                     updatedAt: Date().description,
+                                     transactionTime: Date().description,
+                                     settlementTime: Date().description,
+                                     retryAllocationUntilTime: Date().description,
+                                     source: Source.allCases.randomElement()!,
+                                     sourceSubType: SourceSubType.allCases.randomElement()!,
                                      status: c.generate(),
                                      counterPartyType: c.generate(),
                                      counterPartyUid: c.generate(),
