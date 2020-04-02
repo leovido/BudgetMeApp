@@ -36,6 +36,7 @@
 		2D0DBB7A2430E69E00A5C069 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 2D0DBB792430E69E00A5C069 /* RxDataSources */; };
 		2D0DBB7D243115CA00A5C069 /* TransactionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0DBB7C243115CA00A5C069 /* TransactionDetailsViewController.swift */; };
 		2D0DBB7F243116C500A5C069 /* TransactionSectionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0DBB7E243116C500A5C069 /* TransactionSectionData.swift */; };
+		2D34D884243608DB00F7E21B /* PopularCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D34D883243608DB00F7E21B /* PopularCell.swift */; };
 		2D528756242E64FB00FF26F6 /* AccountViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D528755242E64FB00FF26F6 /* AccountViewModelTests.swift */; };
 		2D52875B242E6C4D00FF26F6 /* TransactionFeedViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52875A242E6C4D00FF26F6 /* TransactionFeedViewModelTests.swift */; };
 		2D6315F224297702009BC74D /* SavingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6315F124297702009BC74D /* SavingsViewController.swift */; };
@@ -124,6 +125,7 @@
 		2D00556D2429211700A82E14 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
 		2D0DBB7C243115CA00A5C069 /* TransactionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailsViewController.swift; sourceTree = "<group>"; };
 		2D0DBB7E243116C500A5C069 /* TransactionSectionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionSectionData.swift; sourceTree = "<group>"; };
+		2D34D883243608DB00F7E21B /* PopularCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularCell.swift; sourceTree = "<group>"; };
 		2D528755242E64FB00FF26F6 /* AccountViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModelTests.swift; sourceTree = "<group>"; };
 		2D52875A242E6C4D00FF26F6 /* TransactionFeedViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionFeedViewModelTests.swift; sourceTree = "<group>"; };
 		2D6315F124297702009BC74D /* SavingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsViewController.swift; sourceTree = "<group>"; };
@@ -393,6 +395,7 @@
 				2DB6F00324312450005FE32A /* Accounts */,
 				2DB6F00224312446005FE32A /* Transactions */,
 				2DB6F00424312457005FE32A /* Savings */,
+				2D34D883243608DB00F7E21B /* PopularCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -690,6 +693,7 @@
 				2D00555E24291CAC00A82E14 /* CurrencyAndAmount.swift in Sources */,
 				2D0055572428EA1300A82E14 /* STTransactionFeedManager.swift in Sources */,
 				2D00556E2429211700A82E14 /* TransactionCell.swift in Sources */,
+				2D34D884243608DB00F7E21B /* PopularCell.swift in Sources */,
 				2D00554A2428DD2300A82E14 /* STAccountManager.swift in Sources */,
 				2DAB22D7242A4238001C0F6E /* Session.swift in Sources */,
 				2D0055442428D89B00A82E14 /* STEnvironment.swift in Sources */,
