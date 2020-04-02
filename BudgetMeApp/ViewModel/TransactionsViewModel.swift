@@ -29,6 +29,9 @@ struct TransactionsViewModel: ViewModelBlueprint {
     let provider: MoyaProvider<STTransactionFeedService>
     let errorPublisher: PublishSubject<Error>
 
+    // outputs
+    let dateRange: PublishSubject<String>
+
     let disposeBag: DisposeBag
 
     init(provider: MoyaProvider<STTransactionFeedService> = MoyaNetworkManagerFactory.makeManager(),
@@ -36,6 +39,7 @@ struct TransactionsViewModel: ViewModelBlueprint {
         self.provider = provider
         self.errorPublisher = PublishSubject()
         self.disposeBag = DisposeBag()
+        self.dateRange = PublishSubject()
     }
 
     var savingsDisplayString: Currency {
@@ -50,25 +54,13 @@ struct TransactionsViewModel: ViewModelBlueprint {
 //            .reduce(0, +)
     }
 
-    private func calculateNextWeek(startDate: String) -> String? {
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-
-        guard let newDate = dateFormatter.date(from: startDate) else { return nil }
-        guard let endDate = Calendar.current.date(byAdding: .day, value: 7, to: newDate) else { return nil }
-
-        let endDateString = dateFormatter.string(from: endDate)
-
-        return endDateString
-
-    }
-
-
     func makeTransactionRequest(start: DateTime, end: DateTime) -> Observable<[STTransactionFeed]> {
         return provider.rx.request(.getWeeklyTransactions(accountId: Session.shared.accountId,
                                                           categoryId: "c4ed84e4-8cc9-4a3b-8df5-85996f67f2db",
                                                           startDate: start, endDate: end))
+            .do(onSubscribe: {
+                self.isLoading.onNext(true)
+            })
             .filterSuccessfulStatusCodes()
             .map([STTransactionFeed].self, atKeyPath: "feedItems")
             .asObservable()
@@ -76,8 +68,6 @@ struct TransactionsViewModel: ViewModelBlueprint {
     }
 
     func updateDataSource(startDate: DateTime, endDate: DateTime) {
-
-        self.isLoading.onNext(true)
 
         makeTransactionRequest(start: startDate, end: endDate)
             .map({ txs -> [TransactionSectionData] in
@@ -106,27 +96,30 @@ struct TransactionsViewModel: ViewModelBlueprint {
     }
 
     func refreshData(with dateTime: DateTime) {
-
         let endDate = calculateNextWeek(startDate: dateTime)!
-
+        updateDateRange(dateTime: dateTime)
         updateDataSource(startDate: dateTime, endDate: endDate)
     }
 
     func refreshData() {
+
         self.isLoading.onNext(true)
-        provider.rx.request(.browseTransactions(accountId: Session.shared.accountId, categoryId: "c4ed84e4-8cc9-4a3b-8df5-85996f67f2db", changesSince: Date().description))
+
+        provider.rx.request(.browseTransactions(accountId: Session.shared.accountId,
+                                                categoryId: "c4ed84e4-8cc9-4a3b-8df5-85996f67f2db",
+                                                changesSince: Date().description))
             .filterSuccessfulStatusCodes()
             .map([STTransactionFeed].self, atKeyPath: "feedItems")
-        .map({ transactions -> [TransactionSectionData] in
+            .map({ transactions -> [TransactionSectionData] in
 
-            let expenses = transactions.filter({ $0.direction == .OUT })
-            let income = transactions.filter({ $0.direction == .IN })
+                let expenses = transactions.filter({ $0.direction == .OUT })
+                let income = transactions.filter({ $0.direction == .IN })
 
-            let dataSource = [TransactionSectionData(header: "Income", items: income),
-                            TransactionSectionData(header: "Expenses", items: expenses)]
+                let dataSource = [TransactionSectionData(header: "Income", items: income),
+                                  TransactionSectionData(header: "Expenses", items: expenses)]
 
-            return dataSource
-        })
+                return dataSource
+            })
             .subscribe { event in
                 switch event {
                 case .success(let transactionSectionData):
@@ -135,11 +128,46 @@ struct TransactionsViewModel: ViewModelBlueprint {
                     self.isLoading.onNext(false)
 
                 case .error(let error):
+
                     self.errorPublisher.onNext(error)
                     self.isLoading.onNext(false)
-                }
+            }
         }
         .disposed(by: disposeBag)
+    }
+
+}
+
+extension TransactionsViewModel {
+
+    private func calculateNextWeek(startDate: String) -> String? {
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+
+        guard let newDate = dateFormatter.date(from: startDate) else { return nil }
+        guard let endDate = Calendar.current.date(byAdding: .day, value: 7, to: newDate) else { return nil }
+
+        let endDateString = dateFormatter.string(from: endDate)
+
+        return endDateString
+
+    }
+
+    func updateDateRange(dateTime: DateTime) {
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM"
+
+        guard let startDate = dateFormatter.date(from: dateTime) else { return }
+        guard let endDate = Calendar.current.date(byAdding: .day, value: 7, to: startDate) else { return }
+
+        dateFormatter.dateFormat = "dd/MM"
+
+        let startDateString = dateFormatter.string(from: startDate)
+        let endDateString = dateFormatter.string(from: endDate)
+
+        self.dateRange.onNext(startDateString + endDateString)
     }
 
 }
