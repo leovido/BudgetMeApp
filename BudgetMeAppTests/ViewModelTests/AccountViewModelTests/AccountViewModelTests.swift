@@ -12,7 +12,7 @@ import RxCocoa
 import RxTest
 @testable import BudgetMeApp
 
-class AccountViewModelTests: XCTestCase {
+class AccountViewModelTests: XCTestCase, StubAccounts {
 
     var accountViewModel: AccountsViewModel!
 
