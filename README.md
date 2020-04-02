@@ -37,16 +37,25 @@ Using Moya to encapsulate specific requests by category. e.g. AccountsService, T
 
 # Upcoming / Tasks
 - [ ] Authentication
-- [ ] ViewModel testing with RxTest
+- ✅ ViewModel testing with RxTest
 - [ ] Accounts
-- [x] Transaction Feed Details
+- ✅ Transaction Feed Details
 - [ ] Savings goals
-- [ ] Login screen
+- ✅ Login screen (view)
+- ✅ Transaction View (design change)
+- [ ] Filters
+- [ ] Login screen (functionality)
 - [ ] Budget View
 - [ ] Spending Insights
 - [ ] Card settings
 - [ ] Analytics View
 - [ ] SwiftUI version (other repo)
+
+# Contributing
+Feel free to send me an email if you want to contribute to extending this app. Or you can just fork the repo and make your own changes and submit a PR. 
+christian.leovido@gmail.com
+
+I would appreciate any feedback as I'm constantly looking for more efficient ways of writing code and building software. 😄
 
 # Screenshots
 <img alt="Savings" src="https://user-images.githubusercontent.com/18484997/77860828-3d7b8a00-7209-11ea-813a-18e7114bc892.png" width=270 align=left>
