@@ -9,12 +9,13 @@
 import XCTest
 @testable import BudgetMeApp
 
-class SavingsViewControllerTests: XCTestCase {
+class SavingsViewControllerTests: XCTestCase, SavingsStubProtocol {
 
     var viewController: SavingsViewController!
 
     override func setUp() {
         viewController = sutNavigationSetup()
+        viewController.viewModel = SavingsViewModel(provider: makeMoyaSuccessStub(type: .browse))
     }
 
     override func tearDown() {
