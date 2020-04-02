@@ -13,9 +13,9 @@ import RxDataSources
 
 class TransactionFeedViewController: UIViewController {
 
-    var account: STAccount!
-
     @IBOutlet weak var transactionsTableView: UITableView!
+
+    @IBOutlet weak var popularCategoriesCollectionView: UICollectionView!
 
 	@IBOutlet weak var searchResultsView: UIView!
 
@@ -23,6 +23,8 @@ class TransactionFeedViewController: UIViewController {
 
     @IBOutlet weak var totalExpensesLabel: UILabel!
     @IBOutlet weak var totalIncomeLabel: UILabel!
+
+    var account: AccountComposite!
 
     let dataSource = RxTableViewSectionedReloadDataSource<TransactionSectionData>(configureCell: TransactionFeedViewController.tableViewDataSourceUI())
 
@@ -32,23 +34,17 @@ class TransactionFeedViewController: UIViewController {
     static func tableViewDataSourceUI() -> (
         TableViewSectionedDataSource<TransactionSectionData>.ConfigureCell
         ) {
-        return { (_, tv, ip, i) in
+        return { (_, tableView, _, element) in
 
-                guard let cell = tv.dequeueReusableCell(withIdentifier: TransactionCell.identifier) as? TransactionCell else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: TransactionCell.identifier) as? TransactionCell else {
                     fatalError("Transaction cell not implemented")
                 }
 
-                cell.configure(value: i)
+                cell.configure(transaction: element)
+
                 return cell
 
         }
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-
-        self.parent?.title = "Transaction Feed"
-
     }
 
     override func viewDidLoad() {
@@ -61,9 +57,11 @@ class TransactionFeedViewController: UIViewController {
         setupLabels()
         setupHiddenSearchView()
 
+        // Popular Collection View Setup
+        setupDataSourceCollectionView()
+
         viewModel.refreshData()
 
-        navigationController?.navigationBar.prefersLargeTitles = true
     }
 
 }
@@ -127,7 +125,7 @@ extension TransactionFeedViewController {
 
                 let formattedAmount = self.currencyFormatter(value: minorUnitsAggregated)
 
-                return "Total income: \(formattedAmount)"
+                return "\(formattedAmount)"
 
             })
             .asDriver(onErrorJustReturn: "£0.00")
@@ -148,7 +146,7 @@ extension TransactionFeedViewController {
 
                 let formattedAmount = self.currencyFormatter(value: minorUnitsAggregated)
 
-                return "Total expenses: \(formattedAmount)"
+                return "\(formattedAmount)"
 
             })
             .asDriver(onErrorJustReturn: "£0.00")
@@ -215,3 +213,31 @@ extension TransactionFeedViewController {
 }
 
 extension TransactionFeedViewController: CurrencyFormattable {}
+
+// - MARK: Rx setup CollectionView
+extension TransactionFeedViewController {
+
+    func setupDataSourceCollectionView() {
+
+        viewModel.dataSource
+            .map({ transactions -> Set<SpendingCategory> in
+
+                let items = transactions.compactMap({ $0.items })
+
+                let allSpendingCategories = Set(items
+                .flatMap({ $0 })
+                .compactMap({ $0.spendingCategory }))
+
+                return allSpendingCategories
+
+            })
+            .bind(to: self.popularCategoriesCollectionView.rx.items(cellIdentifier: "PopularCell", cellType: PopularCell.self)) { row, element, cell in
+
+                cell.configure(spendingCategory: element)
+
+        }
+    .disposed(by: disposeBag)
+
+    }
+
+}
