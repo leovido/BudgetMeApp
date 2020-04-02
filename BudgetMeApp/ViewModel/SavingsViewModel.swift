@@ -57,7 +57,6 @@ struct SavingsViewModel: ViewModelBlueprint {
     func createNewSaving(name: String) {
         self.isLoading.onNext(true)
         provider.rx.request(.createSaving(name: name))
-            .debug(#function, trimOutput: true)
             .filterSuccessfulStatusCodes()
             .map(Bool.self)
             .subscribe { event in

@@ -31,7 +31,7 @@ class TransactionFeedViewModelTests: XCTestCase {
 
     func testDataSource() {
 
-        txsViewModel = TransactionsViewModel(accountId: "")
+        txsViewModel = TransactionsViewModel(provider: makeMoyaSuccessStub(type: .browse), accountId: "")
 
         let dataSourceMock = scheduler.createObserver([TransactionSectionData].self)
         txsViewModel.dataSource
@@ -48,6 +48,35 @@ class TransactionFeedViewModelTests: XCTestCase {
 
         XCTAssertEqual(dataSourceMock.events, [.next(0, []),
                                                .next(15, txs)])
+
+    }
+
+    func testRefreshData() {
+
+        txsViewModel = TransactionsViewModel(provider: makeMoyaSuccessStub(type: .browse), accountId: "")
+        txsViewModel.refreshData()
+
+    }
+
+    func testUpdateDateSource() {
+
+        txsViewModel = TransactionsViewModel(provider: makeMoyaSuccessStub(type: .browse), accountId: "")
+        txsViewModel.updateDateRange(dateTime: Date().toStringDateFormat())
+
+    }
+
+    func testRefreshDataRange() {
+
+        txsViewModel = TransactionsViewModel(provider: makeMoyaSuccessStub(type: .dateRange), accountId: "")
+        txsViewModel.refreshData(with: Date().toStringDateFormat())
+
+    }
+
+    func testCurrency() {
+
+        let currency = CurrencyAndAmount.arbitrary.generate.description
+
+        XCTAssert(!currency.isEmpty)
 
     }
 

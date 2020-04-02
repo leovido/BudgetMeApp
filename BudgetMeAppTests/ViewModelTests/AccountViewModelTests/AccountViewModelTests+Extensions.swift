@@ -10,7 +10,9 @@ import Foundation
 import Moya
 @testable import BudgetMeApp
 
-extension AccountViewModelTests {
+protocol StubAccounts {}
+
+extension StubAccounts {
 
     var bundle: Bundle {
         return Bundle(for: type(of: self) as! AnyClass)

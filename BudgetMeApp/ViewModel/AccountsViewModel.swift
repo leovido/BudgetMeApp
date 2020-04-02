@@ -15,7 +15,6 @@ import Moya
 struct AccountsViewModel: ViewModelBlueprint {
 
     typealias T = AccountComposite
-    typealias Provider = MoyaProvider
 
     let provider: MoyaProvider<STAccountService>
 

@@ -9,12 +9,13 @@
 import XCTest
 @testable import BudgetMeApp
 
-class AccountsViewControllerTests: XCTestCase {
+class AccountsViewControllerTests: XCTestCase, StubAccounts {
 
     var viewController: AccountsViewController!
 
     override func setUp() {
         viewController = sutNavigationSetup()
+        viewController.viewModel = AccountsViewModel(provider: makeMoyaSuccessStub(type: .browse))
     }
 
     override func tearDown() {
@@ -58,6 +59,14 @@ class AccountsViewControllerTests: XCTestCase {
 
     func testButtonDownload() {
         viewController.downloadStatementButton.sendActions(for: .touchUpInside)
+    }
+
+    func testDownloadPDF() {
+        viewController.performDownloadPDF(yearMonth: "2020-03")
+    }
+
+    func testDownloadCSV() {
+        viewController.performDownloadCSV(yearMonth: "2020-03")
     }
 
     func sutNavigationSetup<T>() -> T {
