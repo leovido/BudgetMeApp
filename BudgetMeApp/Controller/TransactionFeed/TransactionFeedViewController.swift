@@ -19,10 +19,12 @@ class TransactionFeedViewController: UIViewController {
 
 	@IBOutlet weak var searchResultsView: UIView!
 
-    @IBOutlet weak var datePickerFilter: UIDatePicker!
-
     @IBOutlet weak var totalExpensesLabel: UILabel!
     @IBOutlet weak var totalIncomeLabel: UILabel!
+
+    @IBOutlet weak var dateRangeLabel: UILabel!
+    
+    @IBOutlet weak var dateFilterButton: UIButton!
 
     var account: AccountComposite!
 
@@ -53,9 +55,12 @@ class TransactionFeedViewController: UIViewController {
         viewModel = TransactionsViewModel(accountId: Session.shared.accountId)
 
         setupBinding()
-        setupDatePicker()
         setupLabels()
         setupHiddenSearchView()
+
+        // setup date labels
+        configureDateFilter()
+        setupDateRangeLabel()
 
         // Popular Collection View Setup
         setupDataSourceCollectionView()
@@ -194,22 +199,6 @@ extension TransactionFeedViewController {
         .disposed(by: disposeBag)
 
     }
-
-    func setupDatePicker() {
-
-        datePickerFilter.date = Date()
-
-        datePickerFilter.rx
-            .value
-            .asObservable()
-            .subscribe({ value in
-
-                self.viewModel.refreshData(with: value.element!.toStringDateFormat())
-
-            })
-        .disposed(by: disposeBag)
-
-    }
 }
 
 extension TransactionFeedViewController: CurrencyFormattable {}
@@ -237,6 +226,43 @@ extension TransactionFeedViewController {
 
         }
     .disposed(by: disposeBag)
+
+    }
+
+    func configureDateFilter() {
+
+        dateFilterButton.rx.tap.asObservable()
+            .subscribe { _ in
+                self.presentDateAlert()
+        }
+        .disposed(by: disposeBag)
+
+    }
+
+    func setupDateRangeLabel() {
+        viewModel.dateRange
+            .bind(to: self.dateRangeLabel.rx.text)
+        .disposed(by: disposeBag)
+    }
+
+    func presentDateAlert() {
+
+        let alertController = UIAlertController(title: "\n\n\n\n\n\n\n\n\n\n\nDate range", message: "This will filter one week from the input date", preferredStyle: .alert)
+
+        let datePicker: UIDatePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        datePicker.frame = CGRect(x: 0, y: 15, width: 270, height: 200)
+
+        alertController.view.addSubview(datePicker)
+
+        let selectAction = UIAlertAction(title: "Ok", style: .default, handler: { _ in
+            self.viewModel.refreshData(with: datePicker.date.toStringDateFormat())
+        })
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+
+        alertController.addAction(selectAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true)
 
     }
 
