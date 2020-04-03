@@ -65,23 +65,28 @@ class TransactionDetailsViewController: UIViewController {
         return abbrev
     }
 
-    static func makeTransactionDetailsViewController(transaction: STTransactionFeed) -> TransactionDetailsViewController {
+    static func makeTransactionDetailsViewController(transaction: STTransactionFeed) -> TransactionDetailsViewController? {
 
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TransactionDetailsViewController") as! TransactionDetailsViewController
+        guard let vc = UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewController(
+                withIdentifier: "TransactionDetailsViewController"
+            ) as? TransactionDetailsViewController else {
+                return nil
+        }
 
         vc.transaction = transaction
 
         return vc
     }
-    
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    /*
+     // MARK: - Navigation
+
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
 
 }

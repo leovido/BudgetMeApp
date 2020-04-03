@@ -18,7 +18,6 @@ class AccountsCell: UITableViewCell {
     @IBOutlet weak var IBANLabel: UILabel!
     @IBOutlet weak var BICLabel: UILabel!
 
-
     static var identifier: String {
         return "AccountsCell"
     }

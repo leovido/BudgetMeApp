@@ -47,7 +47,7 @@ class SavingsViewController: UIViewController {
                 self.presentAlert()
 
             })
-        .disposed(by: disposeBag)
+            .disposed(by: disposeBag)
 
     }
 
@@ -58,12 +58,11 @@ class SavingsViewController: UIViewController {
             .drive(savingsTableView
                 .rx
                 .items(cellIdentifier: SavingsCell.identifier,
-                       cellType: SavingsCell.self)) { row, element, cell in
+                       cellType: SavingsCell.self)) { _, element, cell in
 
                         cell.configureSavings(savings: element)
 
-
-            }
+        }
         .disposed(by: disposeBag)
 
     }
@@ -78,7 +77,7 @@ extension SavingsViewController {
         let yesAction = UIAlertAction(title: "Yes", style: .default, handler: { _ in
 
             let sampleName = alert.textFields?[0].text
-//            let targetAmount = alert.textFields?[1].text
+            //            let targetAmount = alert.textFields?[1].text
 
             self.viewModel.createNewSaving(name: sampleName ?? "Saving sample")
 

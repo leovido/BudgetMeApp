@@ -15,10 +15,10 @@ extension AccountsViewController {
             .asSingle()
             .subscribe { event in
                 switch event {
-                    case .success:
-                        self.showSuccessAlert()
-                    case .error(let error):
-                        self.viewModel.errorPublisher.onNext(error)
+                case .success:
+                    self.showSuccessAlert()
+                case .error(let error):
+                    self.viewModel.errorPublisher.onNext(error)
                 }
         }
         .disposed(by: self.disposeBag)
@@ -29,10 +29,10 @@ extension AccountsViewController {
             .asSingle()
             .subscribe { event in
                 switch event {
-                    case .success:
-                        self.showSuccessAlert()
-                    case .error(let error):
-                        self.viewModel.errorPublisher.onNext(error)
+                case .success:
+                    self.showSuccessAlert()
+                case .error(let error):
+                    self.viewModel.errorPublisher.onNext(error)
                 }
         }
         .disposed(by: self.disposeBag)

@@ -173,7 +173,6 @@ class AccountViewModelTests: XCTestCase, StubAccounts {
             .bind(to: dataSourceMock)
             .disposed(by: disposeBag)
 
-
         let account = STAccount(accountUid: "",
         defaultCategory: "",
         currency: .GBP,

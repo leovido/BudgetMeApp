@@ -17,7 +17,7 @@ extension TransactionsViewModel: CurrencyFormattable {}
 
 struct TransactionsViewModel: ViewModelBlueprint {
 
-    typealias T = TransactionSectionData
+    typealias Model = TransactionSectionData
 
     var isLoading: PublishSubject<Bool> = PublishSubject()
     var dataSource: BehaviorRelay<[TransactionSectionData]> = BehaviorRelay(value: [])
@@ -57,12 +57,12 @@ struct TransactionsViewModel: ViewModelBlueprint {
             .map({ txs -> [TransactionSectionData] in
 
                 let items = [TransactionSectionData(header: TransactionType.income.rawValue.capitalized,
-                                                 items: txs
-                                                    .filter({ $0.direction == .IN })),
+                                                    items: txs
+                                                        .filter({ $0.direction == .IN })),
                              TransactionSectionData(header: TransactionType.expense.rawValue.capitalized,
-                                                 items: txs
-                                                    .filter({ $0.direction == .OUT })
-                            )]
+                                                    items: txs
+                                                        .filter({ $0.direction == .OUT })
+                    )]
 
                 return items
             })
@@ -115,7 +115,7 @@ struct TransactionsViewModel: ViewModelBlueprint {
 
                     self.errorPublisher.onNext(error)
                     self.isLoading.onNext(false)
-            }
+                }
         }
         .disposed(by: disposeBag)
     }

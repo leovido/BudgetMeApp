@@ -14,7 +14,7 @@ import Moya
 
 struct SavingsViewModel: ViewModelBlueprint {
 
-    typealias T = STSavingsGoal
+    typealias Model = STSavingsGoal
 
     let isLoading: PublishSubject<Bool>
     let dataSource: BehaviorRelay<[STSavingsGoal]>

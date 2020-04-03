@@ -63,8 +63,6 @@ final class TransactionCell: UITableViewCell {
             default:
                 self.spendingCategoryImage.image = UIImage(systemName: "bag")!
             }
-        } else {
-            // Fallback on earlier versions
         }
 
     }
