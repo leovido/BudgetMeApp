@@ -18,8 +18,30 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var googleButton: UIButton!
 
+    var loginViewModel: LoginViewModel = LoginViewModel()
+    let disposeBag = DisposeBag()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let outputs = loginViewModel.transform(input: LoginViewModel.Input(
+            emailTextFieldChanged: emailTF.rx.text.orEmpty.asObservable(),
+            passwordTextFieldChanged: passwordTF.rx.text.orEmpty.asObservable())
+        )
+
+        outputs.isEmailTextFieldValid
+            .map({
+                switch $0 {
+                case false: return UIColor.white
+                case true: return UIColor.systemGreen
+                }
+            })
+            .drive(self.emailTF.rx.backgroundColor)
+        .disposed(by: disposeBag)
+
+        outputs.isValid
+            .drive(loginButton.rx.isEnabled)
+            .disposed(by: disposeBag)
 
     }
 }
