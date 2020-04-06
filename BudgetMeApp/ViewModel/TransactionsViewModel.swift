@@ -54,18 +54,7 @@ struct TransactionsViewModel: ViewModelBlueprint {
     func updateDataSource(startDate: DateTime, endDate: DateTime) {
 
         makeTransactionRequest(start: startDate, end: endDate)
-            .map({ txs -> [TransactionSectionData] in
-
-                let items = [TransactionSectionData(header: TransactionType.income.rawValue.capitalized,
-                                                    items: txs
-                                                        .filter({ $0.direction == .IN })),
-                             TransactionSectionData(header: TransactionType.expense.rawValue.capitalized,
-                                                    items: txs
-                                                        .filter({ $0.direction == .OUT })
-                    )]
-
-                return items
-            })
+            .map(makeTransactionSectionData)
             .subscribe { event in
                 switch event {
                 case .next(let txs):
@@ -94,16 +83,7 @@ struct TransactionsViewModel: ViewModelBlueprint {
                                                 changesSince: Date().toStringDateFormat()))
             .filterSuccessfulStatusCodes()
             .map([STTransactionFeed].self, atKeyPath: "feedItems")
-            .map({ transactions -> [TransactionSectionData] in
-
-                let expenses = transactions.filter({ $0.direction == .OUT })
-                let income = transactions.filter({ $0.direction == .IN })
-
-                let dataSource = [TransactionSectionData(header: "Income", items: income),
-                                  TransactionSectionData(header: "Expenses", items: expenses)]
-
-                return dataSource
-            })
+            .map(makeTransactionSectionData)
             .subscribe { event in
                 switch event {
                 case .success(let transactionSectionData):
@@ -152,6 +132,24 @@ extension TransactionsViewModel {
         let endDateString = dateFormatter.string(from: endDate)
 
         self.dateRange.onNext(startDateString + " - " + endDateString)
+    }
+
+}
+
+extension TransactionsViewModel {
+
+    func makeTransactionSectionData(_ txs: [STTransactionFeed]) -> [TransactionSectionData] {
+
+        let incomeSection = TransactionSectionData(header: TransactionType.income.rawValue.capitalized,
+                                                   items: txs.filter({ $0.direction == .IN }))
+
+        let expensesSection = TransactionSectionData(header: TransactionType.expense.rawValue.capitalized,
+                                                     items: txs.filter({ $0.direction == .OUT }))
+
+        let items = [incomeSection,
+                     expensesSection]
+
+        return items
     }
 
 }
