@@ -1,0 +1,6 @@
+{
+    "access_token": "some long token",
+    "token_type": "tokeType",
+    "expires_in": 86400,
+    "scope": "some scope"
+}
