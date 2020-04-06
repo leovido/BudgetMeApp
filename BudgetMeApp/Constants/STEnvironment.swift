@@ -21,5 +21,5 @@ enum STEnvironment {
 }
 
 enum Constants {
-    static let auth = "https://api-sandbox.starlingbank.com/oauth/access-token"
+    static let auth = URL(string: "https://api-sandbox.starlingbank.com/oauth/access-token")!
 }
