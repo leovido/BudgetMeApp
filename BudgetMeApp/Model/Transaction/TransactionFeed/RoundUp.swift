@@ -11,9 +11,4 @@ import Foundation
 struct RoundUp: Decodable, Equatable, Hashable {
     public let goalCategoryUid: String
     public let amount: CurrencyAndAmount
-
-    enum CodingKeys: String, CodingKey {
-        case goalCategoryUid = "goalCategoryUid"
-        case amount = "amount"
-    }
 }

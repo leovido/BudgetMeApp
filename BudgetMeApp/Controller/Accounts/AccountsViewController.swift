@@ -11,7 +11,9 @@ import RxSwift
 
 extension UIViewController {
     func displayErrorAlert(error: Error) {
-        let alert = UIAlertController(title: "Something happened..", message: error.localizedDescription, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Something happened..",
+                                      message: error.localizedDescription,
+                                      preferredStyle: .alert)
 
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
 
@@ -51,10 +53,10 @@ class AccountsViewController: UIViewController {
 
     func setupButtonDownload() {
         downloadStatementButton.rx.tap
-        .asObservable()
+            .asObservable()
             .subscribe { _ in
                 self.presentDownloadAlert()
-            }
+        }
         .disposed(by: disposeBag)
     }
 
@@ -63,7 +65,7 @@ class AccountsViewController: UIViewController {
             .subscribe(onNext: { error in
                 self.displayErrorAlert(error: error)
             })
-        .disposed(by: disposeBag)
+            .disposed(by: disposeBag)
     }
 
     func setupActivityIndicator() {
@@ -81,16 +83,16 @@ class AccountsViewController: UIViewController {
                     self.stopAnimating()
                 }
             })
-        .disposed(by: disposeBag)
+            .disposed(by: disposeBag)
     }
 
     func setupBinding() {
 
         viewModel.dataSource
-        .asDriver()
+            .asDriver()
             .drive(accountsTableView.rx
                 .items(cellIdentifier: AccountsCell.identifier,
-                       cellType: AccountsCell.self)) { row, element, cell in
+                       cellType: AccountsCell.self)) { _, element, cell in
 
                         cell.configure(value: element)
 

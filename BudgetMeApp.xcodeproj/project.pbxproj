@@ -73,6 +73,9 @@
 		2DB6F001243122D8005FE32A /* AccountsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB6F000243122D8005FE32A /* AccountsViewControllerTests.swift */; };
 		2DB6F0072431248B005FE32A /* TransactionFeedDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB6F0062431248B005FE32A /* TransactionFeedDelegate.swift */; };
 		2DB6F00A24313B11005FE32A /* TransactionDetailsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB6F00924313B11005FE32A /* TransactionDetailsTests.swift */; };
+		2DC807F3243B55E7006E68B3 /* UserDefault+PropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC807F2243B55E7006E68B3 /* UserDefault+PropertyWrapper.swift */; };
+		2DC807F6243B5649006E68B3 /* STAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC807F5243B5649006E68B3 /* STAuthentication.swift */; };
+		2DC807F8243B59BF006E68B3 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC807F7243B59BF006E68B3 /* LoginViewModel.swift */; };
 		2DD43636242A058700DE751A /* STSavingsGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD43635242A058700DE751A /* STSavingsGoal.swift */; };
 		2DD43638242A0D0600DE751A /* SavingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD43637242A0D0600DE751A /* SavingsViewModel.swift */; };
 		2DD4363A242A0D4E00DE751A /* STSavingsGoalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD43639242A0D4E00DE751A /* STSavingsGoalManager.swift */; };
@@ -83,6 +86,7 @@
 		2DF3A67E243396C900D236A0 /* AccountViewModelTests+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF3A67D243396C900D236A0 /* AccountViewModelTests+Extensions.swift */; };
 		2DF3A68024339A0400D236A0 /* account_success_balance.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DF3A67F24339A0400D236A0 /* account_success_balance.json */; };
 		2DF3A68224339CC500D236A0 /* account_success_identifiers.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DF3A68124339CC500D236A0 /* account_success_identifiers.json */; };
+		2DFC8E70243BB19A00D70A44 /* STAccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFC8E6F243BB19A00D70A44 /* STAccessToken.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +160,9 @@
 		2DB6F000243122D8005FE32A /* AccountsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewControllerTests.swift; sourceTree = "<group>"; };
 		2DB6F0062431248B005FE32A /* TransactionFeedDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionFeedDelegate.swift; sourceTree = "<group>"; };
 		2DB6F00924313B11005FE32A /* TransactionDetailsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailsTests.swift; sourceTree = "<group>"; };
+		2DC807F2243B55E7006E68B3 /* UserDefault+PropertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+PropertyWrapper.swift"; sourceTree = "<group>"; };
+		2DC807F5243B5649006E68B3 /* STAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STAuthentication.swift; sourceTree = "<group>"; };
+		2DC807F7243B59BF006E68B3 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		2DD43635242A058700DE751A /* STSavingsGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STSavingsGoal.swift; sourceTree = "<group>"; };
 		2DD43637242A0D0600DE751A /* SavingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsViewModel.swift; sourceTree = "<group>"; };
 		2DD43639242A0D4E00DE751A /* STSavingsGoalManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STSavingsGoalManager.swift; sourceTree = "<group>"; };
@@ -167,6 +174,7 @@
 		2DF3A68124339CC500D236A0 /* account_success_identifiers.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = account_success_identifiers.json; sourceTree = "<group>"; };
 		2DF3A68324339F7400D236A0 /* account_success_availableFunds.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = account_success_availableFunds.json; sourceTree = "<group>"; };
 		2DF3A68524339F8A00D236A0 /* account_success_statementPeriods.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = account_success_statementPeriods.json; sourceTree = "<group>"; };
+		2DFC8E6F243BB19A00D70A44 /* STAccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STAccessToken.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +248,7 @@
 		2D00553F2428D7AB00A82E14 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				2DC807F4243B5635006E68B3 /* Auth */,
 				2DD4363C242A0D5C00DE751A /* Accounts */,
 				2DD4363D242A0D6300DE751A /* Transactions */,
 				2DD4363B242A0D5400DE751A /* Savings */,
@@ -252,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				2D0055432428D89B00A82E14 /* STEnvironment.swift */,
+				2DC807F2243B55E7006E68B3 /* UserDefault+PropertyWrapper.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -262,6 +272,7 @@
 				2DAB22CC242A138F001C0F6E /* Accounts */,
 				2DAB22C8242A1374001C0F6E /* Transaction */,
 				2DAB22CB242A1388001C0F6E /* Savings */,
+				2DFC8E6F243BB19A00D70A44 /* STAccessToken.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -287,6 +298,7 @@
 				2DAB22D4242A38B4001C0F6E /* AccountsViewModel.swift */,
 				2D00556824291EA100A82E14 /* TransactionsViewModel.swift */,
 				2DD43637242A0D0600DE751A /* SavingsViewModel.swift */,
+				2DC807F7243B59BF006E68B3 /* LoginViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -518,6 +530,14 @@
 			path = Delegates;
 			sourceTree = "<group>";
 		};
+		2DC807F4243B5635006E68B3 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				2DC807F5243B5649006E68B3 /* STAuthentication.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		2DD4363B242A0D5400DE751A /* Savings */ = {
 			isa = PBXGroup;
 			children = (
@@ -563,6 +583,7 @@
 				2D00550E2428D6A300A82E14 /* Sources */,
 				2D00550F2428D6A300A82E14 /* Frameworks */,
 				2D0055102428D6A300A82E14 /* Resources */,
+				2DC807F1243B516A006E68B3 /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -677,6 +698,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2DC807F1243B516A006E68B3 /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#if which swiftlint >/dev/null; then\n#  swiftlint\n#else\n#  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n#fi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2D00550E2428D6A300A82E14 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -684,16 +726,19 @@
 			files = (
 				2DA568842435429900D94A86 /* LoginViewController.swift in Sources */,
 				2DF3A67C2433782200D236A0 /* AccountComposite.swift in Sources */,
+				2DFC8E70243BB19A00D70A44 /* STAccessToken.swift in Sources */,
 				2DAB22C7242A134F001C0F6E /* SavingsCell.swift in Sources */,
 				2DD4363A242A0D4E00DE751A /* STSavingsGoalManager.swift in Sources */,
 				2DA5687F24353DFE00D94A86 /* AccountsViewController+Alerts.swift in Sources */,
 				2D00551A2428D6A300A82E14 /* TransactionFeedViewController.swift in Sources */,
 				2D0055462428DC3200A82E14 /* STAuthPlugin.swift in Sources */,
 				2DA5687C24353D6F00D94A86 /* UIViewController+ActivityIndicator.swift in Sources */,
+				2DC807F8243B59BF006E68B3 /* LoginViewModel.swift in Sources */,
 				2D0055592428EA6000A82E14 /* STTransactionFeedService.swift in Sources */,
 				2D0055162428D6A300A82E14 /* AppDelegate.swift in Sources */,
 				2D0DBB7F243116C500A5C069 /* TransactionSectionData.swift in Sources */,
 				2DD43636242A058700DE751A /* STSavingsGoal.swift in Sources */,
+				2DC807F6243B5649006E68B3 /* STAuthentication.swift in Sources */,
 				2D0055412428D7C000A82E14 /* STAccountService.swift in Sources */,
 				2DAB22D5242A38B4001C0F6E /* AccountsViewModel.swift in Sources */,
 				2DAB22E4242A5A03001C0F6E /* Date+Extension.swift in Sources */,
@@ -702,6 +747,7 @@
 				2D6315F224297702009BC74D /* SavingsViewController.swift in Sources */,
 				2DD43638242A0D0600DE751A /* SavingsViewModel.swift in Sources */,
 				2D0055532428E9D000A82E14 /* STTransactionFeed.swift in Sources */,
+				2DC807F3243B55E7006E68B3 /* UserDefault+PropertyWrapper.swift in Sources */,
 				2D00556924291EA100A82E14 /* TransactionsViewModel.swift in Sources */,
 				2DB6F0072431248B005FE32A /* TransactionFeedDelegate.swift in Sources */,
 				2DAB22DE242A4AAF001C0F6E /* EntityComponent.swift in Sources */,

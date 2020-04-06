@@ -17,18 +17,20 @@ class TransactionFeedViewController: UIViewController {
 
     @IBOutlet weak var popularCategoriesCollectionView: UICollectionView!
 
-	@IBOutlet weak var searchResultsView: UIView!
+    @IBOutlet weak var searchResultsView: UIView!
 
     @IBOutlet weak var totalExpensesLabel: UILabel!
     @IBOutlet weak var totalIncomeLabel: UILabel!
 
     @IBOutlet weak var dateRangeLabel: UILabel!
-    
+
     @IBOutlet weak var dateFilterButton: UIButton!
 
     var account: AccountComposite!
 
-    let dataSource = RxTableViewSectionedReloadDataSource<TransactionSectionData>(configureCell: TransactionFeedViewController.tableViewDataSourceUI())
+    let dataSource = RxTableViewSectionedReloadDataSource<TransactionSectionData>(
+        configureCell: TransactionFeedViewController.tableViewDataSourceUI()
+    )
 
     let disposeBag: DisposeBag = DisposeBag()
     var viewModel: TransactionsViewModel!
@@ -36,17 +38,20 @@ class TransactionFeedViewController: UIViewController {
     static func tableViewDataSourceUI() -> (
         TableViewSectionedDataSource<TransactionSectionData>.ConfigureCell
         ) {
-        return { (_, tableView, _, element) in
+            return { _, tableView, _, element in
 
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: TransactionCell.identifier) as? TransactionCell else {
-                    fatalError("Transaction cell not implemented")
+                guard let cell = tableView
+                    .dequeueReusableCell(
+                        withIdentifier: TransactionCell.identifier
+                    ) as? TransactionCell else {
+                        fatalError("Transaction cell not implemented")
                 }
 
                 cell.configure(transaction: element)
 
                 return cell
 
-        }
+            }
     }
 
     override func viewDidLoad() {
@@ -83,7 +88,7 @@ extension TransactionFeedViewController {
             .map({ transactions in
 
                 let isEmpty = Set(transactions
-                .compactMap({ !$0.items.isEmpty }))
+                    .compactMap({ !$0.items.isEmpty }))
 
                 return isEmpty.count == 1 ? isEmpty.first! : true
 
@@ -101,7 +106,7 @@ extension TransactionFeedViewController {
 
             })
             .drive(self.searchResultsView.rx.isHidden)
-        .disposed(by: disposeBag)
+            .disposed(by: disposeBag)
 
         viewModel.dataSource
             .map({ transactions in
@@ -113,7 +118,7 @@ extension TransactionFeedViewController {
             })
             .asDriver(onErrorJustReturn: true)
             .drive(self.transactionsTableView.rx.isHidden)
-        .disposed(by: disposeBag)
+            .disposed(by: disposeBag)
 
     }
 
@@ -178,13 +183,13 @@ extension TransactionFeedViewController {
                     self.stopAnimating()
                 }
             })
-        .disposed(by: disposeBag)
+            .disposed(by: disposeBag)
     }
 
     func setupBinding() {
 
         dataSource.titleForHeaderInSection = { dataSource, index in
-          return dataSource.sectionModels[index].header
+            return dataSource.sectionModels[index].header
         }
 
         dataSource.canMoveRowAtIndexPath = { _, _ in
@@ -194,7 +199,7 @@ extension TransactionFeedViewController {
         viewModel.dataSource
             .asDriver(onErrorJustReturn: [])
             .drive(transactionsTableView.rx.items(dataSource: self.dataSource))
-        .disposed(by: disposeBag)
+            .disposed(by: disposeBag)
 
         transactionsTableView.rx
             .setDelegate(self)
@@ -205,8 +210,12 @@ extension TransactionFeedViewController {
                 switch event {
                 case .next(let transaction):
 
-                    self.present(TransactionDetailsViewController
-                        .makeTransactionDetailsViewController(transaction: transaction),
+                    guard let vc = TransactionDetailsViewController
+                        .makeTransactionDetailsViewController(transaction: transaction) else {
+                            return
+                    }
+
+                    self.present(vc,
                                  animated: true,
                                  completion: nil)
 
@@ -215,7 +224,7 @@ extension TransactionFeedViewController {
                 case .completed:
                     break
                 }
-            }
+        }
         .disposed(by: disposeBag)
 
     }
@@ -234,18 +243,20 @@ extension TransactionFeedViewController {
                 let items = transactions.compactMap({ $0.items })
 
                 let allSpendingCategories = Set(items
-                .flatMap({ $0 })
-                .compactMap({ $0.spendingCategory }))
+                    .flatMap({ $0 })
+                    .compactMap({ $0.spendingCategory }))
 
                 return allSpendingCategories
 
             })
-            .bind(to: self.popularCategoriesCollectionView.rx.items(cellIdentifier: "PopularCell", cellType: PopularCell.self)) { row, element, cell in
+            .bind(to: self.popularCategoriesCollectionView.rx
+                .items(cellIdentifier: PopularCell.identifier,
+                       cellType: PopularCell.self)) { _, element, cell in
 
-                cell.configure(spendingCategory: element)
+                        cell.configure(spendingCategory: element)
 
         }
-    .disposed(by: disposeBag)
+        .disposed(by: disposeBag)
 
     }
 
@@ -262,12 +273,14 @@ extension TransactionFeedViewController {
     func setupDateRangeLabel() {
         viewModel.dateRange
             .bind(to: self.dateRangeLabel.rx.text)
-        .disposed(by: disposeBag)
+            .disposed(by: disposeBag)
     }
 
     func presentDateAlert() {
 
-        let alertController = UIAlertController(title: "\n\n\n\n\n\n\n\n\n\n\nDate range", message: "This will filter one week from the input date", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "\n\n\n\n\n\n\n\n\n\n\nDate range",
+                                                message: "This will filter one week from the input date",
+                                                preferredStyle: .alert)
 
         let datePicker: UIDatePicker = UIDatePicker()
         datePicker.datePickerMode = .date
@@ -287,4 +300,3 @@ extension TransactionFeedViewController {
     }
 
 }
-

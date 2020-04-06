@@ -112,7 +112,8 @@ extension STTransactionFeed: Arbitrary {
         return Gen<STTransactionFeed>.compose { c in
             return STTransactionFeed(feedItemUid: Gen<String>.pure(UUID().uuidString).generate,
                                      categoryUid: Gen<String>.pure(UUID().uuidString).generate,
-                                     amount: CurrencyAndAmount(currency: .GBP, minorUnits: Int.random(in: 0..<1_000_000)),
+                                     amount: CurrencyAndAmount(currency: .GBP,
+                                                               minorUnits: Int.random(in: 0..<1_000_000)),
                                      sourceAmount: c.generate(),
                                      direction: .OUT,
                                      updatedAt: Date().description,

@@ -29,25 +29,26 @@ struct STTransactionFeedManager: EntityComponent {
         var accounts: [STTransactionFeed] = []
 
         provider.request(.browseTransactions(accountId: accountId,
-                                             categoryId: "c4ed84e4-8cc9-4a3b-8df5-85996f67f2db", changesSince: "2020-03-01T11:19:25.581Z")) { result in
-            switch result {
-            case .success(let response):
+                                             categoryId: "c4ed84e4-8cc9-4a3b-8df5-85996f67f2db",
+                                             changesSince: "2020-03-01T11:19:25.581Z")) { result in
+                                                switch result {
+                                                case .success(let response):
 
-                do {
+                                                    do {
 
-                    accounts = try response.map([STTransactionFeed].self,
-                                                atKeyPath: "feedItems",
-                                                using: self.decoder,
-                                                failsOnEmptyData: true)
+                                                        accounts = try response.map([STTransactionFeed].self,
+                                                                                    atKeyPath: "feedItems",
+                                                                                    using: self.decoder,
+                                                                                    failsOnEmptyData: true)
 
-                    completion(.success(accounts))
+                                                        completion(.success(accounts))
 
-                } catch let error {
-                    completion(.failure(error))
-                }
-            case .failure(let error):
-                completion(.failure(error))
-            }
+                                                    } catch let error {
+                                                        completion(.failure(error))
+                                                    }
+                                                case .failure(let error):
+                                                    completion(.failure(error))
+                                                }
         }
 
     }
@@ -61,23 +62,23 @@ struct STTransactionFeedManager: EntityComponent {
         provider.request(.getWeeklyTransactions(accountId: accountId,
                                                 categoryId: "c4ed84e4-8cc9-4a3b-8df5-85996f67f2db",
                                                 startDate: startDate, endDate: endDate)) { result in
-            switch result {
-            case .success(let response):
+                                                    switch result {
+                                                    case .success(let response):
 
-                do {
+                                                        do {
 
-                    transactions = try response.map([STTransactionFeed].self,
-                                                atKeyPath: "feedItems",
-                                                using: self.decoder,
-                                                failsOnEmptyData: true)
+                                                            transactions = try response.map([STTransactionFeed].self,
+                                                                                            atKeyPath: "feedItems",
+                                                                                            using: self.decoder,
+                                                                                            failsOnEmptyData: true)
 
-                    completion(.success(transactions))
+                                                            completion(.success(transactions))
 
-                } catch let error {
-                    completion(.failure(error))
-                }
-            case .failure(let error):
-                completion(.failure(error))
+                                                        } catch let error {
+                                                            completion(.failure(error))
+                                                        }
+                                                    case .failure(let error):
+                                                        completion(.failure(error))
                                                     }
         }
 

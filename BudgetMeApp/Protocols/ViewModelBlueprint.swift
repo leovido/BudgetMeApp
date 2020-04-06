@@ -16,17 +16,17 @@ import Moya
 /// dataSource is an Observable that signals values when it changes
 protocol ViewModelBlueprint {
 
-	associatedtype T: Decodable
+    associatedtype Model: Decodable
     associatedtype Provider
 
-	var provider: Provider { get }
-	var isLoading: PublishSubject<Bool> { get }
-	var dataSource: BehaviorRelay<[T]> { get }
+    var provider: Provider { get }
+    var isLoading: PublishSubject<Bool> { get }
+    var dataSource: BehaviorRelay<[Model]> { get }
     var errorPublisher: PublishSubject<Error> { get }
 
     var disposeBag: DisposeBag { get }
 
-	func refreshData()
+    func refreshData()
 
 }
 
@@ -36,9 +36,6 @@ protocol AlternativeViewModelBlueprint {
     associatedtype Output
     associatedtype Provider
 
-    var input: Input { get }
-    var output: Output { get }
     var provider: Provider { get }
 
-    func refreshData(completion: @escaping () -> Void)
 }
