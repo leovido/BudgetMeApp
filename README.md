@@ -3,7 +3,7 @@
 <img alt="Transaction Details" src="https://user-images.githubusercontent.com/18484997/77860695-6d765d80-7208-11ea-919d-56459150ce16.png" width=270 align=left>
 
 
-# BudgetMeApp [![Build Status](https://travis-ci.org/kuriishu27/BudgetMeApp.svg?branch=master)](https://travis-ci.org/kuriishu27/BudgetMeApp)  [![codecov](https://codecov.io/gh/kuriishu27/BudgetMeApp/branch/master/graph/badge.svg)](https://codecov.io/gh/kuriishu27/BudgetMeApp)
+# BudgetMeApp [![Build Status](https://travis-ci.org/kuriishu27/BudgetMeApp.svg?branch=master)](https://travis-ci.org/kuriishu27/BudgetMeApp)  [![codecov](https://codecov.io/gh/kuriishu27/BudgetMeApp/branch/master/graph/badge.svg)](https://codecov.io/gh/kuriishu27/BudgetMeApp) [![Swift Version](https://img.shields.io/badge/Swift-5.0-F16D39.svg?style=flat)
 
 
 Personal finances app using Starling bank's API with RxSwift + MVVM architecture
