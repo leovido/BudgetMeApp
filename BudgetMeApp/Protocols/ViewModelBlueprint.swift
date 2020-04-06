@@ -36,9 +36,6 @@ protocol AlternativeViewModelBlueprint {
     associatedtype Output
     associatedtype Provider
 
-    var input: Input { get }
-    var output: Output { get }
     var provider: Provider { get }
 
-    func refreshData(completion: @escaping () -> Void)
 }
