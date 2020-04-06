@@ -397,7 +397,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="cjz-CH-i70" kind="show" id="JgE-wD-VqD"/>
+                                    <segue destination="cjz-CH-i70" kind="show" identifier="HomeSegue" id="JgE-wD-VqD"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8B-IG-aew">
