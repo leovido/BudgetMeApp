@@ -17,14 +17,16 @@ class LoginViewTests: XCTestCase {
 
     var loginViewModel: LoginViewModel!
     var scheduler: TestScheduler!
-    var disposeBag = DisposeBag()
+    var disposeBag: DisposeBag!
 
     override func setUp() {
-
+        disposeBag = DisposeBag()
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        loginViewModel = nil
+        scheduler = nil
+        disposeBag = nil
     }
 
     func testAuthentication() {
