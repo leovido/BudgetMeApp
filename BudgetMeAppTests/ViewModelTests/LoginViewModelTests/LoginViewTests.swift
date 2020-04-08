@@ -94,6 +94,41 @@ class LoginViewTests: XCTestCase {
 
     }
 
+    func testIsPasswordTextFieldValid() {
+
+        loginViewModel = LoginViewModel(provider: makeMoyaSuccessStub(type: .auth))
+
+        scheduler = TestScheduler(initialClock: 0)
+        let mockIsValid = scheduler.createObserver(Bool.self)
+
+        var mockEmailTextFieldValues: Observable<String>
+
+        mockEmailTextFieldValues = scheduler.createHotObservable([.next(0, "p"),
+                                                                  .next(10, "pa"),
+                                                                  .next(11, "pas"),
+                                                                  .next(20, "password123")]).asObservable()
+
+        let mockButton = UIButton()
+
+        let output = loginViewModel.transform(input: LoginViewModel.Input(
+            emailTextFieldChanged: Observable.of("something@something.com"),
+            passwordTextFieldChanged: mockEmailTextFieldValues,
+            loginButtonTapped: mockButton.rx.controlEvent(.touchUpInside).asSignal())
+        )
+
+        output.isValid
+            .drive(mockIsValid)
+            .disposed(by: disposeBag)
+
+        scheduler.start()
+
+        XCTAssertEqual(mockIsValid.events, [.next(0, false),
+                                            .next(10, false),
+                                            .next(11, false),
+                                            .next(20, true)])
+
+    }
+
     private var bundle: Bundle {
         return Bundle(for: type(of: self))
     }
