@@ -57,3 +57,9 @@ struct LoginViewModel: AlternativeViewModelBlueprint {
     }
 
 }
+
+struct STCredentials {
+    var refreshToken: RefreshToken
+    var cliendId: String
+    var clientSecret: String
+}
