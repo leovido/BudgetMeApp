@@ -39,18 +39,19 @@ extension STAuthentication: TargetType {
     public var task: Task {
         switch self {
         case .authenticate(let refreshToken, let clientId, let clientSecret):
-            return .requestParameters(parameters: ["refreshToken": refreshToken,
+            return .requestParameters(parameters: ["grant_type": "refresh_token",
+                                                   "refresh_token": refreshToken,
                                                    "client_id": clientId,
-                                                   "client_secret": clientSecret,
-                                                   "granty_type": "refresh_token"],
-                                      encoding: JSONEncoding.default)
+                                                   "client_secret": clientSecret],
+                                      encoding: URLEncoding.httpBody)
         }
     }
 
     public var headers: [String: String]? {
         switch self {
         default:
-            return ["Accept": "application/x-www-form-urlencoded"]
+            return ["Content-Type": "application/x-www-form-urlencoded",
+                    "User-agent": "Christian Ray Leovido"]
         }
 
     }
