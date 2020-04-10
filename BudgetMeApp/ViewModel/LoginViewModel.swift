@@ -27,6 +27,8 @@ struct LoginViewModel: AlternativeViewModelBlueprint {
     struct LoginViewModelInput {
         var emailTextFieldChanged: Observable<String>
         var passwordTextFieldChanged: Observable<String>
+        var isRememberMeSelected: Observable<Bool>
+        var loginButtonTapped: Signal<()>
     }
 
     struct LoginViewModelOutput {
