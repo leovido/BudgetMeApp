@@ -24,9 +24,12 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        checkToken()
+
         let outputs = loginViewModel.transform(input: LoginViewModel.Input(
             emailTextFieldChanged: emailTF.rx.text.orEmpty.asObservable(),
-            passwordTextFieldChanged: passwordTF.rx.text.orEmpty.asObservable())
+            passwordTextFieldChanged: passwordTF.rx.text.orEmpty.asObservable(),
+            loginButtonTapped: loginButton.rx.tap.asSignal())
         )
 
         outputs.isEmailTextFieldValid
@@ -37,11 +40,29 @@ class LoginViewController: UIViewController {
                 }
             })
             .drive(self.emailTF.rx.backgroundColor)
-        .disposed(by: disposeBag)
+            .disposed(by: disposeBag)
 
         outputs.isValid
             .drive(loginButton.rx.isEnabled)
             .disposed(by: disposeBag)
 
+    }
+    func checkToken() {
+
+        defer {
+            self.stopAnimating()
+        }
+
+        self.startAnimating()
+
+        if !Session.shared.token.isEmpty {
+
+            print("VALID TOKEN")
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+                self.stopAnimating()
+                self.performSegue(withIdentifier: "HomeSegue", sender: self)
+            }
+        }
     }
 }
