@@ -301,14 +301,6 @@
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="6Ne-xw-if0">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <subviews>
-                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qXO-rs-VPD">
-                                                        <rect key="frame" x="153" y="549" width="49" height="31"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <color key="onTintColor" red="0.4549019608" green="0.20000000000000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <color key="thumbTintColor" red="0.4549019608" green="0.20000000000000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </switch>
-                                                </subviews>
                                             </view>
                                             <vibrancyEffect>
                                                 <blurEffect style="regular"/>
@@ -343,15 +335,6 @@
                                 <rect key="frame" x="88" y="386" width="129" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="e11-wl-9y3"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
-                                <color key="textColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Remember me" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SuM-fo-cTr">
-                                <rect key="frame" x="216" y="552" width="108" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="HAe-ho-4QX"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
                                 <color key="textColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -485,7 +468,6 @@
                         <outlet property="googleButton" destination="B8B-IG-aew" id="AMV-WA-fBu"/>
                         <outlet property="loginButton" destination="Koh-3n-t8o" id="anV-B5-gA0"/>
                         <outlet property="passwordTF" destination="ym1-Hd-I4L" id="ibv-jc-HN5"/>
-                        <outlet property="rememberMeSwitch" destination="qXO-rs-VPD" id="4lA-Ht-nNx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r9R-lr-IiM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
