@@ -12,10 +12,9 @@ extension AccountsViewController {
 
     func performDownloadPDF(yearMonth: String) {
         self.viewModel.downloadPDFStatement(accountId: Session.shared.accountId, yearMonth: yearMonth)
-            .asSingle()
             .subscribe { event in
                 switch event {
-                case .success:
+                case .completed:
                     self.showSuccessAlert()
                 case .error(let error):
                     self.viewModel.errorPublisher.onNext(error)
@@ -26,10 +25,9 @@ extension AccountsViewController {
 
     func performDownloadCSV(yearMonth: String) {
         self.viewModel.downloadCSVStatement(accountId: Session.shared.accountId, yearMonth: yearMonth)
-            .asSingle()
             .subscribe { event in
                 switch event {
-                case .success:
+                case .completed:
                     self.showSuccessAlert()
                 case .error(let error):
                     self.viewModel.errorPublisher.onNext(error)
