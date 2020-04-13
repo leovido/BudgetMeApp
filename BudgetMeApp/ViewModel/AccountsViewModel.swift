@@ -36,13 +36,11 @@ struct AccountsViewModel: ViewModelBlueprint {
             .do(onNext: { _ in
                 self.isLoading.onNext(true)
             })
-            .flatMap({ value in
-                self.setupAccountComposite(account: value.first!)
-            })
+            .flatMap(fetchAllAccounts)
             .subscribe { event in
                 switch event {
                 case .next(let accountComposite):
-                    self.dataSource.accept([accountComposite])
+                    self.dataSource.accept(accountComposite)
                 case .error(let error):
                     self.errorPublisher.onNext(error)
                 case .completed:
@@ -53,15 +51,23 @@ struct AccountsViewModel: ViewModelBlueprint {
 
     }
 
-    func setupAccountComposite(account: STAccount) -> Observable<AccountComposite> {
+    func fetchAllAccounts(account: [STAccount]) -> Observable<[AccountComposite]> {
 
-        let obs = Observable.zip(getBalance(accountId: account.accountUid),
-                                 getIdentifiers(accountId: account.accountUid))
-            .map { balance, identifiers in
-                AccountComposite(account: account, balance: balance, identifiers: identifiers)
+        let request: (STAccount) -> Observable<AccountComposite> = { account in
+
+            Observable.zip(self.getBalance(accountId: account.accountUid),
+                           self.getIdentifiers(accountId: account.accountUid))
+                .map { balance, identifiers in
+                    AccountComposite(account: account, balance: balance, identifiers: identifiers)
+            }
+
         }
 
-        return obs
+        let requests = account.map(request)
+
+        return Observable.merge(requests)
+            .toArray()
+            .asObservable()
 
     }
 }
@@ -122,40 +128,40 @@ extension AccountsViewModel {
 
 extension AccountsViewModel {
 
-    func downloadPDFStatement(accountId: String, yearMonth: String) -> Observable<Response> {
+    func downloadPDFStatement(accountId: String, yearMonth: String) -> Completable {
         let observable = provider.rx.request(.downloadStatementPDF(accountId: accountId,
                                                                    yearMonth: yearMonth))
             .filterSuccessfulStatusAndRedirectCodes()
-            .asObservable()
+            .asCompletable()
 
         return observable
     }
 
-    func downloadStatementPDF(accountId: String, start: DateTime, end: DateTime) -> Observable<Response> {
+    func downloadStatementPDF(accountId: String, start: DateTime, end: DateTime) -> Completable {
         let obs = provider.rx.request(.downloadStatementPDFForDateRange(accountId: accountId,
                                                                         start: start,
                                                                         end: end))
             .filterSuccessfulStatusAndRedirectCodes()
-            .asObservable()
+            .asCompletable()
 
         return obs
     }
 
-    func downloadCSVStatement(accountId: String, yearMonth: String) -> Observable<Response> {
+    func downloadCSVStatement(accountId: String, yearMonth: String) -> Completable {
         let observable = provider.rx.request(.downloadStatementCSV(accountId: accountId,
                                                                    yearMonth: yearMonth))
             .filterSuccessfulStatusAndRedirectCodes()
-            .asObservable()
+            .asCompletable()
 
         return observable
     }
 
-    func downloadStatementCSV(accountId: String, start: DateTime, end: DateTime) -> Observable<Response> {
+    func downloadStatementCSV(accountId: String, start: DateTime, end: DateTime) -> Completable {
         let obs = provider.rx.request(.downloadStatementCSVForDateRange(accountId: accountId,
                                                                         start: start,
                                                                         end: end))
             .filterSuccessfulStatusAndRedirectCodes()
-            .asObservable()
+            .asCompletable()
 
         return obs
     }

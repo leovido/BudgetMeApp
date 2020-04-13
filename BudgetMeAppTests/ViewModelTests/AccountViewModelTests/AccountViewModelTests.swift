@@ -65,9 +65,10 @@ class AccountViewModelTests: XCTestCase, StubAccounts {
 
         accountViewModel = AccountsViewModel()
 
-        let compositeObserver = scheduler.createObserver(AccountComposite.self)
+        let compositeObserver = scheduler.createObserver([AccountComposite].self)
+        let account = STAccount(accountUid: "", defaultCategory: "", currency: .GBP, createdAt: "")
 
-        accountViewModel.setupAccountComposite(account: STAccount(accountUid: "", defaultCategory: "", currency: .GBP, createdAt: ""))
+        accountViewModel.fetchAllAccounts(account: [account])
             .bind(to: compositeObserver)
             .disposed(by: disposeBag)
 

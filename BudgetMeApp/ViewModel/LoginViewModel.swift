@@ -34,12 +34,15 @@ struct LoginViewModel: AlternativeViewModelBlueprint {
         var isValid: Driver<Bool>
     }
 
-    var provider = MoyaProvider<STAuthentication>()
+    let provider: MoyaProvider<STAuthentication>
+
+    init(provider: MoyaProvider<STAuthentication> = MoyaNetworkManagerFactory.makeManager()) {
+        self.provider = provider
+    }
 
     func transform(input: Input) -> Output {
 
         let isEmailTextFieldValueValid = input.emailTextFieldChanged
-            .throttle(RxTimeInterval.milliseconds(250), scheduler: MainScheduler.instance)
             .map({ $0.contains("@") })
             .asDriver(onErrorJustReturn: false)
 
@@ -47,13 +50,23 @@ struct LoginViewModel: AlternativeViewModelBlueprint {
             .map({ $0.count > 6 })
             .asDriver(onErrorJustReturn: false)
 
-        let isValid = Observable.combineLatest(isEmailTextFieldValueValid.asObservable(),
-                                               isPasswordTextFieldValueValid.asObservable())
+        let isValid = Observable.combineLatest(
+            isEmailTextFieldValueValid.asObservable(),
+            isPasswordTextFieldValueValid.asObservable()
+        )
             .map({ $0 && $1 })
             .asDriver(onErrorJustReturn: false)
 
-        return Output(isEmailTextFieldValid: isEmailTextFieldValueValid,
-                      isValid: isValid)
+        return Output(
+            isEmailTextFieldValid: isEmailTextFieldValueValid,
+            isValid: isValid
+        )
     }
 
+}
+
+struct STCredentials {
+    var refreshToken: RefreshToken
+    var cliendId: String
+    var clientSecret: String
 }

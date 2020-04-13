@@ -12,7 +12,8 @@ import Moya
 typealias RefreshToken = String
 
 enum STAuthentication {
-    case authenticate(refreshToken: RefreshToken, clientId: String, clientSecret: String)
+    case refreshToken(refreshToken: RefreshToken, clientId: String, clientSecret: String)
+    case authenticate(clientId: String, redirectURI: String)
 }
 
 extension STAuthentication: TargetType {
@@ -23,7 +24,7 @@ extension STAuthentication: TargetType {
 
     public var path: String {
         switch self {
-        case .authenticate:
+        case .refreshToken, .authenticate:
             return ""
         }
     }
@@ -38,11 +39,17 @@ extension STAuthentication: TargetType {
 
     public var task: Task {
         switch self {
-        case .authenticate(let refreshToken, let clientId, let clientSecret):
-            return .requestParameters(parameters: ["refreshToken": refreshToken,
+        case .refreshToken(let refreshToken, let clientId, let clientSecret):
+            return .requestParameters(parameters: ["grant_type": "refresh_token",
+                                                   "refresh_token": refreshToken,
                                                    "client_id": clientId,
-                                                   "client_secret": clientSecret,
-                                                   "granty_type": "refresh_token"],
+                                                   "client_secret": clientSecret],
+                                      encoding: URLEncoding.httpBody)
+        case .authenticate(let clientId, let redirectURI):
+            return .requestParameters(parameters: ["clientId": clientId,
+                                                   "responsetType": "code",
+                                                   "state": UUID().uuidString,
+                                                   "redirectURI": redirectURI],
                                       encoding: JSONEncoding.default)
         }
     }
@@ -50,12 +57,13 @@ extension STAuthentication: TargetType {
     public var headers: [String: String]? {
         switch self {
         default:
-            return ["Accept": "application/x-www-form-urlencoded"]
+            return ["Content-Type": "application/x-www-form-urlencoded",
+                    "User-agent": "Christian Ray Leovido"]
         }
 
     }
 
     public var validationType: ValidationType {
-        return .successAndRedirectCodes
+        return .none
     }
 }

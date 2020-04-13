@@ -32,20 +32,15 @@ struct SavingsViewModel: ViewModelBlueprint {
     }
 
     func refreshData() {
-
-    }
-
-    func refreshData(completion: @escaping () -> Void) {
         self.isLoading.onNext(true)
         provider.rx.request(.browseSavings)
-            .debug(#function, trimOutput: true)
             .filterSuccessfulStatusCodes()
             .map([STSavingsGoal].self, atKeyPath: "savingsGoalList")
             .retry(2)
             .subscribe { event in
                 switch event {
                 case .success(let savings):
-                    completion()
+                    self.isLoading.onNext(false)
                     self.dataSource.accept(savings)
                 case .error(let error):
                     self.errorPublisher.onNext(error)
@@ -63,9 +58,8 @@ struct SavingsViewModel: ViewModelBlueprint {
                 switch event {
                 case .success(let success):
                     if success {
-                        self.refreshData {
-                            self.isLoading.onNext(false)
-                        }
+                        self.isLoading.onNext(false)
+                        self.refreshData()
                     }
                 case .error(let error):
                     self.errorPublisher.onNext(error)
