@@ -14,6 +14,12 @@ struct UserDefaultsConfig {
 
     @UserDefault("refreshToken", defaultValue: "")
     static var refreshToken: String
+
+    @UserDefault("clientId", defaultValue: "")
+    static var clientId: String
+
+    @UserDefault("clientSecret", defaultValue: "")
+    static var clientSecret: String
 }
 
 @propertyWrapper
@@ -41,6 +47,8 @@ extension UserDefaults {
     public enum Keys {
         static let token = "token"
         static let refreshToken = "refreshToken"
+        static let clientId = "clientId"
+        static let clientSecret = "clientSecret"
     }
 
     var token: String {
@@ -60,4 +68,23 @@ extension UserDefaults {
             return string(forKey: Keys.refreshToken) ?? ""
         }
     }
+
+    var clientId: String {
+        set {
+            set(newValue, forKey: Keys.clientId)
+        }
+        get {
+            return string(forKey: Keys.clientId) ?? ""
+        }
+    }
+
+    var clientSecret: String {
+        set {
+            set(newValue, forKey: Keys.clientSecret)
+        }
+        get {
+            return string(forKey: Keys.clientSecret) ?? ""
+        }
+    }
+
 }
