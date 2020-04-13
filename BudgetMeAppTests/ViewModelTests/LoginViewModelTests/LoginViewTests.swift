@@ -29,39 +29,10 @@ class LoginViewTests: XCTestCase {
         disposeBag = nil
     }
 
-    func testAuthentication() {
-
-        loginViewModel = LoginViewModel(provider: makeMoyaSuccessStub(type: .auth))
-        scheduler = TestScheduler(initialClock: 0)
-        let mockAccessToken = scheduler.createObserver(STAccessToken.self)
-
-        let mockButton = UIButton()
-        let output = loginViewModel.transform(input: LoginViewModel.Input(
-            emailTextFieldChanged: Observable.of(""),
-            passwordTextFieldChanged: Observable.of(""),
-            loginButtonTapped: mockButton.rx.controlEvent(.touchUpInside).asSignal())
-        )
-
-        output.loginCredentials
-            .bind(to: mockAccessToken)
-            .disposed(by: disposeBag)
-
-        scheduler.start()
-
-        XCTAssertEqual(mockAccessToken.events, [.next(0, STAccessToken(
-                                                            access_token: "some long token",
-                                                            token_type: "tokeType",
-                                                            expires_in: 86400,
-                                                            scope: "some scope")
-                                                            ),
-                                                .completed(0)
-                                                ])
-
-    }
-
     func testIsEmailTextFieldValid() {
 
-        loginViewModel = LoginViewModel(provider: makeMoyaSuccessStub(type: .auth))
+        let provider: MoyaProvider<STAuthentication> = self.makeMoyaSuccessStub(type: .auth)
+        loginViewModel = LoginViewModel(provider: provider)
 
         scheduler = TestScheduler(initialClock: 0)
         let mockIsValid = scheduler.createObserver(Bool.self)
@@ -78,8 +49,8 @@ class LoginViewTests: XCTestCase {
 
         let output = loginViewModel.transform(input: LoginViewModel.Input(
             emailTextFieldChanged: mockEmailTextFieldValues,
-            passwordTextFieldChanged: Observable.of(""),
-            loginButtonTapped: mockButton.rx.controlEvent(.touchUpInside).asSignal())
+            passwordTextFieldChanged: Observable.of("")
+            )
         )
 
         output.isEmailTextFieldValid
@@ -98,7 +69,8 @@ class LoginViewTests: XCTestCase {
 
     func testIsPasswordTextFieldValid() {
 
-        loginViewModel = LoginViewModel(provider: makeMoyaSuccessStub(type: .auth))
+        let provider: MoyaProvider<STAuthentication> = self.makeMoyaSuccessStub(type: .auth)
+        loginViewModel = LoginViewModel(provider: provider)
 
         scheduler = TestScheduler(initialClock: 0)
         let mockIsValid = scheduler.createObserver(Bool.self)
@@ -114,8 +86,8 @@ class LoginViewTests: XCTestCase {
 
         let output = loginViewModel.transform(input: LoginViewModel.Input(
             emailTextFieldChanged: Observable.of("something@something.com"),
-            passwordTextFieldChanged: mockEmailTextFieldValues,
-            loginButtonTapped: mockButton.rx.controlEvent(.touchUpInside).asSignal())
+            passwordTextFieldChanged: mockEmailTextFieldValues
+            )
         )
 
         output.isValid
