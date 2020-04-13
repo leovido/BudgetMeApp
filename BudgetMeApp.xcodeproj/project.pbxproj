@@ -35,8 +35,8 @@
 		2D0DBB7A2430E69E00A5C069 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 2D0DBB792430E69E00A5C069 /* RxDataSources */; };
 		2D0DBB7D243115CA00A5C069 /* TransactionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0DBB7C243115CA00A5C069 /* TransactionDetailsViewController.swift */; };
 		2D0DBB7F243116C500A5C069 /* TransactionSectionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0DBB7E243116C500A5C069 /* TransactionSectionData.swift */; };
+		2D261EC624432E8F00FF3EE5 /* OAuthSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2D261EC524432E8F00FF3EE5 /* OAuthSwift */; };
 		2D34D884243608DB00F7E21B /* PopularCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D34D883243608DB00F7E21B /* PopularCell.swift */; };
-		2D34D889243631DF00F7E21B /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = 2D34D888243631DF00F7E21B /* RxTest */; };
 		2D34D88B2436335A00F7E21B /* TransactionFeedViewModel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D34D88A2436335A00F7E21B /* TransactionFeedViewModel+Extensions.swift */; };
 		2D34D88E2436360F00F7E21B /* SavingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D34D88D2436360F00F7E21B /* SavingsViewModelTests.swift */; };
 		2D34D8902436361D00F7E21B /* SavingsViewModelTests+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D34D88F2436361D00F7E21B /* SavingsViewModelTests+Extensions.swift */; };
@@ -88,6 +88,7 @@
 		2DF3A67E243396C900D236A0 /* AccountViewModelTests+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF3A67D243396C900D236A0 /* AccountViewModelTests+Extensions.swift */; };
 		2DF3A68024339A0400D236A0 /* account_success_balance.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DF3A67F24339A0400D236A0 /* account_success_balance.json */; };
 		2DF3A68224339CC500D236A0 /* account_success_identifiers.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DF3A68124339CC500D236A0 /* account_success_identifiers.json */; };
+		2DFBD8FD244522EF00268BA6 /* SegueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFBD8FC244522EF00268BA6 /* SegueManager.swift */; };
 		2DFC8E70243BB19A00D70A44 /* STAccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFC8E6F243BB19A00D70A44 /* STAccessToken.swift */; };
 /* End PBXBuildFile section */
 
@@ -131,6 +132,8 @@
 		2D00556D2429211700A82E14 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
 		2D0DBB7C243115CA00A5C069 /* TransactionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailsViewController.swift; sourceTree = "<group>"; };
 		2D0DBB7E243116C500A5C069 /* TransactionSectionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionSectionData.swift; sourceTree = "<group>"; };
+		2D261EC724434B3700FF3EE5 /* BudgetMeApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BudgetMeApp.entitlements; sourceTree = "<group>"; };
+		2D261EC824434D7600FF3EE5 /* BudgetMeAppRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BudgetMeAppRelease.entitlements; sourceTree = "<group>"; };
 		2D34D883243608DB00F7E21B /* PopularCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularCell.swift; sourceTree = "<group>"; };
 		2D34D88A2436335A00F7E21B /* TransactionFeedViewModel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransactionFeedViewModel+Extensions.swift"; sourceTree = "<group>"; };
 		2D34D88D2436360F00F7E21B /* SavingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsViewModelTests.swift; sourceTree = "<group>"; };
@@ -178,6 +181,7 @@
 		2DF3A68124339CC500D236A0 /* account_success_identifiers.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = account_success_identifiers.json; sourceTree = "<group>"; };
 		2DF3A68324339F7400D236A0 /* account_success_availableFunds.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = account_success_availableFunds.json; sourceTree = "<group>"; };
 		2DF3A68524339F8A00D236A0 /* account_success_statementPeriods.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = account_success_statementPeriods.json; sourceTree = "<group>"; };
+		2DFBD8FC244522EF00268BA6 /* SegueManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueManager.swift; sourceTree = "<group>"; };
 		2DFC8E6F243BB19A00D70A44 /* STAccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STAccessToken.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -186,7 +190,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D34D889243631DF00F7E21B /* RxTest in Frameworks */,
+				2D261EC624432E8F00FF3EE5 /* OAuthSwift in Frameworks */,
 				2DA568792435379900D94A86 /* NVActivityIndicatorView in Frameworks */,
 				2D00553E2428D7A000A82E14 /* RxCocoa in Frameworks */,
 				2D00553C2428D7A000A82E14 /* RxSwift in Frameworks */,
@@ -230,6 +234,8 @@
 		2D0055142428D6A300A82E14 /* BudgetMeApp */ = {
 			isa = PBXGroup;
 			children = (
+				2D261EC824434D7600FF3EE5 /* BudgetMeAppRelease.entitlements */,
+				2D261EC724434B3700FF3EE5 /* BudgetMeApp.entitlements */,
 				2D0055422428D88A00A82E14 /* Constants */,
 				2D00553F2428D7AB00A82E14 /* Networking */,
 				2DAB22DA242A4A6E001C0F6E /* Protocols */,
@@ -489,6 +495,7 @@
 			isa = PBXGroup;
 			children = (
 				2DAB22E3242A5A03001C0F6E /* Date+Extension.swift */,
+				2DFBD8FC244522EF00268BA6 /* SegueManager.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -612,7 +619,7 @@
 				2D0DBB772430E69E00A5C069 /* Differentiator */,
 				2D0DBB792430E69E00A5C069 /* RxDataSources */,
 				2DA568782435379900D94A86 /* NVActivityIndicatorView */,
-				2D34D888243631DF00F7E21B /* RxTest */,
+				2D261EC524432E8F00FF3EE5 /* OAuthSwift */,
 			);
 			productName = "STT-round-up";
 			productReference = 2D0055122428D6A300A82E14 /* BudgetMeApp.app */;
@@ -673,6 +680,7 @@
 				2D0DBB762430E69E00A5C069 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 				2DF3A6732433596000D236A0 /* XCRemoteSwiftPackageReference "SwiftCheck" */,
 				2DA568772435379900D94A86 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
+				2D261EC424432E8F00FF3EE5 /* XCRemoteSwiftPackageReference "OAuthSwift" */,
 			);
 			productRefGroup = 2D0055132428D6A300A82E14 /* Products */;
 			projectDirPath = "";
@@ -772,6 +780,7 @@
 				2D00556E2429211700A82E14 /* TransactionCell.swift in Sources */,
 				2D34D884243608DB00F7E21B /* PopularCell.swift in Sources */,
 				2D00554A2428DD2300A82E14 /* STAccountManager.swift in Sources */,
+				2DFBD8FD244522EF00268BA6 /* SegueManager.swift in Sources */,
 				2DAB22D7242A4238001C0F6E /* Session.swift in Sources */,
 				2D0055442428D89B00A82E14 /* STEnvironment.swift in Sources */,
 				2D00556424291D7E00A82E14 /* CountryPartyType.swift in Sources */,
@@ -958,6 +967,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BudgetMeApp/BudgetMeApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7FFBU6H3CE;
 				INFOPLIST_FILE = "$(SRCROOT)/BudgetMeApp/Info.plist";
@@ -966,7 +976,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "christianleovido.STT-round-up";
+				PRODUCT_BUNDLE_IDENTIFIER = christianleovido.BudgetMeApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -977,6 +987,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BudgetMeApp/BudgetMeAppRelease.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7FFBU6H3CE;
 				INFOPLIST_FILE = "$(SRCROOT)/BudgetMeApp/Info.plist";
@@ -985,8 +997,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "christianleovido.STT-round-up";
+				PRODUCT_BUNDLE_IDENTIFIER = christianleovido.BudgetMeApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1091,6 +1104,14 @@
 				minimumVersion = 4.0.1;
 			};
 		};
+		2D261EC424432E8F00FF3EE5 /* XCRemoteSwiftPackageReference "OAuthSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/OAuthSwift/OAuthSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.0;
+			};
+		};
 		2DA568772435379900D94A86 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView";
@@ -1135,10 +1156,10 @@
 			package = 2D0DBB762430E69E00A5C069 /* XCRemoteSwiftPackageReference "RxDataSources" */;
 			productName = RxDataSources;
 		};
-		2D34D888243631DF00F7E21B /* RxTest */ = {
+		2D261EC524432E8F00FF3EE5 /* OAuthSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2D00553A2428D7A000A82E14 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxTest;
+			package = 2D261EC424432E8F00FF3EE5 /* XCRemoteSwiftPackageReference "OAuthSwift" */;
+			productName = OAuthSwift;
 		};
 		2D8DECE2242D2EB300073D1B /* RxMoya */ = {
 			isa = XCSwiftPackageProductDependency;
