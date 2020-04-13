@@ -34,7 +34,11 @@ struct LoginViewModel: AlternativeViewModelBlueprint {
         var isValid: Driver<Bool>
     }
 
-    let provider: MoyaProvider<STAuthentication> = MoyaNetworkManagerFactory.makeManager()
+    let provider: MoyaProvider<STAuthentication>
+
+    init(provider: MoyaProvider<STAuthentication> = MoyaNetworkManagerFactory.makeManager()) {
+        self.provider = provider
+    }
 
     func transform(input: Input) -> Output {
 

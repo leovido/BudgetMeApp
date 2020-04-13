@@ -28,8 +28,8 @@ class LoginViewController: UIViewController {
 
         let outputs = loginViewModel.transform(input: LoginViewModel.Input(
             emailTextFieldChanged: emailTF.rx.text.orEmpty.asObservable(),
-            passwordTextFieldChanged: passwordTF.rx.text.orEmpty.asObservable(),
-            loginButtonTapped: loginButton.rx.tap.asSignal())
+            passwordTextFieldChanged: passwordTF.rx.text.orEmpty.asObservable()
+            )
         )
 
         outputs.isEmailTextFieldValid
