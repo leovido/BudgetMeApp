@@ -122,40 +122,40 @@ extension AccountsViewModel {
 
 extension AccountsViewModel {
 
-    func downloadPDFStatement(accountId: String, yearMonth: String) -> Observable<Response> {
+    func downloadPDFStatement(accountId: String, yearMonth: String) -> Completable {
         let observable = provider.rx.request(.downloadStatementPDF(accountId: accountId,
                                                                    yearMonth: yearMonth))
             .filterSuccessfulStatusAndRedirectCodes()
-            .asObservable()
+            .asCompletable()
 
         return observable
     }
 
-    func downloadStatementPDF(accountId: String, start: DateTime, end: DateTime) -> Observable<Response> {
+    func downloadStatementPDF(accountId: String, start: DateTime, end: DateTime) -> Completable {
         let obs = provider.rx.request(.downloadStatementPDFForDateRange(accountId: accountId,
                                                                         start: start,
                                                                         end: end))
             .filterSuccessfulStatusAndRedirectCodes()
-            .asObservable()
+            .asCompletable()
 
         return obs
     }
 
-    func downloadCSVStatement(accountId: String, yearMonth: String) -> Observable<Response> {
+    func downloadCSVStatement(accountId: String, yearMonth: String) -> Completable {
         let observable = provider.rx.request(.downloadStatementCSV(accountId: accountId,
                                                                    yearMonth: yearMonth))
             .filterSuccessfulStatusAndRedirectCodes()
-            .asObservable()
+            .asCompletable()
 
         return observable
     }
 
-    func downloadStatementCSV(accountId: String, start: DateTime, end: DateTime) -> Observable<Response> {
+    func downloadStatementCSV(accountId: String, start: DateTime, end: DateTime) -> Completable {
         let obs = provider.rx.request(.downloadStatementCSVForDateRange(accountId: accountId,
                                                                         start: start,
                                                                         end: end))
             .filterSuccessfulStatusAndRedirectCodes()
-            .asObservable()
+            .asCompletable()
 
         return obs
     }
