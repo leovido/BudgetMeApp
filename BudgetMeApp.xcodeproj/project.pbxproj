@@ -89,7 +89,7 @@
 		2DF3A68024339A0400D236A0 /* account_success_balance.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DF3A67F24339A0400D236A0 /* account_success_balance.json */; };
 		2DF3A68224339CC500D236A0 /* account_success_identifiers.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DF3A68124339CC500D236A0 /* account_success_identifiers.json */; };
 		2DFBD8FD244522EF00268BA6 /* SegueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFBD8FC244522EF00268BA6 /* SegueManager.swift */; };
-		2DFBD8FF2445272200268BA6 /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = 2DFBD8FE2445272200268BA6 /* RxTest */; };
+		2DFBD901244528AB00268BA6 /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = 2DFBD900244528AB00268BA6 /* RxTest */; };
 		2DFC8E70243BB19A00D70A44 /* STAccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFC8E6F243BB19A00D70A44 /* STAccessToken.swift */; };
 /* End PBXBuildFile section */
 
@@ -190,6 +190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D261EC624432E8F00FF3EE5 /* OAuthSwift in Frameworks */,
+				2DFBD901244528AB00268BA6 /* RxTest in Frameworks */,
 				2DA568792435379900D94A86 /* NVActivityIndicatorView in Frameworks */,
 				2D00553E2428D7A000A82E14 /* RxCocoa in Frameworks */,
 				2D00553C2428D7A000A82E14 /* RxSwift in Frameworks */,
@@ -204,7 +205,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DFBD8FF2445272200268BA6 /* RxTest in Frameworks */,
 				2DF3A6772433597700D236A0 /* SwiftCheck in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -618,6 +618,7 @@
 				2D0DBB792430E69E00A5C069 /* RxDataSources */,
 				2DA568782435379900D94A86 /* NVActivityIndicatorView */,
 				2D261EC524432E8F00FF3EE5 /* OAuthSwift */,
+				2DFBD900244528AB00268BA6 /* RxTest */,
 			);
 			productName = "STT-round-up";
 			productReference = 2D0055122428D6A300A82E14 /* BudgetMeApp.app */;
@@ -639,7 +640,6 @@
 			name = BudgetMeAppTests;
 			packageProductDependencies = (
 				2DF3A6762433597700D236A0 /* SwiftCheck */,
-				2DFBD8FE2445272200268BA6 /* RxTest */,
 			);
 			productName = BudgetMeAppTests;
 			productReference = 2D8DECFB242D65E100073D1B /* BudgetMeAppTests.xctest */;
@@ -1175,7 +1175,7 @@
 			package = 2DF3A6732433596000D236A0 /* XCRemoteSwiftPackageReference "SwiftCheck" */;
 			productName = SwiftCheck;
 		};
-		2DFBD8FE2445272200268BA6 /* RxTest */ = {
+		2DFBD900244528AB00268BA6 /* RxTest */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2D00553A2428D7A000A82E14 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxTest;
