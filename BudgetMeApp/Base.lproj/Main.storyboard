@@ -301,6 +301,14 @@
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="6Ne-xw-if0">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qXO-rs-VPD">
+                                                        <rect key="frame" x="153" y="549" width="49" height="31"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="onTintColor" red="0.4549019608" green="0.20000000000000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="thumbTintColor" red="0.4549019608" green="0.20000000000000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </switch>
+                                                </subviews>
                                             </view>
                                             <vibrancyEffect>
                                                 <blurEffect style="regular"/>
@@ -340,6 +348,15 @@
                                 <color key="textColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Remember me" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SuM-fo-cTr">
+                                <rect key="frame" x="216" y="552" width="108" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="HAe-ho-4QX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
+                                <color key="textColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PASSWORD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yF9-qG-y48">
                                 <rect key="frame" x="88" y="474" width="129" height="24"/>
                                 <constraints>
@@ -368,7 +385,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" keyboardAppearance="alert" returnKeyType="next" textContentType="email"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Koh-3n-t8o">
-                                <rect key="frame" x="146" y="583" width="123" height="45"/>
+                                <rect key="frame" x="146" y="611" width="123" height="45"/>
                                 <color key="backgroundColor" red="0.53247488309612923" green="0.32895039377852531" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="Fdm-1j-dK6"/>
@@ -382,7 +399,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nKj-xy-pz3">
-                                <rect key="frame" x="146" y="643" width="123" height="45"/>
+                                <rect key="frame" x="146" y="671" width="123" height="45"/>
                                 <color key="backgroundColor" red="0.4549019608" green="0.20000000000000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="NoF-5l-dTc"/>
@@ -401,7 +418,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8B-IG-aew">
-                                <rect key="frame" x="109" y="718" width="198" height="48"/>
+                                <rect key="frame" x="109" y="787" width="198" height="48"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="oeK-Mr-dCf"/>
@@ -430,10 +447,10 @@
                             <constraint firstItem="lPU-HJ-4eZ" firstAttribute="trailing" secondItem="oLW-Ze-WYq" secondAttribute="trailing" constant="197" id="G4V-9l-18N"/>
                             <constraint firstItem="aDr-60-3DU" firstAttribute="top" secondItem="bPN-YN-hbb" secondAttribute="bottom" constant="35" id="GSD-uG-kcf"/>
                             <constraint firstItem="nKj-xy-pz3" firstAttribute="centerX" secondItem="B8B-IG-aew" secondAttribute="centerX" id="I1K-OR-RB8"/>
-                            <constraint firstItem="lPU-HJ-4eZ" firstAttribute="bottom" secondItem="B8B-IG-aew" secondAttribute="bottom" constant="96" id="NEK-X4-egA"/>
+                            <constraint firstItem="lPU-HJ-4eZ" firstAttribute="bottom" secondItem="B8B-IG-aew" secondAttribute="bottom" constant="27" id="NEK-X4-egA"/>
                             <constraint firstItem="L4O-bZ-ZAL" firstAttribute="bottom" secondItem="4uT-ZK-3HM" secondAttribute="bottom" id="OBd-Lx-Ex1"/>
                             <constraint firstItem="yF9-qG-y48" firstAttribute="leading" secondItem="ym1-Hd-I4L" secondAttribute="leading" id="OGx-ee-awH"/>
-                            <constraint firstItem="Koh-3n-t8o" firstAttribute="top" secondItem="ym1-Hd-I4L" secondAttribute="bottom" constant="43" id="SJz-WB-wqk"/>
+                            <constraint firstItem="Koh-3n-t8o" firstAttribute="top" secondItem="ym1-Hd-I4L" secondAttribute="bottom" constant="71" id="SJz-WB-wqk"/>
                             <constraint firstItem="bPN-YN-hbb" firstAttribute="leading" secondItem="aDr-60-3DU" secondAttribute="leading" id="U2o-fh-RZp"/>
                             <constraint firstItem="L4O-bZ-ZAL" firstAttribute="top" secondItem="70D-Mg-Pp8" secondAttribute="topMargin" constant="-44" id="XbR-xj-xcs"/>
                             <constraint firstItem="gfN-7V-yMu" firstAttribute="leading" secondItem="yF9-qG-y48" secondAttribute="leading" id="Y4u-Iz-LQV"/>
@@ -442,7 +459,7 @@
                             <constraint firstItem="L4O-bZ-ZAL" firstAttribute="centerY" secondItem="70D-Mg-Pp8" secondAttribute="centerY" id="bPO-c7-TRh"/>
                             <constraint firstItem="cJk-KS-skP" firstAttribute="top" secondItem="4uT-ZK-3HM" secondAttribute="top" id="cgj-La-wrG"/>
                             <constraint firstItem="L4O-bZ-ZAL" firstAttribute="leading" secondItem="lPU-HJ-4eZ" secondAttribute="leading" id="dc9-yu-Giv"/>
-                            <constraint firstItem="B8B-IG-aew" firstAttribute="top" secondItem="nKj-xy-pz3" secondAttribute="bottom" constant="30" id="e8R-BU-CPF"/>
+                            <constraint firstItem="B8B-IG-aew" firstAttribute="top" secondItem="nKj-xy-pz3" secondAttribute="bottom" constant="71" id="e8R-BU-CPF"/>
                             <constraint firstItem="Vzl-Y5-apd" firstAttribute="leading" secondItem="bPN-YN-hbb" secondAttribute="leading" id="fk1-rn-dXT"/>
                             <constraint firstItem="Vzl-Y5-apd" firstAttribute="top" secondItem="lPU-HJ-4eZ" secondAttribute="top" constant="81" id="g8C-ZY-bNX"/>
                             <constraint firstItem="Vzl-Y5-apd" firstAttribute="leading" secondItem="70D-Mg-Pp8" secondAttribute="leadingMargin" id="hOC-lv-FQQ"/>
@@ -468,6 +485,7 @@
                         <outlet property="googleButton" destination="B8B-IG-aew" id="AMV-WA-fBu"/>
                         <outlet property="loginButton" destination="Koh-3n-t8o" id="anV-B5-gA0"/>
                         <outlet property="passwordTF" destination="ym1-Hd-I4L" id="ibv-jc-HN5"/>
+                        <outlet property="rememberMeSwitch" destination="qXO-rs-VPD" id="4lA-Ht-nNx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r9R-lr-IiM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
