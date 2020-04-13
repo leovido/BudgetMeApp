@@ -113,11 +113,7 @@ class AccountsViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "TransactionSegue" {
-            if let destinationVieController = segue.destination as? TransactionFeedViewController {
-                destinationVieController.account = self.selectedAccount
-            }
-        }
+        SegueManager(segue)?.performSegue(with: selectedAccount)
     }
 
 }
