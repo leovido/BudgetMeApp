@@ -90,6 +90,7 @@
 		2DF3A68224339CC500D236A0 /* account_success_identifiers.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DF3A68124339CC500D236A0 /* account_success_identifiers.json */; };
 		2DFBD8FD244522EF00268BA6 /* SegueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFBD8FC244522EF00268BA6 /* SegueManager.swift */; };
 		2DFBD901244528AB00268BA6 /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = 2DFBD900244528AB00268BA6 /* RxTest */; };
+		2DFBD9032445E43000268BA6 /* SpendingCategoryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFBD9022445E43000268BA6 /* SpendingCategoryFactory.swift */; };
 		2DFC8E70243BB19A00D70A44 /* STAccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFC8E6F243BB19A00D70A44 /* STAccessToken.swift */; };
 /* End PBXBuildFile section */
 
@@ -181,6 +182,7 @@
 		2DF3A68324339F7400D236A0 /* account_success_availableFunds.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = account_success_availableFunds.json; sourceTree = "<group>"; };
 		2DF3A68524339F8A00D236A0 /* account_success_statementPeriods.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = account_success_statementPeriods.json; sourceTree = "<group>"; };
 		2DFBD8FC244522EF00268BA6 /* SegueManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueManager.swift; sourceTree = "<group>"; };
+		2DFBD9022445E43000268BA6 /* SpendingCategoryFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingCategoryFactory.swift; sourceTree = "<group>"; };
 		2DFC8E6F243BB19A00D70A44 /* STAccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STAccessToken.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -270,6 +272,7 @@
 			children = (
 				2D0055432428D89B00A82E14 /* STEnvironment.swift */,
 				2DC807F2243B55E7006E68B3 /* UserDefault+PropertyWrapper.swift */,
+				2DFBD9022445E43000268BA6 /* SpendingCategoryFactory.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -784,6 +787,7 @@
 				2D0055442428D89B00A82E14 /* STEnvironment.swift in Sources */,
 				2D00556424291D7E00A82E14 /* CountryPartyType.swift in Sources */,
 				2DAB22D9242A42A2001C0F6E /* STCurrency.swift in Sources */,
+				2DFBD9032445E43000268BA6 /* SpendingCategoryFactory.swift in Sources */,
 				2DAB22E8242A5AA1001C0F6E /* ViewModelBlueprint.swift in Sources */,
 				2D00556224291D6A00A82E14 /* Source.swift in Sources */,
 				2DAB22DC242A4A7A001C0F6E /* MoyaNetworkManagerFactory.swift in Sources */,
