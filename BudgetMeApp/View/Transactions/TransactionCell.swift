@@ -40,31 +40,26 @@ final class TransactionCell: UITableViewCell {
         return "TransactionCell"
     }
 
+    func positiveAmountDisplay(transaction: STTransactionFeed) {
+        priceLabel.text = "+" + transaction.sourceAmount!.description
+        priceLabel.textColor = UIColor.systemGreen
+    }
+
+    func negativeAmountDisplay(transaction: STTransactionFeed) {
+        priceLabel.text = "-" + transaction.sourceAmount!.description
+        priceLabel.textColor = UIColor.systemRed
+    }
+
     func configure(transaction: STTransactionFeed) {
         referenceLabel.text = transaction.reference
         dateLabel.text = Date.dateFormatter(dateString: transaction.transactionTime!)
 
-        if transaction.direction == .IN {
-            priceLabel.text = "+" + transaction.sourceAmount!.description
-            priceLabel.textColor = UIColor.systemGreen
-        } else {
-            priceLabel.text = "-" + transaction.sourceAmount!.description
-            priceLabel.textColor = UIColor.red
-        }
+        transaction.direction == .IN ? positiveAmountDisplay(transaction: transaction) : negativeAmountDisplay(transaction: transaction)
 
-        if #available(iOS 13.0, *) {
-            switch transaction.spendingCategory {
-            case .OTHER:
-                self.spendingCategoryImage.image = UIImage(systemName: "pencil.and.ellipsis.rectangle")!
-            case .REVENUE:
-                self.spendingCategoryImage.image = UIImage(systemName: "sterlingsign.circle.fill")!
-            case .TRAVEL:
-                self.spendingCategoryImage.image = UIImage(systemName: "airplane")!
-            default:
-                self.spendingCategoryImage.image = UIImage(systemName: "bag")!
-            }
-        }
+        let imageName = SpendingCategoryFactory.makeSpendingCategory(spendingCategory: transaction.spendingCategory!)
+            .categoryImage
 
+        spendingCategoryImage.image = UIImage(named: imageName)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
