@@ -15,22 +15,10 @@ class PopularCell: UICollectionViewCell {
     @IBOutlet weak var imageIcon: UIImageView!
 
     func configure(spendingCategory: SpendingCategory) {
-        if #available(iOS 13.0, *) {
+        let imageName = SpendingCategoryFactory.makeSpendingCategory(spendingCategory: spendingCategory)
+            .categoryImage
 
-            switch spendingCategory {
-            case .OTHER:
-                self.imageIcon.image = UIImage(systemName: "pencil.and.ellipsis.rectangle")!
-            case .REVENUE:
-                self.imageIcon.image = UIImage(systemName: "sterlingsign.circle.fill")!
-            case .TRAVEL:
-                self.imageIcon.image = UIImage(systemName: "airplane")!
-            default:
-                self.imageIcon.image = UIImage(systemName: "bag")!
-            }
-
-        } else {
-            // Fallback on earlier versions
-        }
+        imageIcon.image = UIImage(named: imageName)
     }
 
 }
