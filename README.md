@@ -8,6 +8,11 @@
 
 Personal finances app using Starling bank's API with RxSwift + MVVM architecture
 
+# Requirements
+- iOS 13+
+- Xcode 11
+- iPhone 11 Pro Max (for demo)
+
 # Highlights and benefits
 - Reactive programming - Declarative programming paradigm concerned with data streams and the propagation of change.
 - MVVM architecture - Better application of SOLID principles and encapsulation of components. Offering better testability and flexibility.
