@@ -1,6 +1,6 @@
-<img alt="Login" src="https://user-images.githubusercontent.com/18484997/78169655-a2bdbe00-7449-11ea-9dfb-60f3e708f36b.png" width=270 align=left>
-<img alt="Updated Transaction Feed" src="https://user-images.githubusercontent.com/18484997/78266111-3d2b0980-74fd-11ea-925d-9013a4856bc3.png" width=270 align=left>
-<img alt="Transaction Details" src="https://user-images.githubusercontent.com/18484997/77860695-6d765d80-7208-11ea-919d-56459150ce16.png" width=270 align=left>
+<img alt="Login" src="https://user-images.githubusercontent.com/18484997/78169655-a2bdbe00-7449-11ea-9dfb-60f3e708f36b.png" width=250 align=left>
+<img alt="Updated Transaction Feed" src="https://user-images.githubusercontent.com/18484997/78266111-3d2b0980-74fd-11ea-925d-9013a4856bc3.png" width=250 align=left>
+<img alt="Transaction Details" src="https://user-images.githubusercontent.com/18484997/77860695-6d765d80-7208-11ea-919d-56459150ce16.png" width=250 align=left>
 
 
 # BudgetMeApp [![Build Status](https://travis-ci.org/kuriishu27/BudgetMeApp.svg?branch=master)](https://travis-ci.org/kuriishu27/BudgetMeApp)  [![codecov](https://codecov.io/gh/kuriishu27/BudgetMeApp/branch/master/graph/badge.svg)](https://codecov.io/gh/kuriishu27/BudgetMeApp) [![Swift Version](https://img.shields.io/badge/Swift-5.0-F16D39.svg?style=flat)](https://github.com/apple/swift)
@@ -63,6 +63,6 @@ christian.leovido@gmail.com
 I would appreciate any feedback as I'm constantly looking for more efficient ways of writing code and building software. 😄
 
 # Screenshots
-<img alt="Savings" src="https://user-images.githubusercontent.com/18484997/77860828-3d7b8a00-7209-11ea-813a-18e7114bc892.png" width=270 align=left>
-<img alt="Transaction Feed" src="https://user-images.githubusercontent.com/18484997/77860702-723b1180-7208-11ea-907e-f0e8704bed20.png" width=270 align=left>
-<img alt="Search results" src="https://user-images.githubusercontent.com/18484997/78168715-5756e000-7448-11ea-8a63-5a74bace85a5.png" width=270 align=center>
+<img alt="Savings" src="https://user-images.githubusercontent.com/18484997/77860828-3d7b8a00-7209-11ea-813a-18e7114bc892.png" width=250 align=left>
+<img alt="Transaction Feed" src="https://user-images.githubusercontent.com/18484997/77860702-723b1180-7208-11ea-907e-f0e8704bed20.png" width=250 align=left>
+<img alt="Search results" src="https://user-images.githubusercontent.com/18484997/78168715-5756e000-7448-11ea-8a63-5a74bace85a5.png" width=250 align=center>
