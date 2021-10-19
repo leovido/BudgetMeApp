@@ -1,9 +1,8 @@
-<img alt="Login" src="https://user-images.githubusercontent.com/18484997/78169655-a2bdbe00-7449-11ea-9dfb-60f3e708f36b.png" width=260 align=left>
-<img alt="Updated Transaction Feed" src="https://user-images.githubusercontent.com/18484997/78266111-3d2b0980-74fd-11ea-925d-9013a4856bc3.png" width=260 align=left>
-<img alt="Transaction Details" src="https://user-images.githubusercontent.com/18484997/77860695-6d765d80-7208-11ea-919d-56459150ce16.png" width=260 align=left>
-
-<hr />
-
+<div>
+  <img alt="Login" src="https://user-images.githubusercontent.com/18484997/78169655-a2bdbe00-7449-11ea-9dfb-60f3e708f36b.png" width=300 align=left>
+<img alt="Updated Transaction Feed" src="https://user-images.githubusercontent.com/18484997/78266111-3d2b0980-74fd-11ea-925d-9013a4856bc3.png" width=300 align=left>
+<img alt="Transaction Details" src="https://user-images.githubusercontent.com/18484997/77860695-6d765d80-7208-11ea-919d-56459150ce16.png" width=300 align=left>
+  </div>
 
 # BudgetMeApp [![Build Status](https://travis-ci.org/kuriishu27/BudgetMeApp.svg?branch=master)](https://travis-ci.org/kuriishu27/BudgetMeApp)  [![codecov](https://codecov.io/gh/kuriishu27/BudgetMeApp/branch/master/graph/badge.svg)](https://codecov.io/gh/kuriishu27/BudgetMeApp) [![Swift Version](https://img.shields.io/badge/Swift-5.0-F16D39.svg?style=flat)](https://github.com/apple/swift)
 
