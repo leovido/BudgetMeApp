@@ -3,7 +3,6 @@ name: Unit tests
 on:
   pull_request:
     branches: ['main']
-  workflow_dispatch:
 
 jobs:
   build:
