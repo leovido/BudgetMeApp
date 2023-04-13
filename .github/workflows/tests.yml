@@ -1,0 +1,39 @@
+name: Unit tests
+
+on:
+  push:
+    branches: ['${{ github.ref }}']
+  pull_request:
+    branches: ['main']
+
+jobs:
+  build:
+    runs-on: self-hosted
+    
+    concurrency:
+      group: ${{ github.head_ref }}
+      cancel-in-progress: false
+      
+    strategy:
+      matrix:
+        destination:
+          - platform=iOS Simulator,OS=16.0,name=iPhone 14
+          - platform=iOS Simulator,OS=15.0,name=iPhone 11
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Restore cache
+        uses: actions/cache@v2
+        with:
+          path: ~/Library/Caches/org.swift.swiftpm
+          key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-spm-
+      - name: Test BudgetMeApp
+        run: xcodebuild build-for-testing test-without-building -scheme BudgetMeAppTests -project BudgetMeApp.xcodeproj -destination "platform=iOS Simulator,name=iPhone 14"
+
+      - name: Save cache
+        uses: actions/cache@v2
+        with:
+          path: ~/Library/Caches/org.swift.swiftpm
+          key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
