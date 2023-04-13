@@ -1,0 +1,35 @@
+{
+  "configurations" : [
+    {
+      "id" : "A5F49167-0609-45BF-A0E9-925599E48A4F",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:BudgetMeApp.xcodeproj",
+          "identifier" : "2D0055112428D6A300A82E14",
+          "name" : "BudgetMeApp"
+        }
+      ]
+    },
+    "testExecutionOrdering" : "random",
+    "threadSanitizerEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:BudgetMeApp.xcodeproj",
+        "identifier" : "2D8DECFA242D65E100073D1B",
+        "name" : "BudgetMeAppTests"
+      }
+    }
+  ],
+  "version" : 1
+}
