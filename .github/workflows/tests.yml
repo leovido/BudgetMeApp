@@ -1,8 +1,6 @@
 name: Unit tests
 
 on:
-  push:
-    branches: ['${{ github.ref }}']
   pull_request:
     branches: ['main']
   workflow_dispatch:
