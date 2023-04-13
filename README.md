@@ -9,15 +9,11 @@
   
   </div>
 
-# BudgetMeApp [![Build Status](https://travis-ci.org/kuriishu27/BudgetMeApp.svg?branch=master)](https://travis-ci.org/kuriishu27/BudgetMeApp)  [![codecov](https://codecov.io/gh/kuriishu27/BudgetMeApp/branch/master/graph/badge.svg)](https://codecov.io/gh/kuriishu27/BudgetMeApp) [![Swift Version](https://img.shields.io/badge/Swift-5.0-F16D39.svg?style=flat)](https://github.com/apple/swift)
-
-
 Personal finances app using Starling bank's API with RxSwift + MVVM architecture
 
 # Requirements
 - iOS 13+
-- Xcode 11
-- iPhone 11 Pro Max (for demo)
+- Xcode 14
 
 # Highlights and benefits
 - Reactive programming - Declarative programming paradigm concerned with data streams and the propagation of change.
@@ -47,7 +43,7 @@ Using Moya to encapsulate specific requests by category. e.g. AccountsService, T
 - RxTest - Testing value changes over time
 
 # Upcoming / Tasks
-- [ ] Authentication (in progress, 6-APR)
+- [ ] Authentication 
 - ✅ ViewModel testing with RxTest
 - [ ] Accounts
 - ✅ Transaction Feed Details
@@ -60,7 +56,7 @@ Using Moya to encapsulate specific requests by category. e.g. AccountsService, T
 - [ ] Spending Insights
 - [ ] Card settings
 - [ ] Analytics View
-- [ ] SwiftUI version (other repo)
+- [ ] SwiftUI version 
 
 # Contributing
 Feel free to send me an email if you want to contribute to extending this app. Or you can just fork the repo and make your own changes and submit a PR. 
