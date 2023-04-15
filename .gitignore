@@ -83,6 +83,7 @@ iOSInjectionProject/
 
 ### SwiftPackageManager ###
 Packages
+xcuserdata
 
 
 ### SwiftPM ###
@@ -99,10 +100,6 @@ Packages
 ## compatibility with Xcode 3 and earlier (ignoring not required starting Xcode 4)
 
 ## Xcode Patch
-*.xcodeproj/*
-!*.xcodeproj/project.pbxproj
-!*.xcodeproj/xcshareddata/
-!*.xcworkspace/contents.xcworkspacedata
 /*.gcno
 
 ### Xcode Patch ###
