@@ -28,7 +28,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-spm-
       - name: Test BudgetMeApp
-        run: xcodebuild build-for-testing test-without-building -scheme BudgetMeAppTests -project BudgetMeApp.xcodeproj -destination "platform=iOS Simulator,name=iPhone 14"
+        run: xcodebuild build-for-testing test-without-building -scheme BudgetMeApp -project BudgetMeApp.xcodeproj -destination "platform=iOS Simulator,name=iPhone 14"
 
       - name: Save cache
         uses: actions/cache@v2
