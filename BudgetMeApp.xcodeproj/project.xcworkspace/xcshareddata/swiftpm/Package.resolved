@@ -1,151 +1,149 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "Alamofire",
-        "repositoryURL": "https://github.com/Alamofire/Alamofire.git",
-        "state": {
-          "branch": null,
-          "revision": "11928850d7273a8cd41bb766f2fc93b4d724b79b",
-          "version": "5.0.4"
-        }
-      },
-      {
-        "package": "BrightFutures",
-        "repositoryURL": "https://github.com/Thomvis/BrightFutures.git",
-        "state": {
-          "branch": null,
-          "revision": "9279defa6bdc21501ce740266e5a14d0119ddc63",
-          "version": "8.0.1"
-        }
-      },
-      {
-        "package": "Chalk",
-        "repositoryURL": "https://github.com/mxcl/Chalk.git",
-        "state": {
-          "branch": null,
-          "revision": "9aa9f348b86db3cf6702a3e43c081ecec80cf3c7",
-          "version": "0.4.0"
-        }
-      },
-      {
-        "package": "Erik",
-        "repositoryURL": "https://github.com/phimage/Erik.git",
-        "state": {
-          "branch": null,
-          "revision": "109a130e9cdb00789a43a7a625293eeb12d22989",
-          "version": "5.1.0"
-        }
-      },
-      {
-        "package": "FileCheck",
-        "repositoryURL": "https://github.com/llvm-swift/FileCheck.git",
-        "state": {
-          "branch": null,
-          "revision": "9ed91cc30a1a325d989fac117f3f3065a16b9f76",
-          "version": "0.2.3"
-        }
-      },
-      {
-        "package": "FileKit",
-        "repositoryURL": "https://github.com/nvzqz/FileKit.git",
-        "state": {
-          "branch": null,
-          "revision": "826d9161b184509f80d85c28cd612d630646de98",
-          "version": "6.0.0"
-        }
-      },
-      {
-        "package": "Kanna",
-        "repositoryURL": "https://github.com/tid-kijyun/Kanna.git",
-        "state": {
-          "branch": null,
-          "revision": "609367a2cd84827a33383cf7923cb4fe8f69ee0a",
-          "version": "5.2.2"
-        }
-      },
-      {
-        "package": "Moya",
-        "repositoryURL": "https://github.com/Moya/Moya",
-        "state": {
-          "branch": null,
-          "revision": "b3e5a233e0d85fd4d69f561c80988590859c7dee",
-          "version": "14.0.0"
-        }
-      },
-      {
-        "package": "NVActivityIndicatorView",
-        "repositoryURL": "https://github.com/ninjaprox/NVActivityIndicatorView",
-        "state": {
-          "branch": null,
-          "revision": "4a4726d15367d82bd3e9e1f01625bd76dbbb0c98",
-          "version": "4.8.0"
-        }
-      },
-      {
-        "package": "OAuthSwift",
-        "repositoryURL": "https://github.com/OAuthSwift/OAuthSwift",
-        "state": {
-          "branch": null,
-          "revision": "2e75d626532c2c6373e603312c0f1207e7e778ea",
-          "version": "2.1.0"
-        }
-      },
-      {
-        "package": "ReactiveSwift",
-        "repositoryURL": "https://github.com/Moya/ReactiveSwift.git",
-        "state": {
-          "branch": null,
-          "revision": "f195d82bb30e412e70446e2b4a77e1b514099e88",
-          "version": "6.1.0"
-        }
-      },
-      {
-        "package": "RxDataSources",
-        "repositoryURL": "https://github.com/RxSwiftCommunity/RxDataSources",
-        "state": {
-          "branch": null,
-          "revision": "a18cee01c9ee55f04d0c7eb15c77a96c3648c88e",
-          "version": "4.0.1"
-        }
-      },
-      {
-        "package": "RxSwift",
-        "repositoryURL": "https://github.com/ReactiveX/RxSwift",
-        "state": {
-          "branch": null,
-          "revision": "c1bd31b397d87a54467af4161dde9d6b27720c19",
-          "version": "5.1.0"
-        }
-      },
-      {
-        "package": "swift-tools-support-core",
-        "repositoryURL": "https://github.com/apple/swift-tools-support-core.git",
-        "state": {
-          "branch": null,
-          "revision": "693aba4c4c9dcc4767cc853a0dd38bf90ad8c258",
-          "version": "0.0.1"
-        }
-      },
-      {
-        "package": "SwiftCheck",
-        "repositoryURL": "https://github.com/typelift/SwiftCheck",
-        "state": {
-          "branch": null,
-          "revision": "077c096c3ddfc38db223ac8e525ad16ffb987138",
-          "version": "0.12.0"
-        }
-      },
-      {
-        "package": "Swifter",
-        "repositoryURL": "https://github.com/httpswift/swifter.git",
-        "state": {
-          "branch": null,
-          "revision": "8b5afb48ae64d4f729f0489ddcfe09c62b9c3687",
-          "version": "1.4.7"
-        }
+  "pins" : [
+    {
+      "identity" : "alamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire.git",
+      "state" : {
+        "revision" : "11928850d7273a8cd41bb766f2fc93b4d724b79b",
+        "version" : "5.0.4"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "brightfutures",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Thomvis/BrightFutures.git",
+      "state" : {
+        "revision" : "9279defa6bdc21501ce740266e5a14d0119ddc63",
+        "version" : "8.0.1"
+      }
+    },
+    {
+      "identity" : "chalk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mxcl/Chalk.git",
+      "state" : {
+        "revision" : "9aa9f348b86db3cf6702a3e43c081ecec80cf3c7",
+        "version" : "0.4.0"
+      }
+    },
+    {
+      "identity" : "erik",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/phimage/Erik.git",
+      "state" : {
+        "revision" : "109a130e9cdb00789a43a7a625293eeb12d22989",
+        "version" : "5.1.0"
+      }
+    },
+    {
+      "identity" : "filecheck",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/llvm-swift/FileCheck.git",
+      "state" : {
+        "revision" : "9ed91cc30a1a325d989fac117f3f3065a16b9f76",
+        "version" : "0.2.3"
+      }
+    },
+    {
+      "identity" : "filekit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/nvzqz/FileKit.git",
+      "state" : {
+        "revision" : "826d9161b184509f80d85c28cd612d630646de98",
+        "version" : "6.0.0"
+      }
+    },
+    {
+      "identity" : "kanna",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tid-kijyun/Kanna.git",
+      "state" : {
+        "revision" : "609367a2cd84827a33383cf7923cb4fe8f69ee0a",
+        "version" : "5.2.2"
+      }
+    },
+    {
+      "identity" : "moya",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Moya/Moya",
+      "state" : {
+        "revision" : "b3e5a233e0d85fd4d69f561c80988590859c7dee",
+        "version" : "14.0.0"
+      }
+    },
+    {
+      "identity" : "nvactivityindicatorview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ninjaprox/NVActivityIndicatorView",
+      "state" : {
+        "revision" : "4a4726d15367d82bd3e9e1f01625bd76dbbb0c98",
+        "version" : "4.8.0"
+      }
+    },
+    {
+      "identity" : "oauthswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/OAuthSwift/OAuthSwift",
+      "state" : {
+        "revision" : "2e75d626532c2c6373e603312c0f1207e7e778ea",
+        "version" : "2.1.0"
+      }
+    },
+    {
+      "identity" : "reactiveswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Moya/ReactiveSwift.git",
+      "state" : {
+        "revision" : "f195d82bb30e412e70446e2b4a77e1b514099e88",
+        "version" : "6.1.0"
+      }
+    },
+    {
+      "identity" : "rxdatasources",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/RxSwiftCommunity/RxDataSources",
+      "state" : {
+        "revision" : "a18cee01c9ee55f04d0c7eb15c77a96c3648c88e",
+        "version" : "4.0.1"
+      }
+    },
+    {
+      "identity" : "rxswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ReactiveX/RxSwift",
+      "state" : {
+        "revision" : "c1bd31b397d87a54467af4161dde9d6b27720c19",
+        "version" : "5.1.0"
+      }
+    },
+    {
+      "identity" : "swift-tools-support-core",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-tools-support-core.git",
+      "state" : {
+        "revision" : "693aba4c4c9dcc4767cc853a0dd38bf90ad8c258",
+        "version" : "0.0.1"
+      }
+    },
+    {
+      "identity" : "swiftcheck",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/typelift/SwiftCheck",
+      "state" : {
+        "revision" : "077c096c3ddfc38db223ac8e525ad16ffb987138",
+        "version" : "0.12.0"
+      }
+    },
+    {
+      "identity" : "swifter",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/httpswift/swifter.git",
+      "state" : {
+        "revision" : "8b5afb48ae64d4f729f0489ddcfe09c62b9c3687",
+        "version" : "1.4.7"
+      }
+    }
+  ],
+  "version" : 2
 }
