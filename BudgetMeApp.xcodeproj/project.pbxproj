@@ -184,7 +184,7 @@
 		2DFBD8FC244522EF00268BA6 /* SegueManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueManager.swift; sourceTree = "<group>"; };
 		2DFBD9022445E43000268BA6 /* SpendingCategoryFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingCategoryFactory.swift; sourceTree = "<group>"; };
 		2DFC8E6F243BB19A00D70A44 /* STAccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STAccessToken.swift; sourceTree = "<group>"; };
-		4779375429E81A2700B3ECEC /* BudgetMeAppTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = BudgetMeAppTests.xctestplan; sourceTree = "<group>"; };
+		479DD42B29EB18E90024A1BC /* BudgetMeAppTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = BudgetMeAppTests.xctestplan; path = ../BudgetMeAppTests.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,7 +218,7 @@
 		2D0055092428D6A300A82E14 = {
 			isa = PBXGroup;
 			children = (
-				4779375429E81A2700B3ECEC /* BudgetMeAppTests.xctestplan */,
+				479DD42B29EB18E90024A1BC /* BudgetMeAppTests.xctestplan */,
 				2D0055142428D6A300A82E14 /* BudgetMeApp */,
 				2D8DECFC242D65E100073D1B /* BudgetMeAppTests */,
 				2D0055132428D6A300A82E14 /* Products */,
