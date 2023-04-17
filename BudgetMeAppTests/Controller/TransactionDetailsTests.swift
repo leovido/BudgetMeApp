@@ -6,82 +6,71 @@
 //  Copyright © 2020 Christian Leovido. All rights reserved.
 //
 
-import XCTest
 import SwiftCheck
+import XCTest
 @testable import BudgetMeApp
 
 class TransactionDetailsTests: XCTestCase {
+  var viewController: TransactionDetailsViewController!
 
-    var viewController: TransactionDetailsViewController!
+  override func setUp() {
+    let transaction = STTransactionFeed.arbitrary.generate
 
-    override func setUp() {
+    viewController = sutNavigationSetup()
+    viewController.transaction = transaction
+  }
 
-        let transaction = STTransactionFeed.arbitrary.generate
+  override func tearDown() {
+    viewController = nil
+  }
 
-        viewController = sutNavigationSetup()
-        viewController.transaction = transaction
+  func testLifeCycle() {
+    viewController.viewWillAppear(true)
+    viewController.viewDidLoad()
+    viewController.viewDidAppear(true)
+    viewController.viewWillAppear(true)
+  }
 
-    }
+  func testTransactionIn() {
+    let transaction = STTransactionFeed.arbitraryInDirection.generate
+    viewController.transaction = transaction
+    viewController.configureView()
 
-    override func tearDown() {
-        viewController = nil
-    }
+    XCTAssertEqual(viewController.amountLabel.textColor, UIColor.systemGreen)
+  }
 
-    func testLifeCycle() {
-        viewController.viewWillAppear(true)
-        viewController.viewDidLoad()
-        viewController.viewDidAppear(true)
-        viewController.viewWillAppear(true)
-    }
+  func testTransactionOut() {
+    let transaction = STTransactionFeed.arbitraryOUTDirection.generate
+    viewController.transaction = transaction
+    viewController.configureView()
 
-    func testTransactionIn() {
+    XCTAssertEqual(viewController.amountLabel.textColor, UIColor.systemPink)
+  }
 
-        let transaction = STTransactionFeed.arbitraryInDirection.generate
-        viewController.transaction = transaction
-        viewController.configureView()
+  func testSourceTransactionAbbreviation() {
+    let transaction = STTransactionFeed.arbitraryWithSources.generate
+    let abbrev = viewController.sourceTransactionAbbreviation(transaction: transaction)
 
-        XCTAssertEqual(viewController.amountLabel.textColor, UIColor.systemGreen)
+    XCTAssert(!abbrev.isEmpty)
+  }
 
-    }
+  func testMakeViewController() {
+    let transaction = STTransactionFeed.arbitrary.generate
 
-    func testTransactionOut() {
+    _ = TransactionDetailsViewController.makeTransactionDetailsViewController(transaction: transaction)
+  }
 
-        let transaction = STTransactionFeed.arbitraryOUTDirection.generate
-        viewController.transaction = transaction
-        viewController.configureView()
+  func sutNavigationSetup<T>() -> T {
+    viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TransactionDetailsViewController") as? TransactionDetailsViewController
 
-        XCTAssertEqual(viewController.amountLabel.textColor, UIColor.systemPink)
+    let navigationController = UINavigationController()
 
-    }
+    UIApplication.shared.windows.first!.rootViewController = navigationController
+    navigationController.pushViewController(viewController, animated: false)
 
-    func testSourceTransactionAbbreviation() {
+    viewController = navigationController.topViewController as? TransactionDetailsViewController
+    viewController.loadView()
 
-        let transaction = STTransactionFeed.arbitraryWithSources.generate
-        let abbrev = viewController.sourceTransactionAbbreviation(transaction: transaction)
-
-        XCTAssert(!abbrev.isEmpty)
-    }
-
-    func testMakeViewController() {
-
-        let transaction = STTransactionFeed.arbitrary.generate
-
-        _ = TransactionDetailsViewController.makeTransactionDetailsViewController(transaction: transaction)
-    }
-
-    func sutNavigationSetup<T>() -> T {
-
-        viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TransactionDetailsViewController") as? TransactionDetailsViewController
-
-        let navigationController = UINavigationController()
-
-        UIApplication.shared.windows.first!.rootViewController = navigationController
-        navigationController.pushViewController(viewController, animated: false)
-
-        viewController = navigationController.topViewController as? TransactionDetailsViewController
-        viewController.loadView()
-
-        return viewController as! T
-    }
-
+    return viewController as! T
+  }
 }

@@ -10,72 +10,71 @@ import Foundation
 import Moya
 
 public enum STSavingsGoalService {
-    case browseSavings
-    case getSaving(savingsGoalId: String)
-    case createSaving(name: String)
-    case addMoney(amount: MinorUnits, savingsGoalId: String)
+  case browseSavings
+  case getSaving(savingsGoalId: String)
+  case createSaving(name: String)
+  case addMoney(amount: MinorUnits, savingsGoalId: String)
 }
 
 extension STSavingsGoalService: AuthorizedTargetType {
-    var needsAuth: Bool {
-        return true
-    }
+  var needsAuth: Bool {
+    true
+  }
 }
 
 extension STSavingsGoalService: TargetType {
+  public var baseURL: URL {
+    STEnvironment.environment
+  }
 
-    public var baseURL: URL {
-        return STEnvironment.environment
+  public var path: String {
+    switch self {
+    case .browseSavings,
+         .createSaving:
+      return "/account/\(Session.shared.accountId)/savings-goals"
+    case let .getSaving(savingsGoalId):
+      return "/account/\(Session.shared.accountId)/savings-goals/\(savingsGoalId)"
+    case let .addMoney(_, savingsGoalId):
+      return "/account/\(Session.shared.accountId)/savings-goals/\(savingsGoalId)/add-money/\(UUID().uuidString)"
     }
+  }
 
-    public var path: String {
-        switch self {
-        case .browseSavings,
-             .createSaving:
-            return "/account/\(Session.shared.accountId)/savings-goals"
-        case .getSaving(let savingsGoalId):
-            return "/account/\(Session.shared.accountId)/savings-goals/\(savingsGoalId)"
-        case .addMoney(_, let savingsGoalId):
-            return "/account/\(Session.shared.accountId)/savings-goals/\(savingsGoalId)/add-money/\(UUID().uuidString)"
-        }
+  public var method: Moya.Method {
+    switch self {
+    case .browseSavings,
+         .getSaving:
+      return .get
+    case .createSaving,
+         .addMoney:
+      return .put
     }
+  }
 
-    public var method: Moya.Method {
-        switch self {
-        case .browseSavings,
-             .getSaving:
-            return .get
-        case .createSaving,
-             .addMoney:
-            return .put
-        }
-    }
+  public var sampleData: Data {
+    Data()
+  }
 
-    public var sampleData: Data {
-        return Data()
+  public var task: Task {
+    switch self {
+    case .browseSavings,
+         .getSaving:
+      return .requestPlain
+    case let .createSaving(name):
+      return .requestParameters(parameters: ["name": name, "currency": "GBP"],
+                                encoding: JSONEncoding.default)
+    case let .addMoney(amount, _):
+      return .requestParameters(parameters: ["amount": ["currency": "GBP",
+                                                        "minorUnits": amount]],
+      encoding: JSONEncoding.default)
     }
+  }
 
-    public var task: Task {
-        switch self {
-        case .browseSavings,
-             .getSaving:
-            return .requestPlain
-        case .createSaving(let name):
-            return .requestParameters(parameters: ["name": name, "currency": "GBP"],
-                                      encoding: JSONEncoding.default)
-        case .addMoney(let amount, _):
-            return .requestParameters(parameters: ["amount": ["currency": "GBP",
-                                                              "minorUnits": amount]],
-                                      encoding: JSONEncoding.default)
-        }
-    }
+  public var headers: [String: String]? {
+    ["Accept": "application/json",
+     "User-agent": "Christian Ray Leovido"]
+  }
 
-    public var headers: [String: String]? {
-        return ["Accept": "application/json",
-                "User-agent": "Christian Ray Leovido"]
-    }
-
-    public var validationType: ValidationType {
-        return .successAndRedirectCodes
-    }
+  public var validationType: ValidationType {
+    .successAndRedirectCodes
+  }
 }

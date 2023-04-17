@@ -13,39 +13,35 @@ import Moya
 protocol StubAccounts {}
 
 extension StubAccounts {
+  var bundle: Bundle {
+    Bundle(for: type(of: self) as! AnyClass)
+  }
 
-    var bundle: Bundle {
-        return Bundle(for: type(of: self) as! AnyClass)
-    }
+  func makeMoyaSuccessStub<T: TargetType>(type: STAccountSuccessTestCases) -> MoyaProvider<T> {
+    #if DEBUG
+      let url = bundle.url(forResource: "account_success_" + type.rawValue, withExtension: "json")!
+      let data = try! Data(contentsOf: url)
 
-    func makeMoyaSuccessStub<T: TargetType>(type: STAccountSuccessTestCases) -> MoyaProvider<T> {
+      let serverEndpointSuccess = { (target: T) -> Endpoint in
+        Endpoint(url: URL(target: target).absoluteString,
+                 sampleResponseClosure: { .networkResponse(200, data) },
+                 method: target.method,
+                 task: target.task,
+                 httpHeaderFields: target.headers)
+      }
 
-        #if DEBUG
-        let url = bundle.url(forResource: "account_success_" + type.rawValue, withExtension: "json")!
-        let data = try! Data(contentsOf: url)
+      let serverStubSuccess = MoyaProvider<T>(
+        endpointClosure: serverEndpointSuccess,
+        stubClosure: MoyaProvider.immediatelyStub,
+        plugins: [
+          AuthPlugin(tokenClosure: { Session.shared.token }),
+        ]
+      )
 
-        let serverEndpointSuccess = { (target: T) -> Endpoint in
-            return Endpoint(url: URL(target: target).absoluteString,
-                            sampleResponseClosure: { .networkResponse(200, data) },
-                            method: target.method,
-                            task: target.task,
-                            httpHeaderFields: target.headers)
-        }
+      return serverStubSuccess
 
-        let serverStubSuccess = MoyaProvider<T>(
-            endpointClosure: serverEndpointSuccess,
-            stubClosure: MoyaProvider.immediatelyStub,
-            plugins: [
-                AuthPlugin(tokenClosure: { return Session.shared.token })
-            ]
-        )
-
-        return serverStubSuccess
-
-        #elseif STAGING
-        return MoyaNetworkManagerFactory.makeManager()
-        #endif
-
-    }
-
+    #elseif STAGING
+      return MoyaNetworkManagerFactory.makeManager()
+    #endif
+  }
 }

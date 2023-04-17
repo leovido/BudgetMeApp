@@ -9,9 +9,9 @@
 import Foundation
 
 struct STSavingsGoal: Decodable {
-    let savingsGoalUid: String
-    let name: String
-    let target: CurrencyAndAmount?
-    let totalSaved: CurrencyAndAmount
-    let savedPercentage: Int?
+  let savingsGoalUid: String
+  let name: String
+  let target: CurrencyAndAmount?
+  let totalSaved: CurrencyAndAmount
+  let savedPercentage: Int?
 }

@@ -1,4 +1,5 @@
-indentation_width: 4
+indentation_width: 2
+indentation_style: tabs
 cyclomatic_complexity:
   warning: 5
   error: 7

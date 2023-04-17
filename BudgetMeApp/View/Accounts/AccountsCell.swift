@@ -9,25 +9,23 @@
 import UIKit
 
 class AccountsCell: UITableViewCell {
+  @IBOutlet var accountLabel: UILabel!
+  @IBOutlet var balanceLabel: UILabel!
 
-    @IBOutlet weak var accountLabel: UILabel!
-    @IBOutlet weak var balanceLabel: UILabel!
+  @IBOutlet var accountIdLabel: UILabel!
 
-    @IBOutlet weak var accountIdLabel: UILabel!
+  @IBOutlet var IBANLabel: UILabel!
+  @IBOutlet var BICLabel: UILabel!
 
-    @IBOutlet weak var IBANLabel: UILabel!
-    @IBOutlet weak var BICLabel: UILabel!
+  static var identifier: String {
+    "AccountsCell"
+  }
 
-    static var identifier: String {
-        return "AccountsCell"
-    }
-
-    func configure(value: AccountComposite) {
-        accountLabel.text = "Account #\(1)"
-        balanceLabel.text = value.balance.clearedBalance.description
-        accountIdLabel.text = value.identifiers.accountIdentifier
-        IBANLabel.text = value.identifiers.iban
-        BICLabel.text = value.identifiers.bic
-    }
-
+  func configure(value: AccountComposite) {
+    accountLabel.text = "Account #\(1)"
+    balanceLabel.text = value.balance.clearedBalance.description
+    accountIdLabel.text = value.identifiers.accountIdentifier
+    IBANLabel.text = value.identifiers.iban
+    BICLabel.text = value.identifiers.bic
+  }
 }

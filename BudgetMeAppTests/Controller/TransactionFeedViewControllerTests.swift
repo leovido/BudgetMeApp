@@ -11,37 +11,34 @@ import XCTest
 @testable import BudgetMeApp
 
 class TransactionFeedViewControllerTests: XCTestCase {
+  var viewController: TransactionFeedViewController!
 
-    var viewController: TransactionFeedViewController!
+  override func setUp() {
+    viewController = sutNavigationSetup()
+  }
 
-    override func setUp() {
-        viewController = sutNavigationSetup()
-    }
+  override func tearDown() {
+    viewController = nil
+  }
 
-    override func tearDown() {
-        viewController = nil
-    }
+  func testLifecycle() {
+    viewController.viewWillAppear(true)
+    viewController.viewDidLoad()
+    viewController.viewDidAppear(true)
+    viewController.viewWillDisappear(true)
+  }
 
-    func testLifecycle() {
-        viewController.viewWillAppear(true)
-        viewController.viewDidLoad()
-        viewController.viewDidAppear(true)
-        viewController.viewWillDisappear(true)
-    }
+  func sutNavigationSetup<T>() -> T {
+    viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TransactionFeedViewController") as? TransactionFeedViewController
 
-    func sutNavigationSetup<T>() -> T {
+    let navigationController = UINavigationController()
 
-        viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TransactionFeedViewController") as? TransactionFeedViewController
+    UIApplication.shared.windows.first!.rootViewController = navigationController
+    navigationController.pushViewController(viewController, animated: false)
 
-        let navigationController = UINavigationController()
+    viewController = navigationController.topViewController as? TransactionFeedViewController
+    viewController.loadView()
 
-        UIApplication.shared.windows.first!.rootViewController = navigationController
-        navigationController.pushViewController(viewController, animated: false)
-
-        viewController = navigationController.topViewController as? TransactionFeedViewController
-        viewController.loadView()
-
-        return viewController as! T
-    }
-
+    return viewController as! T
+  }
 }

@@ -11,21 +11,19 @@ import UIKit
 extension SavingsCell: CurrencyFormattable {}
 
 final class SavingsCell: UITableViewCell {
+  @IBOutlet var savingNameLabel: UILabel!
+  @IBOutlet var targetAmountLabel: UILabel!
+  @IBOutlet var totalSavedLabel: UILabel!
+  @IBOutlet var percentageLabel: UILabel!
 
-    @IBOutlet weak var savingNameLabel: UILabel!
-    @IBOutlet weak var targetAmountLabel: UILabel!
-    @IBOutlet weak var totalSavedLabel: UILabel!
-    @IBOutlet weak var percentageLabel: UILabel!
+  static var identifier: String {
+    "SavingsCell"
+  }
 
-    static var identifier: String {
-        return "SavingsCell"
-    }
-
-    func configureSavings(savings: STSavingsGoal) {
-        savingNameLabel.text = savings.name
-        targetAmountLabel.text = savings.target != nil ? currencyFormatter(value: savings.target!) : "n/a"
-        totalSavedLabel.text = currencyFormatter(value: savings.totalSaved)
-        percentageLabel.text = "\(savings.savedPercentage?.description ?? "0")%"
-    }
-
+  func configureSavings(savings: STSavingsGoal) {
+    savingNameLabel.text = savings.name
+    targetAmountLabel.text = savings.target != nil ? currencyFormatter(value: savings.target!) : "n/a"
+    totalSavedLabel.text = currencyFormatter(value: savings.totalSaved)
+    percentageLabel.text = "\(savings.savedPercentage?.description ?? "0")%"
+  }
 }

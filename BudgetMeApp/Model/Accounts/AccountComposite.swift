@@ -9,7 +9,7 @@
 import Foundation
 
 struct AccountComposite: Decodable, Equatable {
-    var account: STAccount
-    var balance: STBalance
-    var identifiers: STAccountIdentifiers
+  var account: STAccount
+  var balance: STBalance
+  var identifiers: STAccountIdentifiers
 }

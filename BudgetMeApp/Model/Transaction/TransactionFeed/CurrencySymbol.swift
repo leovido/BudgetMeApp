@@ -9,6 +9,6 @@
 import Foundation
 
 enum CurrencySymbol: String, Decodable, CaseIterable {
-    case EUR
-    case GBP
+  case EUR
+  case GBP
 }

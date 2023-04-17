@@ -10,41 +10,36 @@ import Foundation
 import Moya
 
 struct STAccountManager: EntityComponent {
+  typealias Model = STAccount
 
-    typealias Model = STAccount
+  private var decoder = JSONDecoder()
+  private var provider: MoyaProvider<STAccountService>
 
-    private var decoder = JSONDecoder()
-    private var provider: MoyaProvider<STAccountService>
+  init(provider: MoyaProvider<STAccountService> = MoyaNetworkManagerFactory.makeManager()) {
+    self.provider = provider
+  }
 
-    init(provider: MoyaProvider<STAccountService> = MoyaNetworkManagerFactory.makeManager()) {
-        self.provider = provider
-    }
+  func browse(completion: @escaping (Result<[STAccount], Error>) -> Void) {
+    var accounts: [STAccount] = []
 
-    func browse(completion: @escaping (Result<[STAccount], Error>) -> Void) {
+    provider.request(.browseAccounts) { result in
+      switch result {
+      case let .success(response):
 
-        var accounts: [STAccount] = []
+        do {
+          accounts = try response.map([STAccount].self,
+                                      atKeyPath: "accounts",
+                                      using: self.decoder,
+                                      failsOnEmptyData: true)
 
-        provider.request(.browseAccounts) { result in
-            switch result {
-            case .success(let response):
+          completion(.success(accounts))
 
-                do {
-
-                    accounts = try response.map([STAccount].self,
-                                                atKeyPath: "accounts",
-                                                using: self.decoder,
-                                                failsOnEmptyData: true)
-
-                    completion(.success(accounts))
-
-                } catch let error {
-                    completion(.failure(error))
-                }
-            case .failure(let error):
-                completion(.failure(error))
-            }
+        } catch {
+          completion(.failure(error))
         }
-
+      case let .failure(error):
+        completion(.failure(error))
+      }
     }
-
+  }
 }

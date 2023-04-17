@@ -6,78 +6,65 @@
 //  Copyright © 2020 Christian Leovido. All rights reserved.
 //
 
-import XCTest
-import RxSwift
 import RxCocoa
+import RxSwift
 import RxTest
+import XCTest
 @testable import BudgetMeApp
 
 class TransactionFeedViewModelTests: XCTestCase {
+  var txsViewModel: TransactionsViewModel!
 
-    var txsViewModel: TransactionsViewModel!
+  var disposeBag: DisposeBag!
+  var scheduler: TestScheduler!
 
-    var disposeBag: DisposeBag!
-    var scheduler: TestScheduler!
+  override func setUp() {
+    disposeBag = DisposeBag()
+    scheduler = TestScheduler(initialClock: 0)
+  }
 
-    override func setUp() {
+  override func tearDown() {
+    txsViewModel = nil
+  }
 
-        disposeBag = DisposeBag()
-        self.scheduler = TestScheduler(initialClock: 0)
-    }
+  func testDataSource() {
+    txsViewModel = TransactionsViewModel(provider: makeMoyaSuccessStub(type: .browse), accountId: "")
 
-    override func tearDown() {
-        txsViewModel = nil
-    }
+    let dataSourceMock = scheduler.createObserver([TransactionSectionData].self)
+    txsViewModel.dataSource
+      .bind(to: dataSourceMock)
+      .disposed(by: disposeBag)
 
-    func testDataSource() {
+    let txs = [TransactionSectionData(header: "Income", items: [])]
 
-        txsViewModel = TransactionsViewModel(provider: makeMoyaSuccessStub(type: .browse), accountId: "")
+    scheduler.createColdObservable([.next(15, txs)])
+      .bind(to: txsViewModel.dataSource)
+      .disposed(by: disposeBag)
 
-        let dataSourceMock = scheduler.createObserver([TransactionSectionData].self)
-        txsViewModel.dataSource
-            .bind(to: dataSourceMock)
-            .disposed(by: disposeBag)
+    scheduler.start()
 
-        let txs = [TransactionSectionData(header: "Income", items: [])]
+    XCTAssertEqual(dataSourceMock.events, [.next(0, []),
+                                           .next(15, txs)])
+  }
 
-        scheduler.createColdObservable([.next(15, txs)])
-            .bind(to: txsViewModel.dataSource)
-            .disposed(by: disposeBag)
+  func testRefreshData() {
+    txsViewModel = TransactionsViewModel(provider: makeMoyaSuccessStub(type: .browse), accountId: "")
+    txsViewModel.refreshData()
+  }
 
-        scheduler.start()
+  func testUpdateDateSource() {
+    txsViewModel = TransactionsViewModel(provider: makeMoyaSuccessStub(type: .browse), accountId: "")
+    txsViewModel.updateDateRange(dateTime: Date().toStringDateFormat())
+  }
 
-        XCTAssertEqual(dataSourceMock.events, [.next(0, []),
-                                               .next(15, txs)])
+  func testRefreshDataRange() {
+    txsViewModel = TransactionsViewModel(provider: makeMoyaSuccessStub(type: .dateRange), accountId: "")
+    txsViewModel.refreshData(with: Date().toStringDateFormat())
+  }
 
-    }
+  func testCurrency() {
+    let currency = CurrencyAndAmount.arbitrary.generate.description
 
-    func testRefreshData() {
-
-        txsViewModel = TransactionsViewModel(provider: makeMoyaSuccessStub(type: .browse), accountId: "")
-        txsViewModel.refreshData()
-
-    }
-
-    func testUpdateDateSource() {
-
-        txsViewModel = TransactionsViewModel(provider: makeMoyaSuccessStub(type: .browse), accountId: "")
-        txsViewModel.updateDateRange(dateTime: Date().toStringDateFormat())
-
-    }
-
-    func testRefreshDataRange() {
-
-        txsViewModel = TransactionsViewModel(provider: makeMoyaSuccessStub(type: .dateRange), accountId: "")
-        txsViewModel.refreshData(with: Date().toStringDateFormat())
-
-    }
-
-    func testCurrency() {
-
-        let currency = CurrencyAndAmount.arbitrary.generate.description
-
-        XCTAssert(!currency.isEmpty)
-
-    }
-
+    XCTAssert(!currency.isEmpty)
+  }
 }

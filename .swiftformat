@@ -1,0 +1,9 @@
+# format options
+
+--allman false
+--indent 2
+--importgrouping testable-bottom
+
+# rules
+
+--enable isEmpty

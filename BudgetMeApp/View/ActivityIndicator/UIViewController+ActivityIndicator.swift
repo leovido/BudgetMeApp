@@ -6,7 +6,7 @@
 //  Copyright © 2020 Christian Leovido. All rights reserved.
 //
 
-import UIKit
 import NVActivityIndicatorView
+import UIKit
 
 extension UIViewController: NVActivityIndicatorViewable {}

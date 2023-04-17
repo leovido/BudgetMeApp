@@ -10,20 +10,16 @@ import Moya
 
 /// Factory used for mocking and unit testing
 enum MoyaNetworkManagerFactory {
-
-    static func makeManager<T>() -> MoyaProvider<T> {
-
-        #if DEBUG
-        return MoyaProvider<T>(plugins: [
-            AuthPlugin(tokenClosure: { return Session.shared.token }),
-            NetworkLoggerPlugin()
-        ])
-        #else
-        return MoyaProvider<T>(plugins: [
-            AuthPlugin(tokenClosure: { return Session.shared.token })
-        ])
-        #endif
-
-    }
-
+  static func makeManager<T>() -> MoyaProvider<T> {
+    #if DEBUG
+      return MoyaProvider<T>(plugins: [
+        AuthPlugin(tokenClosure: { Session.shared.token }),
+        NetworkLoggerPlugin(),
+      ])
+    #else
+      return MoyaProvider<T>(plugins: [
+        AuthPlugin(tokenClosure: { Session.shared.token }),
+      ])
+    #endif
+  }
 }

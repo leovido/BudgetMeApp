@@ -6,137 +6,129 @@
 //  Copyright © 2020 Christian Leovido. All rights reserved.
 //
 
-import XCTest
 import Moya
-import RxSwift
 import RxCocoa
+import RxSwift
 import RxTest
+import XCTest
 @testable import BudgetMeApp
 
 class LoginViewTests: XCTestCase {
+  var loginViewModel: LoginViewModel!
+  var scheduler: TestScheduler!
+  var disposeBag: DisposeBag!
 
-    var loginViewModel: LoginViewModel!
-    var scheduler: TestScheduler!
-    var disposeBag: DisposeBag!
+  override func setUp() {
+    disposeBag = DisposeBag()
+  }
 
-    override func setUp() {
-        disposeBag = DisposeBag()
-    }
+  override func tearDown() {
+    loginViewModel = nil
+    scheduler = nil
+    disposeBag = nil
+  }
 
-    override func tearDown() {
-        loginViewModel = nil
-        scheduler = nil
-        disposeBag = nil
-    }
+  func testIsEmailTextFieldValid() {
+    let provider: MoyaProvider<STAuthentication> = makeMoyaSuccessStub(type: .auth)
+    loginViewModel = LoginViewModel(provider: provider)
 
-    func testIsEmailTextFieldValid() {
+    scheduler = TestScheduler(initialClock: 0)
+    let mockIsValid = scheduler.createObserver(Bool.self)
 
-        let provider: MoyaProvider<STAuthentication> = self.makeMoyaSuccessStub(type: .auth)
-        loginViewModel = LoginViewModel(provider: provider)
+    var mockEmailTextFieldValues: Observable<String>
 
-        scheduler = TestScheduler(initialClock: 0)
-        let mockIsValid = scheduler.createObserver(Bool.self)
+    mockEmailTextFieldValues = scheduler.createHotObservable([.next(0, "s"),
+                                                              .next(10, "s"),
+                                                              .next(11, "st"),
+                                                              .next(12, "st@"),
+                                                              .next(13, "st")]).asObservable()
 
-        var mockEmailTextFieldValues: Observable<String>
-        
-        mockEmailTextFieldValues = scheduler.createHotObservable([.next(0, "s"),
-                                                                  .next(10, "s"),
-                                                                  .next(11, "st"),
-                                                                  .next(12, "st@"),
-                                                                  .next(13, "st")]).asObservable()
+    let mockButton = UIButton()
 
-        let mockButton = UIButton()
+    let output = loginViewModel.transform(input: LoginViewModel.Input(
+      emailTextFieldChanged: mockEmailTextFieldValues,
+      passwordTextFieldChanged: Observable.of("")
+    )
+    )
 
-        let output = loginViewModel.transform(input: LoginViewModel.Input(
-            emailTextFieldChanged: mockEmailTextFieldValues,
-            passwordTextFieldChanged: Observable.of("")
-            )
-        )
+    output.isEmailTextFieldValid
+      .drive(mockIsValid)
+      .disposed(by: disposeBag)
 
-        output.isEmailTextFieldValid
-            .drive(mockIsValid)
-            .disposed(by: disposeBag)
+    scheduler.start()
 
-        scheduler.start()
+    XCTAssertEqual(mockIsValid.events, [.next(0, false),
+                                        .next(10, false),
+                                        .next(11, false),
+                                        .next(12, true),
+                                        .next(13, false)])
+  }
 
-        XCTAssertEqual(mockIsValid.events, [.next(0, false),
-                                            .next(10, false),
-                                            .next(11, false),
-                                            .next(12, true),
-                                            .next(13, false)])
+  func testIsPasswordTextFieldValid() {
+    let provider: MoyaProvider<STAuthentication> = makeMoyaSuccessStub(type: .auth)
+    loginViewModel = LoginViewModel(provider: provider)
 
-    }
+    scheduler = TestScheduler(initialClock: 0)
+    let mockIsValid = scheduler.createObserver(Bool.self)
 
-    func testIsPasswordTextFieldValid() {
+    var mockEmailTextFieldValues: Observable<String>
 
-        let provider: MoyaProvider<STAuthentication> = self.makeMoyaSuccessStub(type: .auth)
-        loginViewModel = LoginViewModel(provider: provider)
+    mockEmailTextFieldValues = scheduler.createHotObservable([.next(0, "p"),
+                                                              .next(10, "pa"),
+                                                              .next(11, "pas"),
+                                                              .next(20, "password123")]).asObservable()
 
-        scheduler = TestScheduler(initialClock: 0)
-        let mockIsValid = scheduler.createObserver(Bool.self)
+    let mockButton = UIButton()
 
-        var mockEmailTextFieldValues: Observable<String>
+    let output = loginViewModel.transform(input: LoginViewModel.Input(
+      emailTextFieldChanged: Observable.of("something@something.com"),
+      passwordTextFieldChanged: mockEmailTextFieldValues
+    )
+    )
 
-        mockEmailTextFieldValues = scheduler.createHotObservable([.next(0, "p"),
-                                                                  .next(10, "pa"),
-                                                                  .next(11, "pas"),
-                                                                  .next(20, "password123")]).asObservable()
+    output.isValid
+      .drive(mockIsValid)
+      .disposed(by: disposeBag)
 
-        let mockButton = UIButton()
+    scheduler.start()
 
-        let output = loginViewModel.transform(input: LoginViewModel.Input(
-            emailTextFieldChanged: Observable.of("something@something.com"),
-            passwordTextFieldChanged: mockEmailTextFieldValues
-            )
-        )
+    XCTAssertEqual(mockIsValid.events, [.next(0, false),
+                                        .next(10, false),
+                                        .next(11, false),
+                                        .next(20, true)])
+  }
 
-        output.isValid
-            .drive(mockIsValid)
-            .disposed(by: disposeBag)
+  private var bundle: Bundle {
+    Bundle(for: type(of: self))
+  }
 
-        scheduler.start()
+  enum STAuthenticationSuccessTestCases: String {
+    case auth
+  }
 
-        XCTAssertEqual(mockIsValid.events, [.next(0, false),
-                                            .next(10, false),
-                                            .next(11, false),
-                                            .next(20, true)])
+  private func makeMoyaSuccessStub<T: TargetType>(type: STAuthenticationSuccessTestCases) -> MoyaProvider<T> {
+    #if DEBUG
+      let url = bundle.url(forResource: "authentication_success_" + type.rawValue, withExtension: "json")!
+      let data = try! Data(contentsOf: url)
 
-    }
+      let serverEndpointSuccess = { (target: T) -> Endpoint in
+        Endpoint(url: URL(target: target).absoluteString,
+                 sampleResponseClosure: { .networkResponse(200, data) },
+                 method: target.method,
+                 task: target.task,
+                 httpHeaderFields: target.headers)
+      }
 
-    private var bundle: Bundle {
-        return Bundle(for: type(of: self))
-    }
+      let serverStubSuccess = MoyaProvider<T>(
+        endpointClosure: serverEndpointSuccess,
+        stubClosure: MoyaProvider.immediatelyStub,
+        plugins: [
+          AuthPlugin(tokenClosure: { Session.shared.token }),
+        ]
+      )
 
-    enum STAuthenticationSuccessTestCases: String {
-        case auth
-    }
+      return serverStubSuccess
 
-    private func makeMoyaSuccessStub<T: TargetType>(type: STAuthenticationSuccessTestCases) -> MoyaProvider<T> {
-
-        #if DEBUG
-        let url = bundle.url(forResource: "authentication_success_" + type.rawValue, withExtension: "json")!
-        let data = try! Data(contentsOf: url)
-
-        let serverEndpointSuccess = { (target: T) -> Endpoint in
-            return Endpoint(url: URL(target: target).absoluteString,
-                            sampleResponseClosure: { .networkResponse(200, data) },
-                            method: target.method,
-                            task: target.task,
-                            httpHeaderFields: target.headers)
-        }
-
-        let serverStubSuccess = MoyaProvider<T>(
-            endpointClosure: serverEndpointSuccess,
-            stubClosure: MoyaProvider.immediatelyStub,
-            plugins: [
-                AuthPlugin(tokenClosure: { return Session.shared.token })
-            ]
-        )
-
-        return serverStubSuccess
-
-        #endif
-
-    }
-
+    #endif
+  }
 }
