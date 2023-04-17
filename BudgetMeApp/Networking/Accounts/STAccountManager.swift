@@ -10,7 +10,6 @@ import Foundation
 import Moya
 
 struct STAccountManager: EntityComponent {
-
     typealias Model = STAccount
 
     private var decoder = JSONDecoder()
@@ -21,15 +20,13 @@ struct STAccountManager: EntityComponent {
     }
 
     func browse(completion: @escaping (Result<[STAccount], Error>) -> Void) {
-
         var accounts: [STAccount] = []
 
         provider.request(.browseAccounts) { result in
             switch result {
-            case .success(let response):
+            case let .success(response):
 
                 do {
-
                     accounts = try response.map([STAccount].self,
                                                 atKeyPath: "accounts",
                                                 using: self.decoder,
@@ -37,14 +34,12 @@ struct STAccountManager: EntityComponent {
 
                     completion(.success(accounts))
 
-                } catch let error {
+                } catch {
                     completion(.failure(error))
                 }
-            case .failure(let error):
+            case let .failure(error):
                 completion(.failure(error))
             }
         }
-
     }
-
 }

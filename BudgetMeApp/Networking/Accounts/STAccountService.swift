@@ -28,7 +28,6 @@ extension STAccountService: AuthorizedTargetType {
 }
 
 extension STAccountService: TargetType {
-
     public var baseURL: URL {
         return STEnvironment.environment
     }
@@ -37,19 +36,19 @@ extension STAccountService: TargetType {
         switch self {
         case .browseAccounts:
             return "/accounts"
-        case .getIdentifiers(let accountId):
+        case let .getIdentifiers(accountId):
             return "/accounts/\(accountId)/identifiers"
-        case .getBalance(let accountId):
+        case let .getBalance(accountId):
             return "/accounts/\(accountId)/balance"
-        case .getConfirmationOfFunds(let accountId):
+        case let .getConfirmationOfFunds(accountId):
             return "/accounts/\(accountId)/confirmation-of-funds"
-        case .getAvailableStatementPeriods(let accountId):
+        case let .getAvailableStatementPeriods(accountId):
             return "/accounts/\(accountId)/available-periods"
-        case .downloadStatementPDF(let accountId, _),
-             .downloadStatementCSV(let accountId, _):
+        case let .downloadStatementPDF(accountId, _),
+             let .downloadStatementCSV(accountId, _):
             return "/accounts/\(accountId)/statement/download"
-        case .downloadStatementPDFForDateRange(let accountId),
-             .downloadStatementCSVForDateRange(let accountId):
+        case let .downloadStatementPDFForDateRange(accountId),
+             let .downloadStatementCSVForDateRange(accountId):
             return "/accounts/\(accountId)/statement/downloadForDateRange"
         }
     }
@@ -64,16 +63,15 @@ extension STAccountService: TargetType {
 
     public var task: Task {
         switch self {
-
-        case .downloadStatementPDF(_, let yearMonth),
-             .downloadStatementCSV(_, let yearMonth):
+        case let .downloadStatementPDF(_, yearMonth),
+             let .downloadStatementCSV(_, yearMonth):
 
             return .downloadParameters(parameters: ["yearMonth": yearMonth],
                                        encoding: URLEncoding.default,
                                        destination: DefaultDownloadDestination)
 
-        case .downloadStatementPDFForDateRange(_, let start, let end),
-             .downloadStatementCSVForDateRange(_, let start, let end):
+        case let .downloadStatementPDFForDateRange(_, start, end),
+             let .downloadStatementCSVForDateRange(_, start, end):
 
             return .downloadParameters(parameters: ["start": start, "end": end],
                                        encoding: URLEncoding.default,
@@ -96,7 +94,6 @@ extension STAccountService: TargetType {
             return ["Accept": "application/json",
                     "User-agent": "Christian Ray Leovido"]
         }
-
     }
 
     public var validationType: ValidationType {
@@ -104,10 +101,9 @@ extension STAccountService: TargetType {
     }
 }
 
-private let DefaultDownloadDestination: DownloadDestination = { temporaryURL, response in
+private let DefaultDownloadDestination: DownloadDestination = { _, response in
 
     let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     let fileURL = documentsURL.appendingPathComponent(response.suggestedFilename!)
     return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
-
 }

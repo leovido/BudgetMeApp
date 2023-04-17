@@ -43,7 +43,6 @@ struct UserDefault<T> {
 }
 
 extension UserDefaults {
-
     public enum Keys {
         static let token = "token"
         static let refreshToken = "refreshToken"
@@ -86,5 +85,4 @@ extension UserDefaults {
             return string(forKey: Keys.clientSecret) ?? ""
         }
     }
-
 }

@@ -11,11 +11,10 @@ import UIKit
 extension SavingsCell: CurrencyFormattable {}
 
 final class SavingsCell: UITableViewCell {
-
-    @IBOutlet weak var savingNameLabel: UILabel!
-    @IBOutlet weak var targetAmountLabel: UILabel!
-    @IBOutlet weak var totalSavedLabel: UILabel!
-    @IBOutlet weak var percentageLabel: UILabel!
+    @IBOutlet var savingNameLabel: UILabel!
+    @IBOutlet var targetAmountLabel: UILabel!
+    @IBOutlet var totalSavedLabel: UILabel!
+    @IBOutlet var percentageLabel: UILabel!
 
     static var identifier: String {
         return "SavingsCell"
@@ -27,5 +26,4 @@ final class SavingsCell: UITableViewCell {
         totalSavedLabel.text = currencyFormatter(value: savings.totalSaved)
         percentageLabel.text = "\(savings.savedPercentage?.description ?? "0")%"
     }
-
 }

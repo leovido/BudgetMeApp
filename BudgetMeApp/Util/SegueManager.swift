@@ -13,14 +13,12 @@ enum SegueIdentifier: String {
 }
 
 struct SegueManager {
-
     typealias SegueDestination = UIViewController
 
     let segueDestination: SegueDestination
     let segueIdentifier: SegueIdentifier
 
     func performSegue(with account: AccountComposite) {
-
         guard let destinationVieController = segueDestination as? TransactionFeedViewController else {
             return
         }
@@ -29,7 +27,6 @@ struct SegueManager {
     }
 
     init?(_ segue: UIStoryboardSegue) {
-
         guard let segueIdentifier = segue.identifier else {
             return nil
         }
@@ -38,8 +35,7 @@ struct SegueManager {
             return nil
         }
 
-        self.segueDestination = segue.destination
+        segueDestination = segue.destination
         self.segueIdentifier = id
-
     }
 }

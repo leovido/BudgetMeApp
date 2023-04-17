@@ -7,16 +7,15 @@
 //
 
 import Foundation
-import RxSwift
-import RxCocoa
-import RxMoya
 import Moya
+import RxCocoa
 import RxDataSources
+import RxMoya
+import RxSwift
 
 extension TransactionsViewModel: CurrencyFormattable {}
 
 struct TransactionsViewModel: ViewModelBlueprint {
-
     typealias Model = TransactionSectionData
 
     var isLoading: PublishSubject<Bool> = PublishSubject()
@@ -31,11 +30,11 @@ struct TransactionsViewModel: ViewModelBlueprint {
     let disposeBag: DisposeBag
 
     init(provider: MoyaProvider<STTransactionFeedService> = MoyaNetworkManagerFactory.makeManager(),
-         accountId: String) {
+         accountId _: String) {
         self.provider = provider
-        self.errorPublisher = PublishSubject()
-        self.disposeBag = DisposeBag()
-        self.dateRange = PublishSubject()
+        errorPublisher = PublishSubject()
+        disposeBag = DisposeBag()
+        dateRange = PublishSubject()
     }
 
     func makeTransactionRequest(start: DateTime, end: DateTime) -> Observable<[STTransactionFeed]> {
@@ -52,20 +51,19 @@ struct TransactionsViewModel: ViewModelBlueprint {
     }
 
     func updateDataSource(startDate: DateTime, endDate: DateTime) {
-
         makeTransactionRequest(start: startDate, end: endDate)
             .map(makeTransactionSectionData)
             .subscribe { event in
                 switch event {
-                case .next(let txs):
+                case let .next(txs):
                     self.dataSource.accept(txs)
-                case .error(let error):
+                case let .error(error):
                     self.errorPublisher.onNext(error)
                 case .completed:
                     self.isLoading.onNext(false)
                 }
-        }
-        .disposed(by: disposeBag)
+            }
+            .disposed(by: disposeBag)
     }
 
     func refreshData(with dateTime: DateTime) {
@@ -75,8 +73,7 @@ struct TransactionsViewModel: ViewModelBlueprint {
     }
 
     func refreshData() {
-
-        self.isLoading.onNext(true)
+        isLoading.onNext(true)
 
         provider.rx.request(.browseTransactions(accountId: Session.shared.accountId,
                                                 categoryId: "c4ed84e4-8cc9-4a3b-8df5-85996f67f2db",
@@ -86,26 +83,23 @@ struct TransactionsViewModel: ViewModelBlueprint {
             .map(makeTransactionSectionData)
             .subscribe { event in
                 switch event {
-                case .success(let transactionSectionData):
+                case let .success(transactionSectionData):
 
                     self.dataSource.accept(transactionSectionData)
                     self.isLoading.onNext(false)
 
-                case .error(let error):
+                case let .error(error):
 
                     self.errorPublisher.onNext(error)
                     self.isLoading.onNext(false)
                 }
-        }
-        .disposed(by: disposeBag)
+            }
+            .disposed(by: disposeBag)
     }
-
 }
 
 extension TransactionsViewModel {
-
     private func calculateNextWeek(startDate: String) -> String? {
-
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
 
@@ -115,11 +109,9 @@ extension TransactionsViewModel {
         let endDateString = dateFormatter.string(from: endDate)
 
         return endDateString
-
     }
 
     func updateDateRange(dateTime: DateTime) {
-
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
 
@@ -131,25 +123,21 @@ extension TransactionsViewModel {
         let startDateString = dateFormatter.string(from: startDate)
         let endDateString = dateFormatter.string(from: endDate)
 
-        self.dateRange.onNext(startDateString + " - " + endDateString)
+        dateRange.onNext(startDateString + " - " + endDateString)
     }
-
 }
 
 extension TransactionsViewModel {
-
     func makeTransactionSectionData(_ txs: [STTransactionFeed]) -> [TransactionSectionData] {
-
         let incomeSection = TransactionSectionData(header: TransactionType.income.rawValue.capitalized,
-                                                   items: txs.filter({ $0.direction == .IN }))
+                                                   items: txs.filter { $0.direction == .IN })
 
         let expensesSection = TransactionSectionData(header: TransactionType.expense.rawValue.capitalized,
-                                                     items: txs.filter({ $0.direction == .OUT }))
+                                                     items: txs.filter { $0.direction == .OUT })
 
         let items = [incomeSection,
                      expensesSection]
 
         return items
     }
-
 }

@@ -23,7 +23,6 @@ extension STSavingsGoalService: AuthorizedTargetType {
 }
 
 extension STSavingsGoalService: TargetType {
-
     public var baseURL: URL {
         return STEnvironment.environment
     }
@@ -33,9 +32,9 @@ extension STSavingsGoalService: TargetType {
         case .browseSavings,
              .createSaving:
             return "/account/\(Session.shared.accountId)/savings-goals"
-        case .getSaving(let savingsGoalId):
+        case let .getSaving(savingsGoalId):
             return "/account/\(Session.shared.accountId)/savings-goals/\(savingsGoalId)"
-        case .addMoney(_, let savingsGoalId):
+        case let .addMoney(_, savingsGoalId):
             return "/account/\(Session.shared.accountId)/savings-goals/\(savingsGoalId)/add-money/\(UUID().uuidString)"
         }
     }
@@ -60,13 +59,13 @@ extension STSavingsGoalService: TargetType {
         case .browseSavings,
              .getSaving:
             return .requestPlain
-        case .createSaving(let name):
+        case let .createSaving(name):
             return .requestParameters(parameters: ["name": name, "currency": "GBP"],
                                       encoding: JSONEncoding.default)
-        case .addMoney(let amount, _):
+        case let .addMoney(amount, _):
             return .requestParameters(parameters: ["amount": ["currency": "GBP",
                                                               "minorUnits": amount]],
-                                      encoding: JSONEncoding.default)
+            encoding: JSONEncoding.default)
         }
     }
 

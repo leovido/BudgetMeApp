@@ -9,7 +9,6 @@
 import Foundation
 
 final class Session {
-
     private init() {}
 
     private static var _shared = Session()
@@ -27,5 +26,4 @@ final class Session {
     var refreshToken: String {
         return UserDefaultsConfig.refreshToken
     }
-
 }

@@ -7,13 +7,12 @@
 //
 
 import Foundation
-import RxSwift
+import Moya
 import RxCocoa
 import RxMoya
-import Moya
+import RxSwift
 
 struct SavingsViewModel: ViewModelBlueprint {
-
     typealias Model = STSavingsGoal
 
     let isLoading: PublishSubject<Bool>
@@ -24,49 +23,48 @@ struct SavingsViewModel: ViewModelBlueprint {
     let disposeBag: DisposeBag
 
     init(provider: MoyaProvider<STSavingsGoalService> = MoyaNetworkManagerFactory.makeManager()) {
-        self.isLoading = PublishSubject()
-        self.dataSource = BehaviorRelay(value: [])
+        isLoading = PublishSubject()
+        dataSource = BehaviorRelay(value: [])
         self.provider = provider
-        self.errorPublisher = PublishSubject()
-        self.disposeBag = DisposeBag()
+        errorPublisher = PublishSubject()
+        disposeBag = DisposeBag()
     }
 
     func refreshData() {
-        self.isLoading.onNext(true)
+        isLoading.onNext(true)
         provider.rx.request(.browseSavings)
             .filterSuccessfulStatusCodes()
             .map([STSavingsGoal].self, atKeyPath: "savingsGoalList")
             .retry(2)
             .subscribe { event in
                 switch event {
-                case .success(let savings):
+                case let .success(savings):
                     self.isLoading.onNext(false)
                     self.dataSource.accept(savings)
-                case .error(let error):
+                case let .error(error):
                     self.errorPublisher.onNext(error)
                 }
-        }
-        .disposed(by: disposeBag)
+            }
+            .disposed(by: disposeBag)
     }
 
     func createNewSaving(name: String) {
-        self.isLoading.onNext(true)
+        isLoading.onNext(true)
         provider.rx.request(.createSaving(name: name))
             .filterSuccessfulStatusCodes()
             .map(Bool.self)
             .subscribe { event in
                 switch event {
-                case .success(let success):
+                case let .success(success):
                     if success {
                         self.isLoading.onNext(false)
                         self.refreshData()
                     }
-                case .error(let error):
+                case let .error(error):
                     self.errorPublisher.onNext(error)
                     self.isLoading.onNext(false)
                 }
-        }
-        .disposed(by: disposeBag)
+            }
+            .disposed(by: disposeBag)
     }
-
 }

@@ -11,9 +11,9 @@ import Foundation
 /// Environment to be used for testing/debugging and production
 enum STEnvironment {
     #if DEBUG
-    static let environment = STEnvironment.sandbox
+        static let environment = STEnvironment.sandbox
     #else
-    static let environment = STEnvironment.production
+        static let environment = STEnvironment.production
     #endif
 
     static let sandbox = URL(string: "https://api-sandbox.starlingbank.com/api/v2")!

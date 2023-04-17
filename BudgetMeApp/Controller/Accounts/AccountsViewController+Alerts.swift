@@ -9,35 +9,33 @@
 import UIKit
 
 extension AccountsViewController {
-
     func performDownloadPDF(yearMonth: String) {
-        self.viewModel.downloadPDFStatement(accountId: Session.shared.accountId, yearMonth: yearMonth)
+        viewModel.downloadPDFStatement(accountId: Session.shared.accountId, yearMonth: yearMonth)
             .subscribe { event in
                 switch event {
                 case .completed:
                     self.showSuccessAlert()
-                case .error(let error):
+                case let .error(error):
                     self.viewModel.errorPublisher.onNext(error)
                 }
-        }
-        .disposed(by: self.disposeBag)
+            }
+            .disposed(by: disposeBag)
     }
 
     func performDownloadCSV(yearMonth: String) {
-        self.viewModel.downloadCSVStatement(accountId: Session.shared.accountId, yearMonth: yearMonth)
+        viewModel.downloadCSVStatement(accountId: Session.shared.accountId, yearMonth: yearMonth)
             .subscribe { event in
                 switch event {
                 case .completed:
                     self.showSuccessAlert()
-                case .error(let error):
+                case let .error(error):
                     self.viewModel.errorPublisher.onNext(error)
                 }
-        }
-        .disposed(by: self.disposeBag)
+            }
+            .disposed(by: disposeBag)
     }
 
     func presentDownloadAlert() {
-
         let alert = UIAlertController(title: "Select file type for statement", message: "", preferredStyle: .alert)
 
         let pdfAction = UIAlertAction(title: "PDF", style: .default, handler: { _ in
@@ -63,17 +61,14 @@ extension AccountsViewController {
             tf.placeholder = "e.g. 2020-03"
         }
 
-        self.present(alert, animated: true, completion: nil)
-
+        present(alert, animated: true, completion: nil)
     }
 
     func showSuccessAlert() {
-
         let alert = UIAlertController(title: "Download success", message: "", preferredStyle: .alert)
 
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
 
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
-
 }

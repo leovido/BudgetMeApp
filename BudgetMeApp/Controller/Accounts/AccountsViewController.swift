@@ -6,8 +6,8 @@
 //  Copyright © 2020 Christian Leovido. All rights reserved.
 //
 
-import UIKit
 import RxSwift
+import UIKit
 
 extension UIViewController {
     func displayErrorAlert(error: Error) {
@@ -17,25 +17,23 @@ extension UIViewController {
 
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
 
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
 }
 
 class AccountsViewController: UIViewController {
-
-    @IBOutlet weak var accountsTableView: UITableView!
-    @IBOutlet weak var downloadStatementButton: UIButton!
+    @IBOutlet var accountsTableView: UITableView!
+    @IBOutlet var downloadStatementButton: UIButton!
 
     var selectedAccount: AccountComposite!
 
-    let disposeBag: DisposeBag = DisposeBag()
+    let disposeBag: DisposeBag = .init()
     var viewModel: AccountsViewModel! = AccountsViewModel()
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
         viewModel.refreshData()
-
     }
 
     override func viewDidLoad() {
@@ -47,8 +45,7 @@ class AccountsViewController: UIViewController {
         setupActivityIndicator()
 
         navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationController?.title = "Welcome to BudgetMe"
-
+        navigationController?.title = "Welcome to BudgetMe"
     }
 
     func setupButtonDownload() {
@@ -56,8 +53,8 @@ class AccountsViewController: UIViewController {
             .asObservable()
             .subscribe { _ in
                 self.presentDownloadAlert()
-        }
-        .disposed(by: disposeBag)
+            }
+            .disposed(by: disposeBag)
     }
 
     func setupErrorBindings() {
@@ -87,17 +84,15 @@ class AccountsViewController: UIViewController {
     }
 
     func setupBinding() {
-
         viewModel.dataSource
             .asDriver()
             .drive(accountsTableView.rx
                 .items(cellIdentifier: AccountsCell.identifier,
                        cellType: AccountsCell.self)) { _, element, cell in
 
-                        cell.configure(value: element)
-
-        }
-        .disposed(by: disposeBag)
+                cell.configure(value: element)
+            }
+            .disposed(by: disposeBag)
 
         accountsTableView
             .rx
@@ -109,11 +104,9 @@ class AccountsViewController: UIViewController {
                 self.performSegue(withIdentifier: "TransactionSegue", sender: self)
             })
             .disposed(by: disposeBag)
-
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
         SegueManager(segue)?.performSegue(with: selectedAccount)
     }
-
 }

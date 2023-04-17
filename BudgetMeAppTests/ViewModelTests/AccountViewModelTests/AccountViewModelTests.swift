@@ -6,23 +6,21 @@
 //  Copyright © 2020 Christian Leovido. All rights reserved.
 //
 
-import XCTest
-import RxSwift
-import RxCocoa
-import RxTest
 @testable import BudgetMeApp
+import RxCocoa
+import RxSwift
+import RxTest
+import XCTest
 
 class AccountViewModelTests: XCTestCase, StubAccounts {
-
     var accountViewModel: AccountsViewModel!
 
     var disposeBag: DisposeBag!
     var scheduler: TestScheduler!
 
     override func setUp() {
-
         disposeBag = DisposeBag()
-        self.scheduler = TestScheduler(initialClock: 0)
+        scheduler = TestScheduler(initialClock: 0)
     }
 
     override func tearDown() {
@@ -30,7 +28,6 @@ class AccountViewModelTests: XCTestCase, StubAccounts {
     }
 
     func testGetIdentifiers() {
-
         accountViewModel = AccountsViewModel(provider: makeMoyaSuccessStub(type: .identifiers))
 
         let identifiersObserver = scheduler.createObserver(STAccountIdentifiers.self)
@@ -42,11 +39,9 @@ class AccountViewModelTests: XCTestCase, StubAccounts {
         scheduler.start()
 
         XCTAssertTrue(!identifiersObserver.events.isEmpty)
-
     }
 
     func testGetAccountStatementPeriods() {
-
         accountViewModel = AccountsViewModel(provider: makeMoyaSuccessStub(type: .statementPeriods))
 
         let accountStatementObserver = scheduler.createObserver(AccountStatementPeriods.self)
@@ -58,11 +53,9 @@ class AccountViewModelTests: XCTestCase, StubAccounts {
         scheduler.start()
 
         XCTAssertTrue(!accountStatementObserver.events.isEmpty)
-
     }
 
     func testSetupAccountComposite() {
-
         accountViewModel = AccountsViewModel()
 
         let compositeObserver = scheduler.createObserver([AccountComposite].self)
@@ -75,11 +68,9 @@ class AccountViewModelTests: XCTestCase, StubAccounts {
         scheduler.start()
 
         XCTAssertTrue(compositeObserver.events.isEmpty)
-
     }
 
     func testDownloadPDF() {
-
         accountViewModel = AccountsViewModel()
 
         let observable = accountViewModel.downloadPDFStatement(accountId: "", yearMonth: "2020-03")
@@ -88,7 +79,6 @@ class AccountViewModelTests: XCTestCase, StubAccounts {
     }
 
     func testDownloadPDFRange() {
-
         accountViewModel = AccountsViewModel()
 
         let observable = accountViewModel.downloadStatementPDF(accountId: "", start: "", end: "")
@@ -97,7 +87,6 @@ class AccountViewModelTests: XCTestCase, StubAccounts {
     }
 
     func testDownloadCSV() {
-
         accountViewModel = AccountsViewModel()
 
         let observable = accountViewModel.downloadCSVStatement(accountId: "", yearMonth: "2020-03")
@@ -106,7 +95,6 @@ class AccountViewModelTests: XCTestCase, StubAccounts {
     }
 
     func testDownloadCSVRange() {
-
         accountViewModel = AccountsViewModel()
 
         let observable = accountViewModel.downloadStatementCSV(accountId: "", start: "", end: "")
@@ -115,7 +103,6 @@ class AccountViewModelTests: XCTestCase, StubAccounts {
     }
 
     func testGetConfirmationFunds() {
-
         accountViewModel = AccountsViewModel(provider: makeMoyaSuccessStub(type: .availableFunds))
 
         let confirmationObserver = scheduler.createObserver(ConfirmationOfFundsResponse.self)
@@ -127,11 +114,9 @@ class AccountViewModelTests: XCTestCase, StubAccounts {
         scheduler.start()
 
         XCTAssertTrue(!confirmationObserver.events.isEmpty)
-
     }
 
     func testGetBalances() {
-
         accountViewModel = AccountsViewModel(provider: makeMoyaSuccessStub(type: .balance))
 
         let balanceObserver = scheduler.createObserver(STBalance.self)
@@ -143,11 +128,9 @@ class AccountViewModelTests: XCTestCase, StubAccounts {
         scheduler.start()
 
         XCTAssertTrue(!balanceObserver.events.isEmpty)
-
     }
 
     func testDataSourceError() {
-
         accountViewModel = AccountsViewModel()
 
         let errorMock = scheduler.createObserver(Error.self)
@@ -162,11 +145,9 @@ class AccountViewModelTests: XCTestCase, StubAccounts {
         scheduler.start()
 
         XCTAssertTrue(!errorMock.events.isEmpty)
-
     }
 
     func testDataSource() {
-
         accountViewModel = AccountsViewModel()
 
         let dataSourceMock = scheduler.createObserver([AccountComposite].self)
@@ -175,9 +156,9 @@ class AccountViewModelTests: XCTestCase, StubAccounts {
             .disposed(by: disposeBag)
 
         let account = STAccount(accountUid: "",
-        defaultCategory: "",
-        currency: .GBP,
-        createdAt: Date().description)
+                                defaultCategory: "",
+                                currency: .GBP,
+                                createdAt: Date().description)
 
         let balance = STBalance.arbitrary.generate
 
@@ -193,9 +174,7 @@ class AccountViewModelTests: XCTestCase, StubAccounts {
 
         XCTAssertEqual(dataSourceMock.events, [.next(0, []),
                                                .next(15, randomAccounts)])
-
     }
-
 }
 
 private enum MockError: Equatable, Error {

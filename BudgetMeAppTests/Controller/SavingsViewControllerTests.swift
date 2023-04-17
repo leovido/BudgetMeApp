@@ -6,11 +6,10 @@
 //  Copyright © 2020 Christian Leovido. All rights reserved.
 //
 
-import XCTest
 @testable import BudgetMeApp
+import XCTest
 
 class SavingsViewControllerTests: XCTestCase, SavingsStubProtocol {
-
     var viewController: SavingsViewController!
 
     override func setUp() {
@@ -30,16 +29,14 @@ class SavingsViewControllerTests: XCTestCase, SavingsStubProtocol {
     }
 
     func testAlert() {
-
         let expectation = XCTestExpectation(description: "show alert")
 
         viewController.presentAlert()
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
-
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             let alert = UIApplication.shared.windows.first!.rootViewController?.presentedViewController as! UIAlertController
 
-            let actionTitles = alert.actions.compactMap({ $0.title })
+            let actionTitles = alert.actions.compactMap { $0.title }
 
             XCTAssert(alert.title == "Saving goal name")
 
@@ -47,13 +44,11 @@ class SavingsViewControllerTests: XCTestCase, SavingsStubProtocol {
             XCTAssert(actionTitles[1] == "Cancel")
 
             expectation.fulfill()
-        })
+        }
         wait(for: [expectation], timeout: 1.5)
-
     }
 
     func sutNavigationSetup<T>() -> T {
-
         viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SavingsViewController") as? SavingsViewController
 
         let navigationController = UINavigationController()
@@ -66,5 +61,4 @@ class SavingsViewControllerTests: XCTestCase, SavingsStubProtocol {
 
         return viewController as! T
     }
-
 }

@@ -6,23 +6,20 @@
 //  Copyright © 2020 Christian Leovido. All rights reserved.
 //
 
-import XCTest
-import Moya
 @testable import BudgetMeApp
+import Moya
+import XCTest
 
 class STTransactionFeedManagerTests: XCTestCase {
-
     var sut: STTransactionFeedManager!
 
-    override func setUp() {
-    }
+    override func setUp() {}
 
     override func tearDown() {
         sut = nil
     }
 
     func testBrowseTransactions() {
-
         let exp = expectation(description: "Fetch all accounts")
 
         sut = STTransactionFeedManager(accountId: "someAccountId",
@@ -35,11 +32,10 @@ class STTransactionFeedManagerTests: XCTestCase {
             }
         }
 
-        self.waitForExpectations(timeout: 5, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
     }
 
     func testGetWeeklyTransactions() {
-
         let exp = expectation(description: "Fetch weekly transactions from a given date")
 
         sut = STTransactionFeedManager(accountId: "someAccountId",
@@ -54,11 +50,10 @@ class STTransactionFeedManagerTests: XCTestCase {
             }
         }
 
-        self.waitForExpectations(timeout: 5, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
     }
 
     func testGetWeeklyTransactions_2() {
-
         let exp = expectation(description: "Fetch weekly transactions from a given date")
 
         sut = STTransactionFeedManager(accountId: "someAccountId",
@@ -73,61 +68,55 @@ class STTransactionFeedManagerTests: XCTestCase {
             }
         }
 
-        self.waitForExpectations(timeout: 5, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
     }
-
 }
 
 extension STTransactionFeedManagerTests {
-
     private func makeMoyaSuccessStub<T: TargetType>(type: STAccountSuccessTestCases) -> MoyaProvider<T> {
-
         #if DEBUG
-        let url = bundle.url(forResource: "transactions_success_" + type.rawValue, withExtension: "json")!
-        let data = try! Data(contentsOf: url)
+            let url = bundle.url(forResource: "transactions_success_" + type.rawValue, withExtension: "json")!
+            let data = try! Data(contentsOf: url)
 
-        let serverEndpointSuccess = { (target: T) -> Endpoint in
-            return Endpoint(url: URL(target: target).absoluteString,
-                            sampleResponseClosure: { .networkResponse(200, data) },
-                            method: target.method,
-                            task: target.task,
-                            httpHeaderFields: target.headers)
-        }
+            let serverEndpointSuccess = { (target: T) -> Endpoint in
+                Endpoint(url: URL(target: target).absoluteString,
+                         sampleResponseClosure: { .networkResponse(200, data) },
+                         method: target.method,
+                         task: target.task,
+                         httpHeaderFields: target.headers)
+            }
 
-        let serverStubSuccess = MoyaProvider<T>(
-            endpointClosure: serverEndpointSuccess,
-            stubClosure: MoyaProvider.immediatelyStub,
-            plugins: [
-                AuthPlugin(tokenClosure: { return Session.shared.token })
-            ]
-        )
+            let serverStubSuccess = MoyaProvider<T>(
+                endpointClosure: serverEndpointSuccess,
+                stubClosure: MoyaProvider.immediatelyStub,
+                plugins: [
+                    AuthPlugin(tokenClosure: { Session.shared.token }),
+                ]
+            )
 
-        return serverStubSuccess
+            return serverStubSuccess
 
         #endif
-
     }
 
-    private func makeMoyaFailureStub<T: TargetType>(type: BookingFailureTestCases) -> MoyaProvider<T> {
-
+    private func makeMoyaFailureStub<T: TargetType>(type _: BookingFailureTestCases) -> MoyaProvider<T> {
         let serverEndpointFailure = { (target: T) -> Endpoint in
-            return Endpoint(url: URL(target: target).absoluteString,
-                            sampleResponseClosure: { .networkResponse(400, target.sampleData) },
-                            method: target.method,
-                            task: target.task,
-                            httpHeaderFields: target.headers)
+            Endpoint(url: URL(target: target).absoluteString,
+                     sampleResponseClosure: { .networkResponse(400, target.sampleData) },
+                     method: target.method,
+                     task: target.task,
+                     httpHeaderFields: target.headers)
         }
 
         let serverStubFailure = MoyaProvider<T>(
             endpointClosure: serverEndpointFailure,
             stubClosure: MoyaProvider.immediatelyStub,
             plugins: [
-                AuthPlugin(tokenClosure: { return "Some token" })
+                AuthPlugin(tokenClosure: { "Some token" }),
             ]
         )
 
         return serverStubFailure
-
     }
 
     private var bundle: Bundle {

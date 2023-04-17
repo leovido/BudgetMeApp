@@ -22,17 +22,16 @@ extension STTransactionFeedService: AuthorizedTargetType {
 }
 
 extension STTransactionFeedService: TargetType {
-
     public var baseURL: URL {
         return STEnvironment.environment
     }
 
     public var path: String {
         switch self {
-        case .browseTransactions(let accountId, let categoryId, _):
+        case let .browseTransactions(accountId, categoryId, _):
             return "/feed/account/\(accountId)/category/\(categoryId)"
-        case .getTransactions(let accountId, let categoryId, _, _),
-             .getWeeklyTransactions(let accountId, let categoryId, _, _):
+        case let .getTransactions(accountId, categoryId, _, _),
+             let .getWeeklyTransactions(accountId, categoryId, _, _):
             return "/feed/account/\(accountId)/category/\(categoryId)/transactions-between"
         }
     }
@@ -47,13 +46,13 @@ extension STTransactionFeedService: TargetType {
 
     public var task: Task {
         switch self {
-        case .browseTransactions(_, _, let changesSince):
+        case let .browseTransactions(_, _, changesSince):
 
             return .requestParameters(parameters: ["changesSince": changesSince],
                                       encoding: URLEncoding.default)
 
-        case .getTransactions(_, _, let startDate, let endDate),
-             .getWeeklyTransactions(_, _, let startDate, let endDate):
+        case let .getTransactions(_, _, startDate, endDate),
+             let .getWeeklyTransactions(_, _, startDate, endDate):
 
             return .requestParameters(parameters: ["minTransactionTimestamp": startDate,
                                                    "maxTransactionTimestamp": endDate],

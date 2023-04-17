@@ -21,8 +21,8 @@ struct AuthPlugin: PluginType {
             let token = tokenClosure(),
             let target = target as? AuthorizedTargetType,
             target.needsAuth
-            else {
-                return request
+        else {
+            return request
         }
 
         var request = request

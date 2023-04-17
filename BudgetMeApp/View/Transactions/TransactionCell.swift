@@ -11,26 +11,25 @@ import UIKit
 extension TransactionCell: CurrencyFormattable {}
 
 final class TransactionCell: UITableViewCell {
+    @IBOutlet var referenceLabel: UILabel!
+    @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var priceLabel: UILabel!
 
-    @IBOutlet weak var referenceLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
-
-    @IBOutlet weak var spendingCategoryImage: UIImageView!
+    @IBOutlet var spendingCategoryImage: UIImageView!
 
     override func awakeFromNib() {
-        self.referenceLabel.isOpaque = true
-        self.referenceLabel.backgroundColor = .white
+        referenceLabel.isOpaque = true
+        referenceLabel.backgroundColor = .white
 
-        self.dateLabel.isOpaque = true
-        self.dateLabel.backgroundColor = .white
+        dateLabel.isOpaque = true
+        dateLabel.backgroundColor = .white
 
-        self.priceLabel.isOpaque = true
-        self.priceLabel.backgroundColor = .white
+        priceLabel.isOpaque = true
+        priceLabel.backgroundColor = .white
 
-        self.spendingCategoryImage.isOpaque = true
-        self.spendingCategoryImage.backgroundColor = .white
-        self.spendingCategoryImage.layer.backgroundColor = UIColor.white.cgColor
+        spendingCategoryImage.isOpaque = true
+        spendingCategoryImage.backgroundColor = .white
+        spendingCategoryImage.layer.backgroundColor = UIColor.white.cgColor
 
         layer.shouldRasterize = true
         layer.rasterizationScale = UIScreen.main.scale
@@ -62,40 +61,35 @@ final class TransactionCell: UITableViewCell {
         spendingCategoryImage.image = UIImage(named: imageName)
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-
+    override func setSelected(_ selected: Bool, animated _: Bool) {
         if selected {
-
             let color = #colorLiteral(red: 0.4549019608, green: 0.2, blue: 1, alpha: 1)
 
-            self.backgroundColor = color
+            backgroundColor = color
 
-            self.referenceLabel.backgroundColor = color
+            referenceLabel.backgroundColor = color
 
-            self.dateLabel.backgroundColor = color
+            dateLabel.backgroundColor = color
 
-            self.priceLabel.backgroundColor = color
-            self.spendingCategoryImage.backgroundColor = color
-            self.spendingCategoryImage.layer.backgroundColor = color.cgColor
+            priceLabel.backgroundColor = color
+            spendingCategoryImage.backgroundColor = color
+            spendingCategoryImage.layer.backgroundColor = color.cgColor
 
         } else {
+            backgroundColor = .white
 
-            self.backgroundColor = .white
+            referenceLabel.backgroundColor = .white
+            dateLabel.backgroundColor = .white
+            priceLabel.backgroundColor = .white
 
-            self.referenceLabel.backgroundColor = .white
-            self.dateLabel.backgroundColor = .white
-            self.priceLabel.backgroundColor = .white
-
-            self.spendingCategoryImage.backgroundColor = .white
-            self.spendingCategoryImage.layer.backgroundColor = UIColor.white.cgColor
+            spendingCategoryImage.backgroundColor = .white
+            spendingCategoryImage.layer.backgroundColor = UIColor.white.cgColor
         }
     }
-
 }
 
 extension Date {
     static func dateFormatter(dateString: DateTime) -> String? {
-
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
 
@@ -108,7 +102,6 @@ extension Date {
     }
 
     static func dateFormatterTime(dateString: DateTime) -> String? {
-
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
 

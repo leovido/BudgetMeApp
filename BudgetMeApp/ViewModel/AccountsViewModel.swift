@@ -7,13 +7,12 @@
 //
 
 import Foundation
-import RxSwift
+import Moya
 import RxCocoa
 import RxMoya
-import Moya
+import RxSwift
 
 struct AccountsViewModel: ViewModelBlueprint {
-
     typealias Model = AccountComposite
 
     let provider: MoyaProvider<STAccountService>
@@ -25,10 +24,10 @@ struct AccountsViewModel: ViewModelBlueprint {
 
     init(provider: MoyaProvider<STAccountService> = MoyaNetworkManagerFactory.makeManager()) {
         self.provider = provider
-        self.isLoading = PublishSubject()
-        self.dataSource = BehaviorRelay(value: [])
-        self.errorPublisher = PublishSubject()
-        self.disposeBag = DisposeBag()
+        isLoading = PublishSubject()
+        dataSource = BehaviorRelay(value: [])
+        errorPublisher = PublishSubject()
+        disposeBag = DisposeBag()
     }
 
     func refreshData() {
@@ -39,28 +38,25 @@ struct AccountsViewModel: ViewModelBlueprint {
             .flatMap(fetchAllAccounts)
             .subscribe { event in
                 switch event {
-                case .next(let accountComposite):
+                case let .next(accountComposite):
                     self.dataSource.accept(accountComposite)
-                case .error(let error):
+                case let .error(error):
                     self.errorPublisher.onNext(error)
                 case .completed:
                     self.isLoading.onNext(false)
                 }
-        }
-        .disposed(by: disposeBag)
-
+            }
+            .disposed(by: disposeBag)
     }
 
     func fetchAllAccounts(account: [STAccount]) -> Observable<[AccountComposite]> {
-
         let request: (STAccount) -> Observable<AccountComposite> = { account in
 
             Observable.zip(self.getBalance(accountId: account.accountUid),
                            self.getIdentifiers(accountId: account.accountUid))
                 .map { balance, identifiers in
                     AccountComposite(account: account, balance: balance, identifiers: identifiers)
-            }
-
+                }
         }
 
         let requests = account.map(request)
@@ -68,12 +64,10 @@ struct AccountsViewModel: ViewModelBlueprint {
         return Observable.merge(requests)
             .toArray()
             .asObservable()
-
     }
 }
 
 extension AccountsViewModel {
-
     func getAllAccounts() -> Observable<[STAccount]> {
         let obs = provider.rx.request(.browseAccounts)
             .filterSuccessfulStatusAndRedirectCodes()
@@ -85,7 +79,7 @@ extension AccountsViewModel {
     }
 
     func getBalance(accountId: String) -> Observable<STBalance> {
-        let obs = self.provider.rx.request(.getBalance(accountId: accountId))
+        let obs = provider.rx.request(.getBalance(accountId: accountId))
             .filterSuccessfulStatusAndRedirectCodes()
             .map(STBalance.self)
             .asObservable()
@@ -123,11 +117,9 @@ extension AccountsViewModel {
 
         return observable
     }
-
 }
 
 extension AccountsViewModel {
-
     func downloadPDFStatement(accountId: String, yearMonth: String) -> Completable {
         let observable = provider.rx.request(.downloadStatementPDF(accountId: accountId,
                                                                    yearMonth: yearMonth))
@@ -165,5 +157,4 @@ extension AccountsViewModel {
 
         return obs
     }
-
 }

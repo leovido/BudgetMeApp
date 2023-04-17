@@ -6,10 +6,10 @@
 ////  Copyright © 2020 Christian Leovido. All rights reserved.
 ////
 //
-//import Foundation
-//import Moya
+// import Foundation
+// import Moya
 //
-//struct STSavingsGoalManager: EntityComponent {
+// struct STSavingsGoalManager: EntityComponent {
 //
 //    typealias Model = STSavingsGoal
 //
@@ -73,4 +73,4 @@
 //            }
 //        }
 //    }
-//}
+// }

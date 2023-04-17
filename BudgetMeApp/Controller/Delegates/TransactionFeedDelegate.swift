@@ -10,8 +10,7 @@ import Foundation
 import UIKit
 
 extension TransactionFeedViewController: UITableViewDelegate {
-
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if dataSource[section].items.isEmpty {
             return 0
         } else {
@@ -19,8 +18,7 @@ extension TransactionFeedViewController: UITableViewDelegate {
         }
     }
 
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-
+    func tableView(_: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let header: UITableViewHeaderFooterView = view as? UITableViewHeaderFooterView else {
             return
         }
@@ -35,6 +33,5 @@ extension TransactionFeedViewController: UITableViewDelegate {
         let headerTitle = dataSource[section].header
 
         header.textLabel?.text = headerTitle
-
     }
 }

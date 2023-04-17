@@ -7,15 +7,14 @@
 //
 
 import Foundation
-import RxSwift
-import RxCocoa
 import Moya
+import RxCocoa
+import RxSwift
 
 /// Protocol/Interface to be shared for view models with same functionality, different implementation.
 /// A provider has a specific Model that is assigned to the component that conforms to this protocol.
 /// dataSource is an Observable that signals values when it changes
 protocol ViewModelBlueprint {
-
     associatedtype Model: Decodable
     associatedtype Provider
 
@@ -27,15 +26,12 @@ protocol ViewModelBlueprint {
     var disposeBag: DisposeBag { get }
 
     func refreshData()
-
 }
 
 protocol AlternativeViewModelBlueprint {
-
     associatedtype Input
     associatedtype Output
     associatedtype Provider
 
     var provider: Provider { get }
-
 }

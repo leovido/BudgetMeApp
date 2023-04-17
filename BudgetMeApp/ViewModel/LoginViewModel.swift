@@ -8,8 +8,8 @@
 
 import Foundation
 import Moya
-import RxSwift
 import RxCocoa
+import RxSwift
 
 enum BMDisplayColor: String {
     case `default` = "white"
@@ -18,7 +18,6 @@ enum BMDisplayColor: String {
 }
 
 struct LoginViewModel: AlternativeViewModelBlueprint {
-
     typealias Provider = MoyaProvider<STAuthentication>
 
     typealias Input = LoginViewModelInput
@@ -41,28 +40,26 @@ struct LoginViewModel: AlternativeViewModelBlueprint {
     }
 
     func transform(input: Input) -> Output {
-
         let isEmailTextFieldValueValid = input.emailTextFieldChanged
-            .map({ $0.contains("@") })
+            .map { $0.contains("@") }
             .asDriver(onErrorJustReturn: false)
 
         let isPasswordTextFieldValueValid = input.passwordTextFieldChanged
-            .map({ $0.count > 6 })
+            .map { $0.count > 6 }
             .asDriver(onErrorJustReturn: false)
 
         let isValid = Observable.combineLatest(
             isEmailTextFieldValueValid.asObservable(),
             isPasswordTextFieldValueValid.asObservable()
         )
-            .map({ $0 && $1 })
-            .asDriver(onErrorJustReturn: false)
+        .map { $0 && $1 }
+        .asDriver(onErrorJustReturn: false)
 
         return Output(
             isEmailTextFieldValid: isEmailTextFieldValueValid,
             isValid: isValid
         )
     }
-
 }
 
 struct STCredentials {

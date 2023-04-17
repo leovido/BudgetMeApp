@@ -11,9 +11,7 @@ import Foundation
 protocol CurrencyFormattable {}
 
 extension CurrencyFormattable {
-
     func currencyFormatter(value: CurrencyAndAmount) -> String {
-
         let currency = Float(value.minorUnits) / 100
 
         let formatter = NumberFormatter()
@@ -26,7 +24,6 @@ extension CurrencyFormattable {
     }
 
     func currencyFormatter(value: MinorUnits) -> String {
-
         let currency = Float(value) / 100
 
         let formatter = NumberFormatter()
@@ -37,5 +34,4 @@ extension CurrencyFormattable {
 
         return formattedValue
     }
-
 }

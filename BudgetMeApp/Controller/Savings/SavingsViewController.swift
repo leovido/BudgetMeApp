@@ -6,24 +6,22 @@
 //  Copyright © 2020 Christian Leovido. All rights reserved.
 //
 
-import UIKit
-import RxSwift
 import RxCocoa
+import RxSwift
+import UIKit
 
 class SavingsViewController: UIViewController {
+    @IBOutlet var savingsTableView: UITableView!
+    @IBOutlet var totalSavingsLabel: UILabel!
+    @IBOutlet var createNewSavingGoal: UIButton!
 
-    @IBOutlet weak var savingsTableView: UITableView!
-    @IBOutlet weak var totalSavingsLabel: UILabel!
-    @IBOutlet weak var createNewSavingGoal: UIButton!
-
-    let disposeBag: DisposeBag = DisposeBag()
+    let disposeBag: DisposeBag = .init()
     var viewModel: SavingsViewModel!
 
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(_: Bool) {
         super.viewDidAppear(true)
 
-        self.parent?.title = "Savings"
-
+        parent?.title = "Savings"
     }
 
     override func viewDidLoad() {
@@ -35,11 +33,9 @@ class SavingsViewController: UIViewController {
         setupButton()
 
         viewModel.refreshData()
-
     }
 
     func setupButton() {
-
         createNewSavingGoal.rx.tap
             .asObservable()
             .subscribe(onNext: { _ in
@@ -48,11 +44,9 @@ class SavingsViewController: UIViewController {
 
             })
             .disposed(by: disposeBag)
-
     }
 
     func setupBinding() {
-
         viewModel.dataSource
             .asDriver()
             .drive(savingsTableView
@@ -60,18 +54,14 @@ class SavingsViewController: UIViewController {
                 .items(cellIdentifier: SavingsCell.identifier,
                        cellType: SavingsCell.self)) { _, element, cell in
 
-                        cell.configureSavings(savings: element)
-
-        }
-        .disposed(by: disposeBag)
-
+                cell.configureSavings(savings: element)
+            }
+            .disposed(by: disposeBag)
     }
-
 }
 
 extension SavingsViewController {
     func presentAlert() {
-
         let alert = UIAlertController(title: "Saving goal name", message: "", preferredStyle: .alert)
 
         let yesAction = UIAlertAction(title: "Yes", style: .default, handler: { _ in
@@ -96,7 +86,6 @@ extension SavingsViewController {
         alert.addAction(yesAction)
         alert.addAction(noAction)
 
-        self.present(alert, animated: true, completion: nil)
-
+        present(alert, animated: true, completion: nil)
     }
 }

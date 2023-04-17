@@ -11,7 +11,6 @@ import XCTest
 @testable import BudgetMeApp
 
 class TransactionFeedViewControllerTests: XCTestCase {
-
     var viewController: TransactionFeedViewController!
 
     override func setUp() {
@@ -30,7 +29,6 @@ class TransactionFeedViewControllerTests: XCTestCase {
     }
 
     func sutNavigationSetup<T>() -> T {
-
         viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TransactionFeedViewController") as? TransactionFeedViewController
 
         let navigationController = UINavigationController()
@@ -43,5 +41,4 @@ class TransactionFeedViewControllerTests: XCTestCase {
 
         return viewController as! T
     }
-
 }

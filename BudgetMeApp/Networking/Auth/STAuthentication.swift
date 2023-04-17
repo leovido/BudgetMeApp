@@ -17,7 +17,6 @@ enum STAuthentication {
 }
 
 extension STAuthentication: TargetType {
-
     public var baseURL: URL {
         return Constants.auth
     }
@@ -39,13 +38,13 @@ extension STAuthentication: TargetType {
 
     public var task: Task {
         switch self {
-        case .refreshToken(let refreshToken, let clientId, let clientSecret):
+        case let .refreshToken(refreshToken, clientId, clientSecret):
             return .requestParameters(parameters: ["grant_type": "refresh_token",
                                                    "refresh_token": refreshToken,
                                                    "client_id": clientId,
                                                    "client_secret": clientSecret],
                                       encoding: URLEncoding.httpBody)
-        case .authenticate(let clientId, let redirectURI):
+        case let .authenticate(clientId, redirectURI):
             return .requestParameters(parameters: ["clientId": clientId,
                                                    "responsetType": "code",
                                                    "state": UUID().uuidString,
@@ -60,7 +59,6 @@ extension STAuthentication: TargetType {
             return ["Content-Type": "application/x-www-form-urlencoded",
                     "User-agent": "Christian Ray Leovido"]
         }
-
     }
 
     public var validationType: ValidationType {

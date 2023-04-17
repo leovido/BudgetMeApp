@@ -9,10 +9,9 @@
 import UIKit
 
 class PopularCell: UICollectionViewCell {
-
     static var identifier: String = "PopularCell"
 
-    @IBOutlet weak var imageIcon: UIImageView!
+    @IBOutlet var imageIcon: UIImageView!
 
     func configure(spendingCategory: SpendingCategory) {
         let imageName = SpendingCategoryFactory.makeSpendingCategory(spendingCategory: spendingCategory)
@@ -20,5 +19,4 @@ class PopularCell: UICollectionViewCell {
 
         imageIcon.image = UIImage(named: imageName)
     }
-
 }
