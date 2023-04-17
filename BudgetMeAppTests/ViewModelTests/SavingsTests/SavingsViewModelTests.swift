@@ -6,27 +6,27 @@
 //  Copyright © 2020 Christian Leovido. All rights reserved.
 //
 
-@testable import BudgetMeApp
 import XCTest
+@testable import BudgetMeApp
 
 class SavingsViewModelTests: XCTestCase, SavingsStubProtocol {
-    var savingsViewModel: SavingsViewModel!
+  var savingsViewModel: SavingsViewModel!
 
-    override func setUp() {}
+  override func setUp() {}
 
-    override func tearDown() {
-        savingsViewModel = nil
-    }
+  override func tearDown() {
+    savingsViewModel = nil
+  }
 
-    func testRefreshData() {
-        savingsViewModel = SavingsViewModel(provider: makeMoyaSuccessStub(type: .browse))
+  func testRefreshData() {
+    savingsViewModel = SavingsViewModel(provider: makeMoyaSuccessStub(type: .browse))
 
-        savingsViewModel.refreshData()
-    }
+    savingsViewModel.refreshData()
+  }
 
-    func testCreateNewSaving() {
-        savingsViewModel = SavingsViewModel(provider: makeMoyaSuccessStub(type: .browse))
+  func testCreateNewSaving() {
+    savingsViewModel = SavingsViewModel(provider: makeMoyaSuccessStub(type: .browse))
 
-        savingsViewModel.createNewSaving(name: "Some saving")
-    }
+    savingsViewModel.createNewSaving(name: "Some saving")
+  }
 }

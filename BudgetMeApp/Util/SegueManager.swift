@@ -9,33 +9,33 @@
 import UIKit
 
 enum SegueIdentifier: String {
-    case transactionSegue = "TransactionSegue"
+  case transactionSegue = "TransactionSegue"
 }
 
 struct SegueManager {
-    typealias SegueDestination = UIViewController
+  typealias SegueDestination = UIViewController
 
-    let segueDestination: SegueDestination
-    let segueIdentifier: SegueIdentifier
+  let segueDestination: SegueDestination
+  let segueIdentifier: SegueIdentifier
 
-    func performSegue(with account: AccountComposite) {
-        guard let destinationVieController = segueDestination as? TransactionFeedViewController else {
-            return
-        }
-
-        destinationVieController.account = account
+  func performSegue(with account: AccountComposite) {
+    guard let destinationVieController = segueDestination as? TransactionFeedViewController else {
+      return
     }
 
-    init?(_ segue: UIStoryboardSegue) {
-        guard let segueIdentifier = segue.identifier else {
-            return nil
-        }
+    destinationVieController.account = account
+  }
 
-        guard let id = SegueIdentifier(rawValue: segueIdentifier) else {
-            return nil
-        }
-
-        segueDestination = segue.destination
-        self.segueIdentifier = id
+  init?(_ segue: UIStoryboardSegue) {
+    guard let segueIdentifier = segue.identifier else {
+      return nil
     }
+
+    guard let id = SegueIdentifier(rawValue: segueIdentifier) else {
+      return nil
+    }
+
+    segueDestination = segue.destination
+    self.segueIdentifier = id
+  }
 }

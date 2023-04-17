@@ -9,8 +9,8 @@
 import Foundation
 
 struct STAccessToken: Decodable, Equatable {
-    var access_token: String
-    var token_type: String
-    var expires_in: Int
-    var scope: String
+  var access_token: String
+  var token_type: String
+  var expires_in: Int
+  var scope: String
 }

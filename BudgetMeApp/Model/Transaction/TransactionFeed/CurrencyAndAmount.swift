@@ -12,14 +12,14 @@ public typealias MinorUnits = Int
 public typealias Currency = String
 
 public struct CurrencyAndAmount: Decodable, Equatable, Hashable {
-    var currency: CurrencySymbol
-    var minorUnits: MinorUnits
+  var currency: CurrencySymbol
+  var minorUnits: MinorUnits
 }
 
 extension CurrencyAndAmount: CustomStringConvertible {
-    public var description: String {
-        return currencyFormatter(value: self)
-    }
+  public var description: String {
+    currencyFormatter(value: self)
+  }
 }
 
 extension CurrencyAndAmount: CurrencyFormattable {}

@@ -6,177 +6,177 @@
 //  Copyright © 2020 Christian Leovido. All rights reserved.
 //
 
-@testable import BudgetMeApp
 import RxCocoa
 import RxSwift
 import RxTest
 import XCTest
+@testable import BudgetMeApp
 
 class AccountViewModelTests: XCTestCase, StubAccounts {
-    var accountViewModel: AccountsViewModel!
+  var accountViewModel: AccountsViewModel!
 
-    var disposeBag: DisposeBag!
-    var scheduler: TestScheduler!
+  var disposeBag: DisposeBag!
+  var scheduler: TestScheduler!
 
-    override func setUp() {
-        disposeBag = DisposeBag()
-        scheduler = TestScheduler(initialClock: 0)
-    }
+  override func setUp() {
+    disposeBag = DisposeBag()
+    scheduler = TestScheduler(initialClock: 0)
+  }
 
-    override func tearDown() {
-        accountViewModel = nil
-    }
+  override func tearDown() {
+    accountViewModel = nil
+  }
 
-    func testGetIdentifiers() {
-        accountViewModel = AccountsViewModel(provider: makeMoyaSuccessStub(type: .identifiers))
+  func testGetIdentifiers() {
+    accountViewModel = AccountsViewModel(provider: makeMoyaSuccessStub(type: .identifiers))
 
-        let identifiersObserver = scheduler.createObserver(STAccountIdentifiers.self)
+    let identifiersObserver = scheduler.createObserver(STAccountIdentifiers.self)
 
-        accountViewModel.getIdentifiers(accountId: UUID().uuidString)
-            .bind(to: identifiersObserver)
-            .disposed(by: disposeBag)
+    accountViewModel.getIdentifiers(accountId: UUID().uuidString)
+      .bind(to: identifiersObserver)
+      .disposed(by: disposeBag)
 
-        scheduler.start()
+    scheduler.start()
 
-        XCTAssertTrue(!identifiersObserver.events.isEmpty)
-    }
+    XCTAssertTrue(!identifiersObserver.events.isEmpty)
+  }
 
-    func testGetAccountStatementPeriods() {
-        accountViewModel = AccountsViewModel(provider: makeMoyaSuccessStub(type: .statementPeriods))
+  func testGetAccountStatementPeriods() {
+    accountViewModel = AccountsViewModel(provider: makeMoyaSuccessStub(type: .statementPeriods))
 
-        let accountStatementObserver = scheduler.createObserver(AccountStatementPeriods.self)
+    let accountStatementObserver = scheduler.createObserver(AccountStatementPeriods.self)
 
-        accountViewModel.getStatementPeriods(accountId: UUID().uuidString)
-            .bind(to: accountStatementObserver)
-            .disposed(by: disposeBag)
+    accountViewModel.getStatementPeriods(accountId: UUID().uuidString)
+      .bind(to: accountStatementObserver)
+      .disposed(by: disposeBag)
 
-        scheduler.start()
+    scheduler.start()
 
-        XCTAssertTrue(!accountStatementObserver.events.isEmpty)
-    }
+    XCTAssertTrue(!accountStatementObserver.events.isEmpty)
+  }
 
-    func testSetupAccountComposite() {
-        accountViewModel = AccountsViewModel()
+  func testSetupAccountComposite() {
+    accountViewModel = AccountsViewModel()
 
-        let compositeObserver = scheduler.createObserver([AccountComposite].self)
-        let account = STAccount(accountUid: "", defaultCategory: "", currency: .GBP, createdAt: "")
+    let compositeObserver = scheduler.createObserver([AccountComposite].self)
+    let account = STAccount(accountUid: "", defaultCategory: "", currency: .GBP, createdAt: "")
 
-        accountViewModel.fetchAllAccounts(account: [account])
-            .bind(to: compositeObserver)
-            .disposed(by: disposeBag)
+    accountViewModel.fetchAllAccounts(account: [account])
+      .bind(to: compositeObserver)
+      .disposed(by: disposeBag)
 
-        scheduler.start()
+    scheduler.start()
 
-        XCTAssertTrue(compositeObserver.events.isEmpty)
-    }
+    XCTAssertTrue(compositeObserver.events.isEmpty)
+  }
 
-    func testDownloadPDF() {
-        accountViewModel = AccountsViewModel()
+  func testDownloadPDF() {
+    accountViewModel = AccountsViewModel()
 
-        let observable = accountViewModel.downloadPDFStatement(accountId: "", yearMonth: "2020-03")
+    let observable = accountViewModel.downloadPDFStatement(accountId: "", yearMonth: "2020-03")
 
-        XCTAssertNotNil(observable)
-    }
+    XCTAssertNotNil(observable)
+  }
 
-    func testDownloadPDFRange() {
-        accountViewModel = AccountsViewModel()
+  func testDownloadPDFRange() {
+    accountViewModel = AccountsViewModel()
 
-        let observable = accountViewModel.downloadStatementPDF(accountId: "", start: "", end: "")
+    let observable = accountViewModel.downloadStatementPDF(accountId: "", start: "", end: "")
 
-        XCTAssertNotNil(observable)
-    }
+    XCTAssertNotNil(observable)
+  }
 
-    func testDownloadCSV() {
-        accountViewModel = AccountsViewModel()
+  func testDownloadCSV() {
+    accountViewModel = AccountsViewModel()
 
-        let observable = accountViewModel.downloadCSVStatement(accountId: "", yearMonth: "2020-03")
+    let observable = accountViewModel.downloadCSVStatement(accountId: "", yearMonth: "2020-03")
 
-        XCTAssertNotNil(observable)
-    }
+    XCTAssertNotNil(observable)
+  }
 
-    func testDownloadCSVRange() {
-        accountViewModel = AccountsViewModel()
+  func testDownloadCSVRange() {
+    accountViewModel = AccountsViewModel()
 
-        let observable = accountViewModel.downloadStatementCSV(accountId: "", start: "", end: "")
+    let observable = accountViewModel.downloadStatementCSV(accountId: "", start: "", end: "")
 
-        XCTAssertNotNil(observable)
-    }
+    XCTAssertNotNil(observable)
+  }
 
-    func testGetConfirmationFunds() {
-        accountViewModel = AccountsViewModel(provider: makeMoyaSuccessStub(type: .availableFunds))
+  func testGetConfirmationFunds() {
+    accountViewModel = AccountsViewModel(provider: makeMoyaSuccessStub(type: .availableFunds))
 
-        let confirmationObserver = scheduler.createObserver(ConfirmationOfFundsResponse.self)
+    let confirmationObserver = scheduler.createObserver(ConfirmationOfFundsResponse.self)
 
-        accountViewModel.getConfirmationOfFunds(accountId: UUID().uuidString)
-            .bind(to: confirmationObserver)
-            .disposed(by: disposeBag)
+    accountViewModel.getConfirmationOfFunds(accountId: UUID().uuidString)
+      .bind(to: confirmationObserver)
+      .disposed(by: disposeBag)
 
-        scheduler.start()
+    scheduler.start()
 
-        XCTAssertTrue(!confirmationObserver.events.isEmpty)
-    }
+    XCTAssertTrue(!confirmationObserver.events.isEmpty)
+  }
 
-    func testGetBalances() {
-        accountViewModel = AccountsViewModel(provider: makeMoyaSuccessStub(type: .balance))
+  func testGetBalances() {
+    accountViewModel = AccountsViewModel(provider: makeMoyaSuccessStub(type: .balance))
 
-        let balanceObserver = scheduler.createObserver(STBalance.self)
+    let balanceObserver = scheduler.createObserver(STBalance.self)
 
-        accountViewModel.getBalance(accountId: UUID().uuidString)
-            .bind(to: balanceObserver)
-            .disposed(by: disposeBag)
+    accountViewModel.getBalance(accountId: UUID().uuidString)
+      .bind(to: balanceObserver)
+      .disposed(by: disposeBag)
 
-        scheduler.start()
+    scheduler.start()
 
-        XCTAssertTrue(!balanceObserver.events.isEmpty)
-    }
+    XCTAssertTrue(!balanceObserver.events.isEmpty)
+  }
 
-    func testDataSourceError() {
-        accountViewModel = AccountsViewModel()
+  func testDataSourceError() {
+    accountViewModel = AccountsViewModel()
 
-        let errorMock = scheduler.createObserver(Error.self)
-        accountViewModel.errorPublisher.asObserver()
-            .bind(to: errorMock)
-            .disposed(by: disposeBag)
+    let errorMock = scheduler.createObserver(Error.self)
+    accountViewModel.errorPublisher.asObserver()
+      .bind(to: errorMock)
+      .disposed(by: disposeBag)
 
-        scheduler.createColdObservable([.error(20, MockError.unknown)])
-            .bind(to: accountViewModel.errorPublisher)
-            .disposed(by: disposeBag)
+    scheduler.createColdObservable([.error(20, MockError.unknown)])
+      .bind(to: accountViewModel.errorPublisher)
+      .disposed(by: disposeBag)
 
-        scheduler.start()
+    scheduler.start()
 
-        XCTAssertTrue(!errorMock.events.isEmpty)
-    }
+    XCTAssertTrue(!errorMock.events.isEmpty)
+  }
 
-    func testDataSource() {
-        accountViewModel = AccountsViewModel()
+  func testDataSource() {
+    accountViewModel = AccountsViewModel()
 
-        let dataSourceMock = scheduler.createObserver([AccountComposite].self)
-        accountViewModel.dataSource
-            .bind(to: dataSourceMock)
-            .disposed(by: disposeBag)
+    let dataSourceMock = scheduler.createObserver([AccountComposite].self)
+    accountViewModel.dataSource
+      .bind(to: dataSourceMock)
+      .disposed(by: disposeBag)
 
-        let account = STAccount(accountUid: "",
-                                defaultCategory: "",
-                                currency: .GBP,
-                                createdAt: Date().description)
+    let account = STAccount(accountUid: "",
+                            defaultCategory: "",
+                            currency: .GBP,
+                            createdAt: Date().description)
 
-        let balance = STBalance.arbitrary.generate
+    let balance = STBalance.arbitrary.generate
 
-        let identifiers = STAccountIdentifiers(accountIdentifier: "", bankIdentifier: "", iban: "", bic: "", accountIdentifiers: [])
+    let identifiers = STAccountIdentifiers(accountIdentifier: "", bankIdentifier: "", iban: "", bic: "", accountIdentifiers: [])
 
-        let randomAccounts = [AccountComposite(account: account, balance: balance, identifiers: identifiers)]
+    let randomAccounts = [AccountComposite(account: account, balance: balance, identifiers: identifiers)]
 
-        scheduler.createColdObservable([.next(15, randomAccounts)])
-            .bind(to: accountViewModel.dataSource)
-            .disposed(by: disposeBag)
+    scheduler.createColdObservable([.next(15, randomAccounts)])
+      .bind(to: accountViewModel.dataSource)
+      .disposed(by: disposeBag)
 
-        scheduler.start()
+    scheduler.start()
 
-        XCTAssertEqual(dataSourceMock.events, [.next(0, []),
-                                               .next(15, randomAccounts)])
-    }
+    XCTAssertEqual(dataSourceMock.events, [.next(0, []),
+                                           .next(15, randomAccounts)])
+  }
 }
 
 private enum MockError: Equatable, Error {
-    case unknown
+  case unknown
 }

@@ -9,14 +9,14 @@
 import UIKit
 
 class PopularCell: UICollectionViewCell {
-    static var identifier: String = "PopularCell"
+  static var identifier: String = "PopularCell"
 
-    @IBOutlet var imageIcon: UIImageView!
+  @IBOutlet var imageIcon: UIImageView!
 
-    func configure(spendingCategory: SpendingCategory) {
-        let imageName = SpendingCategoryFactory.makeSpendingCategory(spendingCategory: spendingCategory)
-            .categoryImage
+  func configure(spendingCategory: SpendingCategory) {
+    let imageName = SpendingCategoryFactory.makeSpendingCategory(spendingCategory: spendingCategory)
+      .categoryImage
 
-        imageIcon.image = UIImage(named: imageName)
-    }
+    imageIcon.image = UIImage(named: imageName)
+  }
 }

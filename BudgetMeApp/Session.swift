@@ -9,21 +9,21 @@
 import Foundation
 
 final class Session {
-    private init() {}
+  private init() {}
 
-    private static var _shared = Session()
+  private static var _shared = Session()
 
-    static var shared: Session {
-        return _shared
-    }
+  static var shared: Session {
+    _shared
+  }
 
-    var accountId: String = ""
+  var accountId: String = ""
 
-    var token: String {
-        return UserDefaultsConfig.token
-    }
+  var token: String {
+    UserDefaultsConfig.token
+  }
 
-    var refreshToken: String {
-        return UserDefaultsConfig.refreshToken
-    }
+  var refreshToken: String {
+    UserDefaultsConfig.refreshToken
+  }
 }

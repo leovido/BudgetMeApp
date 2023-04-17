@@ -6,59 +6,59 @@
 //  Copyright © 2020 Christian Leovido. All rights reserved.
 //
 
-@testable import BudgetMeApp
 import XCTest
+@testable import BudgetMeApp
 
 class SavingsViewControllerTests: XCTestCase, SavingsStubProtocol {
-    var viewController: SavingsViewController!
+  var viewController: SavingsViewController!
 
-    override func setUp() {
-        viewController = sutNavigationSetup()
-        viewController.viewModel = SavingsViewModel(provider: makeMoyaSuccessStub(type: .browse))
+  override func setUp() {
+    viewController = sutNavigationSetup()
+    viewController.viewModel = SavingsViewModel(provider: makeMoyaSuccessStub(type: .browse))
+  }
+
+  override func tearDown() {
+    viewController = nil
+  }
+
+  func testLifeCycle() {
+    viewController.viewWillAppear(true)
+    viewController.viewDidLoad()
+    viewController.viewDidAppear(true)
+    viewController.viewWillAppear(true)
+  }
+
+  func testAlert() {
+    let expectation = XCTestExpectation(description: "show alert")
+
+    viewController.presentAlert()
+
+    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+      let alert = UIApplication.shared.windows.first!.rootViewController?.presentedViewController as! UIAlertController
+
+      let actionTitles = alert.actions.compactMap(\.title)
+
+      XCTAssert(alert.title == "Saving goal name")
+
+      XCTAssert(actionTitles[0] == "Yes")
+      XCTAssert(actionTitles[1] == "Cancel")
+
+      expectation.fulfill()
     }
+    wait(for: [expectation], timeout: 1.5)
+  }
 
-    override func tearDown() {
-        viewController = nil
-    }
+  func sutNavigationSetup<T>() -> T {
+    viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SavingsViewController") as? SavingsViewController
 
-    func testLifeCycle() {
-        viewController.viewWillAppear(true)
-        viewController.viewDidLoad()
-        viewController.viewDidAppear(true)
-        viewController.viewWillAppear(true)
-    }
+    let navigationController = UINavigationController()
 
-    func testAlert() {
-        let expectation = XCTestExpectation(description: "show alert")
+    UIApplication.shared.windows.first!.rootViewController = navigationController
+    navigationController.pushViewController(viewController, animated: false)
 
-        viewController.presentAlert()
+    viewController = navigationController.topViewController as? SavingsViewController
+    viewController.loadView()
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            let alert = UIApplication.shared.windows.first!.rootViewController?.presentedViewController as! UIAlertController
-
-            let actionTitles = alert.actions.compactMap { $0.title }
-
-            XCTAssert(alert.title == "Saving goal name")
-
-            XCTAssert(actionTitles[0] == "Yes")
-            XCTAssert(actionTitles[1] == "Cancel")
-
-            expectation.fulfill()
-        }
-        wait(for: [expectation], timeout: 1.5)
-    }
-
-    func sutNavigationSetup<T>() -> T {
-        viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SavingsViewController") as? SavingsViewController
-
-        let navigationController = UINavigationController()
-
-        UIApplication.shared.windows.first!.rootViewController = navigationController
-        navigationController.pushViewController(viewController, animated: false)
-
-        viewController = navigationController.topViewController as? SavingsViewController
-        viewController.loadView()
-
-        return viewController as! T
-    }
+    return viewController as! T
+  }
 }

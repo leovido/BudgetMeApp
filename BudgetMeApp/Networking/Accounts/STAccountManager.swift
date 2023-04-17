@@ -10,36 +10,36 @@ import Foundation
 import Moya
 
 struct STAccountManager: EntityComponent {
-    typealias Model = STAccount
+  typealias Model = STAccount
 
-    private var decoder = JSONDecoder()
-    private var provider: MoyaProvider<STAccountService>
+  private var decoder = JSONDecoder()
+  private var provider: MoyaProvider<STAccountService>
 
-    init(provider: MoyaProvider<STAccountService> = MoyaNetworkManagerFactory.makeManager()) {
-        self.provider = provider
-    }
+  init(provider: MoyaProvider<STAccountService> = MoyaNetworkManagerFactory.makeManager()) {
+    self.provider = provider
+  }
 
-    func browse(completion: @escaping (Result<[STAccount], Error>) -> Void) {
-        var accounts: [STAccount] = []
+  func browse(completion: @escaping (Result<[STAccount], Error>) -> Void) {
+    var accounts: [STAccount] = []
 
-        provider.request(.browseAccounts) { result in
-            switch result {
-            case let .success(response):
+    provider.request(.browseAccounts) { result in
+      switch result {
+      case let .success(response):
 
-                do {
-                    accounts = try response.map([STAccount].self,
-                                                atKeyPath: "accounts",
-                                                using: self.decoder,
-                                                failsOnEmptyData: true)
+        do {
+          accounts = try response.map([STAccount].self,
+                                      atKeyPath: "accounts",
+                                      using: self.decoder,
+                                      failsOnEmptyData: true)
 
-                    completion(.success(accounts))
+          completion(.success(accounts))
 
-                } catch {
-                    completion(.failure(error))
-                }
-            case let .failure(error):
-                completion(.failure(error))
-            }
+        } catch {
+          completion(.failure(error))
         }
+      case let .failure(error):
+        completion(.failure(error))
+      }
     }
+  }
 }

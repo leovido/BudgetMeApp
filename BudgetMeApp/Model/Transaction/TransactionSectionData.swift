@@ -10,20 +10,20 @@ import Foundation
 import RxDataSources
 
 struct TransactionSectionData: Decodable, Equatable {
-    var header: String
-    var items: [Item]
+  var header: String
+  var items: [Item]
 }
 
 extension TransactionSectionData: SectionModelType {
-    typealias Item = STTransactionFeed
+  typealias Item = STTransactionFeed
 
-    init(original: TransactionSectionData, items: [Item]) {
-        self = original
-        self.items = items
-    }
+  init(original: TransactionSectionData, items: [Item]) {
+    self = original
+    self.items = items
+  }
 }
 
 enum TransactionType: String {
-    case income
-    case expense
+  case income
+  case expense
 }
