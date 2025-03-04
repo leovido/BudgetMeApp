@@ -1,19 +1,18 @@
-<div style="block: inline">
-    <img alt="Login" src="https://user-images.githubusercontent.com/18484997/78169655-a2bdbe00-7449-11ea-9dfb-60f3e708f36b.png" width="20%">
-<img alt="Updated Transaction Feed" src="https://user-images.githubusercontent.com/18484997/78266111-3d2b0980-74fd-11ea-925d-9013a4856bc3.png" width="20%">
-  
-  <img alt="Updated Transaction Feed" src="https://user-images.githubusercontent.com/18484997/78266111-3d2b0980-74fd-11ea-925d-9013a4856bc3.png" width="20%" >
-  
-  <img alt="Transaction Details" src="https://user-images.githubusercontent.com/18484997/77860695-6d765d80-7208-11ea-919d-56459150ce16.png" width="20%">
-
-  
-  </div>
+<img src="https://repository-images.githubusercontent.com/250388327/db7e9580-7524-11ea-8b79-b97d6394f2c1" width="80%" />
 
 Personal finances app using Starling bank's API with RxSwift + MVVM architecture
 
 # Requirements
 - iOS 13+
 - Xcode 14
+
+# Screenshots
+<div style="block: inline">
+    <img alt="Login" src="https://user-images.githubusercontent.com/18484997/78169655-a2bdbe00-7449-11ea-9dfb-60f3e708f36b.png" width="20%">
+    <img alt="Updated Transaction Feed" src="https://user-images.githubusercontent.com/18484997/78266111-3d2b0980-74fd-11ea-925d-9013a4856bc3.png" width="20%">
+    <img alt="Updated Transaction Feed" src="https://user-images.githubusercontent.com/18484997/78266111-3d2b0980-74fd-11ea-925d-9013a4856bc3.png" width="20%" >
+    <img alt="Transaction Details" src="https://user-images.githubusercontent.com/18484997/77860695-6d765d80-7208-11ea-919d-56459150ce16.png" width="20%">
+</div>
 
 # Highlights and benefits
 - Reactive programming - Declarative programming paradigm concerned with data streams and the propagation of change.
